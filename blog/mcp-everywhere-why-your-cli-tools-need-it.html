@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP Is Everywhere Now — Why Your CLI Tools Need It | Revenue Holdings</title>
+    <meta name="description" content="85K+ GitHub stars on the official MCP servers repo. 23K+ on the Python SDK. Every major AI coding agent speaks MCP. If your CLI tools aren't MCP-servable, they're invisible to AI. Here's how to fix that in 30 seconds.">
+    <meta name="keywords" content="MCP, Model Context Protocol, CLI tools, AI agents, Claude Code, Cursor, Codex, Python, click-to-mcp, developer tools">
+    <meta name="author" content="Revenue Holdings">
+    <meta property="og:title" content="MCP Is Everywhere Now — Why Your CLI Tools Need It">
+    <meta property="og:description" content="85K+ GitHub stars. 23K+ on the Python SDK. Every AI coding agent speaks MCP. If your CLI tools aren't MCP-servable, they're invisible to AI.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://coding-dev-tools.github.io/revenueholdings.dev/blog/mcp-everywhere-why-your-cli-tools-need-it.html">
+    <meta property="og:site_name" content="Revenue Holdings">
+    <meta property="og:image" content="https://coding-dev-tools.github.io/revenueholdings.dev/og-image.svg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MCP Is Everywhere Now — Why Your CLI Tools Need It">
+    <meta name="twitter:description" content="85K+ GitHub stars. Every AI coding agent speaks MCP. If your CLI tools aren't MCP-servable, they're invisible to AI.">
+    <link rel="canonical" href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/mcp-everywhere-why-your-cli-tools-need-it.html">
+    <style>
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --accent: #f0883e;
+            --accent-hover: #ffa657;
+            --border: #30363d;
+            --code-bg: #1c2128;
+            --link: #58a6ff;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.7; }
+        nav { background: var(--bg-secondary); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; align-items: center; gap: 2rem; }
+        nav a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; }
+        nav a:hover { color: var(--accent); }
+        nav .brand { color: var(--text-primary); font-weight: 700; font-size: 1.1rem; }
+        article { max-width: 780px; margin: 2rem auto; padding: 0 1.5rem 4rem; }
+        h1 { font-size: 2.2rem; margin-bottom: 0.5rem; line-height: 1.2; }
+        .meta { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 2rem; }
+        h2 { font-size: 1.5rem; margin: 2.5rem 0 1rem; color: var(--accent); }
+        h3 { font-size: 1.2rem; margin: 1.5rem 0 0.5rem; }
+        p { margin-bottom: 1rem; }
+        a { color: var(--link); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        pre { background: var(--code-bg); border: 1px solid var(--border); border-radius: 6px; padding: 1rem; overflow-x: auto; margin: 1rem 0 1.5rem; font-size: 0.9rem; }
+        code { background: var(--code-bg); padding: 0.15rem 0.4rem; border-radius: 3px; font-size: 0.9em; }
+        pre code { background: none; padding: 0; }
+        .cta { background: var(--accent); color: #fff; padding: 0.8rem 1.5rem; border-radius: 6px; display: inline-block; font-weight: 600; text-decoration: none; margin: 1rem 0; }
+        .cta:hover { background: var(--accent-hover); text-decoration: none; }
+        .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .stat-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem; text-align: center; }
+        .stat-card .number { font-size: 2rem; font-weight: 800; color: var(--accent); }
+        .stat-card .label { font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem; }
+        ul, ol { margin: 0.5rem 0 1.5rem 1.5rem; }
+        li { margin-bottom: 0.4rem; }
+        .callout { background: var(--bg-secondary); border-left: 3px solid var(--accent); padding: 1rem 1.2rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+        footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; color: var(--text-secondary); font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/" class="brand">Revenue Holdings</a>
+        <a href="/revenueholdings.dev/">Home</a>
+        <a href="/revenueholdings.dev/blog/">Blog</a>
+        <a href="/revenueholdings.dev/pricing.html">Pricing</a>
+        <a href="/revenueholdings.dev/about.html">About</a>
+    </nav>
+
+    <article>
+        <h1>MCP Is Everywhere Now — Why Your CLI Tools Need It</h1>
+        <p class="meta">May 17, 2026 &middot; 6 min read &middot; By Revenue Holdings</p>
+
+        <div class="stat-grid">
+            <div class="stat-card">
+                <div class="number">85K+</div>
+                <div class="label">GitHub stars on official MCP servers</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">23K+</div>
+                <div class="label">Python SDK stars</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">1,000+</div>
+                <div class="label">MCP directories &amp; registries</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">5+</div>
+                <div class="label">AI agents that speak MCP</div>
+            </div>
+        </div>
+
+        <p>Six months ago, MCP (Model Context Protocol) was a niche protocol for wiring tools into AI agents. Today it's the <strong>default integration layer</strong> for every major AI coding agent — Claude Code, Cursor, Codex, Windsurf, and Zed all speak MCP natively.</p>
+
+        <p>Here's the problem: <strong>most developer CLI tools still aren't MCP-servable.</strong> That means when an AI agent goes looking for tools to automate API contract testing, infrastructure diffs, or config drift detection, your tools simply don't show up.</p>
+
+        <h2>The Numbers Don't Lie</h2>
+
+        <p>The official <a href="https://github.com/modelcontextprotocol/servers">modelcontextprotocol/servers</a> repo has 85,000+ GitHub stars. The <a href="https://github.com/modelcontextprotocol/python-sdk">Python SDK</a> sits at 23,000+. FastMCP has been downloaded over 66 million times from PyPI. Directories like <a href="https://stork.ai">Stork.ai</a> now catalog 1,000+ MCP servers.</p>
+
+        <p>This isn't a trend anymore — it's infrastructure.</p>
+
+        <h2>What Happens When Your CLI Isn't MCP-Servable</h2>
+
+        <p>Imagine running <code>api-contract-guardian check</code> in CI for years. It catches breaking changes before they ship. Your team trusts it.</p>
+
+        <p>Now a developer asks Claude Code: "Check my API for breaking changes." Claude doesn't know about your tool. It can't call it. It falls back to generic advice or suggests writing tests from scratch.</p>
+
+        <div class="callout">
+            <strong>The gap is real:</strong> AI agents can only use tools they can discover through MCP. If your CLI isn't exposed as an MCP server, it's invisible to every AI coding agent your team uses.
+        </div>
+
+        <h2>Three Ways to Make Your CLI MCP-Servable</h2>
+
+        <h3>1. Write MCP Handlers by Hand</h3>
+
+        <p>Use the <a href="https://github.com/modelcontextprotocol/python-sdk">MCP Python SDK</a> or <a href="https://github.com/fastmcp/fastmcp">FastMCP</a> to write a server from scratch. You define tools, handle parameters, and wire up responses.</p>
+
+        <pre><code># Manual approach: ~100 lines per tool
+from mcp.server import Server
+
+server = Server("my-tool")
+
+@server.tool("check_api_contracts")
+async def check_api_contracts(spec_path: str) -> str:
+    # Implement parameter parsing, execution, response formatting
+    ...
+</code></pre>
+
+        <p><strong>Pros:</strong> Full control over the interface.<br>
+        <strong>Cons:</strong> Boilerplate for every tool. You're maintaining two codebases — the CLI and the MCP server. Changes to the CLI require manual updates to the MCP handlers.</p>
+
+        <h3>2. Use an SDK Wrapper</h3>
+
+        <p>Libraries like FastMCP reduce the boilerplate, but you still need to write tool definitions that mirror your CLI commands.</p>
+
+        <pre><code>from fastmcp import FastMCP
+
+mcp = FastMCP("my-tool")
+
+@mcp.tool()
+def check_api_contracts(spec_path: str) -> str:
+    """Check API contracts for breaking changes."""
+    # Still manual — you define each tool
+    ...
+</code></pre>
+
+        <p><strong>Pros:</strong> Less boilerplate than raw SDK.<br>
+        <strong>Cons:</strong> Still requires code changes and a separate deployment. Every new CLI command needs a matching MCP tool definition.</p>
+
+        <h3>3. Auto-Wrap with click-to-mcp</h3>
+
+        <p>Install <a href="https://github.com/Coding-Dev-Tools/click-to-mcp">click-to-mcp</a>, point it at any Click or typer CLI, and it automatically introspects every command, option, and argument — then exposes them as MCP tools.</p>
+
+        <pre><code># Install
+pip install git+https://github.com/Coding-Dev-Tools/click-to-mcp.git
+
+# Discover available CLIs
+click-to-mcp discover
+
+# Serve any CLI as MCP
+click-to-mcp serve api-contract-guardian
+</code></pre>
+
+        <p>Then add it to your Claude Code config:</p>
+
+        <pre><code>{
+  "mcpServers": {
+    "api-contract-guardian": {
+      "command": "click-to-mcp",
+      "args": ["serve", "api-contract-guardian"]
+    }
+  }
+}
+</code></pre>
+
+        <p><strong>Pros:</strong> Zero code changes. One install. Works with any Click/typer CLI. Automatically picks up new commands.<br>
+        <strong>Cons:</strong> Only works with Click/typer CLIs (argparse support is planned).</p>
+
+        <h2>Real Example: Wrapping 7 DevOps Tools at Once</h2>
+
+        <p>At Revenue Holdings, we ship 7 DevOps CLI tools — <a href="https://github.com/Coding-Dev-Tools/api-contract-guardian">api-contract-guardian</a>, <a href="https://github.com/Coding-Dev-Tools/deploydiff">deploydiff</a>, <a href="https://github.com/Coding-Dev-Tools/json2sql">json2sql</a>, <a href="https://github.com/Coding-Dev-Tools/configdrift">configdrift</a>, and more. Each has multiple subcommands.</p>
+
+        <p>Wrapping them manually would mean 30+ tool definitions, parameter mappings, and two codebases to maintain. With click-to-mcp, it's one command per tool:</p>
+
+        <pre><code># All 7 tools, MCP-servable in under 2 minutes
+click-to-mcp serve api-contract-guardian  # 4 subcommands → 4 MCP tools
+click-to-mcp serve deploydiff             # 3 subcommands → 3 MCP tools
+click-to-mcp serve json2sql                # 5 subcommands → 5 MCP tools
+click-to-mcp serve configdrift            # 3 subcommands → 3 MCP tools
+click-to-mcp serve envault                # 4 subcommands → 4 MCP tools
+click-to-mcp serve schemaforge            # 6 subcommands → 6 MCP tools
+click-to-mcp serve datamorph              # 3 subcommands → 3 MCP tools
+</code></pre>
+
+        <p>Now Claude Code, Cursor, and every MCP-speaking agent can call any of our 28 tool endpoints without us writing a single MCP handler.</p>
+
+        <h2>The Bigger Picture: MCP as the New API Surface</h2>
+
+        <p>MCP is becoming what REST was for web services — the standard way for tools to expose functionality. The difference is the consumer: instead of frontend apps, it's AI agents.</p>
+
+        <p>Here's what that means in practice:</p>
+
+        <ul>
+            <li><strong>Discoverability:</strong> MCP directories (Stork.ai, mcpservers.org, awesome-mcp-servers) are the new npm/PyPI for AI agents</li>
+            <li><strong>Integration:</strong> AI agents search these directories and install tools automatically</li>
+            <li><strong>Revenue:</strong> Tools that aren't MCP-servable miss out on AI-agent-driven usage and subscriptions</li>
+        </ul>
+
+        <div class="callout">
+            <strong>If your CLI tool isn't in MCP directories, AI agents can't find it.</strong> Submitting to directories like <a href="https://stork.ai">Stork.ai</a>, <a href="https://mcpservers.org">mcpservers.org</a>, and <a href="https://github.com/punkpeye/awesome-mcp-servers">awesome-mcp-servers</a> is the new SEO for AI.
+        </div>
+
+        <h2>Getting Started</h2>
+
+        <ol>
+            <li><strong>Install click-to-mcp:</strong> <code>pip install git+https://github.com/Coding-Dev-Tools/click-to-mcp.git</code></li>
+            <li><strong>Discover your CLIs:</strong> <code>click-to-mcp discover</code></li>
+            <li><strong>Serve one:</strong> <code>click-to-mcp serve your-cli-name</code></li>
+            <li><strong>Add to your AI agent config</strong> (Claude Code, Cursor, etc.)</li>
+            <li><strong>Submit to MCP directories</strong> for discoverability</li>
+        </ol>
+
+        <p>That's it. No SDK code, no separate deployments, no maintenance burden. Your existing CLI tools just became AI-accessible.</p>
+
+        <a href="https://github.com/Coding-Dev-Tools/click-to-mcp" class="cta">View click-to-mcp on GitHub &rarr;</a>
+
+        <h2>Further Reading</h2>
+        <ul>
+            <li><a href="/revenueholdings.dev/blog/click-to-mcp-intro.html">Introducing click-to-mcp: Auto-Wrap Any CLI as an MCP Server</a></li>
+            <li><a href="/revenueholdings.dev/blog/python-cli-to-mcp-server.html">Python CLI to MCP Server: A Step-by-Step Guide</a></li>
+            <li><a href="/revenueholdings.dev/blog/mcp-server-directories-where-to-list-your-server.html">MCP Server Directories: Where to List Your Server</a></li>
+            <li><a href="/revenueholdings.dev/blog/click-vs-typer-vs-argparse-python-cli.html">Click vs Typer vs Argparse: Which Python CLI Framework for MCP?</a></li>
+        </ul>
+    </article>
+
+    <footer>
+        &copy; 2026 Revenue Holdings &middot;
+        <a href="/revenueholdings.dev/" style="color:var(--link)">Home</a> &middot;
+        <a href="/revenueholdings.dev/blog/" style="color:var(--link)">Blog</a> &middot;
+        <a href="/revenueholdings.dev/pricing.html" style="color:var(--link)">Pricing</a> &middot;
+        <a href="https://github.com/Coding-Dev-Tools" style="color:var(--link)">GitHub</a>
+    </footer>
+</body>
+</html>
