@@ -192,48 +192,46 @@
 
 <!-- Hero -->
 <section class="hero">
-  <div class="badge">Simple, Transparent Pricing</div>
+  <div class="badge">Free Forever · Open Source</div>
   <h1>One license, <span>all 11 tools</span></h1>
-  <p>Free tier for solo developers. Pro for CI/CD integration. Team for organizations. No credit card required to start.</p>
+  <p>Every tool is free and open source under the MIT license. Install and use immediately — no account, no login. Commercial features (CI/CD services, team dashboards, unlimited usage) are in development.</p>
 </section>
 
 <!-- Pricing Tiers -->
 <section class="pricing-section active" id="tab-individual">
   <div class="pricing-grid">
-    <div class="plan">
-      <div class="name">Free</div>
-      <div class="price">$0 <span>/ month</span></div>
-      <div class="desc">For individual developers and open-source projects. Full CLI access, local development only.</div>
+    <div class="plan featured">
+      <div class="name">Free — Available Now</div>
+      <div class="price">$0 <span>/ forever</span></div>
+      <div class="desc">All 11 CLI tools, full features, MIT licensed. Install from GitHub and use immediately.</div>
       <ul>
         <li>All 11 CLI tools, full features</li>
-        <li>50 checks/day per tool (1,500/mo)</li>
-        <li>Local development only</li>
-        <li class="na">CI/CD pipeline integration</li>
-        <li class="na">Custom rules &amp; policies</li>
-        <li class="na">MCP server mode</li>
-        <li class="na">Priority support</li>
+        <li>Local development, unlimited</li>
+        <li>CI/CD pipeline integration (exit codes)</li>
+        <li>Open source, inspect and modify</li>
+        <li>Community support via GitHub Issues</li>
       </ul>
-      <a href="https://github.com/Coding-Dev-Tools" class="btn secondary">View on GitHub</a>
+      <a href="https://github.com/Coding-Dev-Tools" class="btn primary">Browse Tools on GitHub →</a>
     </div>
 
-    <div class="plan featured">
-      <div class="name">Pro</div>
+    <div class="plan">
+      <div class="name">Pro — In Development</div>
       <div class="price">$29 <span>/ month</span></div>
-      <div class="desc">For professional devs who need CI integration and unlimited usage. <strong>$23/mo</strong> billed annually.</div>
+      <div class="desc">For professional devs who need CI services and unlimited usage. <strong>$23/mo</strong> billed annually.</div>
       <ul>
-        <li>All 11 CLI tools, full features</li>
-        <li>Unlimited checks &amp; diffs</li>
-        <li>CI/CD pipeline integration</li>
+        <li>Everything in Free</li>
+        <li>CI/CD pipeline gating service</li>
         <li>Custom rules &amp; policies</li>
+        <li>Unlimited checks &amp; diffs</li>
         <li>MCP server mode</li>
         <li>5 monitored projects</li>
         <li>24h email support</li>
       </ul>
-      <a href="#waitlist" class="btn primary">Get Early Access →</a>
+      <a href="#waitlist" class="btn secondary">Join Waitlist →</a>
     </div>
 
     <div class="plan">
-      <div class="name">Team</div>
+      <div class="name">Team — In Development</div>
       <div class="price">$79 <span>/ month</span></div>
       <div class="desc">Teams up to 5 devs with dashboards, alerts, and priority support. <strong>$63/mo</strong> billed annually.</div>
       <ul>
@@ -245,7 +243,7 @@
         <li>Usage analytics dashboard</li>
         <li>8h priority support</li>
       </ul>
-      <a href="#waitlist" class="btn secondary">Get Early Access →</a>
+      <a href="#waitlist" class="btn secondary">Join Waitlist →</a>
     </div>
 
     <div class="plan">
@@ -486,14 +484,14 @@
 
 <!-- Waitlist -->
 <section class="waitlist" id="waitlist">
-  <h2>Get Early Access</h2>
-  <p>PyPI publishing is coming soon. Leave your email and we'll notify you the moment these tools ship.</p>
+  <h2>Get Notified When Pro Launches</h2>
+  <p>Commercial features (CI/CD services, team dashboards, unlimited usage) are in development. Leave your email and we'll notify you when they launch.</p>
   <form onsubmit="submitWaitlist(event)">
     <div class="form-row">
       <input type="email" id="wl-email" placeholder="you@company.com" required>
       <button type="submit" class="submit-btn">Notify Me →</button>
     </div>
-    <div class="form-msg" id="wl-msg">✓ You're on the list. We'll email you when tools launch.</div>
+    <div class="form-msg" id="wl-msg">✓ You're on the list. We'll email you when Pro launches.</div>
   </form>
 </section>
 
@@ -503,52 +501,37 @@
 
   <div class="faq-item">
     <h3>Is there really a free tier?</h3>
-    <p>Yes. Every tool works with a free license key — no credit card needed. Free tier gives you 50 checks/day per tool (1,500/month), which covers most local development and hobby use.</p>
+    <p>Yes — and it's not a trial. Every tool is free and open source under the MIT license. Install from GitHub, use all CLI features, no account needed. The free tier has no rate limits for local development.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3>What's the difference between Free and Pro?</h3>
+    <p>Free gives you all CLI tools with full features. Pro adds hosted CI/CD services (automated PR gating, Slack alerts, team dashboards), unlimited usage for high-volume teams, and priority support. The CLI tools themselves work the same way in both tiers.</p>
   </div>
 
   <div class="faq-item">
     <h3>How does licensing work?</h3>
-    <p>Set the <code>DEVFORGE_LICENSE_KEY</code> environment variable. The key is a JWT that encodes your tier and tool access. Works offline for up to 7 days between automatic verifications. No account or login required.</p>
+    <p>For the free tier, no license key is needed — just install and run. When Pro launches, you'll set a <code>DEVFORGE_LICENSE_KEY</code> environment variable (JWT-based) to unlock hosted services. No account or login required.</p>
   </div>
 
   <div class="faq-item">
-    <h3>What payment methods do you accept?</h3>
-    <p>Credit/debit cards via Stripe. Annual billing available at ~17% discount. Enterprise invoices and purchase orders supported.</p>
+    <h3>When will Pro launch?</h3>
+    <p>We're building the hosted services now. Join the waitlist above and we'll notify you. The free CLI tools are available today and will remain free forever.</p>
   </div>
 
   <div class="faq-item">
-    <h3>Can I cancel anytime?</h3>
-    <p>Yes — no lock-in contracts. Your Pro access continues until the end of the billing period. After that you revert to the free tier with no data loss.</p>
-  </div>
-
-  <div class="faq-item">
-    <h3>Is there a free trial for Pro?</h3>
-    <p>Not yet — but the free tier gives you full CLI access with a daily rate limit. You can evaluate every tool's complete feature set on the free tier before upgrading. When Pro launches, we'll offer a 14-day trial with no credit card required.</p>
-  </div>
-
-  <div class="faq-item">
-    <h3>What happens if I exceed the free tier limits?</h3>
-    <p>Your CLI tools continue to work — you'll see a notice that you've hit your daily rate limit and the check will be queued for the next day. No data is lost, no features are disabled. Upgrade to Pro for unlimited usage.</p>
-  </div>
-
-  <div class="faq-item">
-    <h3>Can I upgrade or downgrade later?</h3>
-    <p>Yes. Upgrades take effect immediately. Downgrades apply at the end of your current billing period. You keep access to all your data and configurations regardless of plan changes.</p>
-  </div>
-
-  <div class="faq-item">
-    <h3>What is your refund policy?</h3>
-    <p>We offer a 30-day money-back guarantee on all paid plans. No questions asked. Contact us at <a href="mailto:support@revenueholdings.dev" style="color:#6366f1;text-decoration:none;">support@revenueholdings.dev</a> and we'll process it within 48 hours.</p>
+    <h3>Can I use these tools commercially?</h3>
+    <p>Yes. The MIT license allows commercial use. You can use all CLI tools in your company's CI/CD pipelines, on your servers, and in your products. The only restriction is that you can't resell the tools themselves as your own product.</p>
   </div>
 
   <div class="faq-item">
     <h3>Do you offer student or open-source discounts?</h3>
-    <p>Yes. The free tier covers open-source projects with 50 checks/day per tool. For active open-source maintainers, we offer free Pro access — email us at <a href="mailto:oss@revenueholdings.dev" style="color:#6366f1;text-decoration:none;">oss@revenueholdings.dev</a>.</p>
+    <p>The free tier covers all open-source and student use cases. When Pro launches, active open-source maintainers will get free Pro access — email us at <a href="mailto:oss@devforge.dev" style="color:#6366f1;text-decoration:none;">oss@devforge.dev</a>.</p>
   </div>
 </section>
 
 <footer>
-  <span>© 2026 Revenue Holdings. AI-maintained developer tools.</span>
+  <span>© 2026 DevForge. Open-source developer tools.</span>
   <a href="index.html">Home</a>
   <a href="releases.html">Changelog</a>
   <a href="https://github.com/Coding-Dev-Tools">GitHub</a>
@@ -559,7 +542,7 @@ function submitWaitlist(e) {
   e.preventDefault();
   const email = document.getElementById('wl-email').value;
   const msg = document.getElementById('wl-msg');
-  window.open('mailto:waitlist@revenueholdings.dev?subject=Early%20Access%20Interest&body=Email%3A%20' + encodeURIComponent(email), '_blank');
+  window.open('mailto:waitlist@devforge.dev?subject=Pro%20Launch%20Interest&body=Email%3A%20' + encodeURIComponent(email), '_blank');
   msg.style.display = 'block';
   document.getElementById('wl-email').value = '';
 }
