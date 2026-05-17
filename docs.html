@@ -142,7 +142,7 @@
   <p>Install any tool in seconds and see it in action. Every CLI command below is a real, working example — copy, paste, and run.</p>
   <div style="margin-top:20px;padding:12px 20px;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:8px;max-width:600px;margin-left:auto;margin-right:auto;">
     <p style="color:#10b981;font-weight:600;font-size:0.8rem;margin:0 0 4px;">? Available now via GitHub</p>
-    <code style="color:#d1d5db;font-size:0.78rem;">pip install git+https://github.com/Coding-Dev-Tools/revenueholdings.git</code>
+    <code style="color:#d1d5db;font-size:0.78rem;">pip install git+https://github.com/Coding-Dev-Tools/devforge.git</code>
   </div>
 </section>
 
@@ -515,10 +515,10 @@ rh-envault rotate JWT_SECRET         # ? 256-bit base64 secret</code></pre>
     <h2><span class="icon icon-rh">?</span> DevForge Suite</h2>
     <div class="subtitle">One install. All eleven tools.</div>
     <p class="desc">Install every tool in the DevForge ecosystem with a single command. Perfect for CI/CD pipelines, dev workstations, or teams that want the full safety net across API contracts, SQL, infrastructure, configs, API mocking, key management, env syncing, schema conversion, MCP wrapping, and dead code cleanup.</p>
-    <a href="https://github.com/Coding-Dev-Tools/revenueholdings" class="gh-link" target="_blank">View on GitHub ?</a>
+    <a href="https://github.com/Coding-Dev-Tools/devforge" class="gh-link" target="_blank">View on GitHub ?</a>
 
     <div class="install-block">
-<code>pip install git+https://github.com/Coding-Dev-Tools/revenueholdings.git</code>
+<code>pip install git+https://github.com/Coding-Dev-Tools/devforge.git</code>
       <span class="note">Installs all 11 tools as dependencies</span>
     </div>
 
@@ -537,7 +537,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: pip install git+https://github.com/Coding-Dev-Tools/revenueholdings.git
+      - run: pip install git+https://github.com/Coding-Dev-Tools/devforge.git
 
       # 1. API Contract Guardian — detect breaking schema changes
       - run: api-contract-guardian check --base origin/main --head HEAD openapi.yaml
@@ -552,7 +552,7 @@ jobs:
       - run: configdrift check dev.yaml prod.yaml --output json</code></pre>
 
     <div class="insight">
-      <p><strong>Pro tip:</strong> Use the meta-package in CI so your pipeline automatically gets all new tools as they're released. Pin the major version for production stability: <code style="color:#a78bfa;">pip install git+https://github.com/Coding-Dev-Tools/revenueholdings.git@v0.1</code></p>
+      <p><strong>Pro tip:</strong> Use the meta-package in CI so your pipeline automatically gets all new tools as they're released. Pin the major version for production stability: <code style="color:#a78bfa;">pip install git+https://github.com/Coding-Dev-Tools/devforge.git@v0.1</code></p>
     </div>
   </div>
 
