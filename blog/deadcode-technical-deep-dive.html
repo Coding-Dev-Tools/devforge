@@ -101,7 +101,7 @@
 </nav>
 
 <div class="blog-nav">
-  <a href="blog/clean-up-react-dead-code.html">&larr; DeadCode Tutorial</a>
+  <a href="clean-up-react-dead-code.html">&larr; DeadCode Tutorial</a>
   <a href="../blog.html">All Posts</a>
 </div>
 
@@ -111,7 +111,7 @@
 <h1>DeadCode Under the Hood: How Static Analysis Finds Dead React/Next.js Code</h1>
 <p class="subtitle">AST parsing, tree-shaking-aware export resolution, cross-file reference tracking, and why this catches things linters miss.</p>
 
-<p>In a <a href="blog/clean-up-react-dead-code.html">previous tutorial</a>, we showed you how to use DeadCode to clean up a React/Next.js project. But <em>how</em> does it actually work under the hood?</p>
+<p>In a <a href="clean-up-react-dead-code.html">previous tutorial</a>, we showed you how to use DeadCode to clean up a React/Next.js project. But <em>how</em> does it actually work under the hood?</p>
 
 <p>DeadCode isn't just grep with patterns. It builds a full abstract syntax tree (AST) of every file, resolves imports and exports across files, tracks references bidirectionally, and distinguishes between "exported but unused" and "exported and used by a barrel file." Here's how.</p>
 

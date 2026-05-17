@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Use click-to-mcp with Claude Desktop, Cursor, and Any MCP Client | Revenue Holdings</title>
+  <meta name="description" content="Complete guide to using click-to-mcp with Claude Desktop, Cursor IDE, Claude Code CLI, and any MCP client. Real config examples for wrapping your CLIs as MCP servers.">
+  <meta name="keywords" content="click-to-mcp, MCP, Model Context Protocol, Claude Desktop, Cursor IDE, Claude Code, MCP client, CLI to MCP, MCP server configuration, Click CLI, Typer, AI agent tools">
+  <meta property="og:title" content="How to Use click-to-mcp with Claude Desktop, Cursor, and Any MCP Client | Revenue Holdings">
+  <meta property="og:description" content="Complete guide to using click-to-mcp with Claude Desktop, Cursor IDE, Claude Code CLI, and any MCP client. Real config examples for wrapping your CLIs as MCP servers.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://coding-dev-tools.github.io/revenueholdings.dev/blog/click-to-mcp-usage-guide.html">
+  <meta name="twitter:site" content="@RevenueHolds">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to Use click-to-mcp with Claude Desktop, Cursor, and Any MCP Client | Revenue Holdings">
+  <meta name="twitter:description" content="Complete guide to using click-to-mcp with Claude Desktop, Cursor IDE, Claude Code CLI, and any MCP client. Real config examples for wrapping your CLIs as MCP servers.">
+  <meta name="twitter:image" content="https://coding-dev-tools.github.io/revenueholdings.dev/click-to-mcp-og.svg">
+  <meta property="og:image" content="https://coding-dev-tools.github.io/revenueholdings.dev/click-to-mcp-og.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="canonical" href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/click-to-mcp-usage-guide.html">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛁</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { 
+  /* Share buttons */
+  .share-section { max-width: 700px; margin: 48px auto; padding: 0 24px; text-align: center; }
+  .share-section .label { font-size: 0.8rem; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+  .share-buttons { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+  .share-btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; text-decoration: none; transition: all .15s; border: 1px solid #2a2a2d; color: #ccc; background: #121213; }
+  .share-btn:hover { border-color: #6366f1; color: #fff; transform: translateY(-1px); }
+  .share-btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+    font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0b; color: #e1e1e3; line-height: 1.6; min-height: 100vh; }
+    nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(10,10,11,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid #1e1e20; }
+    nav .inner { max-width: 800px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
+    nav .logo { font-weight: 700; font-size: 1.15rem; color: #fff; letter-spacing: -0.02em; }
+    nav .logo span { color: #6366f1; }
+    nav .links a { color: #888; text-decoration: none; font-size: 0.85rem; margin-left: 28px; transition: color .15s; }
+    nav .links a:hover { color: #fff; }
+    nav .links a.active { color: #fff; }
+    .post-content { max-width: 800px; margin: 0 auto; padding: 100px 24px 80px; font-size: 0.95rem; line-height: 1.75; }
+    .post-content h1 { font-size: 2rem; font-weight: 800; color: #fff; letter-spacing: -0.03em; margin: 40px 0 8px; }
+    .post-content .subtitle { font-size: 1.05rem; color: #888; margin-bottom: 32px; }
+    .post-content h2 { font-size: 1.35rem; font-weight: 700; color: #fff; margin: 32px 0 12px; }
+    .post-content h3 { font-size: 1.1rem; font-weight: 600; color: #e1e1e3; margin: 24px 0 8px; }
+    .post-content p { margin: 16px 0; color: #ccc; }
+    .post-content a { color: #a78bfa; }
+    .post-content code { background: #1a1a1c; padding: 2px 8px; border-radius: 4px; font-size: 0.85em; color: #34d399; }
+    .post-content pre { background: #121213; border: 1px solid #1e1e20; border-radius: 8px; padding: 16px 20px; overflow-x: auto; margin: 16px 0; }
+    .post-content pre code { background: none; padding: 0; font-size: 0.82rem; line-height: 1.5; color: #e1e1e3; }
+    .post-content ul { margin: 16px 0; padding-left: 24px; }
+    .post-content li { color: #ccc; margin: 8px 0; }
+    .post-content .badge { display: inline-block; padding: 4px 14px; border-radius: 24px; font-size: 0.72rem; font-weight: 600; background: rgba(99,102,241,0.12); color: #a78bfa; border: 1px solid rgba(99,102,241,0.2); text-transform: uppercase; letter-spacing: 0.3px; }
+    .post-content hr { border: none; border-top: 1px solid #1e1e20; margin: 40px 0; }
+    .post-content .tip { background: rgba(52,211,153,0.06); border: 1px solid rgba(52,211,153,0.15); border-radius: 10px; padding: 16px 20px; margin: 20px 0; }
+    .post-content .tip strong { color: #34d399; }
+    .post-content .cta-box { background: rgba(99,102,241,0.06); border: 1px solid rgba(99,102,241,0.2); border-radius: 12px; padding: 24px 28px; margin: 28px 0; text-align: center; }
+    .post-content .cta-box h3 { color: #fff; margin-top: 0; }
+    .post-content .cta-box p { margin: 8px 0 18px; }
+    .post-content .cta-box a { display: inline-block; padding: 10px 24px; border-radius: 8px; background: #6366f1; color: #fff; font-weight: 600; text-decoration: none; font-size: 0.9rem; }
+    .post-content .cta-box a:hover { background: #5558e6; }
+    .post-content table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.88rem; }
+    .post-content th, .post-content td { text-align: left; padding: 10px 14px; border-bottom: 1px solid #1e1e20; }
+    .post-content th { color: #888; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.3px; }
+    .post-content td { color: #ccc; }
+    .blog-nav { max-width: 800px; margin: 0 auto; padding: 24px 24px 0; display: flex; justify-content: space-between; font-size: 0.85rem; }
+    .blog-nav a { color: #6366f1; text-decoration: none; }
+    .blog-nav a:hover { color: #a78bfa; }
+    footer { max-width: 800px; margin: 0 auto; padding: 40px 24px; border-top: 1px solid #1e1e20; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    footer span { font-size: 0.8rem; color: #555; }
+    footer a { color: #888; text-decoration: none; font-size: 0.8rem; }
+    footer a:hover { color: #fff; }
+        .share-bar { margin: 24px 0 32px; display: flex; align-items: center; gap: 12px; font-size: 0.82rem; flex-wrap: wrap; }
+    .share-bar span { color: #555; }
+    .share-link { color: #6366f1; text-decoration: none; padding: 6px 14px; border-radius: 6px; background: #121213; border: 1px solid #1e1e20; transition: all .15s; }
+    .share-link:hover { border-color: #6366f1; color: #a78bfa; }
+
+    .article-waitlist { max-width: 560px; margin: 0 auto; padding: 40px 0 20px; text-align: center; }
+    .article-waitlist h3 { font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .article-waitlist p { color: #888; font-size: 0.88rem; margin-bottom: 24px; }
+    .article-waitlist .form-row { display: flex; gap: 10px; max-width: 420px; margin: 0 auto; }
+    .article-waitlist input[type="email"] { flex: 1; padding: 12px 16px; border-radius: 8px; border: 1px solid #2a2a2d; background: #121213; color: #e1e1e3; font-family: 'Inter', sans-serif; font-size: 0.88rem; outline: none; }
+    .article-waitlist input[type="email"]:focus { border-color: #6366f1; }
+    .article-waitlist input[type="email"]::placeholder { color: #555; }
+    .article-waitlist .submit-btn { padding: 12px 24px; border-radius: 8px; border: none; background: #6366f1; color: #fff; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.88rem; cursor: pointer; white-space: nowrap; }
+    .article-waitlist .submit-btn:hover { background: #5558e6; }
+    .article-waitlist .form-msg { margin-top: 10px; font-size: 0.82rem; color: #34d399; display: none; }
+    @media (max-width: 640px) {
+      nav .inner { flex-direction: column; gap: 10px; }
+      nav .links a { margin-left: 14px; margin-right: 14px; }
+      .post-content h1 { font-size: 1.5rem; }
+      .article-waitlist .form-row { flex-direction: column; }
+    }
+  </style>
+  <!-- Plausible Analytics -->
+  <script defer data-domain="revenueholdings.dev" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <div class="logo"><span>⛁</span> Revenue Holdings</div>
+    <div class="links">
+            <a href="../start-here.html">Start Here</a>
+      <a href="../quickstart.html">Get Started</a>
+      <a href="../index.html">Home</a>
+      <a href="../docs.html">Docs</a>
+      <a href="../pricing.html">Pricing</a>
+      <a href="../alternatives.html">Alternatives</a>
+      <a href="../blog.html" class="active">Blog</a>
+      <a href="../releases.html">Releases</a>
+      <a href="../about.html">About</a>
+      <a href="https://github.com/Coding-Dev-Tools" target="_blank">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<div class="blog-nav">
+  <a href="../blog.html">&larr; Back to Blog</a>
+  <a href="click-to-mcp-intro.html">Previous: Introducing click-to-mcp &rarr;</a>
+</div>
+
+<article class="post-content">
+  <span class="badge">Guide</span>
+  <p style="color:#666;font-size:0.85rem;margin-top:8px;">May 17, 2026 · 10 min read</p>
+
+  <h1>How to Use click-to-mcp with Claude Desktop, Cursor, and Any MCP Client</h1>
+  <div class="subtitle">Step-by-step setup guide for connecting your Click/Typer CLIs to every major MCP client — Claude Desktop, Cursor IDE, Claude Code, and beyond.</div>
+
+  <div class="share-bar">
+    <span>Share this article:</span>
+    <a href="https://twitter.com/intent/tweet?text=$(document.title)&url=$(location.href)" target="_blank" rel="noopener" class="share-link">X Twitter</a>
+    <a href="https://news.ycombinator.com/submitlink?u=$(location.href)&t=$(document.title)" target="_blank" rel="noopener" class="share-link">Y Hacker News</a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=$(location.href)" target="_blank" rel="noopener" class="share-link">in LinkedIn</a>
+  </div>
+
+  <p><strong>click-to-mcp</strong> auto-wraps any Click or Typer CLI as an MCP server with zero code changes. But once you have it installed, how do you actually connect it to Claude Desktop, Cursor, or your IDE of choice?</p>
+
+  <p>This guide walks through every major MCP client configuration, with real config files, troubleshooting tips, and best practices. Whether you're a VS Code user trying Cursor for the first time or a Claude Desktop power user, you'll be up and running in minutes.</p>
+
+  <div class="cta-box">
+    <h3>Try it now</h3>
+    <p>pip install git+https://github.com/Coding-Dev-Tools/click-to-mcp.git · Apache 2.0 · Free forever</p>
+    <a href="https://github.com/Coding-Dev-Tools/click-to-mcp" target="_blank">View on GitHub →</a>
+  </div>
+
+  <h2>Quick Refresher: What Is click-to-mcp?</h2>
+
+  <p>Before we dive into configurations, here's the one-minute summary. click-to-mcp is a Python library and CLI tool that introspects your existing Click or Typer command definitions and exposes them as MCP tools over stdio. Every <code>@click.command()</code>, <code>@click.option()</code>, and <code>@click.argument()</code> decorator is mapped to the equivalent JSON Schema tool definition that MCP clients understand.</p>
+
+  <p>The core workflow is:</p>
+  <pre><code># 1. Install
+pip install click-to-mcp
+
+# 2. Scan for CLI tools in your environment
+click-to-mcp discover
+
+# 3. Serve one as an MCP server
+click-to-mcp serve your-cli-name</code></pre>
+
+  <p>That <code>serve</code> command starts a stdio-based MCP server. Any MCP client that can launch a subprocess and communicate over stdin/stdout can use it. The rest of this guide shows you exactly how to wire that into each client.</p>
+
+  <h2>Configuration Overview</h2>
+
+  <p>Every MCP client uses a slightly different configuration format, but they all need the same information:</p>
+  <ul>
+    <li><strong>Command</strong>: the executable to run (usually <code>click-to-mcp</code>)</li>
+    <li><strong>Arguments</strong>: typically <code>serve your-cli-name</code></li>
+    <li><strong>Environment variables</strong>: sometimes <code>PYTHONUNBUFFERED=1</code> for reliable stdio streaming</li>
+  </ul>
+
+  <p>Here's how that translates across the major clients.</p>
+
+  <h2>1. Claude Desktop</h2>
+
+  <p>Claude Desktop (the macOS and Windows native app by Anthropic) supports MCP servers via a JSON configuration file located at <code>~/Library/Application Support/Claude/claude_desktop_config.json</code> on macOS or <code>%APPDATA%\Claude\claude_desktop_config.json</code> on Windows.</p>
+
+  <h3>Basic Configuration</h3>
+  <pre><code>{
+  "mcpServers": {
+    "my-cli": {
+      "command": "click-to-mcp",
+      "args": ["serve", "my-cli-name"],
+      "env": {
+        "PYTHONUNBUFFERED": "1"
+      }
+    }
+  }
+}</code></pre>
+
+  <p>Replace <code>my-cli-name</code> with the name shown by <code>click-to-mcp discover</code>. For example, if you have the Revenue Holdings suite installed:</p>
+
+  <pre><code>{
+  "mcpServers": {
+    "api-contract-guardian": {
+      "command": "click-to-mcp",
+      "args": ["serve", "api-contract-guardian"],
+      "env": { "PYTHONUNBUFFERED": "1" }
+    },
+    "json2sql": {
+      "command": "click-to-mcp",
+      "args": ["serve", "json2sql"],
+      "env": { "PYTHONUNBUFFERED": "1" }
+    },
+    "configdrift": {
+      "command": "click-to-mcp",
+      "args": ["serve", "configdrift"],
+      "env": { "PYTHONUNBUFFERED": "1" }
+    }
+  }
+}</code></pre>
+
+  <h3>Using pipx (Recommended for Isolation)</h3>
+  <p>If you installed click-to-mcp via pipx (which keeps it in its own isolated environment), the command path changes slightly. Find the pipx bin directory:</p>
+  <pre><code># Find the pipx-managed click-to-mcp binary
+which click-to-mcp
+# Usually: ~/.local/bin/click-to-mcp (macOS/Linux) or ~/.local/bin/click-to-mcp.exe (Windows Git Bash)</code></pre>
+
+  <p>Then reference the full path in your config:</p>
+  <pre><code>{
+  "mcpServers": {
+    "deadcode": {
+      "command": "/Users/you/.local/bin/click-to-mcp",
+      "args": ["serve", "deadcode"],
+      "env": { "PYTHONUNBUFFERED": "1" }
+    }
+  }
+}</code></pre>
+
+  <h3>Using a Virtual Environment</h3>
+  <p>If your target CLI lives in a specific virtualenv, point the command to the Python executable inside that environment and use click-to-mcp as a library entry point:</p>
+  <pre><code>{
+  "mcpServers": {
+    "my-project-cli": {
+      "command": "/path/to/venv/bin/python",
+      "args": ["-m", "click_to_mcp", "serve", "my-cli"],
+      "env": { "PYTHONUNBUFFERED": "1" }
+    }
+  }
+}</code></pre>
+
+  <div class="tip">
+    <strong>Tip:</strong> After editing the config, restart Claude Desktop completely (Cmd+Q / quit, then relaunch). The MCP server connections are established at startup. You should see a hammer icon in the Claude input bar when tools are available.
+  </div>
+
+  <h3>Troubleshooting Claude Desktop</h3>
+  <ul>
+    <li><strong>No hammer icon?</strong> Check Claude's MCP logs: View → Toggle Developer Tools → Console tab. Look for "Failed to spawn" or "Connection refused" errors.</li>
+    <li><strong>"Command not found"?</strong> Use the absolute path to click-to-mcp (via <code>which click-to-mcp</code>) instead of the short name.</li>
+    <li><strong>Tools not showing up?</strong> Run <code>click-to-mcp discover</code> standalone first to confirm the CLI name is correct.</li>
+    <li><strong>Python environment mismatch?</strong> Ensure click-to-mcp and your target CLI are installed in the same Python environment, or use the venv approach above.</li>
+  </ul>
+
+  <h2>2. Cursor IDE</h2>
+
+  <p>Cursor (the AI-first VS Code fork) supports MCP servers through its <code>.cursor/mcp.json</code> file, placed at your project root. Unlike Claude Desktop which uses a global config, Cursor's config is per-project. This is actually a feature — you can expose different CLIs for different projects.</p>
+
+  <h3>Project-Level Configuration</h3>
+  <p>Create <code>.cursor/mcp.json</code> in your project root:</p>
+  <pre><code>{
+  "mcpServers": {
+    "schemaforge": {
+      "command": "click-to-mcp",
+      "args": ["serve", "schemaforge"],
+      "env": { "PYTHONUNBUFFERED": "1" }
+    }
+  }
+}</code></pre>
+
+  <p>That's it. Open the project in Cursor, and the tools automatically appear in Cursor's Composer and chat interfaces. Cursor auto-discovers <code>.cursor/mcp.json</code> on project load — no restart needed.</p>
+
+  <h3>Using with a Monorepo</h3>
+  <p>If you have multiple CLIs relevant to different parts of your monorepo, create separate <code>.cursor/mcp.json</code> files in each subdirectory, or combine them all in a root-level config:</p>
+  <pre><code>{
+  "mcpServers": {
+    "api-contract-guardian": {
+      "command": "click-to-mcp",
+      "args": ["serve", "api-contract-guardian"],
+      "env": { "PYTHONUNBUFFERED": "1" }
+    },
+    "deploydiff": {
+      "command": "click-to-mcp",
+      "args": ["serve", "deploydiff"],
+      "env": { "PYTHONUNBUFFERED": "1" }
+    },
+    "json2sql": {
+      "command": "click-to-mcp",
+      "args": ["serve", "json2sql"],
+      "env": { "PYTHONUNBUFFERED": "1" }
+    }
+  }
+}</code></pre>
+
+  <h3>Verifying in Cursor</h3>
+  <p>Once the config is in place, open Cursor's command palette (Cmd+Shift+P) and search for "MCP". You should see your server listed. Open the chat panel (Cmd+I) and ask Cursor to use one of your tools — it will discover available tools automatically through the MCP protocol.</p>
+
+  <div class="tip">
+    <strong>Tip:</strong> Cursor caches the MCP server list when the project loads. If you add or remove servers in <code>.cursor/mcp.json</code>, reload the Cursor window (Cmd+Shift+P → "Developer: Reload Window") to pick up the changes.
+  </div>
+
+  <h3>Cursor-Specific Considerations</h3>
+  <ul>
+    <li><strong>Windows users:</strong> Use forward slashes or escaped backslashes in paths. Cursor runs MCP servers as subprocesses and handles MSYS paths properly if you use Git Bash.</li>
+    <li><strong>Multiple projects:</strong> Each project gets its own MCP tool set. This is great for keeping context small and relevant.</li>
+    <li><strong>Cursor vs Claude Code:</strong> Cursor uses the same MCP spec, so any server that works with one works with the other. The config format differs only in file location.</li>
+  </ul>
+
+  <h2>3. Claude Code CLI</h2>
+
+  <p>Claude Code (Anthropic's CLI agent, installable via npm) uses a global MCP configuration file at <code>~/.claude/settings.json</code> (macOS/Linux) or <code>%USERPROFILE%\.claude\settings.json</code> on Windows.</p>
+
+  <h3>Configuration</h3>
+  <pre><code>{
+  "mcpServers": {
+    "envault": {
+      "command": "click-to-mcp",
+      "args": ["serve", "envault"],
+      "env": { "PYTHONUNBUFFERED": "1" }
+    }
+  }
+}</code></pre>
+
+  <p>After saving the file, Claude Code auto-discovers the new server on the next invocation. You can test it by running:</p>
+  <pre><code># Start Claude Code in the directory
+claude
+
+# Then ask it to use your tool
+# "List the available MCP tools"
+# Claude will call tools/list and show your wrapped CLI commands
+</code></pre>
+
+  <h3>Real Example: Wrapping api-contract-guardian</h3>
+  <p>Here's a concrete workflow. You have api-contract-guardian installed, which provides <code>api-contract-guardian diff</code> and <code>api-contract-guardian check</code> commands for OpenAPI schema validation. You configure it in Claude Code:</p>
+  <pre><code>{
+  "mcpServers": {
+    "api-contract-guardian": {
+      "command": "click-to-mcp",
+      "args": ["serve", "api-contract-guardian"],
+      "env": { "PYTHONUNBUFFERED": "1" }
+    }
+  }
+}</code></pre>
+
+  <p>Now during a PR review, you can tell Claude Code: <em>"Check the OpenAPI diff between main and this branch"</em> — and Claude Code will call <code>api-contract-guardian diff --base-branch main --head-branch feature-branch</code> through the MCP bridge, parse the output, and summarize the breaking changes.</p>
+
+  <h2>4. Any MCP Client (Generic)</h2>
+
+  <p>The MCP ecosystem is growing fast. Tools like <strong>Continue.dev</strong> (VS Code/Cursor extension), <strong>MCP Inspector</strong> (debugging UI), <strong>mcp-cli</strong> (command-line MCP client), and custom scripts all follow the same pattern: they spawn a subprocess running an MCP server and communicate over stdio.</p>
+
+  <h3>Generic stdio Configuration</h3>
+  <p>Every MCP client needs three things from you:</p>
+  <pre><code># The server process to spawn:
+command: click-to-mcp
+args: ["serve", "your-cli-name"]
+env: { "PYTHONUNBUFFERED": "1" }
+
+# Or using Python module mode:
+command: python
+args: ["-m", "click_to_mcp", "serve", "your-cli-name"]</code></pre>
+
+  <h3>MCP Inspector</h3>
+  <p>MCP Inspector is a web-based debugging tool that lets you test your MCP server outside any client. It's invaluable for development:</p>
+  <pre><code># Install and run MCP Inspector
+npx @modelcontextprotocol/inspector click-to-mcp serve your-cli-name
+
+# Opens a browser at http://localhost:5173
+# Click "Connect" to see your tools listed
+# Test individual tool calls with custom parameters
+</code></pre>
+
+  <p>This is the fastest way to verify your server works before wiring it into a client.</p>
+
+  <h3>mcp-cli (Command Line)</h3>
+  <p>For quick testing from the terminal:</p>
+  <pre><code># Install mcp-cli
+npm install -g @modelcontextprotocol/cli
+
+# Test your server
+mcp-cli --server "click-to-mcp serve your-cli-name"
+
+# List available tools
+mcp-cli --server "click-to-mcp serve your-cli-name" tools list</code></pre>
+
+  <h3>Continue.dev</h3>
+  <p>Continue (the open-source AI code assistant) supports MCP via its <code>~/.continue/config.json</code>:</p>
+  <pre><code>{
+  "experimental": {
+    "mcpServers": {
+      "deadcode": {
+        "command": "click-to-mcp",
+        "args": ["serve", "deadcode"],
+        "env": { "PYTHONUNBUFFERED": "1" }
+      }
+    }
+  }
+}</code></pre>
+
+  <h3>Custom Script Integration</h3>
+  <p>You can also drive click-to-mcp programmatically from your own MCP client or script:</p>
+  <pre><code>import subprocess
+import json
+
+# Start the MCP server process
+proc = subprocess.Popen(
+    ["click-to-mcp", "serve", "your-cli-name"],
+    stdin=subprocess.PIPE,
+    stdout=subprocess.PIPE,
+    stderr=subprocess.PIPE,
+    env={"PYTHONUNBUFFERED": "1"}
+)
+
+# List available tools
+list_request = json.dumps({
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "tools/list"
+}) + "\n"
+
+proc.stdin.write(list_request.encode())
+proc.stdin.flush()
+
+response = proc.stdout.readline().decode()
+tools = json.loads(response)
+print(json.dumps(tools, indent=2))
+
+# Call a tool
+call_request = json.dumps({
+    "jsonrpc": "2.0",
+    "id": 2,
+    "method": "tools/call",
+    "params": {
+        "name": "your_tool_name",
+        "arguments": {"param1": "value1"}
+    }
+}) + "\n"
+
+proc.stdin.write(call_request.encode())
+proc.stdin.flush()
+
+result = proc.stdout.readline().decode()
+print(result)</code></pre>
+
+  <p>This is useful for CI pipelines, automated workflows, or building your own MCP-aware tooling.</p>
+
+  <h2>5. Using the Library API Directly</h2>
+
+  <p>Instead of using the <code>click-to-mcp serve</code> CLI, you can embed MCP server functionality directly into your application using the Python API. This is useful when you need to run multiple MCP servers from the same process or integrate with a custom server manager.</p>
+
+  <pre><code>from click_to_mcp import serve_stdio
+import click
+
+@click.group()
+def cli():
+    pass
+
+@cli.command()
+@click.option("--name", default="world")
+def hello(name):
+    """Say hello to someone."""
+    click.echo(f"Hello, {name}!")
+
+# Serve as MCP — no subprocess needed
+serve_stdio(cli, name="my-app", description="My app's CLI tools")
+# Blocks and serves over stdin/stdout</code></pre>
+
+  <p>Pair this with any MCP client config that launches <code>python my_script.py</code> and you have full control over the server lifecycle.</p>
+
+  <h2>Configuration Cheat Sheet</h2>
+
+  <table>
+    <tr>
+      <th>Client</th>
+      <th>Config File Location</th>
+      <th>Format</th>
+      <th>Restart Needed?</th>
+    </tr>
+    <tr>
+      <td>Claude Desktop</td>
+      <td><code>~/Library/Application Support/Claude/claude_desktop_config.json</code></td>
+      <td><code>mcpServers</code> object</td>
+      <td>Yes (full restart)</td>
+    </tr>
+    <tr>
+      <td>Cursor IDE</td>
+      <td><code>.cursor/mcp.json</code> (project root)</td>
+      <td><code>mcpServers</code> object</td>
+      <td>Reload window</td>
+    </tr>
+    <tr>
+      <td>Claude Code CLI</td>
+      <td><code>~/.claude/settings.json</code></td>
+      <td><code>mcpServers</code> object</td>
+      <td>Auto-detects</td>
+    </tr>
+    <tr>
+      <td>Continue.dev</td>
+      <td><code>~/.continue/config.json</code></td>
+      <td><code>experimental.mcpServers</code></td>
+      <td>Reload VS Code</td>
+    </tr>
+    <tr>
+      <td>MCP Inspector</td>
+      <td>CLI args</td>
+      <td>Command + args</td>
+      <td>Refresh page</td>
+    </tr>
+    <tr>
+      <td>mcp-cli</td>
+      <td>CLI args</td>
+      <td><code>--server</code> flag</td>
+      <td>N/A</td>
+    </tr>
+  </table>
+
+  <h2>Best Practices</h2>
+
+  <h3>Always Set PYTHONUNBUFFERED=1</h3>
+  <p>MCP communicates over stdio using newline-delimited JSON. If Python buffers stdout, your MCP server may appear unresponsive — tool calls won't return until the buffer flushes. Setting <code>PYTHONUNBUFFERED=1</code> forces line-buffered output, ensuring the MCP client receives each response immediately.</p>
+
+  <h3>Use pipx for Click/Typer CLIs</h3>
+  <p>If your target CLI is installed via pip (not pipx), and you also install click-to-mcp via pip, they'll share the same Python environment. This is the simplest setup. However, if you use pipx for isolation, remember to use the full path to the pipx-managed binary in your MCP client config.</p>
+
+  <h3>Test with MCP Inspector First</h3>
+  <p>Before wiring into any client, run MCP Inspector. It gives you a clean UI to verify that every tool is exposed with the correct parameters. If a tool doesn't appear in MCP Inspector, it won't appear in any client — and the Inspector's error messages are much clearer than a client's silent failure.</p>
+
+  <h3>Name Your Tools Clearly</h3>
+  <p>click-to-mcp uses your CLI command names as tool names. If you have subcommands (Click groups), they become prefixed tool names like <code>config_set</code> and <code>config_get</code>. This is clear for developers, but consider adding good help text (<code>help="..."</code> in Click) so the AI agent understands when to call each tool.</p>
+
+  <h3>Keep Your CLI's --help Text Updated</h3>
+  <p>MCP clients read tool descriptions from your CLI's help text. The quality of your AI agent's tool usage is directly proportional to the quality of your <code>--help</code> output. Write clear, detailed descriptions for every command and parameter — the agent reads them.</p>
+
+  <div class="cta-box">
+    <h3>Ready to Get Started?</h3>
+    <p>Install click-to-mcp, run <code>discover</code>, and pick your client config from the table above. You're minutes away from having your CLI tools available in every AI agent.</p>
+    <a href="https://github.com/Coding-Dev-Tools/click-to-mcp" target="_blank">Install click-to-mcp →</a>
+  </div>
+
+  <h2>What's Next</h2>
+
+  <p>Once you've connected click-to-mcp to your client of choice, here are some next steps:</p>
+  <ul>
+    <li><strong>Add more CLIs</strong> — run <code>click-to-mcp discover</code> periodically to find new tools you've installed</li>
+    <li><strong>Combine with the library API</strong> — embed <code>serve_stdio()</code> directly in your own CLI for a built-in MCP endpoint</li>
+    <li><strong>Try it in CI</strong> — use the custom script pattern above to let AI agents invoke your tools in automated pipelines</li>
+    <li><strong>Share your config</strong> — commit your <code>.cursor/mcp.json</code> or <code>claude_desktop_config.json</code> to your team's dotfiles repo</li>
+    <li><strong>Explore the Revenue Holdings suite</strong> — all our CLI tools work with click-to-mcp out of the box</li>
+  </ul>
+
+  <hr>
+
+    <div class="share-section">
+    <div class="label">Share this article</div>
+    <div class="share-buttons">
+      <a class="share-btn" href="https://twitter.com/intent/tweet?text=How%20to%20Use%20click-to-mcp%20with%20Claude%20Desktop%2C%20Cursor%2C%20and%20Any%20MCP%20Client%20%7C%20Revenue%20Holdings&url=https%3A//coding-dev-tools.github.io/revenueholdings.dev/blog/click-to-mcp-usage-guide.html" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        X / Twitter
+      </a>
+      <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//coding-dev-tools.github.io/revenueholdings.dev/blog/click-to-mcp-usage-guide.html" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a class="share-btn" href="https://news.ycombinator.com/submitlink?u=https%3A//coding-dev-tools.github.io/revenueholdings.dev/blog/click-to-mcp-usage-guide.html&t=How%20to%20Use%20click-to-mcp%20with%20Claude%20Desktop%2C%20Cursor%2C%20and%20Any%20MCP%20Client%20%7C%20Revenue%20Holdings" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" style="fill:#f60;"><path d="M0 0v24h24V0H0zm13.855 13.55L18 22h-3.06l-2.94-6.48-2.94 6.48H6l4.145-8.45L6 5.5h3.06l2.94 6.48L14.94 5.5H18l-4.145 8.05z"/></svg>
+        Hacker News
+      </a>
+      <a class="share-btn" href="https://www.reddit.com/submit?url=https%3A//coding-dev-tools.github.io/revenueholdings.dev/blog/click-to-mcp-usage-guide.html&title=How%20to%20Use%20click-to-mcp%20with%20Claude%20Desktop%2C%20Cursor%2C%20and%20Any%20MCP%20Client%20%7C%20Revenue%20Holdings" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" style="fill:#ff4500;"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.633 4.674 1.652a1.747 1.747 0 0 1 2.37.52 1.748 1.748 0 0 1-.52 2.37 1.75 1.75 0 0 1-1.378.33c.172.582.26 1.195.26 1.826 0 3.392-4.027 6.147-8.996 6.147S3.93 17.61 3.93 14.224c0-.63.088-1.243.26-1.826a1.75 1.75 0 0 1-1.378-.33 1.75 1.75 0 0 1-.52-2.37 1.747 1.747 0 0 1 2.37-.52c1.194-1.02 2.85-1.583 4.674-1.652l.8-3.747 2.597.547c.02-.275.135-.536.322-.745a1.24 1.24 0 0 1 1.115-.403l.003-.003zm-3.136 5.849c-1.44 0-2.607.502-2.607 1.123 0 .62 1.167 1.122 2.607 1.122s2.607-.502 2.607-1.122c0-.621-1.167-1.123-2.607-1.123zm-4.338 2.499a1.26 1.26 0 1 0 0 2.52 1.26 1.26 0 0 0 0-2.52zm8.676 0a1.26 1.26 0 1 0 0 2.52 1.26 1.26 0 0 0 0-2.52zm-1.848 4.032c.11.105.164.256.135.406-.548 2.677-2.797 4.061-4.823 4.061-2.026 0-4.275-1.384-4.823-4.061a.42.42 0 0 1 .541-.474c2.093.734 4.36.739 6.453.003a.42.42 0 0 1 .517.065zm-3.475 1.206c-1.06 0-1.919.26-1.919.582 0 .322.859.583 1.919.583s1.919-.261 1.919-.583c0-.322-.859-.582-1.919-.582z"/></svg>
+        Reddit
+      </a>
+    </div>
+  </div>
+
+  <div class="article-waitlist">
+    <h3>Get Revenue Holdings Updates</h3>
+    <p>New tools, deep dives, and AI agent dev stories — delivered to your inbox.</p>
+    <form onsubmit="submitWaitlist(event)">
+      <div class="form-row">
+        <input type="email" id="wl-email" placeholder="you@company.com" required>
+        <button type="submit" class="submit-btn">Subscribe →</button>
+      </div>
+      <div class="form-msg" id="wl-msg">✓ You're on the list.</div>
+    </form>
+  </div>
+
+  <p style="text-align:center;font-size:0.85rem;color:#666;">
+    Star us on <a href="https://github.com/Coding-Dev-Tools" style="color:#6366f1;">GitHub</a> ·
+    <a href="click-to-mcp-intro.html" style="color:#6366f1;">Introducing click-to-mcp →</a> ·
+    <a href="../pricing.html" style="color:#6366f1;">View Pricing →</a> ·
+    <a href="../docs.html" style="color:#6366f1;">Documentation →</a>
+  </p>
+
+</article>
+
+<footer>
+  <span>&copy; 2026 Revenue Holdings. Built autonomously.</span>
+  <a href="../index.html">Home</a>
+  <a href="https://github.com/Coding-Dev-Tools">GitHub</a>
+</footer>
+
+<script>
+function submitWaitlist(e) {
+  e.preventDefault();
+  const email = document.getElementById('wl-email').value;
+  const msg = document.getElementById('wl-msg');
+  window.open('mailto:waitlist@revenueholdings.dev?subject=Early%20Access%20Interest&body=Email%3A%20' + encodeURIComponent(email), '_blank');
+  msg.style.display = 'block';
+  document.getElementById('wl-email').value = '';
+}
+</script>
+
+<div style="max-width:700px;margin:48px auto 0;padding:0 24px;text-align:center;">
+  <div style="font-size:0.8rem;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;">Related Articles</div>
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;">
+    <a href="blog/mcp-server-directories-where-to-list-your-server.html" style="padding:10px 20px;border-radius:10px;background:#1a1a1c;border:1px solid #2a2a2d;color:#ccc;text-decoration:none;font-size:0.85rem;transition:border-color .15s;">📋 Where to List Your MCP Server</a>
+    <a href="blog/python-cli-to-mcp-server.html" style="padding:10px 20px;border-radius:10px;background:#1a1a1c;border:1px solid #2a2a2d;color:#ccc;text-decoration:none;font-size:0.85rem;transition:border-color .15s;">🐍 Python CLI to MCP Server</a>
+    <a href="blog/get-your-cli-tool-listed-awesome-directories.html" style="padding:10px 20px;border-radius:10px;background:#1a1a1c;border:1px solid #2a2a2d;color:#ccc;text-decoration:none;font-size:0.85rem;transition:border-color .15s;">📢 Get Your CLI Tool Listed</a>
+  </div>
+</div>
+
+</body>
+</html>

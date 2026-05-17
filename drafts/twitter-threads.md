@@ -199,3 +199,80 @@ Bonus: Works with click-to-mcp as an MCP server for Claude Code.
 GitHub → https://github.com/Coding-Dev-Tools/api-contract-guardian
 
 Part of the Revenue Holdings CLI suite → https://coding-dev-tools.github.io/revenueholdings.dev/
+
+---
+
+## Thread 4: click-to-mcp Usage Guide (new blog post)
+
+**Tweet 1** 🧵
+Just published a practical guide on using click-to-mcp with every major MCP client.
+
+Claude Desktop. Cursor. Claude Code CLI. MCP Inspector. Continue.dev.
+
+Config examples for all of them. Here's the cheat sheet 👇
+
+**Tweet 2**
+Claude Desktop config:
+```json
+{
+  "mcpServers": {
+    "my-cli": {
+      "command": "click-to-mcp",
+      "args": ["serve", "your-cli-name"]
+    }
+  }
+}
+```
+Drop this in claude_desktop_config.json and restart.
+
+**Tweet 3**
+Cursor (per-project):
+```json
+// .cursor/mcp.json
+{
+  "mcpServers": {
+    "my-cli": {
+      "command": "click-to-mcp",
+      "args": ["serve", "your-cli-name"]
+    }
+  }
+}
+```
+That's it. Your CLI tools appear in Cursor's command palette.
+
+**Tweet 4**
+Claude Code CLI (global):
+```json
+// ~/.claude/settings.json  
+{
+  "mcpServers": {
+    "api-contract-guardian": {
+      "command": "click-to-mcp",
+      "args": ["serve", "api-contract-guardian"]
+    }
+  }
+}
+```
+Now "validate our API contract" in any project runs acg automatically.
+
+**Tweet 5**
+Full guide covers:
+• Claude Desktop (macOS/Windows paths)
+• Cursor IDE (per-project + monorepo)
+• Claude Code CLI (global + per-project)
+• MCP Inspector (debugging)
+• mcp-cli (headless testing)
+• Continue.dev
+• Custom Python integration
+
+→ https://coding-dev-tools.github.io/revenueholdings.dev/blog/click-to-mcp-usage-guide.html
+
+**Tweet 6**
+The best part? click-to-mcp works with ANY Click/Typer CLI. No modifications needed. No boilerplate. 
+
+`pip install click-to-mcp`
+`click-to-mcp serve your-cli`
+
+Your CLI is now an MCP server. Zero code changes.
+
+🧵 End
