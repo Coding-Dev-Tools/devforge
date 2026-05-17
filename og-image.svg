@@ -24,11 +24,11 @@
     <line x1="0" y1="540" x2="1200" y2="540" stroke="#fff" stroke-width="0.5"/>
   </g>
   <circle cx="270" cy="315" r="140" fill="#6366f1" opacity="0.08" filter="url(#glow)"/>
-  <text x="270" y="400" font-family="Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji" font-size="160" text-anchor="middle" fill="#fff" filter="url(#glow)">⛁</text>
-  <text x="500" y="290" font-family="Inter, -apple-system, Helvetica Neue, sans-serif" font-weight="800" font-size="72" fill="#fff" letter-spacing="-2">Revenue</text>
-  <text x="500" y="370" font-family="Inter, -apple-system, Helvetica Neue, sans-serif" font-weight="300" font-size="72" fill="url(#accent)" letter-spacing="-1">Holdings</text>
-  <text x="500" y="420" font-family="Inter, -apple-system, Helvetica Neue, sans-serif" font-weight="400" font-size="22" fill="#666" letter-spacing="0.5">Autonomous Developer CLI Tools</text>
+  <text x="270" y="400" font-family="Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji" font-size="160" text-anchor="middle" fill="#fff" filter="url(#glow)">⚒</text>
+  <text x="500" y="290" font-family="Inter, -apple-system, Helvetica Neue, sans-serif" font-weight="800" font-size="72" fill="#fff" letter-spacing="-2">Dev</text>
+  <text x="500" y="370" font-family="Inter, -apple-system, Helvetica Neue, sans-serif" font-weight="300" font-size="72" fill="url(#accent)" letter-spacing="-1">Forge</text>
+  <text x="500" y="420" font-family="Inter, -apple-system, Helvetica Neue, sans-serif" font-weight="400" font-size="22" fill="#666" letter-spacing="0.5">Developer CLI Tools</text>
   <rect x="500" y="445" width="180" height="32" rx="16" fill="none" stroke="#2a2a2d" stroke-width="1"/>
-  <text x="590" y="466" font-family="Inter, -apple-system, Helvetica Neue, sans-serif" font-weight="500" font-size="13" fill="#888" text-anchor="middle">10 tools · 1 license</text>
+  <text x="590" y="466" font-family="Inter, -apple-system, Helvetica Neue, sans-serif" font-weight="500" font-size="13" fill="#888" text-anchor="middle">11 tools · 1 license</text>
   <line x1="500" y1="500" x2="1050" y2="500" stroke="url(#accent)" stroke-width="2" opacity="0.3"/>
 </svg>
