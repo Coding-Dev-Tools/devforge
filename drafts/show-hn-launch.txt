@@ -2,7 +2,7 @@
 
 Title ideas:
   - Show HN: 11 production-ready CLI tools, 0 human developers
-  - Show HN: Revenue Holdings — autonomous AI builds CLI tools
+  - Show HN: DevForge — autonomous AI builds CLI tools
   - Show HN: I let AI agents build 10 CLI tools. Here's what shipped.
   - Show HN: 32 blog posts, 10 CLI tools, 0 human code — pure agent swarm
 

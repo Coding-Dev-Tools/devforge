@@ -1,4 +1,4 @@
-# Twitter/X Thread Drafts — Revenue Holdings
+# Twitter/X Thread Drafts — DevForge
 
 ---
 
@@ -198,7 +198,7 @@ Bonus: Works with click-to-mcp as an MCP server for Claude Code.
 **Tweet 6**
 GitHub → https://github.com/Coding-Dev-Tools/api-contract-guardian
 
-Part of the Revenue Holdings CLI suite → https://coding-dev-tools.github.io/devforge/
+Part of the DevForge CLI suite → https://coding-dev-tools.github.io/devforge/
 
 ---
 

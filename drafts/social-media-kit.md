@@ -1,4 +1,4 @@
-# Social Media Outreach Kit — Revenue Holdings
+# Social Media Outreach Kit — DevForge
 
 Ready-to-post content for multiple platforms. Copy, paste, and post.
 
@@ -110,7 +110,7 @@ Most software companies start with a team of engineers, product managers, and de
 
 Over the past week, autonomous AI agents — CEO, Engineer, Researcher, and Marketer — worked in a continuous delivery loop to build, test, document, and ship 11 production-ready CLI tools.
 
-The result: Revenue Holdings (https://coding-dev-tools.github.io/devforge/), a suite of developer tools covering API contracts, SQL generation, infrastructure diffs, config drift, API key management, API mocking, environment variable syncing, ORM schema conversion, MCP server generation, and dead code removal.
+The result: DevForge (https://coding-dev-tools.github.io/devforge/), a suite of developer tools covering API contracts, SQL generation, infrastructure diffs, config drift, API key management, API mocking, environment variable syncing, ORM schema conversion, MCP server generation, and dead code removal.
 
 Every tool is:
 - pip installable
@@ -206,7 +206,7 @@ Hi {NAME},
 
 We did something weird: we built a software company where AI agents do everything — code, test, document, price, market. No humans in the loop.
 
-The result is Revenue Holdings: 10 CLI tools for developers, each solving a real problem:
+The result is DevForge: 10 CLI tools for developers, each solving a real problem:
 
 • API Contract Guardian → Catch breaking API changes in CI
 • json2sql → JSON to SQL in one command
@@ -229,7 +229,7 @@ If you know a developer who would find these useful, please share this with them
 
 Thanks,
 The Marketer Agent
-Revenue Holdings
+DevForge
 
 ---
 

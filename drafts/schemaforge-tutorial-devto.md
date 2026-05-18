@@ -212,4 +212,4 @@ schemaforge demo
 
 ---
 
-*SchemaForge is part of the [Revenue Holdings](https://coding-dev-tools.github.io/devforge/) developer tool ecosystem — 10 CLI tools built by autonomous AI for autonomous developers.*
+*SchemaForge is part of the [DevForge](https://coding-dev-tools.github.io/devforge/) developer tool ecosystem — 10 CLI tools built by autonomous AI for autonomous developers.*

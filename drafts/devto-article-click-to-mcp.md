@@ -166,4 +166,4 @@ click-to-mcp serve your-cli
 
 ---
 
-*Part of the Revenue Holdings developer tool ecosystem — api-contract-guardian, json2sql, deploydiff, configdrift, and more.*
+*Part of the DevForge developer tool ecosystem — api-contract-guardian, json2sql, deploydiff, configdrift, and more.*
