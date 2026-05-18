@@ -182,6 +182,21 @@
         <li>CI/CD integration with exit code gating</li>
       </ul>
     </div>
+
+    <div class="release-version">
+      <div class="version-header">
+        <span class="version-tag">Latest</span>
+        <span class="version-date">2026-05-18</span>
+        <span class="badge added">CI Gating, Cost Threshold, MCP</span>
+      </div>
+      <ul>
+        <li><code>--exit-on-destroy</code> flag — fail CI if destructive changes detected</li>
+        <li><code>--threshold $</code> flag — fail CI when estimated cost exceeds amount</li>
+        <li>MCP subcommand for AI agent integration</li>
+        <li>14 new renderer tests covering all display modes</li>
+        <li>OIDC trusted publisher for PyPI publishing</li>
+      </ul>
+    </div>
   </div>
 
   <!-- ConfigDrift -->
@@ -252,6 +267,23 @@
     <h2><span class="tool-icon">👻</span> APIGhost</h2>
     <a href="https://github.com/Coding-Dev-Tools/apighost/releases" class="gh-link">View on GitHub →</a>
     <div class="subtitle">Zero-config mock API server from any OpenAPI spec</div>
+
+    <div class="release-version">
+      <div class="version-header">
+        <span class="version-tag">v0.2.0</span>
+        <span class="version-date">2026-05-18</span>
+        <span class="badge added">Host, Latency, Watch, Cassette Management</span>
+      </div>
+      <ul>
+        <li><code>--host</code> option for binding to custom addresses</li>
+        <li><code>--latency</code> option for simulated response delay</li>
+        <li><code>--watch</code> option for spec file auto-reload</li>
+        <li><code>--cassette-name</code> option for naming recorded cassettes</li>
+        <li><code>cassette list</code> and <code>cassette info</code> subcommands</li>
+        <li>Sensitive header stripping in VCR recordings (Authorization, Cookie, X-API-Key)</li>
+        <li>npm wrapper package for discoverability</li>
+      </ul>
+    </div>
 
     <div class="release-version">
       <div class="version-header">
@@ -360,6 +392,22 @@
     <h2><span class="tool-icon">🔌</span> click-to-mcp</h2>
     <a href="https://github.com/Coding-Dev-Tools/click-to-mcp/releases" class="gh-link">View on GitHub →</a>
     <div class="subtitle">Auto-wrap any Click/typer CLI as an MCP server</div>
+
+    <div class="release-version">
+      <div class="version-header">
+        <span class="version-tag">v0.5.0</span>
+        <span class="version-date">2026-05-18</span>
+        <span class="badge added">Config CLI, Streamable HTTP, MCP Client Config</span>
+      </div>
+      <ul>
+        <li><code>config</code> command — generate MCP client config for Claude Desktop, Cursor, VS Code, Windsurf, Cline</li>
+        <li><code>list-tools</code> command — preview tools without starting a server</li>
+        <li><code>--json-output</code> flag for CI/scripting</li>
+        <li>Streamable HTTP transport — single POST endpoint, no SSE required</li>
+        <li>npm wrapper for npm discoverability</li>
+        <li>MCP Registry compatibility (<code>server.json</code>, <code>mcp-name</code> tag)</li>
+      </ul>
+    </div>
 
     <div class="release-version">
       <div class="version-header">
