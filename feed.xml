@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>DevForge Blog</title>
-  <subtitle>Product updates, CI/CD guides, DevOps deep-dives, and tutorials for the DevForge CLI tool suite — Open-source developer tools.</subtitle>
-  <link href="https://coding-dev-tools.github.io/devforge/" rel="alternate" type="text/html"/>
-  <link href="https://coding-dev-tools.github.io/devforge/feed.xml" rel="self" type="application/atom+xml"/>
-  <id>https://coding-dev-tools.github.io/devforge/</id>
+  <title>Revenue Holdings Blog</title>
+  <subtitle>Product updates, CI/CD guides, DevOps deep-dives, and tutorials for the Revenue Holdings CLI tool suite — Open-source developer tools.</subtitle>
+  <link href="https://coding-dev-tools.github.io/revenueholdings.dev/" rel="alternate" type="text/html"/>
+  <link href="https://coding-dev-tools.github.io/revenueholdings.dev/feed.xml" rel="self" type="application/atom+xml"/>
+  <id>https://coding-dev-tools.github.io/revenueholdings.dev/</id>
   <updated>2026-05-17T10:00:00Z</updated>
   <author>
-    <name>DevForge</name>
+    <name>Revenue Holdings</name>
   </author>
-  <rights>© 2026 DevForge. Open-source developer tools.</rights>
+  <rights>© 2026 Revenue Holdings. Open-source developer tools.</rights>
 
   <entry>
     <title>MCP Is Everywhere Now — Why Your CLI Tools Need It</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/mcp-everywhere-why-your-cli-tools-need-it.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/blog/mcp-everywhere-why-your-cli-tools-need-it.html</id>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/mcp-everywhere-why-your-cli-tools-need-it.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/mcp-everywhere-why-your-cli-tools-need-it.html</id>
     <published>2026-05-17T17:00:00Z</published>
     <updated>2026-05-17T17:00:00Z</updated>
     <summary>85K+ GitHub stars on the official MCP servers repo. Every major AI coding agent speaks MCP natively. If your CLI tools aren't MCP-servable, they're invisible to AI. Here's how to fix that in 30 seconds with click-to-mcp.</summary>
@@ -22,8 +22,8 @@
 
   <entry>
     <title>Where to List Your MCP Server: 6 Directories Every Developer Should Know (2026)</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/mcp-server-directories-where-to-list-your-server.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/blog/mcp-server-directories-where-to-list-your-server.html</id>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/mcp-server-directories-where-to-list-your-server.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/mcp-server-directories-where-to-list-your-server.html</id>
     <published>2026-05-17T11:00:00Z</published>
     <updated>2026-05-17T11:00:00Z</updated>
     <summary>The definitive guide to MCP server directories — awesome-mcp-servers, mcp.so, Glama.ai, Smithery, and more. Where to submit, what each one offers, and how to get listed.</summary>
@@ -34,8 +34,8 @@
 
   <entry>
     <title>White-Label AI Agent Deployment: Launch Under Your Brand in 48 Hours</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/white-label-ai-agent-deployment.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/blog/white-label-ai-agent-deployment.html</id>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/white-label-ai-agent-deployment.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/white-label-ai-agent-deployment.html</id>
     <published>2026-05-17T10:00:00Z</published>
     <updated>2026-05-17T10:00:00Z</updated>
     <summary>Resell fully managed AI agents under your own brand. 6 agent types (customer support, content, research, lead qualification, data processing, automation), 48-hour deployment, 99.9% uptime SLA. From $497 setup. No AI engineers needed.</summary>
@@ -44,8 +44,8 @@
 
   <entry>
     <title>Get Your CLI Tool Listed: 7 Developer Directories Worth Your Time</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/get-your-cli-tool-listed-awesome-directories.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/blog/get-your-cli-tool-listed-awesome-directories.html</id>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/get-your-cli-tool-listed-awesome-directories.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/get-your-cli-tool-listed-awesome-directories.html</id>
     <published>2026-05-17T08:00:00Z</published>
     <updated>2026-05-17T08:00:00Z</updated>
     <summary>A practical guide to getting your open-source CLI tool listed in developer directories — awesome lists, OpenSourceAlternative.to, LibHunt, Product Hunt, and more. Includes submission tips, effort estimates, and real results.</summary>
@@ -54,11 +54,11 @@
 
   <entry>
     <title>11 Open-Source CLI Tools for AI-Powered Development (2026)</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/10-open-source-cli-tools-ai-development.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/blog/10-open-source-cli-tools-ai-development.html</id>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/10-open-source-cli-tools-ai-development.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/10-open-source-cli-tools-ai-development.html</id>
     <published>2026-05-17T09:00:00Z</published>
     <updated>2026-05-17T09:00:00Z</updated>
-    <summary>Discover the complete DevForge ecosystem: 11 open-source CLI tools for API contracts, database schemas, secret management, dead code removal, MCP integration, data transformation, config monitoring, deployment diffs, and more.</summary>
+    <summary>Discover the complete Revenue Holdings ecosystem: 11 open-source CLI tools for API contracts, database schemas, secret management, dead code removal, MCP integration, data transformation, config monitoring, deployment diffs, and more.</summary>
     <category term="guide"/>
     <category term="ecosystem"/>
     <category term="CLI tools"/>
@@ -66,40 +66,40 @@
 
   <entry>
     <title>We Built 11 Production-Ready CLI Tools with Zero Human Developers</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/10-cli-tools-zero-human-developers.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/blog/10-cli-tools-zero-human-developers.html</id>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/10-cli-tools-zero-human-developers.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/10-cli-tools-zero-human-developers.html</id>
     <published>2026-05-17T08:30:00Z</published>
     <updated>2026-05-17T08:30:00Z</updated>
     <summary>Four AI agents — CEO, Engineer, Researcher, and Marketer — designed, coded, tested, documented, and shipped 11 developer CLI tools. No human touched the code. Here's the full story of how the agent team pulled it off.</summary>
   </entry>
 
   <entry>
-    <title>5 Developer Productivity Workflows Using the DevForge CLI Suite</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/five-productivity-workflows-cli-suite.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/blog/five-productivity-workflows-cli-suite.html</id>
+    <title>5 Developer Productivity Workflows Using the Revenue Holdings CLI Suite</title>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/five-productivity-workflows-cli-suite.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/five-productivity-workflows-cli-suite.html</id>
     <published>2026-05-16T20:00:00Z</published>
     <updated>2026-05-16T20:00:00Z</updated>
-    <summary>Real-world workflows combining multiple DevForge CLI tools — CI safety nets with API Contract Guardian + DeployDiff + ConfigDrift, automated secret rotation with Envault + APIAuth, schema+data migrations with SchemaForge + json2sql, AI-assisted code review with click-to-mcp, and a full pre-production gate script.</summary>
+    <summary>Real-world workflows combining multiple Revenue Holdings CLI tools — CI safety nets with API Contract Guardian + DeployDiff + ConfigDrift, automated secret rotation with Envault + APIAuth, schema+data migrations with SchemaForge + json2sql, AI-assisted code review with click-to-mcp, and a full pre-production gate script.</summary>
     <category term="tutorial"/>
     <category term="workflows"/>
     <category term="CI/CD"/>
   </entry>
 
   <entry>
-    <title>License Keys &amp; Rate Limiting: DevForge Goes Pro</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/license-key-rate-limiting-cli-tools.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/blog/license-key-rate-limiting-cli-tools.html</id>
+    <title>License Keys &amp; Rate Limiting: Revenue Holdings Goes Pro</title>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/license-key-rate-limiting-cli-tools.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/license-key-rate-limiting-cli-tools.html</id>
     <published>2026-05-16T00:00:00Z</published>
     <updated>2026-05-16T09:00:00Z</updated>
-    <summary>DevForge rolls out JWT-based license key validation and SQLite rate limiting across all 11 CLI tools. Free tier: 50 uses/day per tool. Pro: unlimited. Plus: Envault adds encrypt/decrypt commands.</summary>
+    <summary>Revenue Holdings rolls out JWT-based license key validation and SQLite rate limiting across all 11 CLI tools. Free tier: 50 uses/day per tool. Pro: unlimited. Plus: Envault adds encrypt/decrypt commands.</summary>
     <category term="launch"/>
     <category term="license"/>
     <category term="monetization"/>
   </entry>
   <entry>
     <title>How to Turn Any Python CLI into an MCP Server for AI Agents</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/python-cli-to-mcp-server.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/blog/python-cli-to-mcp-server.html</id>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/python-cli-to-mcp-server.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/python-cli-to-mcp-server.html</id>
     <published>2026-05-16T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>Step-by-step guide: wrap Click and typer CLIs as MCP servers so AI coding agents like Claude Code, Cursor, and Codex can invoke your tools directly. No code changes needed.</summary>
@@ -109,18 +109,18 @@
   </entry>
   <entry>
     <title>11 CLI Tools, Zero Human Developers: The Autonomous AI Experiment</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/autonomous-ai-experiment.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/blog/autonomous-ai-experiment.html</id>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/autonomous-ai-experiment.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/autonomous-ai-experiment.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
-    <summary>How autonomous AI agents designed, coded, tested, and shipped 11 production-ready CLI tools — with no humans touching the code. The story of the DevForge experiment.</summary>
+    <summary>How autonomous AI agents designed, coded, tested, and shipped 11 production-ready CLI tools — with no humans touching the code. The story of the Revenue Holdings experiment.</summary>
     <category term="story"/>
   </entry>
 
   <entry>
     <title>DataMorph: Convert Between CSV, JSON, YAML, Parquet, Avro, and Protobuf from the Terminal</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/datamorph-batch-data-conversion.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/blog/datamorph-batch-data-conversion.html</id>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/datamorph-batch-data-conversion.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/datamorph-batch-data-conversion.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>CLI for batch converting between CSV, JSON, YAML, Parquet, Avro, and Protobuf with streaming for large files, schema inference, batch directory processing, and CI integration.</summary>
@@ -129,8 +129,8 @@
 
   <entry>
     <title>APIGhost: Mock Servers from OpenAPI Specs — Advanced Patterns</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/apighost-advanced-mock-patterns.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/blog/apighost-advanced-mock-patterns.html</id>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/apighost-advanced-mock-patterns.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/apighost-advanced-mock-patterns.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>Advanced mock server patterns: realistic fake data generation, scenario-based error responses, VCR cassette recording for deterministic tests, stateful CRUD mocks, and full CI integration.</summary>
@@ -139,8 +139,8 @@
 
   <entry>
     <title>APIGhost: Zero-Config Mock Servers from OpenAPI Specs — Advanced Patterns</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/apighost-advanced-mock-patterns.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/blog/apighost-advanced-mock-patterns.html</id>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/apighost-advanced-mock-patterns.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/apighost-advanced-mock-patterns.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>Advanced mock server patterns: realistic fake data generation, scenario-based error responses, VCR cassette recording for deterministic CI test suites, and stateful mocks.</summary>
@@ -149,8 +149,8 @@
 
   <entry>
     <title>Envault: Sync, Diff, and Rotate Environment Variables Across Dev/Staging/Prod</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/envault-secret-rotation-guide.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/blog/envault-secret-rotation-guide.html</id>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/envault-secret-rotation-guide.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/envault-secret-rotation-guide.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>Stop copy-pasting .env files. Envault diffs, syncs, and rotates environment variables across dev, staging, and prod with smart secret inference, conflict resolution, and AWS SSM/Vault/Doppler/1Password integrations.</summary>
@@ -159,8 +159,8 @@
 
   <entry>
     <title>DeadCode Under the Hood: How Static Analysis Finds Dead React/Next.js Code</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/deadcode-technical-deep-dive.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/blog/deadcode-technical-deep-dive.html</id>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/deadcode-technical-deep-dive.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/deadcode-technical-deep-dive.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>Technical deep-dive: AST parsing, tree-shaking-aware export resolution, barrel file unwrapping, cross-file reference tracking, and how DeadCode catches dead routes, unused components, and orphaned CSS that linters miss.</summary>
@@ -169,8 +169,8 @@
 
   <entry>
     <title>Start Here — Find the Right CLI Tool for Your Problem</title>
-    <link href="https://coding-dev-tools.github.io/devforge/start-here.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/start-here.html</id>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/start-here.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/start-here.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>Pick your problem and get the right CLI tool: API contracts, JSON to SQL, infrastructure costs, config drift, API keys, mock servers, env sync, schema conversion, MCP, or dead code cleanup.</summary>
@@ -179,8 +179,8 @@
 
   <entry>
     <title>Manage API Keys and JWTs from the Terminal</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/api-key-management-from-terminal.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/blog/api-key-management-from-terminal.html</id>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/api-key-management-from-terminal.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/api-key-management-from-terminal.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>Generate, store, verify, rotate, and revoke API keys and JWTs with one CLI. AES-256-GCM encrypted keystore, smart key type detection, one-command CI/CD export for GitHub Actions.</summary>
@@ -189,8 +189,8 @@
 
   <entry>
     <title>SchemaForge v0.5.0: SQLAlchemy Support — All 6 ORM Formats Now Covered</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/schemaforge-v0-5-0-sqlalchemy.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/blog/schemaforge-v0-5-0-sqlalchemy.html</id>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/schemaforge-v0-5-0-sqlalchemy.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/schemaforge-v0-5-0-sqlalchemy.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>SchemaForge now converts bidirectionally between SQL DDL, Prisma, Drizzle, TypeORM, Django, and SQLAlchemy declarative models — all 30 conversion paths from a single CLI.</summary>
@@ -199,8 +199,8 @@
 
   <entry>
     <title>Sync and Secure Environment Variables Across Environments</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/sync-env-variables-across-environments.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/blog/sync-env-variables-across-environments.html</id>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/sync-env-variables-across-environments.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/sync-env-variables-across-environments.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>Diff, sync, and rotate environment variables across dev, staging, and prod with smart secret inference and AWS SSM/Vault/Doppler/1Password integrations.</summary>
@@ -209,8 +209,8 @@
 
   <entry>
     <title>Turn Any OpenAPI Spec into a Running Mock Server</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/api-mock-server-from-openapi-spec.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/blog/api-mock-server-from-openapi-spec.html</id>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/api-mock-server-from-openapi-spec.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/api-mock-server-from-openapi-spec.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>One CLI command spins up a mock server from any OpenAPI spec with realistic fake data, scenario-based error responses, and VCR cassette recording for deterministic test suites.</summary>
@@ -219,8 +219,8 @@
 
   <entry>
     <title>Preview Infrastructure Cost and Blast Radius Before You Deploy</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/preview-infra-cost-before-deploy.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/blog/preview-infra-cost-before-deploy.html</id>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/preview-infra-cost-before-deploy.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/preview-infra-cost-before-deploy.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>See resource-level diffs, cost impact estimates, and pre-generated rollback commands for every Terraform, CloudFormation, or Pulumi change with CI gating.</summary>
@@ -229,8 +229,8 @@
 
   <entry>
     <title>Convert JSON to SQL in One Command — json2sql Tutorial</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/json-to-sql-one-command.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/blog/json-to-sql-one-command.html</id>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/json-to-sql-one-command.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/json-to-sql-one-command.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>Convert JSON files and API responses to clean SQL INSERT statements for PostgreSQL, MySQL, or SQLite. Handles nested objects, pipe workflows, and CI integration.</summary>
@@ -239,8 +239,8 @@
 
   <entry>
     <title>How to Catch Config Drift Before It Breaks Production</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/catch-config-drift-before-production.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/blog/catch-config-drift-before-production.html</id>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/catch-config-drift-before-production.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/catch-config-drift-before-production.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>Detect config drift between dev, staging, and prod with the ConfigDrift CLI. Includes severity classification, JSON output for CI, and full GitHub Actions gating workflow.</summary>
@@ -249,8 +249,8 @@
 
   <entry>
     <title>Clean Up Your React/Next.js Codebase with DeadCode — A Practical Tutorial</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/clean-up-react-dead-code.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/blog/clean-up-react-dead-code.html</id>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/clean-up-react-dead-code.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/clean-up-react-dead-code.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>Find and remove unused exports, dead routes, orphaned CSS, and unreferenced components in your React or Next.js project using the DeadCode CLI tool.</summary>
@@ -259,8 +259,8 @@
 
   <entry>
     <title>From CLI to MCP in One Command: Introducing click-to-mcp</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/click-to-mcp-intro.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/blog/click-to-mcp-intro.html</id>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/click-to-mcp-intro.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/click-to-mcp-intro.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>Auto-wrap any Click or Typer CLI as an MCP server — bridge your tools with AI agents, zero code changes required.</summary>
@@ -269,8 +269,8 @@
 
   <entry>
     <title>OpenAPI Diffing Tools Compared: ACG vs Spectral vs OAS Diff</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/openapi-diff-tools-comparison.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/blog/openapi-diff-tools-comparison.html</id>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/openapi-diff-tools-comparison.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/openapi-diff-tools-comparison.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>A practical comparison of three tools that catch breaking API changes: API Contract Guardian, Spectral, and OAS Diff.</summary>
@@ -279,8 +279,8 @@
 
   <entry>
     <title>Zero to CI Safety Net: A Hands-On Tutorial</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/zero-to-ci-safety-net.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/blog/zero-to-ci-safety-net.html</id>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/zero-to-ci-safety-net.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/zero-to-ci-safety-net.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>Set up API Contract Guardian, json2sql, DeployDiff, and ConfigDrift in your CI pipeline — from scratch to combined pre-deploy workflow in 15 minutes.</summary>
@@ -289,8 +289,8 @@
 
   <entry>
     <title>Stop Breaking Production: 4 CI Checks Every DevOps Team Should Run</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/stop-breaking-production.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/blog/stop-breaking-production.html</id>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/stop-breaking-production.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/stop-breaking-production.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>Four critical CI safety checks your pipeline is probably missing.</summary>
@@ -299,8 +299,8 @@
 
   <entry>
     <title>SchemaForge v0.2.0: Drizzle ORM Bidirectional Support</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/schemaforge-v0-2-0-drizzle.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/blog/schemaforge-v0-2-0-drizzle.html</id>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/schemaforge-v0-2-0-drizzle.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/schemaforge-v0-2-0-drizzle.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>SchemaForge now supports Drizzle ORM — convert between SQL DDL, Drizzle TypeScript schemas, Prisma, TypeORM, and Django.</summary>
@@ -308,9 +308,9 @@
   </entry>
 
   <entry>
-    <title>Welcome to DevForge — 11 CLI Tools, 100% AI-Built</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/welcome-revenue-holdings.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/blog/welcome-revenue-holdings.html</id>
+    <title>Welcome to Revenue Holdings — 11 CLI Tools, 100% AI-Built</title>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/welcome-revenue-holdings.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/welcome-revenue-holdings.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>Eleven production-ready CLI tools — all designed, coded, tested, and documented by autonomous AI agents.</summary>
