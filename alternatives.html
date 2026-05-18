@@ -1,31 +1,31 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alternatives � DevForge CLI Tools Compared</title>
+  <title>Alternatives — DevForge CLI Tools Compared</title>
   <meta name="description" content="Honest feature-by-feature comparisons: API Contract Guardian vs Spectral vs OAS Diff, DeployDiff vs Terraform Plan, ConfigDrift vs Steampipe, json2sql vs csvsql, DeadCode vs knip, click-to-mcp vs FastMCP, APIGhost vs Prism, Envault vs dotenv-vault, APIAuth vs Vault, SchemaForge vs sqlacodegen. Find the right tool for your workflow.">
   <meta name="keywords" content="api contract guardian vs spectral, openapi diff tool comparison, deploydiff vs terraform, config drift detection tools, json to sql converter alternatives, deadcode vs knip, click-to-mcp vs fastmcp, apighost vs prism, envault vs dotenv-vault, apiauth vs vault, schemaforge vs sqlacodegen, mcp server alternatives, mock server comparison, env management tools, api key management, orm schema converter, spectral alternatives, oas diff alternatives">
-  <meta property="og:title" content="Alternatives � DevForge CLI Tools Compared">
+  <meta property="og:title" content="Alternatives — DevForge CLI Tools Compared">
   <meta property="og:description" content="Feature-by-feature comparisons of DevForge CLI tools vs popular alternatives. Make an informed choice.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://coding-dev-tools.github.io/devforge.dev/alternatives.html">
   <meta name="twitter:site" content="@DevForge">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Alternatives � DevForge CLI Tools Compared">
+  <meta name="twitter:title" content="Alternatives — DevForge CLI Tools Compared">
   <meta name="twitter:description" content="Feature-by-feature comparisons of CLI dev tools. Pick the right one.">
   <meta name="twitter:image" content="https://coding-dev-tools.github.io/devforge.dev/og-image.svg">
   <meta property="og:image" content="https://coding-dev-tools.github.io/devforge.dev/og-image.svg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="https://coding-dev-tools.github.io/devforge.dev/alternatives.html">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>—</text></svg>">
-  <link href="https://fonts.googleapis.com/css2—family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚒</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "name": "DevForge CLI Tools � Alternatives Comparison",
+    "name": "DevForge CLI Tools — Alternatives Comparison",
     "description": "Feature-by-feature comparisons of DevForge CLI tools vs popular alternatives",
     "url": "https://coding-dev-tools.github.io/devforge.dev/alternatives.html",
     "isPartOf": {
@@ -126,7 +126,7 @@
 
 <section class="hero">
   <h1>Choose the <span>Right Tool</span></h1>
-  <p>Honest, feature-by-feature comparisons. We show where we win and where alternatives shine � so you pick what actually fits your workflow.</p>
+  <p>Honest, feature-by-feature comparisons. We show where we win and where alternatives shine — so you pick what actually fits your workflow.</p>
 </section>
 
 <div class="jump-nav">
@@ -150,7 +150,7 @@
   <!-- ============================================ -->
   <div class="comparison" id="acg-vs-spectral">
     <h2>API Contract Guardian <span class="vs">vs</span> Spectral</h2>
-    <p class="subtitle">OpenAPI contract testing vs general-purpose linting � different jobs, often confused.</p>
+    <p class="subtitle">OpenAPI contract testing vs general-purpose linting — different jobs, often confused.</p>
 
     <table class="feat-table">
       <thead>
@@ -163,33 +163,33 @@
       <tbody>
         <tr>
           <td>Breaking-change detection</td>
-          <td class="yes">Yes � diff-based</td>
-          <td class="no">No � lint only</td>
+          <td class="yes">Yes — diff-based</td>
+          <td class="no">No — lint only</td>
         </tr>
         <tr>
           <td>Custom rules engine</td>
-          <td class="yes">Yes � YAML rule files</td>
-          <td class="yes">Yes � YAML rule files</td>
+          <td class="yes">Yes — YAML rule files</td>
+          <td class="yes">Yes — YAML rule files</td>
         </tr>
         <tr>
           <td>CI/CD exit codes</td>
-          <td class="yes">Yes � exit 1 on breaking</td>
-          <td class="partial">Partial � lint errors only</td>
+          <td class="yes">Yes — exit 1 on breaking</td>
+          <td class="partial">Partial — lint errors only</td>
         </tr>
         <tr>
           <td>Semver-aware gating</td>
-          <td class="yes">Yes � patch/minor/major</td>
+          <td class="yes">Yes — patch/minor/major</td>
           <td class="no">No</td>
         </tr>
         <tr>
           <td>Contract drift tracking</td>
-          <td class="yes">Yes � baseline snapshots</td>
+          <td class="yes">Yes — baseline snapshots</td>
           <td class="no">No</td>
         </tr>
         <tr>
           <td>General OpenAPI linting</td>
-          <td class="no">No � contract focused</td>
-          <td class="yes">Yes � built-in rulesets</td>
+          <td class="no">No — contract focused</td>
+          <td class="yes">Yes — built-in rulesets</td>
         </tr>
         <tr>
           <td>AsyncAPI support</td>
@@ -211,7 +211,7 @@
 
     <div class="verdict">
       <div class="label">Verdict</div>
-      <p><strong>Spectral</strong> is the better choice for general OpenAPI/AsyncAPI linting with its rich built-in rulesets. <strong>API Contract Guardian</strong> is for teams who need to <em>detect breaking changes before they ship</em> � something Spectral fundamentally cannot do. If your CI pipeline needs semver-aware gates and contract drift alerts, ACG fills a gap Spectral leaves open.</p>
+      <p><strong>Spectral</strong> is the better choice for general OpenAPI/AsyncAPI linting with its rich built-in rulesets. <strong>API Contract Guardian</strong> is for teams who need to <em>detect breaking changes before they ship</em> — something Spectral fundamentally cannot do. If your CI pipeline needs semver-aware gates and contract drift alerts, ACG fills a gap Spectral leaves open.</p>
     </div>
     <div class="cta-row">
       <a href="docs.html#api-contract-guardian">Read ACG Docs</a>
@@ -223,7 +223,7 @@
   <!-- ============================================ -->
   <div class="comparison" id="acg-vs-oasdiff">
     <h2>API Contract Guardian <span class="vs">vs</span> Oasdiff</h2>
-    <p class="subtitle">Both detect breaking changes � but differ on rule flexibility and CI integration.</p>
+    <p class="subtitle">Both detect breaking changes — but differ on rule flexibility and CI integration.</p>
 
     <table class="feat-table">
       <thead>
@@ -241,12 +241,12 @@
         </tr>
         <tr>
           <td>Custom rules engine</td>
-          <td class="yes">Yes � YAML rules</td>
-          <td class="partial">Partial � Go flag toggles</td>
+          <td class="yes">Yes — YAML rules</td>
+          <td class="partial">Partial — Go flag toggles</td>
         </tr>
         <tr>
           <td>Semver-aware gating</td>
-          <td class="yes">Yes � patch/minor/major</td>
+          <td class="yes">Yes — patch/minor/major</td>
           <td class="no">No</td>
         </tr>
         <tr>
@@ -291,7 +291,7 @@
   <!-- ============================================ -->
   <div class="comparison" id="deploydiff-vs-terraform">
     <h2>DeployDiff <span class="vs">vs</span> Terraform Plan</h2>
-    <p class="subtitle">Infrastructure change preview � general-purpose diff vs IaC-specific planning.</p>
+    <p class="subtitle">Infrastructure change preview — general-purpose diff vs IaC-specific planning.</p>
 
     <table class="feat-table">
       <thead>
@@ -304,23 +304,23 @@
       <tbody>
         <tr>
           <td>Works with any config format</td>
-          <td class="yes">Yes � YAML, JSON, TOML, env</td>
+          <td class="yes">Yes — YAML, JSON, TOML, env</td>
           <td class="no">HCL only</td>
         </tr>
         <tr>
           <td>State-aware change preview</td>
-          <td class="partial">Partial � file diff based</td>
-          <td class="yes">Yes � full state tracking</td>
+          <td class="partial">Partial — file diff based</td>
+          <td class="yes">Yes — full state tracking</td>
         </tr>
         <tr>
           <td>CI/CD integration</td>
-          <td class="yes">Yes � exit codes, PR comments</td>
+          <td class="yes">Yes — exit codes, PR comments</td>
           <td class="yes">Yes</td>
         </tr>
         <tr>
           <td>Docker/K8s manifest diff</td>
           <td class="yes">Yes</td>
-          <td class="no">No � Terraform resources only</td>
+          <td class="no">No — Terraform resources only</td>
         </tr>
         <tr>
           <td>Cost estimation</td>
@@ -329,13 +329,13 @@
         </tr>
         <tr>
           <td>Requires state file</td>
-          <td class="yes">No � stateless</td>
-          <td class="no">Yes � tfstate required</td>
+          <td class="yes">No — stateless</td>
+          <td class="no">Yes — tfstate required</td>
         </tr>
         <tr>
           <td>Language/Platform</td>
-          <td>Python � any OS</td>
-          <td>Go � any OS</td>
+          <td>Python — any OS</td>
+          <td>Go — any OS</td>
         </tr>
         <tr>
           <td>Price</td>
@@ -347,7 +347,7 @@
 
     <div class="verdict">
       <div class="label">Verdict</div>
-      <p><strong>Terraform Plan</strong> is unmatched for IaC change preview when you're fully in the Terraform ecosystem. <strong>DeployDiff</strong> shines when your deployment configs live outside Terraform � Docker Compose, K8s manifests, env files, or any YAML/JSON config. It's stateless and format-agnostic, making it the right pick for polyglot infrastructure teams.</p>
+      <p><strong>Terraform Plan</strong> is unmatched for IaC change preview when you're fully in the Terraform ecosystem. <strong>DeployDiff</strong> shines when your deployment configs live outside Terraform — Docker Compose, K8s manifests, env files, or any YAML/JSON config. It's stateless and format-agnostic, making it the right pick for polyglot infrastructure teams.</p>
     </div>
     <div class="cta-row">
       <a href="docs.html#deploydiff">Read DeployDiff Docs</a>
@@ -359,7 +359,7 @@
   <!-- ============================================ -->
   <div class="comparison" id="configdrift-vs-steampipe">
     <h2>ConfigDrift <span class="vs">vs</span> Steampipe</h2>
-    <p class="subtitle">Config drift detection � file-based snapshots vs cloud API queries.</p>
+    <p class="subtitle">Config drift detection — file-based snapshots vs cloud API queries.</p>
 
     <table class="feat-table">
       <thead>
@@ -372,33 +372,33 @@
       <tbody>
         <tr>
           <td>Drift detection</td>
-          <td class="yes">Yes � snapshot diff</td>
-          <td class="partial">Partial � via SQL queries</td>
+          <td class="yes">Yes — snapshot diff</td>
+          <td class="partial">Partial — via SQL queries</td>
         </tr>
         <tr>
           <td>Works with local files</td>
           <td class="yes">Yes</td>
-          <td class="no">No � cloud API only</td>
+          <td class="no">No — cloud API only</td>
         </tr>
         <tr>
           <td>Cloud provider queries</td>
           <td class="no">No</td>
-          <td class="yes">Yes � AWS, GCP, Azure</td>
+          <td class="yes">Yes — AWS, GCP, Azure</td>
         </tr>
         <tr>
           <td>CI/CD native</td>
-          <td class="yes">Yes � exit codes</td>
-          <td class="partial">Partial � needs plugin setup</td>
+          <td class="yes">Yes — exit codes</td>
+          <td class="partial">Partial — needs plugin setup</td>
         </tr>
         <tr>
           <td>Snapshot baselines</td>
-          <td class="yes">Yes � git-trackable</td>
+          <td class="yes">Yes — git-trackable</td>
           <td class="no">No</td>
         </tr>
         <tr>
           <td>SQL interface</td>
           <td class="no">No</td>
-          <td class="yes">Yes � Postgres-compatible</td>
+          <td class="yes">Yes — Postgres-compatible</td>
         </tr>
         <tr>
           <td>Price</td>
@@ -410,7 +410,7 @@
 
     <div class="verdict">
       <div class="label">Verdict</div>
-      <p><strong>Steampipe</strong> excels at querying live cloud infrastructure via SQL � it's a cloud audit power tool. <strong>ConfigDrift</strong> solves a different problem: detecting when your local config files (YAML, JSON, env) drift from their baselines. If your drift concerns are file-based and CI-native, ConfigDrift is purpose-built. For cloud resource auditing, Steampipe is the better fit.</p>
+      <p><strong>Steampipe</strong> excels at querying live cloud infrastructure via SQL — it's a cloud audit power tool. <strong>ConfigDrift</strong> solves a different problem: detecting when your local config files (YAML, JSON, env) drift from their baselines. If your drift concerns are file-based and CI-native, ConfigDrift is purpose-built. For cloud resource auditing, Steampipe is the better fit.</p>
     </div>
     <div class="cta-row">
       <a href="docs.html#configdrift">Read ConfigDrift Docs</a>
@@ -422,7 +422,7 @@
   <!-- ============================================ -->
   <div class="comparison" id="json2sql-vs-csvsql">
     <h2>json2sql <span class="vs">vs</span> csvsql (csvkit)</h2>
-    <p class="subtitle">JSON-to-SQL conversion vs CSV-to-SQL � different inputs, similar goals.</p>
+    <p class="subtitle">JSON-to-SQL conversion vs CSV-to-SQL — different inputs, similar goals.</p>
 
     <table class="feat-table">
       <thead>
@@ -435,18 +435,18 @@
       <tbody>
         <tr>
           <td>JSON input</td>
-          <td class="yes">Yes � nested + flat</td>
-          <td class="no">No � CSV only</td>
+          <td class="yes">Yes — nested + flat</td>
+          <td class="no">No — CSV only</td>
         </tr>
         <tr>
           <td>CSV input</td>
-          <td class="no">No � JSON only</td>
+          <td class="no">No — JSON only</td>
           <td class="yes">Yes</td>
         </tr>
         <tr>
           <td>Nested object flattening</td>
-          <td class="yes">Yes � auto-dot-notation</td>
-          <td class="no">No � flat rows only</td>
+          <td class="yes">Yes — auto-dot-notation</td>
+          <td class="no">No — flat rows only</td>
         </tr>
         <tr>
           <td>Schema inference</td>
@@ -460,12 +460,12 @@
         </tr>
         <tr>
           <td>INSERT statement generation</td>
-          <td class="yes">Yes � batch mode</td>
+          <td class="yes">Yes — batch mode</td>
           <td class="yes">Yes</td>
         </tr>
         <tr>
           <td>Array-of-objects handling</td>
-          <td class="yes">Yes � auto-table creation</td>
+          <td class="yes">Yes — auto-table creation</td>
           <td class="no">No</td>
         </tr>
         <tr>
@@ -490,7 +490,7 @@
   <!-- ============================================ -->
   <div class="comparison" id="deadcode-vs-knip">
     <h2>DeadCode <span class="vs">vs</span> knip</h2>
-    <p class="subtitle">Dead code removal � TypeScript compiler API analysis vs AST-based export tracking.</p>
+    <p class="subtitle">Dead code removal — TypeScript compiler API analysis vs AST-based export tracking.</p>
 
     <table class="feat-table">
       <thead>
@@ -503,13 +503,13 @@
       <tbody>
         <tr>
           <td>Unused export detection</td>
-          <td class="yes">Yes � compiler API</td>
-          <td class="yes">Yes � AST analysis</td>
+          <td class="yes">Yes — compiler API</td>
+          <td class="yes">Yes — AST analysis</td>
         </tr>
         <tr>
           <td>Dead route identification</td>
-          <td class="yes">Yes � React Router, Next.js</td>
-          <td class="partial">Partial � Next.js only</td>
+          <td class="yes">Yes — React Router, Next.js</td>
+          <td class="partial">Partial — Next.js only</td>
         </tr>
         <tr>
           <td>Orphaned CSS scanning</td>
@@ -518,13 +518,13 @@
         </tr>
         <tr>
           <td>Dry-run removal preview</td>
-          <td class="yes">Yes � interactive</td>
+          <td class="yes">Yes — interactive</td>
           <td class="yes">Yes</td>
         </tr>
         <tr>
           <td>Auto-removal</td>
-          <td class="yes">Yes � rh-deadcode remove</td>
-          <td class="partial">Partial � flags only</td>
+          <td class="yes">Yes — rh-deadcode remove</td>
+          <td class="partial">Partial — flags only</td>
         </tr>
         <tr>
           <td>Unreferenced component detection</td>
@@ -539,7 +539,7 @@
         <tr>
           <td>Plugin ecosystem</td>
           <td class="no">No</td>
-          <td class="yes">Yes � reporters, custom finders</td>
+          <td class="yes">Yes — reporters, custom finders</td>
         </tr>
         <tr>
           <td>Price</td>
@@ -563,7 +563,7 @@
   <!-- ============================================ -->
   <div class="comparison" id="clicktomcp-vs-fastmcp">
     <h2>click-to-mcp <span class="vs">vs</span> FastMCP &amp; mcp2cli</h2>
-    <p class="subtitle">Making existing CLI tools available to AI agents � a unique niche in the MCP ecosystem.</p>
+    <p class="subtitle">Making existing CLI tools available to AI agents — a unique niche in the MCP ecosystem.</p>
 
     <table class="feat-table">
       <thead>
@@ -577,25 +577,25 @@
       <tbody>
         <tr>
           <td>Wrap existing CLI as MCP server</td>
-          <td class="yes">Yes � auto-detect Click/Typer</td>
-          <td class="no">No � library for new servers</td>
-          <td class="no">No � reverse (MCP — CLI)</td>
+          <td class="yes">Yes — auto-detect Click/Typer</td>
+          <td class="no">No — library for new servers</td>
+          <td class="no">No — reverse (MCP — CLI)</td>
         </tr>
         <tr>
           <td>Zero code changes</td>
-          <td class="yes">Yes � one command</td>
-          <td class="no">No � write a server</td>
-          <td class="no">No � different direction</td>
+          <td class="yes">Yes — one command</td>
+          <td class="no">No — write a server</td>
+          <td class="no">No — different direction</td>
         </tr>
         <tr>
           <td>Auto-discovery of installed CLIs</td>
-          <td class="yes">Yes � click-to-mcp discover</td>
+          <td class="yes">Yes — click-to-mcp discover</td>
           <td class="no">No</td>
           <td class="no">No</td>
         </tr>
         <tr>
           <td>Click/Typer introspection</td>
-          <td class="yes">Yes � full param mapping</td>
+          <td class="yes">Yes — full param mapping</td>
           <td class="no">No</td>
           <td class="no">No</td>
         </tr>
@@ -607,21 +607,21 @@
         </tr>
         <tr>
           <td>JSON Schema parameter mapping</td>
-          <td class="yes">Yes � types, enums, defaults, help</td>
-          <td class="yes">Yes � manual definition</td>
+          <td class="yes">Yes — types, enums, defaults, help</td>
+          <td class="yes">Yes — manual definition</td>
           <td class="no">No</td>
         </tr>
         <tr>
           <td>Nested subcommand groups</td>
-          <td class="yes">Yes � prefixed tool names</td>
-          <td class="yes">Yes � manual</td>
+          <td class="yes">Yes — prefixed tool names</td>
+          <td class="yes">Yes — manual</td>
           <td class="partial">Partial</td>
         </tr>
         <tr>
           <td>PyPI package</td>
-          <td class="yes">Yes � pip install click-to-mcp</td>
-          <td class="yes">Yes � 66M+ downloads/mo</td>
-          <td class="yes">Yes � 2K+ stars</td>
+          <td class="yes">Yes — pip install click-to-mcp</td>
+          <td class="yes">Yes — 66M+ downloads/mo</td>
+          <td class="yes">Yes — 2K+ stars</td>
         </tr>
         <tr>
           <td>License</td>
@@ -634,10 +634,10 @@
 
     <div class="verdict">
       <div class="label">Verdict</div>
-      <p><strong>FastMCP</strong> is the dominant library for building MCP servers from scratch (66M monthly downloads). <strong>mcp2cli</strong> does the reverse � it turns MCP tools into a CLI interface. <strong>click-to-mcp</strong> is the only tool in the ecosystem that auto-wraps existing Click/Typer CLIs as MCP servers with zero code changes. If you have CLI tools and want AI agents to use them, click-to-mcp is the fastest path � no other tool solves this problem.</p>
+      <p><strong>FastMCP</strong> is the dominant library for building MCP servers from scratch (66M monthly downloads). <strong>mcp2cli</strong> does the reverse — it turns MCP tools into a CLI interface. <strong>click-to-mcp</strong> is the only tool in the ecosystem that auto-wraps existing Click/Typer CLIs as MCP servers with zero code changes. If you have CLI tools and want AI agents to use them, click-to-mcp is the fastest path — no other tool solves this problem.</p>
     </div>
     <div class="cta-row">
-      <a href="https://github.com/Coding-Dev-Tools/click-to-mcp">View click-to-mcp on GitHub —</a>
+      <a href="https://github.com/Coding-Dev-Tools/click-to-mcp">View click-to-mcp on GitHub</a>
       <a href="blog/click-to-mcp-intro.html" style="background:#2a2a2e;margin-left:10px;">Read the Blog Post</a>
     </div>
   </div>
@@ -647,7 +647,7 @@
   <!-- ============================================ -->
   <div class="comparison" id="apighost-vs-prism">
     <h2>APIGhost <span class="vs">vs</span> Prism</h2>
-    <p class="subtitle">OpenAPI mock servers � spec-first fake data generation vs HTTP transaction mocking.</p>
+    <p class="subtitle">OpenAPI mock servers — spec-first fake data generation vs HTTP transaction mocking.</p>
 
     <table class="feat-table">
       <thead>
@@ -660,28 +660,28 @@
       <tbody>
         <tr>
           <td>Spec-first mock server</td>
-          <td class="yes">Yes � from OpenAPI spec</td>
-          <td class="yes">Yes � from OpenAPI spec</td>
+          <td class="yes">Yes — from OpenAPI spec</td>
+          <td class="yes">Yes — from OpenAPI spec</td>
         </tr>
         <tr>
           <td>Realistic fake data generation</td>
-          <td class="yes">Yes � Faker-powered, property-name hints</td>
-          <td class="partial">Partial � basic examples only</td>
+          <td class="yes">Yes — Faker-powered, property-name hints</td>
+          <td class="partial">Partial — basic examples only</td>
         </tr>
         <tr>
           <td>VCR recording &amp; deterministic replay</td>
-          <td class="yes">Yes � apighost record + replay</td>
+          <td class="yes">Yes — apighost record + replay</td>
           <td class="no">No</td>
         </tr>
         <tr>
           <td>Named scenario system</td>
-          <td class="yes">Yes � create/edit/delete scenarios</td>
-          <td class="partial">Partial � CLI flags only</td>
+          <td class="yes">Yes — create/edit/delete scenarios</td>
+          <td class="partial">Partial — CLI flags only</td>
         </tr>
         <tr>
           <td>Error scenario override</td>
-          <td class="yes">Yes � per-endpoint status override</td>
-          <td class="yes">Yes � query params</td>
+          <td class="yes">Yes — per-endpoint status override</td>
+          <td class="yes">Yes — query params</td>
         </tr>
         <tr>
           <td>OpenAPI 3.0 + 3.1</td>
@@ -690,17 +690,17 @@
         </tr>
         <tr>
           <td>Docker-free operation</td>
-          <td class="yes">Yes � single pip install</td>
-          <td class="yes">Yes � npm install</td>
+          <td class="yes">Yes — single pip install</td>
+          <td class="yes">Yes — npm install</td>
         </tr>
         <tr>
           <td>Path parameter resolution</td>
-          <td class="yes">Yes � dynamic URLs</td>
+          <td class="yes">Yes — dynamic URLs</td>
           <td class="yes">Yes</td>
         </tr>
         <tr>
           <td>CI/CD integration</td>
-          <td class="yes">Yes � exit codes, headless</td>
+          <td class="yes">Yes — exit codes, headless</td>
           <td class="yes">Yes</td>
         </tr>
         <tr>
@@ -725,7 +725,7 @@
   <!-- ============================================ -->
   <div class="comparison" id="envault-vs-dotenv-vault">
     <h2>Envault <span class="vs">vs</span> dotenv-vault</h2>
-    <p class="subtitle">Environment variable management � team sync, diffing, and secret rotation vs cloud-hosted .env sync.</p>
+    <p class="subtitle">Environment variable management — team sync, diffing, and secret rotation vs cloud-hosted .env sync.</p>
 
     <table class="feat-table">
       <thead>
@@ -738,48 +738,48 @@
       <tbody>
         <tr>
           <td>Env diff across environments</td>
-          <td class="yes">Yes � rh-envault diff dev prod</td>
+          <td class="yes">Yes — rh-envault diff dev prod</td>
           <td class="no">No</td>
         </tr>
         <tr>
           <td>Secret rotation</td>
-          <td class="yes">Yes � auto-detect type, rotate in-place</td>
+          <td class="yes">Yes — auto-detect type, rotate in-place</td>
           <td class="no">No</td>
         </tr>
         <tr>
           <td>Conflict resolution on sync</td>
-          <td class="yes">Yes � interactive merge</td>
+          <td class="yes">Yes — interactive merge</td>
           <td class="no">No</td>
         </tr>
         <tr>
           <td>Backend integrations</td>
-          <td class="yes">Yes � AWS SSM, Vault, Doppler, 1Password</td>
-          <td class="yes">Yes � dotenv-vault cloud</td>
+          <td class="yes">Yes — AWS SSM, Vault, Doppler, 1Password</td>
+          <td class="yes">Yes — dotenv-vault cloud</td>
         </tr>
         <tr>
           <td>Local encrypted keystore</td>
-          <td class="yes">Yes � AES-256-GCM local</td>
-          <td class="no">No � cloud-only storage</td>
+          <td class="yes">Yes — AES-256-GCM local</td>
+          <td class="no">No — cloud-only storage</td>
         </tr>
         <tr>
           <td>Team sharing</td>
-          <td class="yes">Yes � encrypted file sharing</td>
-          <td class="yes">Yes � cloud sharing</td>
+          <td class="yes">Yes — encrypted file sharing</td>
+          <td class="yes">Yes — cloud sharing</td>
         </tr>
         <tr>
           <td>Audit log</td>
-          <td class="yes">Yes � local audit trail</td>
-          <td class="yes">Yes � cloud audit</td>
+          <td class="yes">Yes — local audit trail</td>
+          <td class="yes">Yes — cloud audit</td>
         </tr>
         <tr>
           <td>CI/CD export</td>
-          <td class="yes">Yes � GitHub Actions, GitLab CI</td>
+          <td class="yes">Yes — GitHub Actions, GitLab CI</td>
           <td class="yes">Yes</td>
         </tr>
         <tr>
           <td>Offline-first</td>
-          <td class="yes">Yes � no cloud dependency</td>
-          <td class="no">No � requires cloud account</td>
+          <td class="yes">Yes — no cloud dependency</td>
+          <td class="no">No — requires cloud account</td>
         </tr>
         <tr>
           <td>Price</td>
@@ -803,7 +803,7 @@
   <!-- ============================================ -->
   <div class="comparison" id="apiauth-vs-vault">
     <h2>APIAuth <span class="vs">vs</span> HashiCorp Vault</h2>
-    <p class="subtitle">API key management � CLI-first lifecycle management vs enterprise secrets platform.</p>
+    <p class="subtitle">API key management — CLI-first lifecycle management vs enterprise secrets platform.</p>
 
     <table class="feat-table">
       <thead>
@@ -816,48 +816,48 @@
       <tbody>
         <tr>
           <td>API key generation</td>
-          <td class="yes">Yes � CLI one-liner with expiry</td>
-          <td class="yes">Yes � API + policy required</td>
+          <td class="yes">Yes — CLI one-liner with expiry</td>
+          <td class="yes">Yes — API + policy required</td>
         </tr>
         <tr>
           <td>JWT generation &amp; verification</td>
-          <td class="yes">Yes � built-in</td>
-          <td class="yes">Yes � via transit engine</td>
+          <td class="yes">Yes — built-in</td>
+          <td class="yes">Yes — via transit engine</td>
         </tr>
         <tr>
           <td>Key rotation</td>
-          <td class="yes">Yes � safe in-place rotation</td>
-          <td class="yes">Yes � via API</td>
+          <td class="yes">Yes — safe in-place rotation</td>
+          <td class="yes">Yes — via API</td>
         </tr>
         <tr>
           <td>Encrypted local keystore</td>
-          <td class="yes">Yes � AES-256-GCM, no server needed</td>
-          <td class="no">No � requires Vault server</td>
+          <td class="yes">Yes — AES-256-GCM, no server needed</td>
+          <td class="no">No — requires Vault server</td>
         </tr>
         <tr>
           <td>CI/CD export</td>
-          <td class="yes">Yes � GitHub Actions, GitLab CI, dotenv</td>
-          <td class="partial">Partial � requires Vault agent</td>
+          <td class="yes">Yes — GitHub Actions, GitLab CI, dotenv</td>
+          <td class="partial">Partial — requires Vault agent</td>
         </tr>
         <tr>
           <td>Expiry tracking &amp; audit</td>
-          <td class="yes">Yes � list with expiry status</td>
-          <td class="yes">Yes � lease management</td>
+          <td class="yes">Yes — list with expiry status</td>
+          <td class="yes">Yes — lease management</td>
         </tr>
         <tr>
           <td>Zero-config setup</td>
-          <td class="yes">Yes � single pip install</td>
-          <td class="no">No � server, config, policies</td>
+          <td class="yes">Yes — single pip install</td>
+          <td class="no">No — server, config, policies</td>
         </tr>
         <tr>
           <td>Multi-service key isolation</td>
-          <td class="yes">Yes � service scoping</td>
-          <td class="yes">Yes � secret paths</td>
+          <td class="yes">Yes — service scoping</td>
+          <td class="yes">Yes — secret paths</td>
         </tr>
         <tr>
           <td>Revocation with hash verification</td>
-          <td class="yes">Yes � verify against hashes</td>
-          <td class="yes">Yes � lease revocation</td>
+          <td class="yes">Yes — verify against hashes</td>
+          <td class="yes">Yes — lease revocation</td>
         </tr>
         <tr>
           <td>Price</td>
@@ -869,7 +869,7 @@
 
     <div class="verdict">
       <div class="label">Verdict</div>
-      <p><strong>HashiCorp Vault</strong> is a full enterprise secrets platform � server-based, policy-driven, and designed for large organizations with dedicated ops teams. <strong>APIAuth</strong> is a focused CLI tool that handles API key and JWT lifecycle management without server setup or operational overhead. If you need a zero-config, encrypted local keystore for API keys and JWTs that fits in a CI pipeline, APIAuth delivers the same core capabilities without standing up a Vault cluster.</p>
+      <p><strong>HashiCorp Vault</strong> is a full enterprise secrets platform — server-based, policy-driven, and designed for large organizations with dedicated ops teams. <strong>APIAuth</strong> is a focused CLI tool that handles API key and JWT lifecycle management without server setup or operational overhead. If you need a zero-config, encrypted local keystore for API keys and JWTs that fits in a CI pipeline, APIAuth delivers the same core capabilities without standing up a Vault cluster.</p>
     </div>
     <div class="cta-row">
       <a href="docs.html#apiauth">Read APIAuth Docs</a>
@@ -881,7 +881,7 @@
   <!-- ============================================ -->
   <div class="comparison" id="schemaforge-vs-sqlacodegen">
     <h2>SchemaForge <span class="vs">vs</span> sqlacodegen</h2>
-    <p class="subtitle">ORM schema conversion � bidirectional multi-format conversion vs one-way SQLAlchemy model generation.</p>
+    <p class="subtitle">ORM schema conversion — bidirectional multi-format conversion vs one-way SQLAlchemy model generation.</p>
 
     <table class="feat-table">
       <thead>
@@ -894,8 +894,8 @@
       <tbody>
         <tr>
           <td>Bidirectional conversion</td>
-          <td class="yes">Yes � any format to any format</td>
-          <td class="no">No � SQL DDL — SQLAlchemy only</td>
+          <td class="yes">Yes — any format to any format</td>
+          <td class="no">No — SQL DDL — SQLAlchemy only</td>
         </tr>
         <tr>
           <td>ORM formats supported</td>
@@ -904,18 +904,18 @@
         </tr>
         <tr>
           <td>SQL DDL roundtripping</td>
-          <td class="yes">Yes � lossless roundtrip</td>
-          <td class="yes">Yes � one direction</td>
+          <td class="yes">Yes — lossless roundtrip</td>
+          <td class="yes">Yes — one direction</td>
         </tr>
         <tr>
           <td>Zero-loss roundtrip verification</td>
-          <td class="yes">Yes � built-in diff command</td>
+          <td class="yes">Yes — built-in diff command</td>
           <td class="no">No</td>
         </tr>
         <tr>
           <td>Dialect-aware output</td>
-          <td class="yes">Yes � pg, mysql, sqlite dialects</td>
-          <td class="partial">Partial � driver-dependent</td>
+          <td class="yes">Yes — pg, mysql, sqlite dialects</td>
+          <td class="partial">Partial — driver-dependent</td>
         </tr>
         <tr>
           <td>JSON Schema conversion</td>
@@ -924,18 +924,18 @@
         </tr>
         <tr>
           <td>Batch directory processing</td>
-          <td class="yes">Yes � convert whole directories</td>
-          <td class="no">No � single file only</td>
+          <td class="yes">Yes — convert whole directories</td>
+          <td class="no">No — single file only</td>
         </tr>
         <tr>
           <td>Relationship inference</td>
-          <td class="yes">Yes � foreign key detection</td>
+          <td class="yes">Yes — foreign key detection</td>
           <td class="yes">Yes</td>
         </tr>
         <tr>
           <td>Type mapping accuracy</td>
-          <td class="yes">Full � enums, JSONB, UUID, custom types</td>
-          <td class="partial">Basic � common types only</td>
+          <td class="yes">Full — enums, JSONB, UUID, custom types</td>
+          <td class="partial">Basic — common types only</td>
         </tr>
         <tr>
           <td>Price</td>
@@ -947,7 +947,7 @@
 
     <div class="verdict">
       <div class="label">Verdict</div>
-      <p><strong>sqlacodegen</strong> is a mature, focused tool for generating SQLAlchemy models from SQL DDL � it does one thing well. <strong>SchemaForge</strong> is a multi-format bidirectional converter that spans Prisma, Drizzle, TypeORM, Django, and SQLAlchemy with lossless roundtrip verification. If you work across multiple ORMs, need bidirectional conversion, or migrate between frameworks, SchemaForge covers ground no single tool matches.</p>
+      <p><strong>sqlacodegen</strong> is a mature, focused tool for generating SQLAlchemy models from SQL DDL — it does one thing well. <strong>SchemaForge</strong> is a multi-format bidirectional converter that spans Prisma, Drizzle, TypeORM, Django, and SQLAlchemy with lossless roundtrip verification. If you work across multiple ORMs, need bidirectional conversion, or migrate between frameworks, SchemaForge covers ground no single tool matches.</p>
     </div>
     <div class="cta-row">
       <a href="docs.html#schemaforge">Read SchemaForge Docs</a>
