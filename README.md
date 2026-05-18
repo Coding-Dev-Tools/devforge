@@ -1,24 +1,24 @@
 # DevForge — Landing Page & Blog
 
-[![Deploy](https://img.shields.io/badge/deploy-GitHub%20Pages-brightgreen)](https://coding-dev-tools.github.io/devforge.dev/)
+[![Deploy](https://img.shields.io/badge/deploy-GitHub%20Pages-brightgreen)](https://coding-dev-tools.github.io/devforge/)
 [![Stars](https://img.shields.io/github/stars/Coding-Dev-Tools/devforge.dev?style=social)](https://github.com/Coding-Dev-Tools/devforge.dev/stargazers)
 
 Landing page, documentation, pricing, alternatives, and blog for the **DevForge CLI tool suite** — 11 developer CLI tools for API contracts, SQL, infrastructure, config drift, and more.
 
-**Live site:** [coding-dev-tools.github.io/devforge.dev](https://coding-dev-tools.github.io/devforge.dev/)
+**Live site:** [coding-dev-tools.github.io/devforge.dev](https://coding-dev-tools.github.io/devforge/)
 
 ## Pages
 
 | Page | Description |
 |------|-------------|
-| [Home](https://coding-dev-tools.github.io/devforge.dev/) | Hero, stats, feature cards, CTA |
-| [Pricing](https://coding-dev-tools.github.io/devforge.dev/pricing.html) | Free / Pro / Team / Enterprise tiers |
-| [Alternatives](https://coding-dev-tools.github.io/devforge.dev/alternatives.html) | 11 comparison tables vs competitors |
-| [Blog](https://coding-dev-tools.github.io/devforge.dev/blog.html) | 27+ articles and tutorials |
-| [Docs](https://coding-dev-tools.github.io/devforge.dev/docs.html) | Tool documentation hub |
-| [Quickstart](https://coding-dev-tools.github.io/devforge.dev/quickstart.html) | Get started in 60 seconds |
-| [FAQ](https://coding-dev-tools.github.io/devforge.dev/#faq) | Common questions |
-| [About](https://coding-dev-tools.github.io/devforge.dev/about.html) | The AI-maintained story |
+| [Home](https://coding-dev-tools.github.io/devforge/) | Hero, stats, feature cards, CTA |
+| [Pricing](https://coding-dev-tools.github.io/devforge/pricing.html) | Free / Pro / Team / Enterprise tiers |
+| [Alternatives](https://coding-dev-tools.github.io/devforge/alternatives.html) | 11 comparison tables vs competitors |
+| [Blog](https://coding-dev-tools.github.io/devforge/blog.html) | 27+ articles and tutorials |
+| [Docs](https://coding-dev-tools.github.io/devforge/docs.html) | Tool documentation hub |
+| [Quickstart](https://coding-dev-tools.github.io/devforge/quickstart.html) | Get started in 60 seconds |
+| [FAQ](https://coding-dev-tools.github.io/devforge/#faq) | Common questions |
+| [About](https://coding-dev-tools.github.io/devforge/about.html) | The AI-maintained story |
 
 ## Tools Featured
 
@@ -45,7 +45,7 @@ Landing page, documentation, pricing, alternatives, and blog for the **DevForge 
 
 ## Contributing
 
-DevForge tools are maintained by AI agents — meaning faster patches, consistent quality, and lower prices. See the [about page](https://coding-dev-tools.github.io/devforge.dev/about.html) for the full story.
+DevForge tools are maintained by AI agents — meaning faster patches, consistent quality, and lower prices. See the [about page](https://coding-dev-tools.github.io/devforge/about.html) for the full story.
 
 ## License
 

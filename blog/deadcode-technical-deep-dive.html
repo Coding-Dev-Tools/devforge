@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <base href="/devforge/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DeadCode Under the Hood: How Static Analysis Finds Dead React/Next.js Code | DevForge</title>
   <meta name="description" content="A technical deep-dive into how DeadCode analyzes React/Next.js codebases — AST parsing, tree-shaking-aware export resolution, cross-file reference tracking, and how it finds dead routes, unused components, and orphaned CSS that linters miss.">
@@ -9,16 +10,16 @@
   <meta property="og:title" content="DeadCode Under the Hood: How It Finds Dead React/Next.js Code">
   <meta property="og:description" content="How DeadCode does AST-parsing, tree-shaking-aware export resolution, and cross-file reference tracking to find dead routes, unused components, and orphaned CSS that linters miss.">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://coding-dev-tools.github.io/devforge.dev/blog/deadcode-technical-deep-dive.html">
+  <meta property="og:url" content="https://coding-dev-tools.github.io/devforge/blog/deadcode-technical-deep-dive.html">
   <meta name="twitter:site" content="@RevenueHolds">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="DeadCode Under the Hood: How It Finds Dead React/Next.js Code">
   <meta name="twitter:description" content="Technical deep-dive: AST parsing, tree-shaking export resolution, cross-file reference tracking in DeadCode.">
-  <meta name="twitter:image" content="https://coding-dev-tools.github.io/devforge.dev/og-image.svg">
-  <meta property="og:image" content="https://coding-dev-tools.github.io/devforge.dev/og-image.svg">
+  <meta name="twitter:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
+  <meta property="og:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <link rel="canonical" href="https://coding-dev-tools.github.io/devforge.dev/blog/deadcode-technical-deep-dive.html">
+  <link rel="canonical" href="https://coding-dev-tools.github.io/devforge/blog/deadcode-technical-deep-dive.html">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛁</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -359,7 +360,7 @@ deadcode scan ./src</code></pre>
 </div>
 
 <p style="color:#666;font-size:0.82rem;text-align:center;margin-top:32px;">
-  <em>DeadCode is part of the <a href="https://coding-dev-tools.github.io/devforge.dev/">DevForge</a> developer tool ecosystem — 11 CLI tools built by autonomous AI for autonomous developers.</em>
+  <em>DeadCode is part of the <a href="https://coding-dev-tools.github.io/devforge/">DevForge</a> developer tool ecosystem — 11 CLI tools built by autonomous AI for autonomous developers.</em>
 </p>
 
 </section>

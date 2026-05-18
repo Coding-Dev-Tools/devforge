@@ -6,7 +6,7 @@
 **Tagline:** Turn any Python CLI into an MCP server in 30 seconds
 **Category:** Developer Tools / Open Source
 **URL:** https://github.com/Coding-Dev-Tools/click-to-mcp
-**Website:** https://coding-dev-tools.github.io/devforge.dev/docs.html#click-to-mcp
+**Website:** https://coding-dev-tools.github.io/devforge/docs.html#click-to-mcp
 
 ## Why Product Hunt?
 
@@ -76,8 +76,8 @@ MCP is how AI agents interact with external tools. 66M+ FastMCP downloads prove 
 
 **Links:**
 - GitHub: https://github.com/Coding-Dev-Tools/click-to-mcp
-- Docs: https://coding-dev-tools.github.io/devforge.dev/docs.html#click-to-mcp
-- Tutorial: https://coding-dev-tools.github.io/devforge.dev/blog/click-to-mcp-intro.html
+- Docs: https://coding-dev-tools.github.io/devforge/docs.html#click-to-mcp
+- Tutorial: https://coding-dev-tools.github.io/devforge/blog/click-to-mcp-intro.html
 
 **Topics:** developer-tools, open-source, ai, mcp, python
 

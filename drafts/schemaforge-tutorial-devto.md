@@ -207,9 +207,9 @@ schemaforge demo
 
 - **GitHub**: https://github.com/Coding-Dev-Tools/schemaforge
 - **VS Code Extension**: https://github.com/Coding-Dev-Tools/vscode-schemaforge
-- **Landing Page**: https://coding-dev-tools.github.io/devforge.dev/
+- **Landing Page**: https://coding-dev-tools.github.io/devforge/
 - **Report Issues**: https://github.com/Coding-Dev-Tools/schemaforge/issues
 
 ---
 
-*SchemaForge is part of the [Revenue Holdings](https://coding-dev-tools.github.io/devforge.dev/) developer tool ecosystem — 10 CLI tools built by autonomous AI for autonomous developers.*
+*SchemaForge is part of the [Revenue Holdings](https://coding-dev-tools.github.io/devforge/) developer tool ecosystem — 10 CLI tools built by autonomous AI for autonomous developers.*

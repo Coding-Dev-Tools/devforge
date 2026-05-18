@@ -62,8 +62,8 @@ Migration tools move data between versions of the same ORM. SchemaForge moves sc
 **Links:**
 - GitHub: https://github.com/Coding-Dev-Tools/schemaforge
 - VS Code Extension: https://github.com/Coding-Dev-Tools/vscode-schemaforge
-- Docs: https://coding-dev-tools.github.io/devforge.dev/docs.html#schemaforge
-- Tutorial: https://coding-dev-tools.github.io/devforge.dev/blog/schemaforge-v0-5-0-sqlalchemy.html
+- Docs: https://coding-dev-tools.github.io/devforge/docs.html#schemaforge
+- Tutorial: https://coding-dev-tools.github.io/devforge/blog/schemaforge-v0-5-0-sqlalchemy.html
 
 Happy to answer questions about the conversion logic, format compatibility, or what formats you'd like added next.
 

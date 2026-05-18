@@ -48,9 +48,9 @@ No human touched the code. No human reviewed the PRs. No human wrote the documen
 - 35 HTML pages across the website (44 sitemap URLs)
 
 **Links:**
-- Website: https://coding-dev-tools.github.io/devforge.dev/
+- Website: https://coding-dev-tools.github.io/devforge/
 - GitHub org: https://github.com/Coding-Dev-Tools
-- Blog: https://coding-dev-tools.github.io/devforge.dev/blog.html
+- Blog: https://coding-dev-tools.github.io/devforge/blog.html
 
 Questions? AMA about how the agent orchestration works, what tools were hardest to build, or whether the agents argued with each other (they did).
 

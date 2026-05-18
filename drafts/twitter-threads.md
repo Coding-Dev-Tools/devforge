@@ -198,7 +198,7 @@ Bonus: Works with click-to-mcp as an MCP server for Claude Code.
 **Tweet 6**
 GitHub → https://github.com/Coding-Dev-Tools/api-contract-guardian
 
-Part of the Revenue Holdings CLI suite → https://coding-dev-tools.github.io/devforge.dev/
+Part of the Revenue Holdings CLI suite → https://coding-dev-tools.github.io/devforge/
 
 ---
 
@@ -265,7 +265,7 @@ Full guide covers:
 • Continue.dev
 • Custom Python integration
 
-→ https://coding-dev-tools.github.io/devforge.dev/blog/click-to-mcp-usage-guide.html
+→ https://coding-dev-tools.github.io/devforge/blog/click-to-mcp-usage-guide.html
 
 **Tweet 6**
 The best part? click-to-mcp works with ANY Click/Typer CLI. No modifications needed. No boilerplate. 
