@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>5 Developer Productivity Workflows Using the Revenue Holdings CLI Suite | Revenue Holdings</title>
-  <meta name="description" content="Real-world workflows combining multiple Revenue Holdings CLI tools — from CI safety nets to secret rotation pipelines. Practical examples with API Contract Guardian, Envault, DeployDiff, and more.">
-  <meta name="keywords" content="developer productivity, CLI workflows, API contract testing, secret rotation, infrastructure cost estimation, CI/CD pipeline, devops automation, Revenue Holdings">
-  <meta property="og:title" content="5 Developer Productivity Workflows Using the Revenue Holdings CLI Suite | Revenue Holdings">
-  <meta property="og:description" content="Real-world workflows combining multiple Revenue Holdings CLI tools — CI safety nets, secret rotation, infra cost gates, and more.">
+  <title>5 Developer Productivity Workflows Using the DevForge CLI Suite | DevForge</title>
+  <meta name="description" content="Real-world workflows combining multiple DevForge CLI tools — from CI safety nets to secret rotation pipelines. Practical examples with API Contract Guardian, Envault, DeployDiff, and more.">
+  <meta name="keywords" content="developer productivity, CLI workflows, API contract testing, secret rotation, infrastructure cost estimation, CI/CD pipeline, devops automation, DevForge">
+  <meta property="og:title" content="5 Developer Productivity Workflows Using the DevForge CLI Suite | DevForge">
+  <meta property="og:description" content="Real-world workflows combining multiple DevForge CLI tools — CI safety nets, secret rotation, infra cost gates, and more.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://coding-dev-tools.github.io/devforge.dev/blog/five-productivity-workflows-cli-suite.html">
   <meta name="twitter:site" content="@RevenueHolds">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="5 Developer Productivity Workflows Using the Revenue Holdings CLI Suite">
-  <meta name="twitter:description" content="Real-world workflows combining multiple Revenue Holdings CLI tools — from CI safety nets to secret rotation pipelines.">
+  <meta name="twitter:title" content="5 Developer Productivity Workflows Using the DevForge CLI Suite">
+  <meta name="twitter:description" content="Real-world workflows combining multiple DevForge CLI tools — from CI safety nets to secret rotation pipelines.">
   <meta name="twitter:image" content="https://coding-dev-tools.github.io/devforge.dev/og-image.svg">
   <meta property="og:image" content="https://coding-dev-tools.github.io/devforge.dev/og-image.svg">
   <meta property="og:image:width" content="1200">
@@ -87,7 +87,7 @@
 
 <nav>
   <div class="inner">
-    <a href="../index.html" class="logo"><span>⛁</span> Revenue Holdings</a>
+    <a href="../index.html" class="logo"><span>⛁</span> DevForge</a>
     <div class="links">
       <a href="../docs.html">Docs</a>
       <a href="../pricing.html">Pricing</a>
@@ -98,7 +98,7 @@
 </nav>
 
 <article>
-  <h1>5 Developer Productivity Workflows Using the Revenue Holdings CLI Suite</h1>
+  <h1>5 Developer Productivity Workflows Using the DevForge CLI Suite</h1>
   <div class="meta">
     <span>May 16, 2026</span>
     <span class="tag tutorial">Tutorial</span>
@@ -114,7 +114,7 @@
 
   <p>Individual CLI tools are useful. But the real power comes when you chain them together into <strong>automated workflows</strong> that cover your entire development lifecycle
 
-  <p>Revenue Holdings ships <a href="../docs.html">10 production-ready CLI tools</a> that are designed to work together. Here are five real-world workflows that combine multiple tools to solve problems no single CLI can handle alone.</p>
+  <p>DevForge ships <a href="../docs.html">11 production-ready CLI tools</a> that are designed to work together. Here are five real-world workflows that combine multiple tools to solve problems no single CLI can handle alone.</p>
 
   <hr class="divider">
 
@@ -166,14 +166,14 @@ apiauth generate --type=hmac-sha256 --name="deploy-key-q3"
 # Output: rh_key_deploy_key_q3_a1b2c3d4e5f6...
 
 # Step 2: Compare current .env across environments
-rh-envault diff dev staging prod
+envault diff dev staging prod
 
 # Step 3: Sync the new key across all environments
-rh-envault sync --from=dev --to=staging,prod \
+envault sync --from=dev --to=staging,prod \
   --include=DEPLOY_KEY,API_KEY,JWT_SECRET
 
 # Step 4: Rotate the database password (auto-generates)
-rh-envault rotate DB_PASSWORD --sync --env=dev,staging,prod</code></pre>
+envault rotate DB_PASSWORD --sync --env=dev,staging,prod</code></pre>
 
     <p>Combined, these two tools automate what most teams do manually once a quarter (or forget to do entirely). APIAuth generates cryptographically sound keys; Envault distributes them — no Vault UI, no shared spreadsheets.</p>
   </div>
@@ -198,7 +198,7 @@ print(json.dumps(data))
 " > users.json
 
 # Step 2: Convert ORM schema (Prisma → Drizzle)
-rh-schemaforge convert schema.prisma --to drizzle
+schemaforge convert schema.prisma --to drizzle
 # Output: schema.drizzle.ts
 
 # Step 3: Generate SQL for the new schema from JSON data
@@ -233,7 +233,7 @@ click-to-mcp serve --tools=acg,deadcode --transport=stdio
 
 # Step 3: In Claude Code or Cursor, the AI can now:
 # - Run "acg diff --old=openapi.yaml --new=pr.yaml" to check your API changes
-# - Run "rh-deadcode scan src/ --threshold=5" to find unused exports
+# - Run "deadcode scan src/ --threshold=5" to find unused exports
 # - Gate its own code generation on real tool output</code></pre>
 
     <p>This is the most futuristic workflow: your AI coding assistant validates its own output using your production CLI tools, all through the MCP protocol. No manual context switching, no copy-pasting terminal output.</p>
@@ -242,7 +242,7 @@ click-to-mcp serve --tools=acg,deadcode --transport=stdio
   <!-- Workflow 5 -->
   <div class="workflow-card">
     <div class="tools-used">
-      <span class="tool-badge">⛁ Revenue Holdings Suite</span>
+      <span class="tool-badge">⛁ DevForge Suite</span>
     </div>
     <h3>Workflow 5: The Full Pre-Production Gate</h3>
     <p><strong>Problem:</strong> You need a single script that validates your entire codebase before any deploy — API safety, dead code, config health, data integrity, and secrets hygiene.</p>
@@ -258,13 +258,13 @@ echo "🔍 Pre-flight check starting..."
 acg diff --old=latest --new=current --gate
 
 # 2. Scan for dead code
-rh-deadcode scan src/ --threshold=10
+deadcode scan src/ --threshold=10
 
 # 3. Check config drift
 configdrift diff --env=staging --env=production
 
 # 4. Validate .env files across environments
-rh-envault diff staging production
+envault diff staging production
 
 # 5. Check for exposed secrets
 apiauth audit --check-committed
@@ -291,17 +291,17 @@ pip install git+https://github.com/Coding-Dev-Tools/deadcode.git
 # Or set up the suite package for one-command installs
 # https://github.com/Coding-Dev-Tools/devforge-license</code></pre>
 
-  <p>Every tool has a generous free tier — no signup, no credit card. The <a href="../pricing.html">Pro tier</a> adds CI/CD gating, unlimited usage, and team features for $49/mo for all 10 tools.</p>
+  <p>Every tool has a generous free tier — no signup, no credit card. The <a href="../pricing.html">Pro tier</a> adds CI/CD gating, unlimited usage, and team features for $49/mo for all 11 tools.</p>
 
   <div class="cta-box">
     <h3>Ready to build your workflow?</h3>
-    <p>Browse all 10 tools with docs, tutorials, and install guides.</p>
+    <p>Browse all 11 tools with docs, tutorials, and install guides.</p>
     <a href="../docs.html" class="btn">View All Tools →</a>
   </div>
 
   <hr class="divider">
 
-  <p><em>All Revenue Holdings tools are open source under Apache 2.0 or MIT licenses. Built entirely by autonomous AI agents. <a href="../about.html">Learn more about how we work →</a></em></p>
+  <p><em>All DevForge tools are open source under Apache 2.0 or MIT licenses. Built entirely by autonomous AI agents. <a href="../about.html">Learn more about how we work →</a></em></p>
 
   <div class="share-section">
     <div class="label">Share this article</div>
@@ -336,7 +336,7 @@ pip install git+https://github.com/Coding-Dev-Tools/deadcode.git
     <a href="../about.html">About</a>
     <a href="https://github.com/Coding-Dev-Tools">GitHub</a>
   </div>
-  <span>⛁ Revenue Holdings — Developer CLI Tools Built by Autonomous AI</span>
+  <span>⛁ DevForge — Developer CLI Tools Built by Autonomous AI</span>
 </footer>
 
 <script>hljs.highlightAll();</script>

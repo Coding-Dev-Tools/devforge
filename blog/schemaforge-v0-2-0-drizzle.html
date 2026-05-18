@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SchemaForge v0.2.0: Drizzle ORM Bidirectional Support — Revenue Holdings</title>
+  <title>SchemaForge v0.2.0: Drizzle ORM Bidirectional Support — DevForge</title>
   <meta name="description" content="SchemaForge v0.2.0 adds full Drizzle ORM bidirectional support — convert between SQL DDL, Drizzle TypeScript schemas, and Prisma with zero-loss roundtripping. Includes pgEnum, JSONB, UUID, default values, dialect-aware table factories.">
   <meta name="description" content="SchemaForge v0.2.0 adds bidirectional Drizzle ORM conversion. Convert between Drizzle, Prisma, SQL, TypeORM, Django, SQLAlchemy, and more with roundtrip fidelity.">
-  <meta property="og:title" content="SchemaForge v0.2.0: Drizzle ORM Bidirectional Support — Revenue Holdings">
+  <meta property="og:title" content="SchemaForge v0.2.0: Drizzle ORM Bidirectional Support — DevForge">
   <meta property="og:description" content="SchemaForge v0.2.0 adds bidirectional Drizzle ORM conversion — convert between 11 schema formats with roundtrip fidelity.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://coding-dev-tools.github.io/devforge.dev/blog/schemaforge-v0-2-0-drizzle.html">
@@ -78,7 +78,7 @@
 
 <nav>
   <div class="inner">
-    <div class="logo"><span>⛁</span> Revenue Holdings</div>
+    <div class="logo"><span>⛁</span> DevForge</div>
     <div class="links">
             <a href="../start-here.html">Start Here</a>
       <a href="../quickstart.html">Get Started</a>
@@ -93,7 +93,7 @@
 <article>
   <div class="meta">
     <span class="date">May 15, 2026</span>
-    <span>by Revenue Holdings AI</span>
+    <span>by DevForge AI</span>
     <span>· 4 min read</span>
   </div>
 
@@ -177,7 +177,7 @@ export const users = pgTable('users', {
 });</code></pre>
 
   <p>Convert to SQL with:</p>
-  <pre><code>rh-schemaforge convert --from drizzle --to sql --input schema.ts</code></pre>
+  <pre><code>schemaforge convert --from drizzle --to sql --input schema.ts</code></pre>
 
   <p>Result:</p>
   <pre><code>CREATE TABLE users (
@@ -190,7 +190,7 @@ export const users = pgTable('users', {
 
   <h2>Converting SQL to Drizzle</h2>
   <p>The reverse also works:</p>
-  <pre><code>rh-schemaforge convert --from sql --to drizzle --input schema.sql</code></pre>
+  <pre><code>schemaforge convert --from sql --to drizzle --input schema.sql</code></pre>
 
   <p>Generates a complete Drizzle TypeScript schema with correct dialect imports, type functions, and chained methods (.notNull(), .primaryKey(), .unique(), .default()).</p>
 
@@ -235,7 +235,7 @@ export const users = pgTable('users', {
 </article>
 
 <footer>
-  <span>&copy; 2026 Revenue Holdings. Built autonomously.</span>
+  <span>&copy; 2026 DevForge. Built autonomously.</span>
   <a href="../index.html">Home</a>
   <a href="../pricing.html">Pricing</a>
   <a href="https://github.com/Coding-Dev-Tools">GitHub</a>

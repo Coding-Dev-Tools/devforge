@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>License Keys & Rate Limiting Come to Revenue Holdings CLI Tools | Revenue Holdings</title>
-  <meta name="description" content="Revenue Holdings rolls out JWT-based license key validation and SQLite rate limiting across all 10 CLI tools. Free tier: 50 uses/day per tool. Pro: unlimited.">
+  <title>License Keys & Rate Limiting Come to DevForge CLI Tools | DevForge</title>
+  <meta name="description" content="DevForge rolls out JWT-based license key validation and SQLite rate limiting across all 11 CLI tools. Free tier: 50 uses/day per tool. Pro: unlimited.">
   <meta name="keywords" content="license key, rate limiting, CLI tools, developer tools, monetization, open source, subscription">
-  <meta property="og:title" content="License Keys & Rate Limiting Come to Revenue Holdings CLI Tools | Revenue Holdings">
-  <meta property="og:description" content="JWT-based license key validation and per-tool rate limiting rolling out across all 10 CLI tools. Free tier: 50 uses/day. Pro: unlimited. Enterprise: custom.">
+  <meta property="og:title" content="License Keys & Rate Limiting Come to DevForge CLI Tools | DevForge">
+  <meta property="og:description" content="JWT-based license key validation and per-tool rate limiting rolling out across all 11 CLI tools. Free tier: 50 uses/day. Pro: unlimited. Enterprise: custom.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://coding-dev-tools.github.io/devforge.dev/blog/license-key-rate-limiting-cli-tools.html">
   <meta name="twitter:site" content="@RevenueHolds">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="License Keys & Rate Limiting Come to Revenue Holdings CLI Tools">
-  <meta name="twitter:description" content="JWT-based license key validation rolling out across all 10 CLI tools. Free tier: 50 uses/day. Pro: unlimited.">
+  <meta name="twitter:title" content="License Keys & Rate Limiting Come to DevForge CLI Tools">
+  <meta name="twitter:description" content="JWT-based license key validation rolling out across all 11 CLI tools. Free tier: 50 uses/day. Pro: unlimited.">
   <meta name="twitter:image" content="https://coding-dev-tools.github.io/devforge.dev/og-image.svg">
   <meta property="og:image" content="https://coding-dev-tools.github.io/devforge.dev/og-image.svg">
   <meta property="og:image:width" content="1200">
@@ -85,13 +85,13 @@
 
   <article>
     <div class="meta">May 16, 2026 • 4 min read • <a href="https://coding-dev-tools.github.io/devforge.dev/blog.html">&#8592; Back to Blog</a></div>
-    <h1>License Keys &amp; Rate Limiting: <span>Revenue Holdings Goes Pro</span></h1>
+    <h1>License Keys &amp; Rate Limiting: <span>DevForge Goes Pro</span></h1>
 
-    <p>Today we're rolling out <strong>devforge-license</strong> — a shared license key validation and rate limiting system — across the entire Revenue Holdings CLI tool ecosystem. This marks our transition from a pure open-source project to a sustainable, tiered product.</p>
+    <p>Today we're rolling out <strong>devforge-license</strong> — a shared license key validation and rate limiting system — across the entire DevForge CLI tool ecosystem. This marks our transition from a pure open-source project to a sustainable, tiered product.</p>
 
     <h2>What's Shipping</h2>
 
-    <p>The <code>devforge-license</code> package (installable via GitHub) is now integrated into <strong>7 of 10 CLI tools</strong>, with the remaining 3 coming this week:</p>
+    <p>The <code>devforge-license</code> package (installable via GitHub) is now integrated into <strong>7 of 11 CLI tools</strong>, with the remaining 3 coming this week:</p>
 
     <table>
       <tr><th>Tool</th><th>Status</th></tr>
@@ -112,17 +112,17 @@
     <p>Every CLI command now calls <code>require_license()</code> before executing. Here's what that means in practice:</p>
 
     <pre><code><span class="comment"># On a fresh install — free tier, no setup needed</span>
-$ rh-schemaforge convert input.prisma --to drizzle
+$ schemaforge convert input.prisma --to drizzle
 <span class="string">✓ Schema converted (42 uses remaining today)</span>
 
 <span class="comment"># Free tier limit hit — upgrade prompt</span>
-$ rh-schemaforge convert input.prisma --to drizzle
+$ schemaforge convert input.prisma --to drizzle
 <span class="comment">Free tier limit reached (50/50 uses today).
 Upgrade to Pro: devforge.dev/pricing.html
 Or wait until tomorrow when your free tier resets.</span>
 
 <span class="comment"># Activate a Pro key</span>
-$ rh license activate RH-PRO-XXXX-XXXX
+$ devforge license activate RH-PRO-XXXX-XXXX
 <span class="string">✓ License activated: Pro tier (unlimited)</span></code></pre>
 
     <h2>Three Tiers</h2>
@@ -134,7 +134,7 @@ $ rh license activate RH-PRO-XXXX-XXXX
       <tr><td><strong>Enterprise</strong></td><td>Custom</td><td>Custom</td><td>SSO, RBAC, compliance, priority support</td></tr>
     </table>
 
-    <p>Free tier resets daily — that's 500 combined free operations across all 10 tools every day, more than enough for personal use, experimentation, and CI testing.</p>
+    <p>Free tier resets daily — that's 500 combined free operations across all 11 tools every day, more than enough for personal use, experimentation, and CI testing.</p>
 
     <h2>Technical Design</h2>
 
@@ -144,11 +144,11 @@ $ rh license activate RH-PRO-XXXX-XXXX
       <li><strong>Offline-capable</strong> — JWT-based validation works without internet. License keys use RS256 signatures verified locally.</li>
       <li><strong>24-hour grace period</strong> — If your license server can't be reached, the CLI keeps working for 24 hours.</li>
       <li><strong>SQLite rate limiting</strong> — Per-tool, per-day counters stored in <code>~/.devforge/</code>. No telemetry, no phoning home for usage tracking.</li>
-      <li><strong>Environment variable support</strong> — Set <code>REVENUEHOLDINGS_LICENSE_KEY</code> for headless CI environments.</li>
+      <li><strong>Environment variable support</strong> — Set <code>DEVFORGE_LICENSE_KEY</code> for headless CI environments.</li>
     </ul>
 
     <pre><code><span class="comment"># In CI or Docker</span>
-$ export REVENUEHOLDINGS_LICENSE_KEY=RH-PRO-XXXX-XXXX
+$ export DEVFORGE_LICENSE_KEY=RH-PRO-XXXX-XXXX
 $ deploydiff plan main..feature
 <span class="string">✓ Infrastructure diff generated</span></code></pre>
 
@@ -156,7 +156,7 @@ $ deploydiff plan main..feature
 
     <p>If you're using our tools today: <strong>nothing changes.</strong> All tools remain fully functional on the free tier — 50 uses per tool per day. No features are gated behind the license. The only difference is you'll see a clean usage counter after each command.</p>
 
-    <p>This lays the foundation for us to sustainably maintain and improve all 10 CLI tools. Revenue from Pro subscriptions goes directly into:</p>
+    <p>This lays the foundation for us to sustainably maintain and improve all 11 CLI tools. Revenue from Pro subscriptions goes directly into:</p>
     <ul>
       <li>Dedicated maintenance and bug fixes</li>
       <li>New feature development</li>
@@ -164,16 +164,16 @@ $ deploydiff plan main..feature
       <li>Community support</li>
     </ul>
 
-    <h2>Also Shipping Today: rh-envault Encrypt/Decrypt</h2>
+    <h2>Also Shipping Today: envault Encrypt/Decrypt</h2>
 
     <p>Alongside the license rollout, <strong>Envault</strong> (<code>envault 0.5.0+</code>) now includes <code>encrypt</code> and <code>decrypt</code> commands — letting you encrypt individual environment values with AES-256 before committing them to version control:</p>
 
     <pre><code><span class="comment"># Encrypt a sensitive value</span>
-$ rh-envault encrypt DB_PASSWORD
+$ envault encrypt DB_PASSWORD
 <span class="string">✓ Encrypted: enc:A5G8...</span>
 
 <span class="comment"># View encrypted .env with a decryption helper</span>
-$ rh-envault decrypt --inline</code></pre>
+$ envault decrypt --inline</code></pre>
 
     <p>This pairs naturally with the license system — CI pipelines can use Pro-tier license keys to automatically decrypt environment variables during deployment.</p>
 
@@ -182,7 +182,7 @@ $ rh-envault decrypt --inline</code></pre>
     <div class="card">
       <h3>Get Started</h3>
       <p>
-        Install any Revenue Holdings tool and start using it free, right now:<br>
+        Install any DevForge tool and start using it free, right now:<br>
         <code>pip install git+https://github.com/Coding-Dev-Tools/devforge.git</code>
       </p>
       <p>
@@ -197,7 +197,7 @@ $ rh-envault decrypt --inline</code></pre>
 
     <hr style="border: none; border-top: 1px solid #1e1e20; margin: 40px 0;">
 
-    <p><em>— The Revenue Holdings Team</em></p>
+    <p><em>— The DevForge Team</em></p>
     <div class="share-section">
     <div class="label">Share this article</div>
     <div class="share-buttons">

@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clean Up Your React/Next.js Codebase with DeadCode — A Practical Tutorial | Revenue Holdings</title>
+  <title>Clean Up Your React/Next.js Codebase with DeadCode — A Practical Tutorial | DevForge</title>
   <meta name="description" content="Step-by-step tutorial: find and remove unused exports, dead routes, orphaned CSS, and unreferenced components in your React or Next.js project using the DeadCode CLI tool. With real-world examples and CI integration.">
   <meta name="keywords" content="dead code elimination, React dead code, Next.js cleanup, remove unused exports, tree shaking, code cleanup, DeadCode CLI, TypeScript dead code, technical debt">
-  <meta property="og:title" content="Clean Up Your React/Next.js Codebase with DeadCode — A Practical Tutorial | Revenue Holdings">
+  <meta property="og:title" content="Clean Up Your React/Next.js Codebase with DeadCode — A Practical Tutorial | DevForge">
   <meta property="og:description" content="Step-by-step: find and remove unused exports, dead routes, orphaned CSS, and unreferenced components with DeadCode CLI.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://coding-dev-tools.github.io/devforge.dev/blog/clean-up-react-dead-code.html">
@@ -19,7 +19,7 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="https://coding-dev-tools.github.io/devforge.dev/blog/clean-up-react-dead-code.html">
-  <meta name="author" content="Revenue Holdings">
+  <meta name="author" content="DevForge">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛁</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script type="application/ld+json">
@@ -29,8 +29,8 @@
     "headline": "Clean Up Your React/Next.js Codebase with DeadCode — A Practical Tutorial",
     "description": "Step-by-step tutorial: find and remove unused exports, dead routes, orphaned CSS, and unreferenced components in your React or Next.js project using the DeadCode CLI tool.",
     "datePublished": "2026-05-15",
-    "author": { "@type": "Organization", "name": "Revenue Holdings" },
-    "publisher": { "@type": "Organization", "name": "Revenue Holdings" },
+    "author": { "@type": "Organization", "name": "DevForge" },
+    "publisher": { "@type": "Organization", "name": "DevForge" },
     "mainEntityOfPage": {"@type": "WebPage","@id": "https://coding-dev-tools.github.io/devforge.dev/blog/clean-up-react-dead-code.html"}
   }
   </script>
@@ -131,7 +131,7 @@
 
 <nav>
   <div class="inner">
-    <div class="logo"><span>⛁</span> Revenue Holdings</div>
+    <div class="logo"><span>⛁</span> DevForge</div>
     <div class="links">
             <a href="../start-here.html">Start Here</a>
       <a href="../quickstart.html">Get Started</a>
@@ -192,12 +192,12 @@
 
   <p>Navigate to your project root and run a scan. For a Next.js App Router project, we care about <code>app/</code>, <code>components/</code>, <code>lib/</code>, and <code>utils/</code>:</p>
 
-  <pre><code><span class="cmd">rh-deadcode scan -p</span> . <span class="flag">--exclude</span> node_modules,.next --verbose</code></pre>
+  <pre><code><span class="cmd">deadcode scan -p</span> . <span class="flag">--exclude</span> node_modules,.next --verbose</code></pre>
 
   <p>Here's what the output looks like on a real project:</p>
 
   <div class="result-box">
-    <div class="label">rh-deadcode Scan Results</div>
+    <div class="label">deadcode Scan Results</div>
     <code>Scanning /Users/dev/my-next-app...
       
 <span class="warn">[UNUSED_EXPORT]</span> src/lib/formatting.ts:12 - formatRelativeTime
@@ -290,7 +290,7 @@ Estimated savings: 44 KB bundle size, 327 lines of code</code></div>
 <span class="comment"># Also remove: import './legacy-utilities.css' from layout.tsx</span>
 
 <span class="comment"># Re-run scan to verify</span>
-<span class="cmd">rh-deadcode scan -p</span> . <span class="flag">--exclude</span> node_modules,.next</code></pre>
+<span class="cmd">deadcode scan -p</span> . <span class="flag">--exclude</span> node_modules,.next</code></pre>
 
   <div class="result-box">
     <div class="label">After Cleanup</div>
@@ -300,7 +300,7 @@ Estimated savings realized: 327 LOC, 44 KB bundle size</code></div>
   <h3>Batch removal with verification</h3>
   <p>Once you trust the output, use <code>--json</code> to pipe results into your own scripts:</p>
 
-  <pre><code><span class="cmd">rh-deadcode scan -p</span> . <span class="flag">--exclude</span> node_modules,.next <span class="flag">--json</span> > deadcode-results.json
+  <pre><code><span class="cmd">deadcode scan -p</span> . <span class="flag">--exclude</span> node_modules,.next <span class="flag">--json</span> > deadcode-results.json
 
 <span class="comment"># Then process with jq or a script to generate delete commands</span>
 <span class="cmd">cat deadcode-results.json | jq -r '.[] | select(.severity=="high") | .file' | xargs rm</code></pre>
@@ -327,7 +327,7 @@ Estimated savings realized: 327 LOC, 44 KB bundle size</code></div>
         <span class="cmd">with:</span>
           python-version: '3.11'
       - <span class="cmd">run:</span> pip install git+https://github.com/Coding-Dev-Tools/deadcode.git
-      - <span class="cmd">run:</span> rh-deadcode scan -p . --exclude node_modules,.next
+      - <span class="cmd">run:</span> deadcode scan -p . --exclude node_modules,.next
         <span class="comment"># Fails (exit 1) if unused exports or dead routes are found</span></code></pre>
 
   <p>Now every PR is automatically checked. If a developer adds an export but forgets to use it, or merges a route change without cleaning up the old page, DeadCode catches it before it reaches <code>main</code>.</p>
@@ -390,7 +390,7 @@ Estimated savings realized: 327 LOC, 44 KB bundle size</code></div>
   <hr>
 
   <div class="tool-card">
-    <div class="cmd">rh-deadcode scan -p /path/to/your/project --exclude node_modules,.next</div>
+    <div class="cmd">deadcode scan -p /path/to/your/project --exclude node_modules,.next</div>
     <p class="desc">Find unused exports, dead routes, orphaned CSS, and unreferenced components — in seconds.</p>
   </div>
 
@@ -399,7 +399,7 @@ Estimated savings realized: 327 LOC, 44 KB bundle size</code></div>
   <p>DeadCode is <strong>free and open source</strong> under Apache 2.0. Install it, run it on your project, and see how much dead code you've accumulated. The first scan might surprise you.</p>
 
   <pre><code><span class="cmd">pip install git+https://github.com/Coding-Dev-Tools/deadcode.git</span>
-<span class="cmd">rh-deadcode scan -p</span> /path/to/react-project <span class="flag">--exclude</span> node_modules</code></pre>
+<span class="cmd">deadcode scan -p</span> /path/to/react-project <span class="flag">--exclude</span> node_modules</code></pre>
 
   <ul>
     <li><a href="https://github.com/Coding-Dev-Tools/deadcode">DeadCode on GitHub</a></li>
@@ -412,7 +412,7 @@ Estimated savings realized: 327 LOC, 44 KB bundle size</code></div>
 
   <div class="article-waitlist">
     <h3>Get Early Access</h3>
-    <p>PyPI publishing is coming soon. Leave your email and we'll notify you the moment DeadCode and the rest of the Revenue Holdings tools ship.</p>
+    <p>PyPI publishing is coming soon. Leave your email and we'll notify you the moment DeadCode and the rest of the DevForge tools ship.</p>
     <form onsubmit="submitWaitlist(event)">
       <div class="form-row">
         <input type="email" id="wl-email" placeholder="you@company.com" required>
@@ -449,7 +449,7 @@ Estimated savings realized: 327 LOC, 44 KB bundle size</code></div>
 </article>
 
 <footer>
-  <span>&copy; 2026 Revenue Holdings. Built autonomously.</span>
+  <span>&copy; 2026 DevForge. Built autonomously.</span>
   <a href="../quickstart.html">Get Started</a>
   <a href="../index.html">Home</a>
   <a href="https://github.com/Coding-Dev-Tools">GitHub</a>
