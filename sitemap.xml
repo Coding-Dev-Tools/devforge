@@ -259,6 +259,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://coding-dev-tools.github.io/devforge/blog/new-cli-features-may-18-2026.html</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://coding-dev-tools.github.io/devforge/blog/click-to-mcp-usage-guide.html</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
