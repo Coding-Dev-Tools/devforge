@@ -162,7 +162,7 @@ click-to-mcp serve your-cli
 ```
 
 **GitHub**: https://github.com/Coding-Dev-Tools/click-to-mcp
-**Landing Page**: https://coding-dev-tools.github.io/revenueholdings.dev/
+**Landing Page**: https://coding-dev-tools.github.io/devforge.dev/
 
 ---
 

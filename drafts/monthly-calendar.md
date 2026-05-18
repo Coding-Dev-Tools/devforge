@@ -49,7 +49,7 @@
 ## Key Metrics to Track
 - **GitHub stars** — per repo, tracked weekly
 - **pip installs** — via PyPI stats (once published) or GitHub raw clones
-- **Website traffic** — Plausible analytics on revenueholdings.dev
+- **Website traffic** — Plausible analytics on devforge.dev
 - **Product Hunt** — upvotes, rank, comments, traffic referral
 - **HN** — upvotes, comments, referrer traffic
 - **Reddit** — upvotes, comments, click-throughs

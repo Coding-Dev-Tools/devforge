@@ -30,7 +30,7 @@ It preserves relationships, indexes, defaults, and constraints. 270+ tests passi
 There's also a VS Code extension (v1.7.0) with live preview, quick convert (Ctrl+Alt+S), and format detection.
 
 GitHub: https://github.com/Coding-Dev-Tools/schemaforge
-Docs: https://coding-dev-tools.github.io/revenueholdings.dev/docs.html#schemaforge
+Docs: https://coding-dev-tools.github.io/devforge.dev/docs.html#schemaforge
 
 Also: we have another tool called click-to-mcp that wraps any Click/Typer CLI as an MCP server — useful if you want AI agents to call your Python CLIs.
 
@@ -98,7 +98,7 @@ It does static analysis — no runtime overhead. Useful for:
 Works with JavaScript and TypeScript. Open source (Apache 2.0).
 
 GitHub: https://github.com/Coding-Dev-Tools/deadcode
-Docs: https://coding-dev-tools.github.io/revenueholdings.dev/docs.html#deadcode
+Docs: https://coding-dev-tools.github.io/devforge.dev/docs.html#deadcode
 
 ---
 
@@ -143,4 +143,4 @@ Diff, sync, and rotate env variables across environments.
 All are open source (Apache 2.0), pip installable, with CI/CD workflow examples in the READMEs.
 
 GitHub org: https://github.com/Coding-Dev-Tools
-Docs: https://coding-dev-tools.github.io/revenueholdings.dev/docs.html
+Docs: https://coding-dev-tools.github.io/devforge.dev/docs.html

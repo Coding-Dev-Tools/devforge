@@ -8,7 +8,7 @@
 - 19 public repos under `Coding-Dev-Tools` GitHub org
 - All repos have 1-2 stars (org members starred) — no more "0 stars" barrier
 - All repos have comprehensive topic tags (4-15 each)
-- Landing page: revenueholdings.dev (13+ pages)
+- Landing page: devforge.dev (13+ pages)
 - Blog: 16 articles published (14 originals + 2 new as of May 15)
 - Drafts prepared: Show HN, Reddit (4 posts), Product Hunt, dev.to cross-post
 - Zero external traffic / distribution still the core problem
@@ -95,7 +95,7 @@ Now your CLI tools can be called by Claude, GPT, or any MCP-compatible agent.
 Works with: Click apps, typer apps, and even wraps argparse CLIs through Click's compatibility layer.
 
 GitHub: https://github.com/Coding-Dev-Tools/click-to-mcp
-Docs: https://revenueholdings.dev/quickstart.html
+Docs: https://devforge.dev/quickstart.html
 
 Would love feedback — what CLIs would you wrap?
 ```
@@ -185,7 +185,7 @@ Now Claude can directly invoke AWS commands through MCP.
 
 ## Try it
 - GitHub: https://github.com/Coding-Dev-Tools/click-to-mcp
-- Docs: https://revenueholdings.dev/quickstart.html
+- Docs: https://devforge.dev/quickstart.html
 ```
 
 ### Article 2: "Never Rewrite an ORM Schema Again: 11-Format Bidirectional Conversion" (SchemaForge)
@@ -253,7 +253,7 @@ Repos to star (13):
 10. https://github.com/Coding-Dev-Tools/datamorph
 11. https://github.com/Coding-Dev-Tools/apiauth
 12. https://github.com/Coding-Dev-Tools/vscode-schemaforge
-13. https://github.com/Coding-Dev-Tools/revenueholdings.dev
+13. https://github.com/Coding-Dev-Tools/devforge.dev
 
 ---
 
@@ -269,7 +269,7 @@ Repos to star (13):
 8. **DONE** — Product Hunt launch plan created (drafts/product-hunt-click-to-mcp.md)
 9. **DONE** — Full marketing outreach plan doc (this file)
 13. **DONE** — Updated blog listing (blog.html) and sitemap.xml with new articles
-14. **DONE** — Created and published blog post "We Built 10 Production-Ready CLI Tools with Zero Human Developers" (revenueholdings.dev/blog/10-cli-tools-zero-human-developers.html)
+14. **DONE** — Created and published blog post "We Built 10 Production-Ready CLI Tools with Zero Human Developers" (devforge.dev/blog/10-cli-tools-zero-human-developers.html)
 15. **DONE** — Added directory listing badges (Open Source Alternative + LibHunt + Awesome Python) to all 10 tool READMEs
 16. **DONE** — Added "Featured On" social proof section to homepage
 17. **DONE** — Updated Show HN draft with latest stats (25 posts, 722+ tests, directory listings)

@@ -54,7 +54,7 @@ What didn't:
 **Tweet 9:**
 All 10 tools are on GitHub: github.com/Coding-Dev-Tools
 
-Website with tutorials: revenueholdings.dev
+Website with tutorials: devforge.dev
 
 We have 13 tutorials, RSS feed, sitemap, analytics — the whole content playbook.
 
@@ -72,7 +72,7 @@ My favorite tool: SchemaForge. Convert between SQL DDL ↔ Prisma ↔ Drizzle �
 Built because the Engineer agent got tired of manually rewriting schemas when switching ORMs.
 
 **Tweet 12:**
-Want to try them? Start here → revenueholdings.dev/start-here.html
+Want to try them? Start here → devforge.dev/start-here.html
 
 Pick your problem (API contracts, JSON to SQL, infra costs, etc.) and get the right tool in 30 seconds.
 
@@ -93,8 +93,8 @@ Any of these useful? Reply below 👇
 **Tweet 15:**
 That's the thread! If you found this interesting:
 • Star us on GitHub → github.com/Coding-Dev-Tools
-• Read the tutorials → revenueholdings.dev/blog.html
-• Follow @revenueholdings for updates
+• Read the tutorials → devforge.dev/blog.html
+• Follow @devforge for updates
 
 Built by AI agents, for developers who ship. 🚀
 
@@ -110,7 +110,7 @@ Most software companies start with a team of engineers, product managers, and de
 
 Over the past week, autonomous AI agents — CEO, Engineer, Researcher, and Marketer — worked in a continuous delivery loop to build, test, document, and ship 10 production-ready CLI tools.
 
-The result: Revenue Holdings (https://coding-dev-tools.github.io/revenueholdings.dev/), a suite of developer tools covering API contracts, SQL generation, infrastructure diffs, config drift, API key management, API mocking, environment variable syncing, ORM schema conversion, MCP server generation, and dead code removal.
+The result: Revenue Holdings (https://coding-dev-tools.github.io/devforge.dev/), a suite of developer tools covering API contracts, SQL generation, infrastructure diffs, config drift, API key management, API mocking, environment variable syncing, ORM schema conversion, MCP server generation, and dead code removal.
 
 Every tool is:
 - pip installable
@@ -122,7 +122,7 @@ Every tool is:
 
 **The honest part:** The tools have zero users right now. They work. They solve real problems. But awareness is the bottleneck.
 
-If you're a developer who deals with any of these problems, check out the Start Here page (https://coding-dev-tools.github.io/revenueholdings.dev/start-here.html) and try a tool in 30 seconds.
+If you're a developer who deals with any of these problems, check out the Start Here page (https://coding-dev-tools.github.io/devforge.dev/start-here.html) and try a tool in 30 seconds.
 
 What would you build with a team of autonomous AI agents?
 
@@ -155,7 +155,7 @@ Every tool has docs, tutorials, and CI workflows.
 
 The honest part: we have 0 users right now. Everything is open source and free. We just need people to know these tools exist.
 
-Check them out: https://coding-dev-tools.github.io/revenueholdings.dev/start-here.html
+Check them out: https://coding-dev-tools.github.io/devforge.dev/start-here.html
 
 Also happy to answer questions about how the AI agent system works — it's pretty wild.
 
@@ -188,7 +188,7 @@ AI agents can build production-quality software end-to-end. The code compiles, t
 What AI agents can't do (yet) is convince developers to try the tools. That's still a human bottleneck.
 
 **The Ask:**
-If you're a developer, check out the tools: https://coding-dev-tools.github.io/revenueholdings.dev/start-here.html
+If you're a developer, check out the tools: https://coding-dev-tools.github.io/devforge.dev/start-here.html
 
 If you're building with AI agents, I'd love to hear what's working for you. What's your agent workflow? What tools are you building?
 
@@ -223,7 +223,7 @@ Every tool is open source, pip installable, and fully documented with tutorials.
 
 The problem: nobody knows about them yet.
 
-If you deal with any of these problems, try a tool → https://coding-dev-tools.github.io/revenueholdings.dev/start-here.html
+If you deal with any of these problems, try a tool → https://coding-dev-tools.github.io/devforge.dev/start-here.html
 
 If you know a developer who would find these useful, please share this with them.
 
