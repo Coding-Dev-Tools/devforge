@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <base href="/devforge/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stop Breaking Production: 4 CI Checks Every DevOps Team Should Run | DevForge</title>
-  <meta name="description" content="Your CI pipeline runs tests, lints, and builds — but it's missing four critical safety checks: API contracts, SQL risks, infrastructure blast radius, and config drift. Add them in 5 minutes.">
+  <meta name="description" content="Your CI pipeline runs tests, lints, and builds â€” but it's missing four critical safety checks: API contracts, SQL risks, infrastructure blast radius, and config drift. Add them in 5 minutes.">
   <meta name="keywords" content="CI/CD, DevOps, API contracts, infrastructure diff, config drift, CI pipeline, deployment safety, API Contract Guardian, DeployDiff, ConfigDrift, json2sql">
   <meta property="og:title" content="Stop Breaking Production: 4 CI Checks Every DevOps Team Should Run | DevForge">
-  <meta property="og:description" content="Four critical CI safety checks most pipelines miss — API contract violations, SQL injection risks, infrastructure blast radius, and configuration drift. Add them in 5 minutes.">
+  <meta property="og:description" content="Four critical CI safety checks most pipelines miss â€” API contract violations, SQL injection risks, infrastructure blast radius, and configuration drift. Add them in 5 minutes.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://coding-dev-tools.github.io/revenueholdings.dev/blog/stop-breaking-production.html">
   <meta name="twitter:site" content="@DevForge">
@@ -20,72 +20,9 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/stop-breaking-production.html">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛁</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>â›</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { 
-  /* Share buttons */
-  .share-section { max-width: 700px; margin: 48px auto; padding: 0 24px; text-align: center; }
-  .share-section .label { font-size: 0.8rem; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
-  .share-buttons { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-  .share-btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; text-decoration: none; transition: all .15s; border: 1px solid #2a2a2d; color: #ccc; background: #121213; }
-  .share-btn:hover { border-color: #6366f1; color: #fff; transform: translateY(-1px); }
-  .share-btn svg { width: 16px; height: 16px; fill: currentColor; }
-
-    font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0b; color: #e1e1e3; line-height: 1.6; min-height: 100vh; }
-    nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(10,10,11,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid #1e1e20; }
-    nav .inner { max-width: 800px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
-    nav .logo { font-weight: 700; font-size: 1.15rem; color: #fff; letter-spacing: -0.02em; }
-    nav .logo span { color: #6366f1; }
-    nav .links a { color: #888; text-decoration: none; font-size: 0.85rem; margin-left: 28px; transition: color .15s; }
-    nav .links a:hover { color: #fff; }
-    nav .links a.active { color: #fff; }
-    .post-content { max-width: 800px; margin: 0 auto; padding: 100px 24px 80px; font-size: 0.95rem; line-height: 1.75; }
-    .post-content h1 { font-size: 2rem; font-weight: 800; color: #fff; letter-spacing: -0.03em; margin: 40px 0 8px; }
-    .post-content .subtitle { font-size: 1.05rem; color: #888; margin-bottom: 32px; }
-    .post-content h2 { font-size: 1.35rem; font-weight: 700; color: #fff; margin: 32px 0 12px; }
-    .post-content h3 { font-size: 1.1rem; font-weight: 600; color: #e1e1e3; margin: 24px 0 8px; }
-    .post-content p { margin: 16px 0; color: #ccc; }
-    .post-content a { color: #a78bfa; }
-    .post-content code { background: #1a1a1c; padding: 2px 8px; border-radius: 4px; font-size: 0.85em; color: #34d399; }
-    .post-content pre { background: #121213; border: 1px solid #1e1e20; border-radius: 8px; padding: 16px 20px; overflow-x: auto; margin: 16px 0; }
-    .post-content pre code { background: none; padding: 0; font-size: 0.82rem; line-height: 1.5; }
-    .post-content ul { margin: 16px 0; padding-left: 24px; }
-    .post-content li { color: #ccc; margin: 8px 0; }
-    .post-content .badge { display: inline-block; padding: 4px 14px; border-radius: 24px; font-size: 0.72rem; font-weight: 600; background: rgba(99,102,241,0.12); color: #a78bfa; border: 1px solid rgba(99,102,241,0.2); text-transform: uppercase; letter-spacing: 0.3px; }
-    .post-content hr { border: none; border-top: 1px solid #1e1e20; margin: 40px 0; }
-    .post-content .tip { background: rgba(52,211,153,0.06); border: 1px solid rgba(52,211,153,0.15); border-radius: 10px; padding: 16px 20px; margin: 20px 0; }
-    .post-content .tip strong { color: #34d399; }
-    .post-content .tool-card { background: #121213; border: 1px solid #1e1e20; border-radius: 10px; padding: 20px; margin: 16px 0; }
-    .post-content .tool-card h3 { margin-top: 0; }
-    .post-content .tool-card .cmd { color: #6366f1; font-weight: 500; font-size: 0.85rem; margin-bottom: 4px; }
-    .blog-nav { max-width: 800px; margin: 0 auto; padding: 24px 24px 0; display: flex; justify-content: space-between; font-size: 0.85rem; }
-    .blog-nav a { color: #6366f1; text-decoration: none; }
-    .blog-nav a:hover { color: #a78bfa; }
-    footer { max-width: 800px; margin: 0 auto; padding: 40px 24px; border-top: 1px solid #1e1e20; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-    footer span { font-size: 0.8rem; color: #555; }
-    footer a { color: #888; text-decoration: none; font-size: 0.8rem; }
-    footer a:hover { color: #fff; }
-
-    /* Waitlist section for blog articles */
-        .share-bar { margin: 24px 0 32px; display: flex; align-items: center; gap: 12px; font-size: 0.82rem; flex-wrap: wrap; }
-    .share-bar span { color: #555; }
-    .share-link { color: #6366f1; text-decoration: none; padding: 6px 14px; border-radius: 6px; background: #121213; border: 1px solid #1e1e20; transition: all .15s; }
-    .share-link:hover { border-color: #6366f1; color: #a78bfa; }
-
-    .article-waitlist { max-width: 560px; margin: 0 auto; padding: 40px 0 20px; text-align: center; }
-    .article-waitlist h3 { font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
-    .article-waitlist p { color: #888; font-size: 0.88rem; margin-bottom: 24px; }
-    .article-waitlist .form-row { display: flex; gap: 10px; max-width: 420px; margin: 0 auto; }
-    .article-waitlist input[type="email"] { flex: 1; padding: 12px 16px; border-radius: 8px; border: 1px solid #2a2a2d; background: #121213; color: #e1e1e3; font-family: 'Inter', sans-serif; font-size: 0.88rem; outline: none; }
-    .article-waitlist input[type="email"]:focus { border-color: #6366f1; }
-    .article-waitlist input[type="email"]::placeholder { color: #555; }
-    .article-waitlist .submit-btn { padding: 12px 24px; border-radius: 8px; border: none; background: #6366f1; color: #fff; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.88rem; cursor: pointer; white-space: nowrap; }
-    .article-waitlist .submit-btn:hover { background: #5558e6; }
-    .article-waitlist .form-msg { margin-top: 10px; font-size: 0.82rem; color: #34d399; display: none; }
-    @media (max-width: 640px) {
-  </style>
+  <link rel="stylesheet" href="blog.css">
   <!-- Plausible Analytics -->
   <script defer data-domain="devforge.dev" src="https://plausible.io/js/script.js"></script>
 </head>
@@ -93,7 +30,7 @@
 
 <nav>
   <div class="inner">
-    <div class="logo"><span>⛁</span> DevForge</div>
+    <div class="logo"><span>â›</span> DevForge</div>
     <div class="links">
             <a href="../start-here.html">Start Here</a>
       <a href="../quickstart.html">Get Started</a>
@@ -115,10 +52,10 @@
 
 <article class="post-content">
   <span class="badge">Guide</span>
-  <p style="color:#666;font-size:0.85rem;margin-top:8px;">May 15, 2026 · 6 min read</p>
+  <p style="color:#666;font-size:0.85rem;margin-top:8px;">May 15, 2026 Â· 6 min read</p>
 
   <h1>Stop Breaking Production</h1>
-  <div class="subtitle">4 CI checks your pipeline is probably missing — and how to add them in 5 minutes.</div>  <div class="share-bar">
+  <div class="subtitle">4 CI checks your pipeline is probably missing â€” and how to add them in 5 minutes.</div>  <div class="share-bar">
     <span>Share this article:</span>
     <a href="https://twitter.com/intent/tweet?text=$(document.title)&url=$(location.href)" target="_blank" rel="noopener" class="share-link">X Twitter</a>
     <a href="https://news.ycombinator.com/submitlink?u=$(location.href)&t=$(document.title)" target="_blank" rel="noopener" class="share-link">Y Hacker News</a>
@@ -127,12 +64,12 @@
 
   <p>Your CI pipeline runs tests. It lints your code. Maybe it builds a Docker image. But between "all tests pass" and "production is broken," there's a gap most teams don't realize exists.</p>
 
-  <p>Standard CI/CD pipelines catch implementation bugs — they don't catch <em>contract</em> bugs, <em>data</em> bugs, <em>infrastructure</em> bugs, or <em>configuration</em> bugs. These four categories cause some of the most expensive production incidents:</p>
+  <p>Standard CI/CD pipelines catch implementation bugs â€” they don't catch <em>contract</em> bugs, <em>data</em> bugs, <em>infrastructure</em> bugs, or <em>configuration</em> bugs. These four categories cause some of the most expensive production incidents:</p>
 
   <ul>
     <li><strong>12%</strong> of production outages are caused by API contract violations (consumers using fields you removed)</li>
     <li><strong>23%</strong> of security incidents involve SQL injection or misconfigured database access</li>
-    <li><strong>15–20%</strong> of infrastructure changes cause unexpected resource modification or deletion</li>
+    <li><strong>15â€“20%</strong> of infrastructure changes cause unexpected resource modification or deletion</li>
     <li><strong>30%</strong> of compliance failures trace back to undetected configuration drift across environments</li>
   </ul>
 
@@ -140,7 +77,7 @@
 
   <hr>
 
-  <h2>Check 1: API Contract Violations → API Contract Guardian</h2>
+  <h2>Check 1: API Contract Violations â†’ API Contract Guardian</h2>
 
   <div class="tool-card">
     <div class="cmd">api-contract-guardian check openapi.yaml --prev main</div>
@@ -152,9 +89,9 @@
   <p><strong>The fix:</strong> Add API Contract Guardian to your CI. It compares every OpenAPI change against the baseline spec and flags breaking changes by severity:</p>
 
   <ul>
-    <li><strong>BREAKING</strong> — removed fields, renamed endpoints, required params removed</li>
-    <li><strong>DANGEROUS</strong> — relaxed type constraints, widened response schemas</li>
-    <li><strong>COMPATIBLE</strong> — additive changes only</li>
+    <li><strong>BREAKING</strong> â€” removed fields, renamed endpoints, required params removed</li>
+    <li><strong>DANGEROUS</strong> â€” relaxed type constraints, widened response schemas</li>
+    <li><strong>COMPATIBLE</strong> â€” additive changes only</li>
   </ul>
 
   <div class="tip">
@@ -174,14 +111,14 @@
 
   <hr>
 
-  <h2>Check 2: Database Seed Corruption → json2sql</h2>
+  <h2>Check 2: Database Seed Corruption â†’ json2sql</h2>
 
   <div class="tool-card">
     <div class="cmd">json2sql seed_data.json --dialect postgres --output insert/seed.sql</div>
     <p style="margin: 8px 0 0; font-size: 0.9rem; color: #aaa;">Converts JSON datasets to type-safe SQL INSERT statements for any target database.</p>
   </div>
 
-  <p><strong>The problem:</strong> Seed data scripts are usually hand-written, rarely reviewed, and frequently contain type mismatches — a string in a DATE column, a null in a NOT NULL field, a JSON value that PostgreSQL rejects. Your integration tests pass because they just check row counts, not column types.</p>
+  <p><strong>The problem:</strong> Seed data scripts are usually hand-written, rarely reviewed, and frequently contain type mismatches â€” a string in a DATE column, a null in a NOT NULL field, a JSON value that PostgreSQL rejects. Your integration tests pass because they just check row counts, not column types.</p>
 
   <p><strong>The fix:</strong> Generate seed SQL from structured JSON using json2sql. It infers types from the data and generates correct SQL for your dialect:</p>
 
@@ -192,7 +129,7 @@
   ]
 }</code></pre>
 
-  <p>Becomes clean, dialect-correct SQL — with proper quoting, type casting, and value escaping. No more <code>INSERT INTO users VALUES (1, 'Alice')</code> prayers.</p>
+  <p>Becomes clean, dialect-correct SQL â€” with proper quoting, type casting, and value escaping. No more <code>INSERT INTO users VALUES (1, 'Alice')</code> prayers.</p>
 
   <p>CI snippet:</p>
 
@@ -205,7 +142,7 @@
 
   <hr>
 
-  <h2>Check 3: Infrastructure Blast Radius → DeployDiff</h2>
+  <h2>Check 3: Infrastructure Blast Radius â†’ DeployDiff</h2>
 
   <div class="tool-card">
     <div class="cmd">deploydiff diff --from main --format summary</div>
@@ -217,9 +154,9 @@
   <p><strong>The fix:</strong> DeployDiff wraps any IaC tool (Terraform, CloudFormation, Pulumi) and produces a human-readable diff summary with blast radius classification:</p>
 
   <ul>
-    <li><strong>🔴 Destruction</strong> — resources being deleted (DB, S3, load balancers)</li>
-    <li><strong>🟡 Replacement</strong> — resources that will be destroyed and recreated</li>
-    <li><strong>🟢 Safe update</strong> — in-place updates with zero downtime</li>
+    <li><strong>ðŸ”´ Destruction</strong> â€” resources being deleted (DB, S3, load balancers)</li>
+    <li><strong>ðŸŸ¡ Replacement</strong> â€” resources that will be destroyed and recreated</li>
+    <li><strong>ðŸŸ¢ Safe update</strong> â€” in-place updates with zero downtime</li>
   </ul>
 
   <div class="tip">
@@ -239,7 +176,7 @@
 
   <hr>
 
-  <h2>Check 4: Configuration Drift → ConfigDrift</h2>
+  <h2>Check 4: Configuration Drift â†’ ConfigDrift</h2>
 
   <div class="tool-card">
     <div class="cmd">configdrift check --baseline prod --target staging</div>
@@ -251,10 +188,10 @@
   <p><strong>The fix:</strong> Run ConfigDrift on every deploy to compare your environments:</p>
 
   <pre><code>$ configdrift check --baseline prod --target staging
-🔴 MISSING:   DB_POOL_SIZE (staging has 10, prod has 25)
-🔴 MISSING:   CACHE_TTL (staging has 30, prod has 300)
-🟡 DEPRECATED: OLD_FEATURE_FLAG (present in staging, removed in prod)
-🟢 OK:        148/151 keys match between environments</code></pre>
+ðŸ”´ MISSING:   DB_POOL_SIZE (staging has 10, prod has 25)
+ðŸ”´ MISSING:   CACHE_TTL (staging has 30, prod has 300)
+ðŸŸ¡ DEPRECATED: OLD_FEATURE_FLAG (present in staging, removed in prod)
+ðŸŸ¢ OK:        148/151 keys match between environments</code></pre>
 
   <p>CI snippet:</p>
 
@@ -307,7 +244,7 @@ jobs:
     <li><a href="https://github.com/Coding-Dev-Tools/configdrift">ConfigDrift</a></li>
   </ul>
 
-  <p>Ready for a step-by-step walkthrough? <a href="zero-to-ci-safety-net.html">Read the hands-on tutorial →</a></p>
+  <p>Ready for a step-by-step walkthrough? <a href="zero-to-ci-safety-net.html">Read the hands-on tutorial â†’</a></p>
 
   <hr>
 
@@ -317,13 +254,13 @@ jobs:
     <form onsubmit="submitWaitlist(event)">
       <div class="form-row">
         <input type="email" id="wl-email" placeholder="you@company.com" required>
-        <button type="submit" class="submit-btn">Notify Me →</button>
+        <button type="submit" class="submit-btn">Notify Me â†’</button>
       </div>
-      <div class="form-msg" id="wl-msg">✓ You're on the list. We'll email you when tools launch.</div>
+      <div class="form-msg" id="wl-msg">âœ“ You're on the list. We'll email you when tools launch.</div>
     </form>
   </div>
 
-  <p style="text-align:center;font-size:0.85rem;color:#666;">Star us on <a href="https://github.com/Coding-Dev-Tools" style="color:#6366f1;">GitHub</a> · <a href="../pricing.html" style="color:#6366f1;">View Pricing</a></p>
+  <p style="text-align:center;font-size:0.85rem;color:#666;">Star us on <a href="https://github.com/Coding-Dev-Tools" style="color:#6366f1;">GitHub</a> Â· <a href="../pricing.html" style="color:#6366f1;">View Pricing</a></p>
 
   <div class="share-section">
     <div class="label">Share this article</div>

@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <base href="/devforge/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DataMorph: Batch Convert Between CSV, JSON, YAML, Parquet, Avro, and Protobuf | DevForge</title>
-  <meta name="description" content="Convert between data formats at scale with DataMorph CLI — CSV, JSON, YAML, Parquet, Avro, and Protobuf. Streaming architecture handles files of any size. One command transforms your data pipeline.">
+  <meta name="description" content="Convert between data formats at scale with DataMorph CLI â€” CSV, JSON, YAML, Parquet, Avro, and Protobuf. Streaming architecture handles files of any size. One command transforms your data pipeline.">
   <meta name="keywords" content="data conversion, CSV, JSON, YAML, Parquet, Avro, Protobuf, ETL, CLI, data pipeline, batch processing, streaming, DataMorph, developer tools">
   <meta property="og:title" content="DataMorph: Batch Convert Between CSV, JSON, YAML, Parquet, Avro, and Protobuf | DevForge">
-  <meta property="og:description" content="One CLI to convert between 6 data formats — CSV, JSON, YAML, Parquet, Avro, Protobuf. Streaming architecture, no size limit. Schema inference, field mapping, and CI integration.">
+  <meta property="og:description" content="One CLI to convert between 6 data formats â€” CSV, JSON, YAML, Parquet, Avro, Protobuf. Streaming architecture, no size limit. Schema inference, field mapping, and CI integration.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://coding-dev-tools.github.io/revenueholdings.dev/blog/datamorph-batch-data-conversion.html">
   <meta name="twitter:site" content="@DevForge">
@@ -20,64 +20,9 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/datamorph-batch-data-conversion.html">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛁</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>â›</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { 
-  /* Share buttons */
-  .share-section { max-width: 700px; margin: 48px auto; padding: 0 24px; text-align: center; }
-  .share-section .label { font-size: 0.8rem; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
-  .share-buttons { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-  .share-btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; text-decoration: none; transition: all .15s; border: 1px solid #2a2a2d; color: #ccc; background: #121213; }
-  .share-btn:hover { border-color: #6366f1; color: #fff; transform: translateY(-1px); }
-  .share-btn svg { width: 16px; height: 16px; fill: currentColor; }
-
-    font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0b; color: #e1e1e3; line-height: 1.6; min-height: 100vh; }
-    nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(10,10,11,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid #1e1e20; }
-    nav .inner { max-width: 800px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
-    nav .logo { font-weight: 700; font-size: 1.15rem; color: #fff; letter-spacing: -0.02em; }
-    nav .logo span { color: #6366f1; }
-    nav .links a { color: #888; text-decoration: none; font-size: 0.85rem; margin-left: 28px; transition: color .15s; }
-    nav .links a:hover { color: #fff; }
-    nav .links a.active { color: #fff; }
-    .post-content { max-width: 800px; margin: 0 auto; padding: 100px 24px 80px; font-size: 0.95rem; line-height: 1.75; }
-    .post-content h1 { font-size: 2rem; font-weight: 800; color: #fff; letter-spacing: -0.03em; margin: 40px 0 8px; }
-    .post-content .subtitle { font-size: 1.05rem; color: #888; margin-bottom: 32px; }
-    .post-content h2 { font-size: 1.35rem; font-weight: 700; color: #fff; margin: 32px 0 12px; }
-    .post-content h3 { font-size: 1.1rem; font-weight: 600; color: #e1e1e3; margin: 24px 0 8px; }
-    .post-content p { margin: 16px 0; color: #ccc; }
-    .post-content a { color: #a78bfa; }
-    .post-content code { background: #1a1a1c; padding: 2px 8px; border-radius: 4px; font-size: 0.85em; color: #34d399; }
-    .post-content pre { background: #121213; border: 1px solid #1e1e20; border-radius: 8px; padding: 16px 20px; overflow-x: auto; margin: 16px 0; }
-    .post-content pre code { background: none; padding: 0; font-size: 0.82rem; line-height: 1.5; color: #e1e1e3; }
-    .post-content ul { margin: 16px 0; padding-left: 24px; }
-    .post-content li { color: #ccc; margin: 8px 0; }
-    .post-content .badge { display: inline-block; padding: 4px 14px; border-radius: 24px; font-size: 0.72rem; font-weight: 600; background: rgba(99,102,241,0.12); color: #a78bfa; border: 1px solid rgba(99,102,241,0.2); text-transform: uppercase; letter-spacing: 0.3px; }
-    .post-content hr { border: none; border-top: 1px solid #1e1e20; margin: 40px 0; }
-    .post-content .tip { background: rgba(52,211,153,0.06); border: 1px solid rgba(52,211,153,0.15); border-radius: 10px; padding: 16px 20px; margin: 20px 0; }
-    .post-content .tip strong { color: #34d399; }
-    .post-content .cta-box { background: rgba(99,102,241,0.06); border: 1px solid rgba(99,102,241,0.2); border-radius: 12px; padding: 24px 28px; margin: 28px 0; text-align: center; }
-    .post-content .cta-box h3 { color: #fff; margin-top: 0; }
-    .post-content .cta-box p { margin: 8px 0 18px; }
-    .post-content .cta-box a { display: inline-block; padding: 10px 24px; border-radius: 8px; background: #6366f1; color: #fff; font-weight: 600; text-decoration: none; font-size: 0.9rem; }
-    .post-content .cta-box a:hover { background: #5558e6; }
-    .post-content table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.88rem; }
-    .post-content th, .post-content td { text-align: left; padding: 10px 14px; border-bottom: 1px solid #1e1e20; }
-    .post-content th { color: #888; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.3px; }
-    .post-content td { color: #ccc; }
-    .blog-nav { max-width: 800px; margin: 0 auto; padding: 24px 24px 0; display: flex; justify-content: space-between; font-size: 0.85rem; }
-    .blog-nav a { color: #6366f1; text-decoration: none; }
-    .blog-nav a:hover { color: #a78bfa; }
-    footer { max-width: 800px; margin: 0 auto; padding: 40px 24px; border-top: 1px solid #1e1e20; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-    footer span { font-size: 0.8rem; color: #555; }
-    footer a { color: #888; text-decoration: none; font-size: 0.8rem; }
-    footer a:hover { color: #fff; }
-    @media (max-width: 640px) {
-      .post-content h1 { font-size: 1.5rem; }
-      nav .links a { margin-left: 14px; font-size: 0.75rem; }
-    }
-  </style>
+  <link rel="stylesheet" href="blog.css">
   <!-- Plausible Analytics -->
   <script defer data-domain="devforge.dev" src="https://plausible.io/js/script.js"></script>
 </head>
@@ -85,7 +30,7 @@
 
 <nav>
   <div class="inner">
-    <div class="logo"><span>⛁</span> DevForge</div>
+    <div class="logo"><span>â›</span> DevForge</div>
     <div class="links">
       <a href="../quickstart.html">Get Started</a>
       <a href="../start-here.html">Start Here</a>
@@ -113,7 +58,7 @@
 
 <p>Every data engineer has been here: you need to convert a 2GB CSV to Parquet for analytics, or translate a Protobuf schema to JSON for a REST API. Python scripts are fragile. Pandas chokes on large files. GUI tools don't scale.</p>
 
-<p>DataMorph is a CLI that converts between six data formats with a streaming architecture — meaning it can handle files of any size without loading everything into memory.</p>
+<p>DataMorph is a CLI that converts between six data formats with a streaming architecture â€” meaning it can handle files of any size without loading everything into memory.</p>
 
 <hr>
 
@@ -130,12 +75,12 @@ pip install "datamorph[all] @ git+https://..."        # Everything</code></pre>
 
 <table>
   <tr><th></th><th>CSV</th><th>JSON</th><th>YAML</th><th>Parquet</th><th>Avro</th><th>Protobuf</th></tr>
-  <tr><td><strong>CSV</strong></td><td>—</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
-  <tr><td><strong>JSON</strong></td><td>✓</td><td>—</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
-  <tr><td><strong>YAML</strong></td><td>✓</td><td>✓</td><td>—</td><td>✓</td><td>✓</td><td>✓</td></tr>
-  <tr><td><strong>Parquet</strong></td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>✓</td><td>✓</td></tr>
-  <tr><td><strong>Avro</strong></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>✓</td></tr>
-  <tr><td><strong>Protobuf</strong></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>—</td></tr>
+  <tr><td><strong>CSV</strong></td><td>â€”</td><td>âœ“</td><td>âœ“</td><td>âœ“</td><td>âœ“</td><td>âœ“</td></tr>
+  <tr><td><strong>JSON</strong></td><td>âœ“</td><td>â€”</td><td>âœ“</td><td>âœ“</td><td>âœ“</td><td>âœ“</td></tr>
+  <tr><td><strong>YAML</strong></td><td>âœ“</td><td>âœ“</td><td>â€”</td><td>âœ“</td><td>âœ“</td><td>âœ“</td></tr>
+  <tr><td><strong>Parquet</strong></td><td>âœ“</td><td>âœ“</td><td>âœ“</td><td>â€”</td><td>âœ“</td><td>âœ“</td></tr>
+  <tr><td><strong>Avro</strong></td><td>âœ“</td><td>âœ“</td><td>âœ“</td><td>âœ“</td><td>â€”</td><td>âœ“</td></tr>
+  <tr><td><strong>Protobuf</strong></td><td>âœ“</td><td>âœ“</td><td>âœ“</td><td>âœ“</td><td>âœ“</td><td>â€”</td></tr>
 </table>
 
 <p>All 30 conversion pairs work both ways. Schema information is preserved across formats where possible.</p>
@@ -164,20 +109,20 @@ datamorph format-info parquet</code></pre>
 
 <p>DataMorph doesn't load your data into memory. It streams records through a pipeline:</p>
 
-<pre><code>Source → Reader → Record Stream → Transformer → Writer → Output</code></pre>
+<pre><code>Source â†’ Reader â†’ Record Stream â†’ Transformer â†’ Writer â†’ Output</code></pre>
 
 <p>Each stage processes one record at a time. This means:</p>
 <ul>
-  <li><strong>No file size limit</strong> — convert 100GB files on a laptop with 8GB RAM</li>
-  <li><strong>Constant memory</strong> — memory usage stays flat regardless of file size</li>
-  <li><strong>Progress reporting</strong> — ETA, rate, and count displayed during conversion</li>
+  <li><strong>No file size limit</strong> â€” convert 100GB files on a laptop with 8GB RAM</li>
+  <li><strong>Constant memory</strong> â€” memory usage stays flat regardless of file size</li>
+  <li><strong>Progress reporting</strong> â€” ETA, rate, and count displayed during conversion</li>
 </ul>
 
 <pre><code># Convert a large Parquet file to CSV (streaming)
 datamorph convert big_data.parquet --to csv --progress
 
 # Output shows:
-# Converting: ████████████░░░░░░░░ 62% | 620000/1000000 rows
+# Converting: â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘ 62% | 620000/1000000 rows
 # Rate: 12500 rows/s | ETA: 30s</code></pre>
 
 <h2>Schema Inference and Mapping</h2>
@@ -190,7 +135,7 @@ datamorph convert big_data.parquet --to csv --progress
   <tr><td>integer</td><td>INT32 / INT64</td><td>int32 / int64</td></tr>
   <tr><td>float</td><td>FLOAT / DOUBLE</td><td>float / double</td></tr>
   <tr><td>boolean</td><td>BOOLEAN</td><td>bool</td></tr>
-  <tr><td>null</td><td>— (nullable annotation)</td><td>optional</td></tr>
+  <tr><td>null</td><td>â€” (nullable annotation)</td><td>optional</td></tr>
   <tr><td>array</td><td>LIST / REPEATED</td><td>repeated</td></tr>
   <tr><td>object</td><td>STRUCT / MAP</td><td>message</td></tr>
   <tr><td>binary</td><td>BYTE_ARRAY</td><td>bytes</td></tr>
@@ -265,7 +210,7 @@ jobs:
       - name: Install DataMorph
         run: pip install "datamorph[parquet] @ git+https://github.com/Coding-Dev-Tools/datamorph.git"
 
-      - name: Convert CSV → Parquet for analytics
+      - name: Convert CSV â†’ Parquet for analytics
         run: |
           datamorph batch ./data/csv/ --to parquet             --out-dir ./analytics/parquet/
 
@@ -285,11 +230,11 @@ jobs:
 
 <table>
   <tr><th>Conversion</th><th>File Size</th><th>Time</th><th>Rows/s</th></tr>
-  <tr><td>CSV → Parquet</td><td>1 GB</td><td>8.2s</td><td>~122k</td></tr>
-  <tr><td>Parquet → CSV</td><td>1 GB</td><td>9.1s</td><td>~110k</td></tr>
-  <tr><td>JSON → YAML</td><td>500 MB</td><td>6.4s</td><td>~78k</td></tr>
-  <tr><td>Parquet → Avro</td><td>1 GB</td><td>7.3s</td><td>~137k</td></tr>
-  <tr><td>CSV → JSON</td><td>2 GB</td><td>14.1s</td><td>~142k</td></tr>
+  <tr><td>CSV â†’ Parquet</td><td>1 GB</td><td>8.2s</td><td>~122k</td></tr>
+  <tr><td>Parquet â†’ CSV</td><td>1 GB</td><td>9.1s</td><td>~110k</td></tr>
+  <tr><td>JSON â†’ YAML</td><td>500 MB</td><td>6.4s</td><td>~78k</td></tr>
+  <tr><td>Parquet â†’ Avro</td><td>1 GB</td><td>7.3s</td><td>~137k</td></tr>
+  <tr><td>CSV â†’ JSON</td><td>2 GB</td><td>14.1s</td><td>~142k</td></tr>
 </table>
 
 <p><em>Benchmarks on MacBook M3 Pro, SSD storage. Streaming mode, no memory limit issues regardless of file size.</em></p>
@@ -297,7 +242,7 @@ jobs:
 <h2>Use Cases</h2>
 
 <h3>Data Engineering ETL</h3>
-<p>Ingest CSV exports, convert to Parquet for columnar analytics, then serve as Avro for streaming consumers — all in one pipeline.</p>
+<p>Ingest CSV exports, convert to Parquet for columnar analytics, then serve as Avro for streaming consumers â€” all in one pipeline.</p>
 
 <h3>API Development</h3>
 <p>Protobuf is the wire format, but developers need JSON for debugging. DataMorph converts between them for you.</p>
@@ -315,14 +260,14 @@ jobs:
 
 <div class="cta-box">
   <h3>Convert data like a pro</h3>
-  <p>No Pandas, no scripts, no memory limits — just one CLI command.</p>
+  <p>No Pandas, no scripts, no memory limits â€” just one CLI command.</p>
   <pre style="text-align:left;margin:12px 0;background:#0a0a0b;border-color:#2a2a2d;"><code>pip install git+https://github.com/Coding-Dev-Tools/datamorph.git
 datamorph convert data.csv --to parquet --progress</code></pre>
-  <a href="https://github.com/Coding-Dev-Tools/datamorph">View on GitHub →</a>
+  <a href="https://github.com/Coding-Dev-Tools/datamorph">View on GitHub â†’</a>
 </div>
 
 <p style="color:#666;font-size:0.82rem;text-align:center;margin-top:32px;">
-  <em>DataMorph is part of the <a href="https://coding-dev-tools.github.io/revenueholdings.dev/">DevForge</a> developer tool ecosystem — 11 CLI tools built by autonomous AI for autonomous developers.</em>
+  <em>DataMorph is part of the <a href="https://coding-dev-tools.github.io/revenueholdings.dev/">DevForge</a> developer tool ecosystem â€” 11 CLI tools built by autonomous AI for autonomous developers.</em>
 </p>
 
 </section>

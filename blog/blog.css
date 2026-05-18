@@ -1,0 +1,57 @@
+﻿/* Shared blog styles — extracted from 36 duplicated inline copies */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0b; color: #e1e1e3; line-height: 1.6; min-height: 100vh; }
+nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(10,10,11,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid #1e1e20; }
+nav .inner { max-width: 800px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
+nav .logo { font-weight: 700; font-size: 1.15rem; color: #fff; letter-spacing: -0.02em; text-decoration: none; }
+nav .logo span { color: #6366f1; }
+nav .links a { color: #888; text-decoration: none; font-size: 0.85rem; margin-left: 28px; transition: color .15s; }
+nav .links a:hover { color: #fff; }
+nav .links a.active { color: #6366f1; }
+article { max-width: 700px; margin: 0 auto; padding: 120px 24px 40px; }
+article h1 { font-size: 2.2rem; font-weight: 800; line-height: 1.2; letter-spacing: -0.04em; color: #fff; margin-bottom: 16px; }
+.meta { font-size: 0.85rem; color: #666; margin-bottom: 32px; }
+.meta span { margin-right: 16px; }
+article h2 { font-size: 1.4rem; font-weight: 700; color: #fff; margin-top: 48px; margin-bottom: 12px; }
+article h2 .num { color: #6366f1; margin-right: 8px; }
+article h3 { font-size: 1.1rem; font-weight: 600; color: #e1e1e3; margin-top: 28px; margin-bottom: 8px; }
+article p { font-size: 0.95rem; color: #999; line-height: 1.8; margin-bottom: 16px; }
+article p strong { color: #ddd; }
+article ul, article ol { font-size: 0.95rem; color: #999; line-height: 1.8; margin-bottom: 16px; padding-left: 24px; }
+article li { margin-bottom: 6px; }
+article a { color: #a78bfa; text-decoration: none; }
+article a:hover { text-decoration: underline; }
+article code { background: #121213; padding: 2px 8px; border-radius: 4px; font-size: 0.85rem; color: #e1e1e3; }
+article pre { background: #121213; border: 1px solid #1e1e20; border-radius: 10px; padding: 16px 20px; overflow-x: auto; margin-bottom: 20px; }
+article pre code { background: none; padding: 0; font-size: 0.85rem; line-height: 1.6; }
+hr { border: none; border-top: 1px solid #1e1e20; margin: 32px 0; }
+.toc { background: #121213; border: 1px solid #1e1e20; border-radius: 12px; padding: 20px 24px; margin-bottom: 32px; }
+.toc h3 { font-size: 0.85rem; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-top: 0; margin-bottom: 12px; }
+.toc ol { margin-bottom: 0; }
+.toc li { font-size: 0.9rem; margin-bottom: 4px; }
+.toc a { color: #888; }
+.tool-card { background: #121213; border: 1px solid #1e1e20; border-radius: 12px; padding: 20px 24px; margin-bottom: 24px; }
+.tool-card h2 { margin-top: 0; }
+.tag { display: inline-block; padding: 2px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.3px; margin-right: 4px; }
+.tag-mcp { background: rgba(99,102,241,0.15); color: #818cf8; }
+.tag-api { background: rgba(16,185,129,0.15); color: #34d399; }
+.tag-data { background: rgba(245,158,11,0.15); color: #fbbf24; }
+.tag-devops { background: rgba(239,68,68,0.15); color: #f87171; }
+.tag-code { background: rgba(56,189,248,0.15); color: #38bdf8; }
+.tag-sec { background: rgba(168,85,247,0.15); color: #c084fc; }
+article blockquote { border-left: 3px solid #6366f1; padding-left: 16px; margin: 20px 0; color: #aaa; font-style: italic; }
+footer { max-width: 700px; margin: 0 auto; padding: 32px 24px; border-top: 1px solid #1e1e20; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+footer span { font-size: 0.8rem; color: #555; }
+footer a { color: #888; text-decoration: none; font-size: 0.8rem; }
+footer a:hover { color: #fff; }
+@media (max-width: 640px) {
+  nav .links a { margin-left: 14px; font-size: 0.75rem; }
+  article h1 { font-size: 1.6rem; }
+  .tool-card { padding: 16px; }
+}
+.share-section { max-width: 700px; margin: 0 auto 48px; padding: 0 24px; text-align: center; }
+.share-section .label { font-size: 0.8rem; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+.share-buttons { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.share-btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; text-decoration: none; transition: all .15s; border: 1px solid #2a2a2d; color: #ccc; background: #121213; }
+.share-btn:hover { border-color: #6366f1; color: #fff; transform: translateY(-1px); }
+.share-btn svg { width: 16px; height: 16px; fill: currentColor; }

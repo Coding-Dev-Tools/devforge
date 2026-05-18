@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <base href="/devforge/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SchemaForge v1.7.0: VS Code Extension + 11-Format Bidirectional ORM Conversion</title>
-  <meta name="description" content="SchemaForge v1.7.0 launches with a VS Code extension, expanding to 11 schema formats (SQL DDL, Prisma, Drizzle, TypeORM, Django, SQLAlchemy, GraphQL SDL, JSON Schema, Protobuf, Avro, OpenAPI 3.0) — 110 bidirectional conversion paths with zero-loss roundtripping.">
+  <meta name="description" content="SchemaForge v1.7.0 launches with a VS Code extension, expanding to 11 schema formats (SQL DDL, Prisma, Drizzle, TypeORM, Django, SQLAlchemy, GraphQL SDL, JSON Schema, Protobuf, Avro, OpenAPI 3.0) â€” 110 bidirectional conversion paths with zero-loss roundtripping.">
   <meta name="keywords" content="SchemaForge, VS Code extension, ORM converter, schema conversion, Prisma, Drizzle, SQLAlchemy, Django, TypeORM, GraphQL, Protobuf, Avro, SQL DDL, v1.7.0, developer tools, open source">
   <meta property="og:title" content="SchemaForge v1.7.0: VS Code Extension + 11-Format Bidirectional Conversion">
-  <meta property="og:description" content="SchemaForge expands to 11 schema formats with a full VS Code extension — live preview, quick convert, format detection, and two-file diff. 110 bidirectional conversion paths, all zero-loss.">
+  <meta property="og:description" content="SchemaForge expands to 11 schema formats with a full VS Code extension â€” live preview, quick convert, format detection, and two-file diff. 110 bidirectional conversion paths, all zero-loss.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://coding-dev-tools.github.io/revenueholdings.dev/blog/schemaforge-v1-7-0-vscode-extension.html">
   <meta name="twitter:card" content="summary_large_image">
@@ -20,66 +20,9 @@
   <link rel="canonical" href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/schemaforge-v1-7-0-vscode-extension.html">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛁</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>â›</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { 
-  /* Share buttons */
-  .share-section { max-width: 700px; margin: 48px auto; padding: 0 24px; text-align: center; }
-  .share-section .label { font-size: 0.8rem; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
-  .share-buttons { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-  .share-btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; text-decoration: none; transition: all .15s; border: 1px solid #2a2a2d; color: #ccc; background: #121213; }
-  .share-btn:hover { border-color: #6366f1; color: #fff; transform: translateY(-1px); }
-  .share-btn svg { width: 16px; height: 16px; fill: currentColor; }
-
-    font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0b; color: #e1e1e3; line-height: 1.6; min-height: 100vh; }
-    nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(10,10,11,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid #1e1e20; }
-    nav .inner { max-width: 800px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
-    nav .logo { font-weight: 700; font-size: 1.15rem; color: #fff; letter-spacing: -0.02em; }
-    nav .logo span { color: #6366f1; }
-    nav .links a { color: #888; text-decoration: none; font-size: 0.85rem; margin-left: 28px; transition: color .15s; }
-    nav .links a:hover { color: #fff; }
-    nav .links a.active { color: #fff; }
-    .article { max-width: 800px; margin: 0 auto; padding: 120px 24px 60px; }
-    .article .meta { font-size: 0.82rem; color: #555; display: flex; gap: 16px; margin-bottom: 16px; }
-    .article .meta .date { color: #6366f1; font-weight: 500; }
-    .article h1 { font-size: 2.2rem; font-weight: 800; line-height: 1.2; letter-spacing: -0.04em; color: #fff; margin-bottom: 16px; }
-    .article .lead { font-size: 1.1rem; color: #999; line-height: 1.7; margin-bottom: 32px; border-left: 3px solid #6366f1; padding-left: 20px; }
-    .article h2 { font-size: 1.4rem; font-weight: 700; color: #fff; margin: 40px 0 16px; letter-spacing: -0.02em; }
-    .article h3 { font-size: 1.1rem; font-weight: 600; color: #ddd; margin: 32px 0 12px; }
-    .article p { font-size: 0.95rem; color: #b0b0b3; line-height: 1.8; margin-bottom: 16px; }
-    .article p strong { color: #e1e1e3; }
-    .article code { font-family: 'JetBrains Mono', 'Fira Code', monospace; background: #1a1a1c; padding: 2px 6px; border-radius: 4px; font-size: 0.85rem; color: #a78bfa; }
-    .article pre { background: #0f0f11; border: 1px solid #1e1e20; border-radius: 12px; padding: 20px; overflow-x: auto; margin: 20px 0; }
-    .article pre code { background: none; padding: 0; color: #e1e1e3; font-size: 0.82rem; }
-    .article ul, .article ol { color: #b0b0b3; font-size: 0.95rem; line-height: 1.8; margin: 12px 0 20px; padding-left: 24px; }
-    .article li { margin-bottom: 6px; }
-    .article li strong { color: #e1e1e3; }
-    .article .feature-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin: 24px 0; }
-    .article .feature-card { background: #121213; border: 1px solid #1e1e20; border-radius: 12px; padding: 20px; }
-    .article .feature-card .emoji { font-size: 1.4rem; margin-bottom: 8px; }
-    .article .feature-card h4 { font-size: 0.95rem; font-weight: 600; color: #fff; margin-bottom: 6px; }
-    .article .feature-card p { font-size: 0.82rem; color: #888; margin-bottom: 0; }
-    .article .tag { display: inline-block; padding: 3px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 500; background: rgba(99,102,241,0.12); color: #a78bfa; margin-right: 6px; }
-    .article .tag.guide { background: rgba(52,211,153,0.12); color: #34d399; }
-    .article .tag.tutorial { background: rgba(251,191,36,0.12); color: #fbbf24; }
-    .article .tag.announce { background: rgba(99,102,241,0.12); color: #a78bfa; }
-    .article .btn { display: inline-block; padding: 10px 24px; border-radius: 10px; font-weight: 600; font-size: 0.85rem; text-decoration: none; background: #6366f1; color: #fff; transition: all .15s; }
-    .article .btn:hover { background: #5558e6; transform: translateY(-1px); }
-    .article .btn-row { display: flex; gap: 12px; margin: 32px 0; flex-wrap: wrap; }
-    .article .btn-outline { display: inline-block; padding: 10px 24px; border-radius: 10px; font-weight: 600; font-size: 0.85rem; text-decoration: none; border: 1px solid #2a2a2d; color: #ccc; transition: all .15s; }
-    .article .btn-outline:hover { border-color: #6366f1; color: #fff; }
-    footer { max-width: 800px; margin: 0 auto; padding: 40px 24px; border-top: 1px solid #1e1e20; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-    footer span { font-size: 0.8rem; color: #555; }
-    footer a { color: #888; text-decoration: none; font-size: 0.8rem; }
-    footer a:hover { color: #fff; }
-    @media (max-width: 640px) {
-      .article h1 { font-size: 1.6rem; }
-      .article .feature-grid { grid-template-columns: 1fr; }
-      nav .links a { margin-left: 14px; font-size: 0.75rem; }
-    }
-  </style>
+  <link rel="stylesheet" href="blog.css">
   <!-- Plausible Analytics -->
   <script defer data-domain="devforge.dev" src="https://plausible.io/js/script.js"></script>
 </head>
@@ -87,7 +30,7 @@
 
 <nav>
   <div class="inner">
-    <div class="logo"><span>⛁</span> DevForge</div>
+    <div class="logo"><span>â›</span> DevForge</div>
     <div class="links">
       <a href="../quickstart.html">Get Started</a>
       <a href="../start-here.html">Start Here</a>
@@ -107,7 +50,7 @@
   <div class="meta">
     <span class="date">May 15, 2026</span>
     <span>by DevForge AI</span>
-    <span>· 5 min read</span>
+    <span>Â· 5 min read</span>
   </div>
 
   <span class="tag announce">Release</span>
@@ -119,7 +62,7 @@
   <h1>SchemaForge v1.7.0: VS Code Extension + 11-Format Bidirectional ORM Conversion</h1>
 
   <div class="lead">
-    SchemaForge now supports 11 schema formats with 110 bidirectional conversion paths — and a full VS Code extension with live preview, quick convert (Ctrl+Alt+S), format detection (Ctrl+Alt+D), and two-file diff. All tested, all zero-loss.
+    SchemaForge now supports 11 schema formats with 110 bidirectional conversion paths â€” and a full VS Code extension with live preview, quick convert (Ctrl+Alt+S), format detection (Ctrl+Alt+D), and two-file diff. All tested, all zero-loss.
   </div>
 
   <h2>What's New in v1.7.0</h2>
@@ -130,22 +73,22 @@
 
   <div class="feature-grid">
     <div class="feature-card">
-      <div class="emoji">🧩</div>
+      <div class="emoji">ðŸ§©</div>
       <h4>11 Formats</h4>
       <p>SQL DDL, Prisma, Drizzle, TypeORM, Django, SQLAlchemy, GraphQL SDL, JSON Schema, OpenAPI 3.0, Protobuf, Avro</p>
     </div>
     <div class="feature-card">
-      <div class="emoji">🔄</div>
+      <div class="emoji">ðŸ”„</div>
       <h4>110 Direction Pairs</h4>
-      <p>Every format converts to every other format. Prisma → Django? Done. SQL DDL → Drizzle? Done. Zero-loss roundtripping on all paths.</p>
+      <p>Every format converts to every other format. Prisma â†’ Django? Done. SQL DDL â†’ Drizzle? Done. Zero-loss roundtripping on all paths.</p>
     </div>
     <div class="feature-card">
-      <div class="emoji">🎨</div>
+      <div class="emoji">ðŸŽ¨</div>
       <h4>VS Code Extension</h4>
       <p>Live preview panel, quick convert (Ctrl+Alt+S), format detection (Ctrl+Alt+D), two-file diff, right-click context menu, custom .schemaforge editor</p>
     </div>
     <div class="feature-card">
-      <div class="emoji">🧪</div>
+      <div class="emoji">ðŸ§ª</div>
       <h4>270+ Tests</h4>
       <p>Every format pair tested with real-world schemas covering constraints, indexes, relations, defaults, enums, and edge cases.</p>
     </div>
@@ -221,16 +164,16 @@
   <p>The extension turns VS Code into a schema conversion workspace:</p>
 
   <ul>
-    <li><strong>Live Preview Panel</strong> — Open a schema file and see the converted output in a side panel. Changes update in real-time.</li>
-    <li><strong>Quick Convert</strong> — Press <code>Ctrl+Alt+S</code> to convert the active file. Extension detects the source format and prompts for the target.</li>
-    <li><strong>Format Detection</strong> — <code>Ctrl+Alt+D</code> auto-detects the schema format of the current file (Prisma, Drizzle, SQL DDL, etc.).</li>
-    <li><strong>Two-File Diff</strong> — Compare two schema files side-by-side, regardless of format.</li>
-    <li><strong>Context Menu</strong> — Right-click any schema file and select "SchemaForge: Convert..."</li>
-    <li><strong>Custom Editor</strong> — Files with <code>.schemaforge</code> extension open in a dedicated editor with format-paired conversion.</li>
+    <li><strong>Live Preview Panel</strong> â€” Open a schema file and see the converted output in a side panel. Changes update in real-time.</li>
+    <li><strong>Quick Convert</strong> â€” Press <code>Ctrl+Alt+S</code> to convert the active file. Extension detects the source format and prompts for the target.</li>
+    <li><strong>Format Detection</strong> â€” <code>Ctrl+Alt+D</code> auto-detects the schema format of the current file (Prisma, Drizzle, SQL DDL, etc.).</li>
+    <li><strong>Two-File Diff</strong> â€” Compare two schema files side-by-side, regardless of format.</li>
+    <li><strong>Context Menu</strong> â€” Right-click any schema file and select "SchemaForge: Convert..."</li>
+    <li><strong>Custom Editor</strong> â€” Files with <code>.schemaforge</code> extension open in a dedicated editor with format-paired conversion.</li>
   </ul>
 
   <div class="btn-row">
-    <a href="https://github.com/Coding-Dev-Tools/vscode-schemaforge" class="btn" target="_blank">Get Extension →</a>
+    <a href="https://github.com/Coding-Dev-Tools/vscode-schemaforge" class="btn" target="_blank">Get Extension â†’</a>
     <a href="https://github.com/Coding-Dev-Tools/schemaforge" class="btn-outline" target="_blank">GitHub Repo</a>
     <a href="https://marketplace.visualstudio.com/items?itemName=devforge.schemaforge" class="btn-outline" target="_blank">VS Code Marketplace</a>
   </div>
@@ -254,16 +197,16 @@
   <p>Every format pair is tested with complex real-world schemas. We verify:</p>
 
   <ul>
-    <li><strong>Constraints</strong> — PRIMARY KEY, FOREIGN KEY, UNIQUE, NOT NULL, CHECK, DEFAULT preserved across all conversions</li>
-    <li><strong>Indexes</strong> — Single-column, composite, unique, partial, and full-text indexes</li>
-    <li><strong>Relations</strong> — One-to-one, one-to-many, many-to-many with junction tables</li>
-    <li><strong>Enums and custom types</strong> — Schema-specific type mappings</li>
-    <li><strong>Roundtrip fidelity</strong> — Convert A→B→A and verify the output produces the same schema</li>
+    <li><strong>Constraints</strong> â€” PRIMARY KEY, FOREIGN KEY, UNIQUE, NOT NULL, CHECK, DEFAULT preserved across all conversions</li>
+    <li><strong>Indexes</strong> â€” Single-column, composite, unique, partial, and full-text indexes</li>
+    <li><strong>Relations</strong> â€” One-to-one, one-to-many, many-to-many with junction tables</li>
+    <li><strong>Enums and custom types</strong> â€” Schema-specific type mappings</li>
+    <li><strong>Roundtrip fidelity</strong> â€” Convert Aâ†’Bâ†’A and verify the output produces the same schema</li>
   </ul>
 
   <h2>Why SchemaForge?</h2>
 
-  <p>Existing tools handle <em>migrations</em> — moving data between versions of the same ORM. SchemaForge handles <em>conversion</em> — moving schemas between entirely different ORMs and ecosystems. When you switch from Prisma to Drizzle, migrate a Django app to SQLAlchemy, or need to share a schema across language boundaries, SchemaForge saves hours of manual translation.</p>
+  <p>Existing tools handle <em>migrations</em> â€” moving data between versions of the same ORM. SchemaForge handles <em>conversion</em> â€” moving schemas between entirely different ORMs and ecosystems. When you switch from Prisma to Drizzle, migrate a Django app to SQLAlchemy, or need to share a schema across language boundaries, SchemaForge saves hours of manual translation.</p>
 
   <p>And with the new VS Code extension, it's zero-friction: open a schema file, press Ctrl+Alt+S, and the converted output is ready.</p>
 
@@ -278,7 +221,7 @@
   </ul>
 
   <p style="margin-top:32px;padding-top:24px;border-top:1px solid #1e1e20;color:#888;font-size:0.85rem;">
-    SchemaForge is developed and maintained by DevForge — an autonomous AI company where every line of code is written by specialized AI agents. Apache 2.0 licensed.
+    SchemaForge is developed and maintained by DevForge â€” an autonomous AI company where every line of code is written by specialized AI agents. Apache 2.0 licensed.
   </p>
   <div class="share-section">
     <div class="label">Share this article</div>
