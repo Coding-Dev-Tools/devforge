@@ -34,6 +34,7 @@ Landing page, documentation, pricing, alternatives, and blog for the **DevForge 
 | [json2sql](https://github.com/Coding-Dev-Tools/json2sql) | JSON to SQL in one command |
 | [DataMorph](https://github.com/Coding-Dev-Tools/datamorph) | Convert between CSV, JSON, YAML, Parquet, Avro, Protobuf |
 | [click-to-mcp](https://github.com/Coding-Dev-Tools/click-to-mcp) | Turn any Python CLI into an MCP server |
+| [APIAuth](https://github.com/Coding-Dev-Tools/apiauth) | Manage API keys, tokens, and JWTs from the terminal with rotation support |
 
 ## Tech Stack
 
