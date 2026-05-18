@@ -1,29 +1,29 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <base href="/devforge/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>License Keys & Rate Limiting Come to Revenue Holdings CLI Tools | Revenue Holdings</title>
-  <meta name="description" content="Revenue Holdings rolls out JWT-based license key validation and SQLite rate limiting across all 11 CLI tools. Free tier: 50 uses/day per tool. Pro: unlimited.">
+  <title>License Keys & Rate Limiting Come to DevForge CLI Tools | DevForge</title>
+  <meta name="description" content="DevForge rolls out JWT-based license key validation and SQLite rate limiting across all 11 CLI tools. Free tier: 50 uses/day per tool. Pro: unlimited.">
   <meta name="keywords" content="license key, rate limiting, CLI tools, developer tools, monetization, open source, subscription">
-  <meta property="og:title" content="License Keys & Rate Limiting Come to Revenue Holdings CLI Tools | Revenue Holdings">
+  <meta property="og:title" content="License Keys & Rate Limiting Come to DevForge CLI Tools | DevForge">
   <meta property="og:description" content="JWT-based license key validation and per-tool rate limiting rolling out across all 11 CLI tools. Free tier: 50 uses/day. Pro: unlimited. Enterprise: custom.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://coding-dev-tools.github.io/devforge/blog/license-key-rate-limiting-cli-tools.html">
   <meta name="twitter:site" content="@RevenueHolds">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="License Keys & Rate Limiting Come to Revenue Holdings CLI Tools">
+  <meta name="twitter:title" content="License Keys & Rate Limiting Come to DevForge CLI Tools">
   <meta name="twitter:description" content="JWT-based license key validation rolling out across all 11 CLI tools. Free tier: 50 uses/day. Pro: unlimited.">
   <meta name="twitter:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
   <meta property="og:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="https://coding-dev-tools.github.io/devforge/blog/license-key-rate-limiting-cli-tools.html">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>â›</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛁</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <!-- Plausible Analytics -->
-  <script defer data-domain="revenueholdings.dev" src="https://plausible.io/js/script.js"></script>
+  <script defer data-domain="devforge" src="https://plausible.io/js/script.js"></script>
   <link rel="stylesheet" href="blog.css">
 </head>
 <body>
@@ -42,10 +42,10 @@
   </nav>
 
   <article>
-    <div class="meta">May 16, 2026 â€¢ 4 min read â€¢ <a href="https://coding-dev-tools.github.io/devforge/blog.html">&#8592; Back to Blog</a></div>
-    <h1>License Keys &amp; Rate Limiting: <span>Revenue Holdings Goes Pro</span></h1>
+    <div class="meta">May 16, 2026 • 4 min read • <a href="https://coding-dev-tools.github.io/devforge/blog.html">&#8592; Back to Blog</a></div>
+    <h1>License Keys &amp; Rate Limiting: <span>DevForge Goes Pro</span></h1>
 
-    <p>Today we're rolling out <strong>devforge-license</strong> â€” a shared license key validation and rate limiting system â€” across the entire Revenue Holdings CLI tool ecosystem. This marks our transition from a pure open-source project to a sustainable, tiered product.</p>
+    <p>Today we're rolling out <strong>devforge-license</strong> — a shared license key validation and rate limiting system — across the entire DevForge CLI tool ecosystem. This marks our transition from a pure open-source project to a sustainable, tiered product.</p>
 
     <h2>What's Shipping</h2>
 
@@ -69,11 +69,11 @@
 
     <p>Every CLI command now calls <code>require_license()</code> before executing. Here's what that means in practice:</p>
 
-    <pre><code><span class="comment"># On a fresh install â€” free tier, no setup needed</span>
+    <pre><code><span class="comment"># On a fresh install — free tier, no setup needed</span>
 $ schemaforge convert input.prisma --to drizzle
-<span class="string">âœ“ Schema converted (42 uses remaining today)</span>
+<span class="string">✓ Schema converted (42 uses remaining today)</span>
 
-<span class="comment"># Free tier limit hit â€” upgrade prompt</span>
+<span class="comment"># Free tier limit hit — upgrade prompt</span>
 $ schemaforge convert input.prisma --to drizzle
 <span class="comment">Free tier limit reached (50/50 uses today).
 Upgrade to Pro: devforge/pricing.html
@@ -81,7 +81,7 @@ Or wait until tomorrow when your free tier resets.</span>
 
 <span class="comment"># Activate a Pro key</span>
 $ devforge license activate RH-PRO-XXXX-XXXX
-<span class="string">âœ“ License activated: Pro tier (unlimited)</span></code></pre>
+<span class="string">✓ License activated: Pro tier (unlimited)</span></code></pre>
 
     <h2>Three Tiers</h2>
 
@@ -92,27 +92,27 @@ $ devforge license activate RH-PRO-XXXX-XXXX
       <tr><td><strong>Enterprise</strong></td><td>Custom</td><td>Custom</td><td>SSO, RBAC, compliance, priority support</td></tr>
     </table>
 
-    <p>Free tier resets daily â€” that's 500 combined free operations across all 11 tools every day, more than enough for personal use, experimentation, and CI testing.</p>
+    <p>Free tier resets daily — that's 500 combined free operations across all 11 tools every day, more than enough for personal use, experimentation, and CI testing.</p>
 
     <h2>Technical Design</h2>
 
     <p>We designed the license system with developer experience in mind:</p>
 
     <ul>
-      <li><strong>Offline-capable</strong> â€” JWT-based validation works without internet. License keys use RS256 signatures verified locally.</li>
-      <li><strong>24-hour grace period</strong> â€” If your license server can't be reached, the CLI keeps working for 24 hours.</li>
-      <li><strong>SQLite rate limiting</strong> â€” Per-tool, per-day counters stored in <code>~/.devforge/</code>. No telemetry, no phoning home for usage tracking.</li>
-      <li><strong>Environment variable support</strong> â€” Set <code>DEVFORGE_LICENSE_KEY</code> for headless CI environments.</li>
+      <li><strong>Offline-capable</strong> — JWT-based validation works without internet. License keys use RS256 signatures verified locally.</li>
+      <li><strong>24-hour grace period</strong> — If your license server can't be reached, the CLI keeps working for 24 hours.</li>
+      <li><strong>SQLite rate limiting</strong> — Per-tool, per-day counters stored in <code>~/.devforge/</code>. No telemetry, no phoning home for usage tracking.</li>
+      <li><strong>Environment variable support</strong> — Set <code>DEVFORGE_LICENSE_KEY</code> for headless CI environments.</li>
     </ul>
 
     <pre><code><span class="comment"># In CI or Docker</span>
 $ export DEVFORGE_LICENSE_KEY=RH-PRO-XXXX-XXXX
 $ deploydiff plan main..feature
-<span class="string">âœ“ Infrastructure diff generated</span></code></pre>
+<span class="string">✓ Infrastructure diff generated</span></code></pre>
 
     <h2>What This Means for Existing Users</h2>
 
-    <p>If you're using our tools today: <strong>nothing changes.</strong> All tools remain fully functional on the free tier â€” 50 uses per tool per day. No features are gated behind the license. The only difference is you'll see a clean usage counter after each command.</p>
+    <p>If you're using our tools today: <strong>nothing changes.</strong> All tools remain fully functional on the free tier — 50 uses per tool per day. No features are gated behind the license. The only difference is you'll see a clean usage counter after each command.</p>
 
     <p>This lays the foundation for us to sustainably maintain and improve all 11 CLI tools. Revenue from Pro subscriptions goes directly into:</p>
     <ul>
@@ -124,29 +124,29 @@ $ deploydiff plan main..feature
 
     <h2>Also Shipping Today: envault Encrypt/Decrypt</h2>
 
-    <p>Alongside the license rollout, <strong>Envault</strong> (<code>envault 0.5.0+</code>) now includes <code>encrypt</code> and <code>decrypt</code> commands â€” letting you encrypt individual environment values with AES-256 before committing them to version control:</p>
+    <p>Alongside the license rollout, <strong>Envault</strong> (<code>envault 0.5.0+</code>) now includes <code>encrypt</code> and <code>decrypt</code> commands — letting you encrypt individual environment values with AES-256 before committing them to version control:</p>
 
     <pre><code><span class="comment"># Encrypt a sensitive value</span>
 $ envault encrypt DB_PASSWORD
-<span class="string">âœ“ Encrypted: enc:A5G8...</span>
+<span class="string">✓ Encrypted: enc:A5G8...</span>
 
 <span class="comment"># View encrypted .env with a decryption helper</span>
 $ envault decrypt --inline</code></pre>
 
-    <p>This pairs naturally with the license system â€” CI pipelines can use Pro-tier license keys to automatically decrypt environment variables during deployment.</p>
+    <p>This pairs naturally with the license system — CI pipelines can use Pro-tier license keys to automatically decrypt environment variables during deployment.</p>
 
     <h2>Try It Today</h2>
 
     <div class="card">
       <h3>Get Started</h3>
       <p>
-        Install any Revenue Holdings tool and start using it free, right now:<br>
+        Install any DevForge tool and start using it free, right now:<br>
         <code>pip install git+https://github.com/Coding-Dev-Tools/devforge.git</code>
       </p>
       <p>
         Or activate a Pro license:<br>
         <a href="https://coding-dev-tools.github.io/devforge/pricing.html">
-          devforge/pricing.html â†’
+          devforge/pricing.html →
         </a>
       </p>
     </div>
@@ -155,11 +155,11 @@ $ envault decrypt --inline</code></pre>
 
     <hr style="border: none; border-top: 1px solid #1e1e20; margin: 40px 0;">
 
-    <p><em>â€” The Revenue Holdings Team</em></p>
+    <p><em>— The DevForge Team</em></p>
     <div class="share-section">
     <div class="label">Share this article</div>
     <div class="share-buttons">
-      <a class="share-btn" href="https://twitter.com/intent/tweet?text=License%20Keys%20%26%20Rate%20Limiting%20Come%20to%20Revenue Holdings%20CLI%20Tools%20%7C%20Revenue Holdings&url=https%3A//coding-dev-tools.github.io/devforge/blog/license-key-rate-limiting-cli-tools.html" target="_blank" rel="noopener">
+      <a class="share-btn" href="https://twitter.com/intent/tweet?text=License%20Keys%20%26%20Rate%20Limiting%20Come%20to%20DevForge%20CLI%20Tools%20%7C%20DevForge&url=https%3A//coding-dev-tools.github.io/devforge/blog/license-key-rate-limiting-cli-tools.html" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         X / Twitter
       </a>
@@ -167,11 +167,11 @@ $ envault decrypt --inline</code></pre>
         <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         LinkedIn
       </a>
-      <a class="share-btn" href="https://news.ycombinator.com/submitlink?u=https%3A//coding-dev-tools.github.io/devforge/blog/license-key-rate-limiting-cli-tools.html&t=License%20Keys%20%26%20Rate%20Limiting%20Come%20to%20Revenue Holdings%20CLI%20Tools%20%7C%20Revenue Holdings" target="_blank" rel="noopener">
+      <a class="share-btn" href="https://news.ycombinator.com/submitlink?u=https%3A//coding-dev-tools.github.io/devforge/blog/license-key-rate-limiting-cli-tools.html&t=License%20Keys%20%26%20Rate%20Limiting%20Come%20to%20DevForge%20CLI%20Tools%20%7C%20DevForge" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" style="fill:#f60;"><path d="M0 0v24h24V0H0zm13.855 13.55L18 22h-3.06l-2.94-6.48-2.94 6.48H6l4.145-8.45L6 5.5h3.06l2.94 6.48L14.94 5.5H18l-4.145 8.05z"/></svg>
         Hacker News
       </a>
-      <a class="share-btn" href="https://www.reddit.com/submit?url=https%3A//coding-dev-tools.github.io/devforge/blog/license-key-rate-limiting-cli-tools.html&title=License%20Keys%20%26%20Rate%20Limiting%20Come%20to%20Revenue Holdings%20CLI%20Tools%20%7C%20Revenue Holdings" target="_blank" rel="noopener">
+      <a class="share-btn" href="https://www.reddit.com/submit?url=https%3A//coding-dev-tools.github.io/devforge/blog/license-key-rate-limiting-cli-tools.html&title=License%20Keys%20%26%20Rate%20Limiting%20Come%20to%20DevForge%20CLI%20Tools%20%7C%20DevForge" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" style="fill:#ff4500;"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.633 4.674 1.652a1.747 1.747 0 0 1 2.37.52 1.748 1.748 0 0 1-.52 2.37 1.75 1.75 0 0 1-1.378.33c.172.582.26 1.195.26 1.826 0 3.392-4.027 6.147-8.996 6.147S3.93 17.61 3.93 14.224c0-.63.088-1.243.26-1.826a1.75 1.75 0 0 1-1.378-.33 1.75 1.75 0 0 1-.52-2.37 1.747 1.747 0 0 1 2.37-.52c1.194-1.02 2.85-1.583 4.674-1.652l.8-3.747 2.597.547c.02-.275.135-.536.322-.745a1.24 1.24 0 0 1 1.115-.403l.003-.003zm-3.136 5.849c-1.44 0-2.607.502-2.607 1.123 0 .62 1.167 1.122 2.607 1.122s2.607-.502 2.607-1.122c0-.621-1.167-1.123-2.607-1.123zm-4.338 2.499a1.26 1.26 0 1 0 0 2.52 1.26 1.26 0 0 0 0-2.52zm8.676 0a1.26 1.26 0 1 0 0 2.52 1.26 1.26 0 0 0 0-2.52zm-1.848 4.032c.11.105.164.256.135.406-.548 2.677-2.797 4.061-4.823 4.061-2.026 0-4.275-1.384-4.823-4.061a.42.42 0 0 1 .541-.474c2.093.734 4.36.739 6.453.003a.42.42 0 0 1 .517.065zm-3.475 1.206c-1.06 0-1.919.26-1.919.582 0 .322.859.583 1.919.583s1.919-.261 1.919-.583c0-.322-.859-.582-1.919-.582z"/></svg>
         Reddit
       </a>

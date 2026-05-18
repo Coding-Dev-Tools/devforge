@@ -1,36 +1,36 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <base href="/devforge/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DataMorph: Batch Convert Between CSV, JSON, YAML, Parquet, Avro, and Protobuf | Revenue Holdings</title>
-  <meta name="description" content="Convert between data formats at scale with DataMorph CLI â€” CSV, JSON, YAML, Parquet, Avro, and Protobuf. Streaming architecture handles files of any size. One command transforms your data pipeline.">
+  <title>DataMorph: Batch Convert Between CSV, JSON, YAML, Parquet, Avro, and Protobuf | DevForge</title>
+  <meta name="description" content="Convert between data formats at scale with DataMorph CLI — CSV, JSON, YAML, Parquet, Avro, and Protobuf. Streaming architecture handles files of any size. One command transforms your data pipeline.">
   <meta name="keywords" content="data conversion, CSV, JSON, YAML, Parquet, Avro, Protobuf, ETL, CLI, data pipeline, batch processing, streaming, DataMorph, developer tools">
-  <meta property="og:title" content="DataMorph: Batch Convert Between CSV, JSON, YAML, Parquet, Avro, and Protobuf | Revenue Holdings">
-  <meta property="og:description" content="One CLI to convert between 6 data formats â€” CSV, JSON, YAML, Parquet, Avro, Protobuf. Streaming architecture, no size limit. Schema inference, field mapping, and CI integration.">
+  <meta property="og:title" content="DataMorph: Batch Convert Between CSV, JSON, YAML, Parquet, Avro, and Protobuf | DevForge">
+  <meta property="og:description" content="One CLI to convert between 6 data formats — CSV, JSON, YAML, Parquet, Avro, Protobuf. Streaming architecture, no size limit. Schema inference, field mapping, and CI integration.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://coding-dev-tools.github.io/devforge/blog/datamorph-batch-data-conversion.html">
   <meta name="twitter:site" content="@RevenueHolds">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="DataMorph: Batch Convert Between CSV, JSON, YAML, Parquet, Avro, and Protobuf | Revenue Holdings">
+  <meta name="twitter:title" content="DataMorph: Batch Convert Between CSV, JSON, YAML, Parquet, Avro, and Protobuf | DevForge">
   <meta name="twitter:description" content="One CLI to convert between CSV, JSON, YAML, Parquet, Avro, and Protobuf. Streaming architecture for files of any size.">
   <meta name="twitter:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
   <meta property="og:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="https://coding-dev-tools.github.io/devforge/blog/datamorph-batch-data-conversion.html">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>â›</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛁</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="blog.css">
   <!-- Plausible Analytics -->
-  <script defer data-domain="revenueholdings.dev" src="https://plausible.io/js/script.js"></script>
+  <script defer data-domain="devforge" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
 
 <nav>
   <div class="inner">
-    <div class="logo"><span>â›</span> Revenue Holdings</div>
+    <div class="logo"><span>⛁</span> DevForge</div>
     <div class="links">
       <a href="../quickstart.html">Get Started</a>
       <a href="../start-here.html">Start Here</a>
@@ -58,7 +58,7 @@
 
 <p>Every data engineer has been here: you need to convert a 2GB CSV to Parquet for analytics, or translate a Protobuf schema to JSON for a REST API. Python scripts are fragile. Pandas chokes on large files. GUI tools don't scale.</p>
 
-<p>DataMorph is a CLI that converts between six data formats with a streaming architecture â€” meaning it can handle files of any size without loading everything into memory.</p>
+<p>DataMorph is a CLI that converts between six data formats with a streaming architecture — meaning it can handle files of any size without loading everything into memory.</p>
 
 <hr>
 
@@ -75,12 +75,12 @@ pip install "datamorph[all] @ git+https://..."        # Everything</code></pre>
 
 <table>
   <tr><th></th><th>CSV</th><th>JSON</th><th>YAML</th><th>Parquet</th><th>Avro</th><th>Protobuf</th></tr>
-  <tr><td><strong>CSV</strong></td><td>â€”</td><td>âœ“</td><td>âœ“</td><td>âœ“</td><td>âœ“</td><td>âœ“</td></tr>
-  <tr><td><strong>JSON</strong></td><td>âœ“</td><td>â€”</td><td>âœ“</td><td>âœ“</td><td>âœ“</td><td>âœ“</td></tr>
-  <tr><td><strong>YAML</strong></td><td>âœ“</td><td>âœ“</td><td>â€”</td><td>âœ“</td><td>âœ“</td><td>âœ“</td></tr>
-  <tr><td><strong>Parquet</strong></td><td>âœ“</td><td>âœ“</td><td>âœ“</td><td>â€”</td><td>âœ“</td><td>âœ“</td></tr>
-  <tr><td><strong>Avro</strong></td><td>âœ“</td><td>âœ“</td><td>âœ“</td><td>âœ“</td><td>â€”</td><td>âœ“</td></tr>
-  <tr><td><strong>Protobuf</strong></td><td>âœ“</td><td>âœ“</td><td>âœ“</td><td>âœ“</td><td>âœ“</td><td>â€”</td></tr>
+  <tr><td><strong>CSV</strong></td><td>—</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+  <tr><td><strong>JSON</strong></td><td>✓</td><td>—</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+  <tr><td><strong>YAML</strong></td><td>✓</td><td>✓</td><td>—</td><td>✓</td><td>✓</td><td>✓</td></tr>
+  <tr><td><strong>Parquet</strong></td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>✓</td><td>✓</td></tr>
+  <tr><td><strong>Avro</strong></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>✓</td></tr>
+  <tr><td><strong>Protobuf</strong></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>—</td></tr>
 </table>
 
 <p>All 30 conversion pairs work both ways. Schema information is preserved across formats where possible.</p>
@@ -109,20 +109,20 @@ datamorph format-info parquet</code></pre>
 
 <p>DataMorph doesn't load your data into memory. It streams records through a pipeline:</p>
 
-<pre><code>Source â†’ Reader â†’ Record Stream â†’ Transformer â†’ Writer â†’ Output</code></pre>
+<pre><code>Source → Reader → Record Stream → Transformer → Writer → Output</code></pre>
 
 <p>Each stage processes one record at a time. This means:</p>
 <ul>
-  <li><strong>No file size limit</strong> â€” convert 100GB files on a laptop with 8GB RAM</li>
-  <li><strong>Constant memory</strong> â€” memory usage stays flat regardless of file size</li>
-  <li><strong>Progress reporting</strong> â€” ETA, rate, and count displayed during conversion</li>
+  <li><strong>No file size limit</strong> — convert 100GB files on a laptop with 8GB RAM</li>
+  <li><strong>Constant memory</strong> — memory usage stays flat regardless of file size</li>
+  <li><strong>Progress reporting</strong> — ETA, rate, and count displayed during conversion</li>
 </ul>
 
 <pre><code># Convert a large Parquet file to CSV (streaming)
 datamorph convert big_data.parquet --to csv --progress
 
 # Output shows:
-# Converting: â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘ 62% | 620000/1000000 rows
+# Converting: ████████████░░░░░░░░ 62% | 620000/1000000 rows
 # Rate: 12500 rows/s | ETA: 30s</code></pre>
 
 <h2>Schema Inference and Mapping</h2>
@@ -135,7 +135,7 @@ datamorph convert big_data.parquet --to csv --progress
   <tr><td>integer</td><td>INT32 / INT64</td><td>int32 / int64</td></tr>
   <tr><td>float</td><td>FLOAT / DOUBLE</td><td>float / double</td></tr>
   <tr><td>boolean</td><td>BOOLEAN</td><td>bool</td></tr>
-  <tr><td>null</td><td>â€” (nullable annotation)</td><td>optional</td></tr>
+  <tr><td>null</td><td>— (nullable annotation)</td><td>optional</td></tr>
   <tr><td>array</td><td>LIST / REPEATED</td><td>repeated</td></tr>
   <tr><td>object</td><td>STRUCT / MAP</td><td>message</td></tr>
   <tr><td>binary</td><td>BYTE_ARRAY</td><td>bytes</td></tr>
@@ -210,7 +210,7 @@ jobs:
       - name: Install DataMorph
         run: pip install "datamorph[parquet] @ git+https://github.com/Coding-Dev-Tools/datamorph.git"
 
-      - name: Convert CSV â†’ Parquet for analytics
+      - name: Convert CSV → Parquet for analytics
         run: |
           datamorph batch ./data/csv/ --to parquet             --out-dir ./analytics/parquet/
 
@@ -230,11 +230,11 @@ jobs:
 
 <table>
   <tr><th>Conversion</th><th>File Size</th><th>Time</th><th>Rows/s</th></tr>
-  <tr><td>CSV â†’ Parquet</td><td>1 GB</td><td>8.2s</td><td>~122k</td></tr>
-  <tr><td>Parquet â†’ CSV</td><td>1 GB</td><td>9.1s</td><td>~110k</td></tr>
-  <tr><td>JSON â†’ YAML</td><td>500 MB</td><td>6.4s</td><td>~78k</td></tr>
-  <tr><td>Parquet â†’ Avro</td><td>1 GB</td><td>7.3s</td><td>~137k</td></tr>
-  <tr><td>CSV â†’ JSON</td><td>2 GB</td><td>14.1s</td><td>~142k</td></tr>
+  <tr><td>CSV → Parquet</td><td>1 GB</td><td>8.2s</td><td>~122k</td></tr>
+  <tr><td>Parquet → CSV</td><td>1 GB</td><td>9.1s</td><td>~110k</td></tr>
+  <tr><td>JSON → YAML</td><td>500 MB</td><td>6.4s</td><td>~78k</td></tr>
+  <tr><td>Parquet → Avro</td><td>1 GB</td><td>7.3s</td><td>~137k</td></tr>
+  <tr><td>CSV → JSON</td><td>2 GB</td><td>14.1s</td><td>~142k</td></tr>
 </table>
 
 <p><em>Benchmarks on MacBook M3 Pro, SSD storage. Streaming mode, no memory limit issues regardless of file size.</em></p>
@@ -242,7 +242,7 @@ jobs:
 <h2>Use Cases</h2>
 
 <h3>Data Engineering ETL</h3>
-<p>Ingest CSV exports, convert to Parquet for columnar analytics, then serve as Avro for streaming consumers â€” all in one pipeline.</p>
+<p>Ingest CSV exports, convert to Parquet for columnar analytics, then serve as Avro for streaming consumers — all in one pipeline.</p>
 
 <h3>API Development</h3>
 <p>Protobuf is the wire format, but developers need JSON for debugging. DataMorph converts between them for you.</p>
@@ -260,20 +260,20 @@ jobs:
 
 <div class="cta-box">
   <h3>Convert data like a pro</h3>
-  <p>No Pandas, no scripts, no memory limits â€” just one CLI command.</p>
+  <p>No Pandas, no scripts, no memory limits — just one CLI command.</p>
   <pre style="text-align:left;margin:12px 0;background:#0a0a0b;border-color:#2a2a2d;"><code>pip install git+https://github.com/Coding-Dev-Tools/datamorph.git
 datamorph convert data.csv --to parquet --progress</code></pre>
-  <a href="https://github.com/Coding-Dev-Tools/datamorph">View on GitHub â†’</a>
+  <a href="https://github.com/Coding-Dev-Tools/datamorph">View on GitHub →</a>
 </div>
 
 <p style="color:#666;font-size:0.82rem;text-align:center;margin-top:32px;">
-  <em>DataMorph is part of the <a href="https://coding-dev-tools.github.io/devforge/">Revenue Holdings</a> developer tool ecosystem â€” 11 CLI tools built by autonomous AI for autonomous developers.</em>
+  <em>DataMorph is part of the <a href="https://coding-dev-tools.github.io/devforge/">DevForge</a> developer tool ecosystem — 11 CLI tools built by autonomous AI for autonomous developers.</em>
 </p>
 
 </section>
 
 <footer>
-  <span>&copy; 2026 Revenue Holdings. Built autonomously.</span>
+  <span>&copy; 2026 DevForge. Built autonomously.</span>
   <a href="../index.html">Home</a>
   <a href="../pricing.html">Pricing</a>
   <a href="https://github.com/Coding-Dev-Tools">GitHub</a>

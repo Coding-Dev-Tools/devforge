@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <base href="/devforge/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How to Catch Config Drift Before It Breaks Production â€” ConfigDrift Tutorial | Revenue Holdings</title>
-  <meta name="description" content="Step-by-step tutorial: detect config drift between dev, staging, and prod environments before it causes outages. Uses ConfigDrift CLI with YAML, JSON, and .env â€” plus GitHub Actions CI integration.">
+  <title>How to Catch Config Drift Before It Breaks Production — ConfigDrift Tutorial | DevForge</title>
+  <meta name="description" content="Step-by-step tutorial: detect config drift between dev, staging, and prod environments before it causes outages. Uses ConfigDrift CLI with YAML, JSON, and .env — plus GitHub Actions CI integration.">
   <meta name="keywords" content="config drift, configuration drift detection, DevOps tutorial, ConfigDrift CLI, environment consistency, devops tool, infrastructure drift, configuration management, CI/CD gating">
   <meta property="og:title" content="How to Catch Config Drift Before It Breaks Production">
   <meta property="og:description" content="Detect missing keys, deprecated values, and environment inconsistencies before they cause incidents. Hands-on tutorial with ConfigDrift CLI and CI gating.">
@@ -14,14 +14,14 @@
   <meta name="twitter:site" content="@RevenueHolds">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="How to Catch Config Drift Before It Breaks Production">
-  <meta name="twitter:description" content="Config drift detection tutorial â€” CLI tool that compares dev/staging/prod and blocks broken configs from shipping.">
+  <meta name="twitter:description" content="Config drift detection tutorial — CLI tool that compares dev/staging/prod and blocks broken configs from shipping.">
   <meta name="twitter:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
   <meta property="og:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="https://coding-dev-tools.github.io/devforge/blog/catch-config-drift-before-production.html">
-  <meta name="author" content="Revenue Holdings">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0-0 100 100'><text y='.9em' font-size='90'>â›</text></svg>">
+  <meta name="author" content="DevForge">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0-0 100 100'><text y='.9em' font-size='90'>⛁</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script type="application/ld+json">
   {
@@ -30,20 +30,20 @@
     "headline": "How to Catch Config Drift Before It Breaks Production",
     "description": "Step-by-step tutorial: detect config drift between dev, staging, and prod environments before it causes outages.",
     "datePublished": "2026-05-15",
-    "author": { "@type": "Organization", "name": "Revenue Holdings" },
-    "publisher": { "@type": "Organization", "name": "Revenue Holdings" },
+    "author": { "@type": "Organization", "name": "DevForge" },
+    "publisher": { "@type": "Organization", "name": "DevForge" },
     "mainEntityOfPage": {"@type": "WebPage","@id": "https://coding-dev-tools.github.io/devforge/blog/catch-config-drift-before-production.html"}
   }
   </script>
   <link rel="stylesheet" href="blog.css">
   <!-- Plausible Analytics -->
-  <script defer data-domain="revenueholdings.dev" src="https://plausible.io/js/script.js"></script>
+  <script defer data-domain="devforge" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
 
 <nav>
   <div class="inner">
-    <div class="logo"><span>â›</span> Revenue Holdings</div>
+    <div class="logo"><span>⛁</span> DevForge</div>
     <div class="links">
             <a href="../start-here.html">Start Here</a>
       <a href="../index.html">Home</a>
@@ -55,7 +55,7 @@
 </nav>
 
 <div class="blog-nav">
-  <a href="../blog.html">â† Back to Blog</a>
+  <a href="../blog.html">← Back to Blog</a>
 </div>
 
 <main class="post-content">
@@ -65,19 +65,19 @@
   <h1>How to Catch Config Drift Before It Breaks Production</h1>
 
   <div class="subtitle">
-    A hands-on guide to detecting environment inconsistencies, missing keys, and deprecated values â€” with ConfigDrift CLI and CI/CD integration.
+    A hands-on guide to detecting environment inconsistencies, missing keys, and deprecated values — with ConfigDrift CLI and CI/CD integration.
   </div>
 
   <div class="meta">
     <span>May 15, 2026</span>
-    <span>Â·</span>
+    <span>·</span>
     <span>8 min read</span>
-    <span>Â·</span>
-    <span>Revenue Holdings</span>
+    <span>·</span>
+    <span>DevForge</span>
   </div>
   <div class="share-bar">
     <span>Share this article:</span>
-    <a href="https://twitter.com/intent/tweet?text=$(document.title)&url=$(location.href)" target="_blank" rel="noopener" class="share-link">ð• Twitter</a>
+    <a href="https://twitter.com/intent/tweet?text=$(document.title)&url=$(location.href)" target="_blank" rel="noopener" class="share-link">𝕏 Twitter</a>
     <a href="https://news.ycombinator.com/submitlink?u=$(location.href)&t=$(document.title)" target="_blank" rel="noopener" class="share-link">Y Hacker News</a>
     <a href="https://www.linkedin.com/sharing/share-offsite/?url=$(location.href)" target="_blank" rel="noopener" class="share-link">in LinkedIn</a>
   </div>
@@ -86,28 +86,28 @@
   <hr>
 
   <p>
-    You know the scenario: staging passes all tests, but when you deploy to production â€” <strong>500s everywhere</strong>. You spend two hours debugging, only to find that <code>DATABASE_URL</code> points to a read replica in staging but a completely different cluster in production. Or that <code>LOG_LEVEL</code> was set to <code>debug</code> in dev and the production logs are flooding disk. Or worse â€” a key was renamed in one environment and not the others, silently breaking a critical integration.
+    You know the scenario: staging passes all tests, but when you deploy to production — <strong>500s everywhere</strong>. You spend two hours debugging, only to find that <code>DATABASE_URL</code> points to a read replica in staging but a completely different cluster in production. Or that <code>LOG_LEVEL</code> was set to <code>debug</code> in dev and the production logs are flooding disk. Or worse — a key was renamed in one environment and not the others, silently breaking a critical integration.
   </p>
 
   <p>
-    This is <strong>config drift</strong>: the silent divergence of configuration between environments. It's one of the most common causes of production incidents, and it's almost never caught by test suites because <em>the code works fine</em> â€” the <em>configuration</em> doesn't.
+    This is <strong>config drift</strong>: the silent divergence of configuration between environments. It's one of the most common causes of production incidents, and it's almost never caught by test suites because <em>the code works fine</em> — the <em>configuration</em> doesn't.
   </p>
 
   <p>
-    In this tutorial, you'll learn how to detect config drift with <strong>ConfigDrift</strong>, a CLI tool that compares configurations across environments, flags missing keys, and surfaces deprecated values â€” before they cause incidents.
+    In this tutorial, you'll learn how to detect config drift with <strong>ConfigDrift</strong>, a CLI tool that compares configurations across environments, flags missing keys, and surfaces deprecated values — before they cause incidents.
   </p>
 
   <div class="diagram">
-    â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”     â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”     â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-    â”‚   Dev   â”‚ â”€â”€â†’ â”‚           â”‚ â†â”€â”€ â”‚  Prod   â”‚
-    â”‚ configs â”‚     â”‚ ConfigDriftâ”‚     â”‚ configs â”‚
-    â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜     â”‚           â”‚     â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
-    â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”     â”‚  Drift    â”‚     â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-    â”‚ Staging â”‚ â”€â”€â†’ â”‚  Report   â”‚ â†â”€â”€ â”‚   CI    â”‚
-    â”‚ configs â”‚     â”‚           â”‚     â”‚  Gate   â”‚
-    â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜     â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜     â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
-    "dev added LOG_LEVEL=debug"        âŒ Block deploy
-    "prod missing API_TIMEOUT"         âŒ Merge blocked
+    ┌─────────┐     ┌───────────┐     ┌─────────┐
+    │   Dev   │ ──→ │           │ ←── │  Prod   │
+    │ configs │     │ ConfigDrift│     │ configs │
+    └─────────┘     │           │     └─────────┘
+    ┌─────────┐     │  Drift    │     ┌─────────┐
+    │ Staging │ ──→ │  Report   │ ←── │   CI    │
+    │ configs │     │           │     │  Gate   │
+    └─────────┘     └───────────┘     └─────────┘
+    "dev added LOG_LEVEL=debug"        ❌ Block deploy
+    "prod missing API_TIMEOUT"         ❌ Merge blocked
   </div>
 
   <h2>What You'll Set Up</h2>
@@ -122,12 +122,12 @@
   </ol>
 
   <div class="tip">
-    <strong>âš¡ Already have ConfigDrift?</strong> Jump to <a href="#ci-integration">CI Integration</a> or <a href="#pricing">the suite pricing</a>.
+    <strong>⚡ Already have ConfigDrift?</strong> Jump to <a href="#ci-integration">CI Integration</a> or <a href="#pricing">the suite pricing</a>.
   </div>
 
   <h2>1. Install ConfigDrift</h2>
 
-  <p>ConfigDrift is a Python CLI â€” install it in seconds:</p>
+  <p>ConfigDrift is a Python CLI — install it in seconds:</p>
 
   <div class="cmd-block">$ pip install configdrift</div>
 
@@ -171,13 +171,13 @@ feature_flags:
   beta_search: true
 </code></pre>
 
-  <p>Save this as <strong>config/staging/app.yaml</strong> â€” the same, but with a key that's drifted:</p>
+  <p>Save this as <strong>config/staging/app.yaml</strong> — the same, but with a key that's drifted:</p>
 
   <pre><code>database:
   host: staging-db.internal
   port: 5432
   name: myapp_staging
-  pool_size: 10           # â† different from dev
+  pool_size: 10           # ← different from dev
 
 api:
   timeout: 30
@@ -185,12 +185,12 @@ api:
   endpoint: https://staging-api.internal
 
 logging:
-  level: info              # â† different from dev
+  level: info              # ← different from dev
   format: json
 
 feature_flags:
   new_checkout: true
-  beta_search: true        # â† missing dark_mode!
+  beta_search: true        # ← missing dark_mode!
 </code></pre>
 
   <p>And <strong>config/prod/app.yaml</strong> with an even bigger drift:</p>
@@ -202,8 +202,8 @@ feature_flags:
   pool_size: 20
 
 api:
-  timeout: 60             # â† different
-  # retries missing!      # â† key removed
+  timeout: 60             # ← different
+  # retries missing!      # ← key removed
   endpoint: https://prod-api.internal
 
 logging:
@@ -215,7 +215,7 @@ feature_flags:
 </code></pre>
 
   <div class="warning">
-    <strong>ðŸš¨ See the drift?</strong> <code>retries</code> is missing from prod entirely. <code>dark_mode</code> was added in dev but never made it to staging or prod. Pool sizes differ across all three environments. These are the kinds of silent divergences that cause "works on my machine" bugs in production.
+    <strong>🚨 See the drift?</strong> <code>retries</code> is missing from prod entirely. <code>dark_mode</code> was added in dev but never made it to staging or prod. Pool sizes differ across all three environments. These are the kinds of silent divergences that cause "works on my machine" bugs in production.
   </div>
 
   <h2>3. Check for Drift</h2>
@@ -228,24 +228,24 @@ feature_flags:
 
   <p>You'll see something like:</p>
 
-  <pre><code>â•”â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—
-â•‘                  Config Drift Report                     â•‘
-â• â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•£
-â•‘ BREAKING                                                 â•‘
-â•‘  api.retries      prod â†’ MISSING (was in dev)            â•‘
-â•‘  feature_flags.dark_mode  prod â†’ MISSING                 â•‘
-â• â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•£
-â•‘ WARNING                                                  â•‘
-â•‘  database.pool_size  dev=5  prod=20                      â•‘
-â•‘  api.timeout         dev=30 prod=60                      â•‘
-â•‘  logging.level       dev=debug prod=warn                 â•‘
-â•šâ•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•</code></pre>
+  <pre><code>╔══════════════════════════════════════════════════════════╗
+║                  Config Drift Report                     ║
+╠══════════════════════════════════════════════════════════╣
+║ BREAKING                                                 ║
+║  api.retries      prod → MISSING (was in dev)            ║
+║  feature_flags.dark_mode  prod → MISSING                 ║
+╠══════════════════════════════════════════════════════════╣
+║ WARNING                                                  ║
+║  database.pool_size  dev=5  prod=20                      ║
+║  api.timeout         dev=30 prod=60                      ║
+║  logging.level       dev=debug prod=warn                 ║
+╚══════════════════════════════════════════════════════════╝</code></pre>
 
   <p>ConfigDrift classifies each difference:</p>
   <ul>
-    <li><strong>ðŸ”´ Breaking</strong> â€” Critical keys (<code>database*</code>, <code>auth*</code>, <code>api_key*</code>, <code>secret*</code>, <code>endpoint*</code>, etc.) that differ or are missing. These should block deployment.</li>
-    <li><strong>ðŸŸ¡ Warning</strong> â€” Non-critical key changes or additions/removals that warrant attention.</li>
-    <li><strong>ðŸ”µ Info</strong> â€” Value changes for informational purposes.</li>
+    <li><strong>🔴 Breaking</strong> — Critical keys (<code>database*</code>, <code>auth*</code>, <code>api_key*</code>, <code>secret*</code>, <code>endpoint*</code>, etc.) that differ or are missing. These should block deployment.</li>
+    <li><strong>🟡 Warning</strong> — Non-critical key changes or additions/removals that warrant attention.</li>
+    <li><strong>🔵 Info</strong> — Value changes for informational purposes.</li>
   </ul>
 
   <h2>4. Scan Entire Environment Directories</h2>
@@ -256,7 +256,7 @@ feature_flags:
 
   <p>This scans all <code>.yaml</code>, <code>.yml</code>, <code>.json</code>, <code>.toml</code>, and <code>.env</code> files in each directory, merges them into a single config tree per environment, and compares everything against your baseline (dev).</p>
 
-  <p>The output adds one more column: which environment file the key came from â€” so you can trace each drift to its source file.</p>
+  <p>The output adds one more column: which environment file the key came from — so you can trace each drift to its source file.</p>
 
   <h2 id="json-output">5. JSON Output for CI</h2>
 
@@ -292,13 +292,13 @@ feature_flags:
 
   <p>The <code>exit_code</code> field in the report tells you the severity:</p>
   <ul>
-    <li><strong>0</strong> â†’ No drift found</li>
-    <li><strong>1</strong> â†’ Breaking drift detected (should block deploy)</li>
+    <li><strong>0</strong> → No drift found</li>
+    <li><strong>1</strong> → Breaking drift detected (should block deploy)</li>
   </ul>
 
   <h2 id="ci-integration">6. CI/CD Integration (GitHub Actions)</h2>
 
-  <p>Here's the real payoff â€” gating your pipeline so that config drift <strong>never ships</strong>. Add this GitHub Actions workflow to your repo:</p>
+  <p>Here's the real payoff — gating your pipeline so that config drift <strong>never ships</strong>. Add this GitHub Actions workflow to your repo:</p>
 
   <pre><code># .github/workflows/config-drift-check.yml
 name: Config Drift Check
@@ -326,7 +326,7 @@ jobs:
             --baseline dev --output silent || echo "::warning::Config drift detected!"</code></pre>
 
   <div class="tip">
-    <strong>ðŸ’¡ Pro tip:</strong> Use <code>--output silent</code> in CI. The exit code is all you need â€” non-zero means drift was found. You can capture the full report as an artifact for debugging.
+    <strong>💡 Pro tip:</strong> Use <code>--output silent</code> in CI. The exit code is all you need — non-zero means drift was found. You can capture the full report as an artifact for debugging.
   </div>
 
   <p>For a more detailed pipeline that surfaces the actual drift in the PR, add this step:</p>
@@ -346,14 +346,14 @@ jobs:
           script: |
             const fs = require('fs');
             const report = JSON.parse(fs.readFileSync('drift-report.json'));
-            const breaking = report.breaking.map(b => `- ðŸ”´ \`${b.key}\`: ${b.message}`).join('\n');
+            const breaking = report.breaking.map(b => `- 🔴 \`${b.key}\`: ${b.message}`).join('\n');
             await github.rest.issues.createComment({
               ...context.repo,
               issue_number: context.issue.number,
-              body: `## âš ï¸ Config Drift Detected\n\n**Breaking changes:**\n${breaking}\n\nFix these before merging.`
+              body: `## ⚠️ Config Drift Detected\n\n**Breaking changes:**\n${breaking}\n\nFix these before merging.`
             });</code></pre>
 
-  <p>Now every PR that changes config files gets automatically checked against your baseline environment. If drift is found, the PR gets a comment and the check fails â€” no more "it worked in staging" surprises.</p>
+  <p>Now every PR that changes config files gets automatically checked against your baseline environment. If drift is found, the PR gets a comment and the check fails — no more "it worked in staging" surprises.</p>
 
   <h2>7. Initialize a ConfigDrift Project</h2>
 
@@ -394,35 +394,35 @@ severity:
   <p>Still not convinced? Here are real incidents caused by config drift:</p>
 
   <ul>
-    <li><strong>The $350K timeout:</strong> A fintech company had <code>API_TIMEOUT=5</code> in dev and <code>120</code> in production. A payment processing function that worked instantly in dev timed out after 30 seconds in prod â€” and the retry logic multiplied the damage. ConfigDrift would have flagged this as a warning in PR.</li>
-    <li><strong>The silent database switch:</strong> A dev accidentally pointed <code>DB_HOST</code> to a staging read replica. All tests passed because the schema was identical. A week later, the prod database got write traffic that should have gone to staging â€” corrupting customer data.</li>
+    <li><strong>The $350K timeout:</strong> A fintech company had <code>API_TIMEOUT=5</code> in dev and <code>120</code> in production. A payment processing function that worked instantly in dev timed out after 30 seconds in prod — and the retry logic multiplied the damage. ConfigDrift would have flagged this as a warning in PR.</li>
+    <li><strong>The silent database switch:</strong> A dev accidentally pointed <code>DB_HOST</code> to a staging read replica. All tests passed because the schema was identical. A week later, the prod database got write traffic that should have gone to staging — corrupting customer data.</li>
     <li><strong>The compliance audit fail:</strong> An SOC2 auditor found that <code>LOG_LEVEL=debug</code> was running in production, writing PII to plaintext logs. It had diverged months ago in a hotfix and never got reconciled.</li>
   </ul>
 
   <div class="tip">
-    <strong>âœ… The fix is one pip install away.</strong> Adding ConfigDrift to your CI pipeline takes 10 minutes and catches these issues before they become incidents.
+    <strong>✅ The fix is one pip install away.</strong> Adding ConfigDrift to your CI pipeline takes 10 minutes and catches these issues before they become incidents.
   </div>
 
   <hr>
 
   <h2>Next Steps</h2>
 
-  <p>ConfigDrift is one of <strong>11 tools</strong> in the Revenue Holdings suite, all designed to catch problems before they reach production:</p>
+  <p>ConfigDrift is one of <strong>11 tools</strong> in the DevForge suite, all designed to catch problems before they reach production:</p>
 
   <ul>
-    <li><strong>API Contract Guardian</strong> â€” Catch breaking API schema changes in PRs</li>
-    <li><strong>json2sql</strong> â€” Convert JSON data to INSERT statements with smart type inference</li>
-    <li><strong>DeployDiff</strong> â€” See the full cost and blast radius of every infra change</li>
-    <li><strong>DeadCode</strong> â€” Detect and remove unused exports, dead routes, and orphaned CSS</li>
-    <li><strong>SchemaForge</strong> â€” Bidirectional ORM schema converter (Drizzle, Prisma, SQL DDL)</li>
+    <li><strong>API Contract Guardian</strong> — Catch breaking API schema changes in PRs</li>
+    <li><strong>json2sql</strong> — Convert JSON data to INSERT statements with smart type inference</li>
+    <li><strong>DeployDiff</strong> — See the full cost and blast radius of every infra change</li>
+    <li><strong>DeadCode</strong> — Detect and remove unused exports, dead routes, and orphaned CSS</li>
+    <li><strong>SchemaForge</strong> — Bidirectional ORM schema converter (Drizzle, Prisma, SQL DDL)</li>
   </ul>
 
   <div class="warning">
-    <strong>ðŸ”Œ MCP bridge:</strong> All tools work with <a href="click-to-mcp-intro.html"><strong>click-to-mcp</strong></a> â€” turn any of them into an MCP server so Claude Code, Codex, and Cursor can use them directly.
+    <strong>🔌 MCP bridge:</strong> All tools work with <a href="click-to-mcp-intro.html"><strong>click-to-mcp</strong></a> — turn any of them into an MCP server so Claude Code, Codex, and Cursor can use them directly.
   </div>
 
   <p>
-    <a href="../docs.html">Read the full docs â†’</a>
+    <a href="../docs.html">Read the full docs →</a>
   </p>
 
   <div class="article-waitlist">
@@ -430,14 +430,14 @@ severity:
     <p>PyPI publishing is coming soon. Get notified when we ship.</p>
     <div class="form-row">
       <input type="email" placeholder="you@company.com">
-      <button class="btn" onclick="window.open('mailto:waitlist@revenueholdings.dev?subject=ConfigDrift%20Interest&body=I%20want%20updates', '_blank')">Notify Me â†’</button>
+      <button class="btn" onclick="window.open('mailto:waitlist@devforge?subject=ConfigDrift%20Interest&body=I%20want%20updates', '_blank')">Notify Me →</button>
     </div>
   </div>
 
 </main>
 
 <footer>
-  <span>Â© 2026 Revenue Holdings. Built autonomously.</span>
+  <span>© 2026 DevForge. Built autonomously.</span>
   <a href="https://github.com/Coding-Dev-Tools">GitHub</a>
 </footer>
 

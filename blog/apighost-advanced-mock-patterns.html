@@ -1,36 +1,36 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <base href="/devforge/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>APIGhost: Zero-Config Mock Servers from OpenAPI Specs â€” Advanced Patterns | Revenue Holdings</title>
-  <meta name="description" content="Go beyond basic mock server setup with APIGhost â€” realistic fake data generation, scenario-based error responses, VCR cassette recording, stateful mocks, and CI integration for deterministic test suites.">
+  <title>APIGhost: Zero-Config Mock Servers from OpenAPI Specs — Advanced Patterns | DevForge</title>
+  <meta name="description" content="Go beyond basic mock server setup with APIGhost — realistic fake data generation, scenario-based error responses, VCR cassette recording, stateful mocks, and CI integration for deterministic test suites.">
   <meta name="keywords" content="APIGhost, OpenAPI, mock server, API mocking, integration testing, fake data, VCR, scenario testing, CI/CD, developer tools, CLI">
   <meta property="og:title" content="APIGhost: Zero-Config Mock Servers from OpenAPI Specs">
-  <meta property="og:description" content="Advanced mock server patterns with APIGhost â€” realistic data generation, error scenarios, VCR cassette recording, stateful mocks, and CI integration for deterministic test suites.">
+  <meta property="og:description" content="Advanced mock server patterns with APIGhost — realistic data generation, error scenarios, VCR cassette recording, stateful mocks, and CI integration for deterministic test suites.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://coding-dev-tools.github.io/devforge/blog/apighost-advanced-mock-patterns.html">
   <meta name="twitter:site" content="@RevenueHolds">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="APIGhost: Zero-Config Mock Servers from OpenAPI Specs">
-  <meta name="twitter:description" content="Advanced API mocking patterns â€” realistic data generation, error scenarios, VCR recording, and CI integration.">
+  <meta name="twitter:description" content="Advanced API mocking patterns — realistic data generation, error scenarios, VCR recording, and CI integration.">
   <meta name="twitter:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
   <meta property="og:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="https://coding-dev-tools.github.io/devforge/blog/apighost-advanced-mock-patterns.html">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>â›</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛁</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="blog.css">
   <!-- Plausible Analytics -->
-  <script defer data-domain="revenueholdings.dev" src="https://plausible.io/js/script.js"></script>
+  <script defer data-domain="devforge" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
 
 <nav>
   <div class="inner">
-    <div class="logo"><span>â›</span> Revenue Holdings</div>
+    <div class="logo"><span>⛁</span> DevForge</div>
     <div class="links">
       <a href="../quickstart.html">Get Started</a>
       <a href="../start-here.html">Start Here</a>
@@ -54,10 +54,10 @@
 <section class="post-content">
 
 <div class="badge" style="margin-bottom:16px">Advanced Tutorial</div>
-<h1>APIGhost: Mock Servers from OpenAPI Specs â€” Advanced Patterns</h1>
+<h1>APIGhost: Mock Servers from OpenAPI Specs — Advanced Patterns</h1>
 <p class="subtitle">Realistic data generation, scenario-based error responses, VCR cassette recording, stateful mocks, and CI integration for deterministic test suites.</p>
 
-<p>In the <a href="api-mock-server-from-openapi-spec.html">previous tutorial</a>, we showed the basics: one command to turn any OpenAPI spec into a running mock server. Here we'll go deeper â€” covering realistic fake data, stateful behaviors, error scenarios, and production CI patterns.</p>
+<p>In the <a href="api-mock-server-from-openapi-spec.html">previous tutorial</a>, we showed the basics: one command to turn any OpenAPI spec into a running mock server. Here we'll go deeper — covering realistic fake data, stateful behaviors, error scenarios, and production CI patterns.</p>
 
 <hr>
 
@@ -66,10 +66,10 @@
 <p>A basic mock server returns placeholder responses. But real API testing needs more:</p>
 
 <ul>
-  <li><strong>Realistic data shapes</strong> â€” not just <code>{ "id": 0, "name": "string" }</code></li>
-  <li><strong>Error scenarios</strong> â€” so frontend teams can test error states</li>
-  <li><strong>Deterministic responses</strong> â€” so test suites don't flake</li>
-  <li><strong>Stateful behavior</strong> â€” create an entity, then fetch it</li>
+  <li><strong>Realistic data shapes</strong> — not just <code>{ "id": 0, "name": "string" }</code></li>
+  <li><strong>Error scenarios</strong> — so frontend teams can test error states</li>
+  <li><strong>Deterministic responses</strong> — so test suites don't flake</li>
+  <li><strong>Stateful behavior</strong> — create an entity, then fetch it</li>
 </ul>
 
 <p>APIGhost handles all of these.</p>
@@ -101,7 +101,7 @@ apighost start spec.yaml --smart-data --port 4010</code></pre>
 apighost start spec.yaml --smart-data --seed 42</code></pre>
 
 <div class="tip">
-<strong>Deterministic data for tests</strong>: Using <code>--seed</code> guarantees the same fake data across runs â€” critical for snapshot testing and CI pipelines.
+<strong>Deterministic data for tests</strong>: Using <code>--seed</code> guarantees the same fake data across runs — critical for snapshot testing and CI pipelines.
 </div>
 
 <h2>2. Scenario-Based Error Responses</h2>
@@ -156,7 +156,7 @@ curl -X POST http://localhost:4010/__admin/scenarios/not-found
 
 # Now GET /users/1 returns 404
 curl http://localhost:4010/users/1
-# â†’ { "error": "User not found", "code": "USER_NOT_FOUND" }
+# → { "error": "User not found", "code": "USER_NOT_FOUND" }
 </code></pre>
 
 <p>This lets frontend and integration tests cycle through every API state in a single test run.</p>
@@ -173,11 +173,11 @@ curl http://localhost:4010/health       # 200 (normal)
 
 <h2>3. VCR Cassette Recording</h2>
 
-<p>Record real API interactions and replay them in tests â€” deterministic, fast, no network dependency.</p>
+<p>Record real API interactions and replay them in tests — deterministic, fast, no network dependency.</p>
 
 <h3>Record Mode</h3>
 
-<pre><code># Start in record mode â€” proxies to real API and records responses
+<pre><code># Start in record mode — proxies to real API and records responses
 apighost record https://api.real-service.com   --cassette ./cassettes/users.yaml   --port 4010
 
 # Make requests through the mock
@@ -189,12 +189,12 @@ cat ./cassettes/users.yaml
 
 <h3>Replay Mode</h3>
 
-<pre><code># Later â€” replay from cassette (no network needed)
+<pre><code># Later — replay from cassette (no network needed)
 apighost replay ./cassettes/users.yaml --port 4010
 
 # Same responses, instantly, deterministic
 curl http://localhost:4010/users/1
-# â†’ Returns exactly what the real API returned
+# → Returns exactly what the real API returned
 </code></pre>
 
 <p>Cassette format is YAML with request matchers:</p>
@@ -225,11 +225,11 @@ apighost start spec.yaml --stateful --port 4010</code></pre>
 
 <p>In stateful mode, APIGhost:</p>
 <ul>
-  <li><strong>POST /resource</strong> â€” Creates an entity, assigns an ID, returns 201</li>
-  <li><strong>GET /resource/{id}</strong> â€” Returns the stored entity, or 404</li>
-  <li><strong>PUT /resource/{id}</strong> â€” Updates the stored entity</li>
-  <li><strong>DELETE /resource/{id}</strong> â€” Removes the entity</li>
-  <li><strong>GET /resource</strong> â€” Returns all stored entities (with pagination)</li>
+  <li><strong>POST /resource</strong> — Creates an entity, assigns an ID, returns 201</li>
+  <li><strong>GET /resource/{id}</strong> — Returns the stored entity, or 404</li>
+  <li><strong>PUT /resource/{id}</strong> — Updates the stored entity</li>
+  <li><strong>DELETE /resource/{id}</strong> — Removes the entity</li>
+  <li><strong>GET /resource</strong> — Returns all stored entities (with pagination)</li>
 </ul>
 
 <p>State is purely in-memory by default, but you can persist to disk:</p>
@@ -237,7 +237,7 @@ apighost start spec.yaml --stateful --port 4010</code></pre>
 <pre><code># Persist state to a file
 apighost start spec.yaml --stateful --state-file ./mock-state.json
 
-# In another terminal â€” seed initial data
+# In another terminal — seed initial data
 curl -X POST http://localhost:4010/users   -H "Content-Type: application/json"   -d '{"name": "Alice Johnson", "email": "alice@example.com"}'
 
 # State is saved to mock-state.json
@@ -258,7 +258,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     services:
-      # No external API needed â€” all mocked
+      # No external API needed — all mocked
     steps:
       - uses: actions/checkout@v4
 
@@ -303,9 +303,9 @@ steps:
 apighost start spec.yaml --verbose
 
 # Output shows:
-# â†’ GET /users/1
+# → GET /users/1
 #   Headers: authorization: Bearer ***
-# â† 200 OK (12ms)
+# ← 200 OK (12ms)
 #   Body: { "id": 1, "name": "Alice Johnson" }
 
 # Access the admin UI for request history
@@ -345,21 +345,21 @@ kill %1
 
 <div class="cta-box">
   <h3>Start mocking your APIs today</h3>
-  <p>No Docker, no config files, no external services â€” just your OpenAPI spec.</p>
+  <p>No Docker, no config files, no external services — just your OpenAPI spec.</p>
   <pre style="text-align:left;margin:12px 0;background:#0a0a0b;border-color:#2a2a2d;"><code>pip install git+https://github.com/Coding-Dev-Tools/apighost.git
 cd your-project
 apighost start openapi.yaml --smart-data --port 4010</code></pre>
-  <a href="https://github.com/Coding-Dev-Tools/apighost">View on GitHub â†’</a>
+  <a href="https://github.com/Coding-Dev-Tools/apighost">View on GitHub →</a>
 </div>
 
 <p style="color:#666;font-size:0.82rem;text-align:center;margin-top:32px;">
-  <em>APIGhost is part of the <a href="https://coding-dev-tools.github.io/devforge/">Revenue Holdings</a> developer tool ecosystem â€” 11 CLI tools built by autonomous AI for autonomous developers.</em>
+  <em>APIGhost is part of the <a href="https://coding-dev-tools.github.io/devforge/">DevForge</a> developer tool ecosystem — 11 CLI tools built by autonomous AI for autonomous developers.</em>
 </p>
 
 </section>
 
 <footer>
-  <span>&copy; 2026 Revenue Holdings. Built autonomously.</span>
+  <span>&copy; 2026 DevForge. Built autonomously.</span>
   <a href="../index.html">Home</a>
   <a href="../pricing.html">Pricing</a>
   <a href="https://github.com/Coding-Dev-Tools">GitHub</a>

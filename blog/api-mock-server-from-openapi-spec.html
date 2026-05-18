@@ -1,49 +1,49 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <base href="/devforge/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Turn Any OpenAPI Spec into a Running Mock Server â€” APIGhost Tutorial | Revenue Holdings</title>
+  <title>Turn Any OpenAPI Spec into a Running Mock Server — APIGhost Tutorial | DevForge</title>
   <meta name="description" content="Learn how to spin up a mock API server from any OpenAPI 3.0/3.1 spec with one CLI command. Supports realistic fake data, VCR cassette recording for deterministic tests, and scenario-based error testing.">
   <meta name="keywords" content="API mock server, OpenAPI mock, mock API from spec, API testing, mock server CLI, OpenAPI 3.0 testing, VCR recording, API mocking tool, apighost, mock server for developers">
-  <meta property="og:title" content="Turn Any OpenAPI Spec into a Running Mock Server â€” APIGhost Tutorial | Revenue Holdings">
+  <meta property="og:title" content="Turn Any OpenAPI Spec into a Running Mock Server — APIGhost Tutorial | DevForge">
   <meta property="og:description" content="Spin up a mock API server from any OpenAPI 3 spec in one command. Realistic fake data, VCR recording for deterministic tests, and scenario-based error responses.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://coding-dev-tools.github.io/devforge/blog/api-mock-server-from-openapi-spec.html">
   <meta name="twitter:site" content="@RevenueHolds">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="API Mock Server in One Command â€” APIGhost">
+  <meta name="twitter:title" content="API Mock Server in One Command — APIGhost">
   <meta name="twitter:description" content="One CLI command turns any OpenAPI spec into a running mock server with realistic data, VCR recording, and scenario-based error responses.">
   <meta name="twitter:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
   <meta property="og:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="https://coding-dev-tools.github.io/devforge/blog/api-mock-server-from-openapi-spec.html">
-  <meta name="author" content="Revenue Holdings">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>â›</text></svg>">
+  <meta name="author" content="DevForge">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛁</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "TechArticle",
-    "headline": "Turn Any OpenAPI Spec into a Running Mock Server â€” APIGhost Tutorial",
+    "headline": "Turn Any OpenAPI Spec into a Running Mock Server — APIGhost Tutorial",
     "description": "Learn how to spin up a mock API server from any OpenAPI 3 spec with one CLI command.",
     "datePublished": "2026-05-15",
-    "author": { "@type": "Organization", "name": "Revenue Holdings" },
-    "publisher": { "@type": "Organization", "name": "Revenue Holdings" },
+    "author": { "@type": "Organization", "name": "DevForge" },
+    "publisher": { "@type": "Organization", "name": "DevForge" },
     "mainEntityOfPage": {"@type": "WebPage","@id": "https://coding-dev-tools.github.io/devforge/blog/api-mock-server-from-openapi-spec.html"}
   }
   </script>
   <link rel="stylesheet" href="blog.css">
   <!-- Plausible Analytics -->
-  <script defer data-domain="revenueholdings.dev" src="https://plausible.io/js/script.js"></script>
+  <script defer data-domain="devforge" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
 
 <nav>
   <div class="inner">
-    <div class="logo"><span>â›</span> Revenue Holdings</div>
+    <div class="logo"><span>⛁</span> DevForge</div>
     <div class="links">
             <a href="../start-here.html">Start Here</a>
       <a href="../index.html">Home</a>
@@ -55,7 +55,7 @@
 </nav>
 
 <div class="blog-nav">
-  <a href="../blog.html">â† Back to Blog</a>
+  <a href="../blog.html">← Back to Blog</a>
 </div>
 
 <main class="post-content">
@@ -65,19 +65,19 @@
   <h1>Turn Any OpenAPI Spec into a Running Mock Server</h1>
 
   <div class="subtitle">
-    One CLI command spins up a mock server from any OpenAPI 3.0 or 3.1 spec â€” with realistic fake data, scenario-based error responses, and VCR cassette recording for deterministic test suites.
+    One CLI command spins up a mock server from any OpenAPI 3.0 or 3.1 spec — with realistic fake data, scenario-based error responses, and VCR cassette recording for deterministic test suites.
   </div>
 
   <div class="meta">
     <span>May 15, 2026</span>
-    <span>Â·</span>
+    <span>·</span>
     <span>7 min read</span>
-    <span>Â·</span>
-    <span>Revenue Holdings</span>
+    <span>·</span>
+    <span>DevForge</span>
   </div>
   <div class="share-bar">
     <span>Share this article:</span>
-    <a href="https://twitter.com/intent/tweet?text=$(document.title)&url=$(location.href)" target="_blank" rel="noopener" class="share-link">ð• Twitter</a>
+    <a href="https://twitter.com/intent/tweet?text=$(document.title)&url=$(location.href)" target="_blank" rel="noopener" class="share-link">𝕏 Twitter</a>
     <a href="https://news.ycombinator.com/submitlink?u=$(location.href)&t=$(document.title)" target="_blank" rel="noopener" class="share-link">Y Hacker News</a>
     <a href="https://www.linkedin.com/sharing/share-offsite/?url=$(location.href)" target="_blank" rel="noopener" class="share-link">in LinkedIn</a>
   </div>
@@ -90,7 +90,7 @@
   </p>
 
   <p>
-    <strong>APIGhost</strong> eliminates all of that. Point it at any OpenAPI 3.0 or 3.1 specification â€” a local file or a URL â€” and it immediately becomes a running mock server. Responses are generated with realistic fake data (powered by Faker, using property names as hints). Need to test error handling? Switch scenarios. Need deterministic tests? Record interactions and replay them as VCR cassettes.
+    <strong>APIGhost</strong> eliminates all of that. Point it at any OpenAPI 3.0 or 3.1 specification — a local file or a URL — and it immediately becomes a running mock server. Responses are generated with realistic fake data (powered by Faker, using property names as hints). Need to test error handling? Switch scenarios. Need deterministic tests? Record interactions and replay them as VCR cassettes.
   </p>
 
   <p>
@@ -98,15 +98,15 @@
   </p>
 
   <div class="diagram">
-    â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”    â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”    â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-    â”‚ OpenAPI Spec â”‚    â”‚  APIGhost    â”‚    â”‚  Mock API       â”‚
-    â”‚ petstore.yamlâ”‚â”€â”€â†’â”‚  serve       â”‚â”€â”€â†’â”‚  GET /pets      â”‚
-    â”‚              â”‚    â”‚  (port 8080) â”‚    â”‚  â†’ 200 + data   â”‚
-    â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜    â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜    â”‚  POST /pets     â”‚
-                                           â”‚  â†’ 201 + data   â”‚
-                                           â”‚  GET /pets/1    â”‚
-                                           â”‚  â†’ 200 + fake   â”‚
-                                           â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+    ┌──────────────┐    ┌──────────────┐    ┌─────────────────┐
+    │ OpenAPI Spec │    │  APIGhost    │    │  Mock API       │
+    │ petstore.yaml│──→│  serve       │──→│  GET /pets      │
+    │              │    │  (port 8080) │    │  → 200 + data   │
+    └──────────────┘    └──────────────┘    │  POST /pets     │
+                                           │  → 201 + data   │
+                                           │  GET /pets/1    │
+                                           │  → 200 + fake   │
+                                           └─────────────────┘
   </div>
 
   <h2>1. Install APIGhost</h2>
@@ -161,7 +161,7 @@
   <p>The server validates your input against the OpenAPI schema, generates an appropriate response, and picks the correct HTTP status code from the spec.</p>
 
   <div class="tip">
-    <strong>ðŸ’¡ Serve from a local file:</strong> You can also use a local spec: <code>apighost serve ./petstore.yaml</code> or use a custom port: <code>apighost serve petstore.yaml -p 3000</code>.
+    <strong>💡 Serve from a local file:</strong> You can also use a local spec: <code>apighost serve ./petstore.yaml</code> or use a custom port: <code>apighost serve petstore.yaml -p 3000</code>.
   </div>
 
   <h2>3. Generate Sample Data</h2>
@@ -170,9 +170,9 @@
 
   <div class="cmd-block">$ apighost generate petstore.yaml</div>
 
-  <p>This introspects the entire spec and pre-generates plausible data for every endpoint â€” names, emails, IDs, timestamps, nested objects â€” using property name hints from the schema. The generated output is saved as a scenario that you can use immediately.</p>
+  <p>This introspects the entire spec and pre-generates plausible data for every endpoint — names, emails, IDs, timestamps, nested objects — using property name hints from the schema. The generated output is saved as a scenario that you can use immediately.</p>
 
-  <h2 id="scenarios">4. Scenarios â€” Switch Between Happy Path and Error States</h2>
+  <h2 id="scenarios">4. Scenarios — Switch Between Happy Path and Error States</h2>
 
   <p>This is where APIGhost becomes a real testing tool. A <strong>scenario</strong> is a named set of response overrides. When your frontend or integration tests need to see error states, switch scenarios instead of modifying test code.</p>
 
@@ -192,15 +192,15 @@
 
   <pre><code># Normal endpoint still works
 $ curl http://localhost:8080/api/pets/2
-â†’ 200 {"id": 67890, "name": "Buddy"}
+→ 200 {"id": 67890, "name": "Buddy"}
 
 # Overridden endpoint returns your error
 $ curl http://localhost:8080/api/pets/1
-â†’ 404 {"error": "Pet not found"}
+→ 404 {"error": "Pet not found"}
 
 # Another overridden endpoint
 $ curl http://localhost:8080/api/pets
-â†’ 500 {"error": "Internal server error"}</code></pre>
+→ 500 {"error": "Internal server error"}</code></pre>
 
   <p>List your available scenarios:</p>
 
@@ -211,12 +211,12 @@ $ curl http://localhost:8080/api/pets
   <div class="cmd-block">$ apighost scenario delete error-test</div>
 
   <div class="tip">
-    <strong>ðŸ’¡ Why scenarios matter:</strong> Instead of hard-coding error-handling paths in your frontend, run the same test suite against different scenarios. Your "rate limit exceeded" handler, "server error" retry logic, and "not found" fallback all get exercised without changing a single line of test code.
+    <strong>💡 Why scenarios matter:</strong> Instead of hard-coding error-handling paths in your frontend, run the same test suite against different scenarios. Your "rate limit exceeded" handler, "server error" retry logic, and "not found" fallback all get exercised without changing a single line of test code.
   </div>
 
   <h2 id="vcr">5. VCR Recording for Deterministic Tests</h2>
 
-  <p>Scenarios are great for manual testing. For automated test suites, you need <strong>deterministic</strong> responses â€” every test run must return exactly the same data. That's where VCR recording comes in.</p>
+  <p>Scenarios are great for manual testing. For automated test suites, you need <strong>deterministic</strong> responses — every test run must return exactly the same data. That's where VCR recording comes in.</p>
 
   <h3>Record mode</h3>
 
@@ -232,19 +232,19 @@ $ curl http://localhost:8080/api/pets/1</div>
 
   <h3>Replay mode</h3>
 
-  <p>Now replay the exact same interactions â€” bit-for-bit identical responses every time:</p>
+  <p>Now replay the exact same interactions — bit-for-bit identical responses every time:</p>
 
   <div class="cmd-block">$ apighost replay ./recordings/my-recording</div>
 
   <pre><code>$ curl http://localhost:8080/api/pets
-â†’ Same JSON, same IDs, same ordering as recorded</code></pre>
+→ Same JSON, same IDs, same ordering as recorded</code></pre>
 
   <p>This is perfect for:</p>
   <ul>
-    <li><strong>CI/CD test suites</strong> â€” deterministic responses prevent flaky tests</li>
-    <li><strong>Integration tests</strong> â€” known state every run, no network dependency</li>
-    <li><strong>Frontend development</strong> â€” design against the exact data shape your API returns</li>
-    <li><strong>Demo environments</strong> â€” reproducible demo data without a real backend</li>
+    <li><strong>CI/CD test suites</strong> — deterministic responses prevent flaky tests</li>
+    <li><strong>Integration tests</strong> — known state every run, no network dependency</li>
+    <li><strong>Frontend development</strong> — design against the exact data shape your API returns</li>
+    <li><strong>Demo environments</strong> — reproducible demo data without a real backend</li>
   </ul>
 
   <h2>6. CI/CD Integration</h2>
@@ -276,7 +276,7 @@ jobs:
       - name: Stop mock API
         run: kill %1</code></pre>
 
-  <p>For even faster CI, use <code>replay</code> mode with a pre-recorded cassette â€” no spec parsing needed on every run:</p>
+  <p>For even faster CI, use <code>replay</code> mode with a pre-recorded cassette — no spec parsing needed on every run:</p>
 
   <pre><code>      - name: Replay recorded API
         run: |
@@ -316,17 +316,17 @@ jobs:
 
   <h2>Next Steps</h2>
 
-  <p>APIGhost is one of <strong>11 tools</strong> in the Revenue Holdings suite. Other tools that pair well with API testing:</p>
+  <p>APIGhost is one of <strong>11 tools</strong> in the DevForge suite. Other tools that pair well with API testing:</p>
 
   <ul>
-    <li><strong>API Contract Guardian</strong> â€” Catch breaking schema changes in PRs <em>(<a href="../docs.html">docs</a>)</em></li>
-    <li><strong>ConfigDrift</strong> â€” Detect environment drift <em>(<a href="catch-config-drift-before-production.html">tutorial</a>)</em></li>
-    <li><strong>DeployDiff</strong> â€” Preview infra costs and blast radius <em>(<a href="preview-infra-cost-before-deploy.html">tutorial</a>)</em></li>
-    <li><strong>click-to-mcp</strong> â€” Turn CLI tools into MCP servers <em>(<a href="click-to-mcp-intro.html">introduction</a>)</em></li>
+    <li><strong>API Contract Guardian</strong> — Catch breaking schema changes in PRs <em>(<a href="../docs.html">docs</a>)</em></li>
+    <li><strong>ConfigDrift</strong> — Detect environment drift <em>(<a href="catch-config-drift-before-production.html">tutorial</a>)</em></li>
+    <li><strong>DeployDiff</strong> — Preview infra costs and blast radius <em>(<a href="preview-infra-cost-before-deploy.html">tutorial</a>)</em></li>
+    <li><strong>click-to-mcp</strong> — Turn CLI tools into MCP servers <em>(<a href="click-to-mcp-intro.html">introduction</a>)</em></li>
   </ul>
 
   <p>
-    <a href="../docs.html">Read the full docs â†’</a>
+    <a href="../docs.html">Read the full docs →</a>
   </p>
 
   <div class="article-waitlist">
@@ -334,14 +334,14 @@ jobs:
     <p>DevOps guides, API testing tips, and product updates.</p>
     <div class="form-row">
       <input type="email" placeholder="you@company.com">
-      <button class="btn" onclick="window.open('mailto:waitlist@revenueholdings.dev?subject=APIGhost%20Interest&body=I%20want%20updates%20on%20APIGhost', '_blank')">Notify Me â†’</button>
+      <button class="btn" onclick="window.open('mailto:waitlist@devforge?subject=APIGhost%20Interest&body=I%20want%20updates%20on%20APIGhost', '_blank')">Notify Me →</button>
     </div>
   </div>
 
 </main>
 
 <footer>
-  <span>Â© 2026 Revenue Holdings. Built autonomously.</span>
+  <span>© 2026 DevForge. Built autonomously.</span>
   <a href="https://github.com/Coding-Dev-Tools">GitHub</a>
 </footer>
 

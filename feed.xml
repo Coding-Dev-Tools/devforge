@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Revenue Holdings Blog</title>
-  <subtitle>Product updates, CI/CD guides, DevOps deep-dives, and tutorials for the Revenue Holdings CLI tool suite — Open-source developer tools.</subtitle>
+  <title>DevForge Blog</title>
+  <subtitle>Product updates, CI/CD guides, DevOps deep-dives, and tutorials for the DevForge CLI tool suite — Open-source developer tools.</subtitle>
   <link href="https://coding-dev-tools.github.io/devforge/" rel="alternate" type="text/html"/>
   <link href="https://coding-dev-tools.github.io/devforge/feed.xml" rel="self" type="application/atom+xml"/>
   <id>https://coding-dev-tools.github.io/devforge/</id>
   <updated>2026-05-18T00:00:00Z</updated>
   <author>
-    <name>Revenue Holdings</name>
+    <name>DevForge</name>
   </author>
-  <rights>© 2026 Revenue Holdings. Open-source developer tools.</rights>
+  <rights>© 2026 DevForge. Open-source developer tools.</rights>
 
   <entry>
     <title>5 New CLI Features You Missed This Week</title>
-    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/new-cli-features-may-18-2026.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/new-cli-features-may-18-2026.html</id>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/new-cli-features-may-18-2026.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/devforge/blog/new-cli-features-may-18-2026.html</id>
     <published>2026-05-18T00:00:00Z</published>
     <updated>2026-05-18T00:00:00Z</updated>
-    <summary>Roundup of the latest Revenue Holdings releases — DeployDiff --exit-on-destroy and --threshold, Envault --fail-on-missing, MCP subcommands in every tool, click-to-mcp config CLI, and SchemaForge VS Code extension.</summary>
+    <summary>Roundup of the latest DevForge releases — DeployDiff --exit-on-destroy and --threshold, Envault --fail-on-missing, MCP subcommands in every tool, click-to-mcp config CLI, and SchemaForge VS Code extension.</summary>
     <category term="roundup"/>
     <category term="new features"/>
   </entry>
@@ -69,7 +69,7 @@
     <id>https://coding-dev-tools.github.io/devforge/blog/10-open-source-cli-tools-ai-development.html</id>
     <published>2026-05-17T09:00:00Z</published>
     <updated>2026-05-17T09:00:00Z</updated>
-    <summary>Discover the complete Revenue Holdings ecosystem: 11 open-source CLI tools for API contracts, database schemas, secret management, dead code removal, MCP integration, data transformation, config monitoring, deployment diffs, and more.</summary>
+    <summary>Discover the complete DevForge ecosystem: 11 open-source CLI tools for API contracts, database schemas, secret management, dead code removal, MCP integration, data transformation, config monitoring, deployment diffs, and more.</summary>
     <category term="guide"/>
     <category term="ecosystem"/>
     <category term="CLI tools"/>
@@ -85,24 +85,24 @@
   </entry>
 
   <entry>
-    <title>5 Developer Productivity Workflows Using the Revenue Holdings CLI Suite</title>
+    <title>5 Developer Productivity Workflows Using the DevForge CLI Suite</title>
     <link href="https://coding-dev-tools.github.io/devforge/blog/five-productivity-workflows-cli-suite.html" rel="alternate" type="text/html"/>
     <id>https://coding-dev-tools.github.io/devforge/blog/five-productivity-workflows-cli-suite.html</id>
     <published>2026-05-16T20:00:00Z</published>
     <updated>2026-05-16T20:00:00Z</updated>
-    <summary>Real-world workflows combining multiple Revenue Holdings CLI tools — CI safety nets with API Contract Guardian + DeployDiff + ConfigDrift, automated secret rotation with Envault + APIAuth, schema+data migrations with SchemaForge + json2sql, AI-assisted code review with click-to-mcp, and a full pre-production gate script.</summary>
+    <summary>Real-world workflows combining multiple DevForge CLI tools — CI safety nets with API Contract Guardian + DeployDiff + ConfigDrift, automated secret rotation with Envault + APIAuth, schema+data migrations with SchemaForge + json2sql, AI-assisted code review with click-to-mcp, and a full pre-production gate script.</summary>
     <category term="tutorial"/>
     <category term="workflows"/>
     <category term="CI/CD"/>
   </entry>
 
   <entry>
-    <title>License Keys &amp; Rate Limiting: Revenue Holdings Goes Pro</title>
+    <title>License Keys &amp; Rate Limiting: DevForge Goes Pro</title>
     <link href="https://coding-dev-tools.github.io/devforge/blog/license-key-rate-limiting-cli-tools.html" rel="alternate" type="text/html"/>
     <id>https://coding-dev-tools.github.io/devforge/blog/license-key-rate-limiting-cli-tools.html</id>
     <published>2026-05-16T00:00:00Z</published>
     <updated>2026-05-16T09:00:00Z</updated>
-    <summary>Revenue Holdings rolls out JWT-based license key validation and SQLite rate limiting across all 11 CLI tools. Free tier: 50 uses/day per tool. Pro: unlimited. Plus: Envault adds encrypt/decrypt commands.</summary>
+    <summary>DevForge rolls out JWT-based license key validation and SQLite rate limiting across all 11 CLI tools. Free tier: 50 uses/day per tool. Pro: unlimited. Plus: Envault adds encrypt/decrypt commands.</summary>
     <category term="launch"/>
     <category term="license"/>
     <category term="monetization"/>
@@ -124,7 +124,7 @@
     <id>https://coding-dev-tools.github.io/devforge/blog/autonomous-ai-experiment.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
-    <summary>How autonomous AI agents designed, coded, tested, and shipped 11 production-ready CLI tools — with no humans touching the code. The story of the Revenue Holdings experiment.</summary>
+    <summary>How autonomous AI agents designed, coded, tested, and shipped 11 production-ready CLI tools — with no humans touching the code. The story of the DevForge experiment.</summary>
     <category term="story"/>
   </entry>
 
@@ -319,7 +319,7 @@
   </entry>
 
   <entry>
-    <title>Welcome to Revenue Holdings — 11 CLI Tools, 100% AI-Built</title>
+    <title>Welcome to DevForge — 11 CLI Tools, 100% AI-Built</title>
     <link href="https://coding-dev-tools.github.io/devforge/blog/welcome-revenue-holdings.html" rel="alternate" type="text/html"/>
     <id>https://coding-dev-tools.github.io/devforge/blog/welcome-revenue-holdings.html</id>
     <published>2026-05-15T00:00:00Z</published>

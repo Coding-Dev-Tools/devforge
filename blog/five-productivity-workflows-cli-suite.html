@@ -1,37 +1,37 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <base href="/devforge/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>5 Developer Productivity Workflows Using the Revenue Holdings CLI Suite | Revenue Holdings</title>
-  <meta name="description" content="Real-world workflows combining multiple Revenue Holdings CLI tools â€” from CI safety nets to secret rotation pipelines. Practical examples with API Contract Guardian, Envault, DeployDiff, and more.">
-  <meta name="keywords" content="developer productivity, CLI workflows, API contract testing, secret rotation, infrastructure cost estimation, CI/CD pipeline, devops automation, Revenue Holdings">
-  <meta property="og:title" content="5 Developer Productivity Workflows Using the Revenue Holdings CLI Suite | Revenue Holdings">
-  <meta property="og:description" content="Real-world workflows combining multiple Revenue Holdings CLI tools â€” CI safety nets, secret rotation, infra cost gates, and more.">
+  <title>5 Developer Productivity Workflows Using the DevForge CLI Suite | DevForge</title>
+  <meta name="description" content="Real-world workflows combining multiple DevForge CLI tools — from CI safety nets to secret rotation pipelines. Practical examples with API Contract Guardian, Envault, DeployDiff, and more.">
+  <meta name="keywords" content="developer productivity, CLI workflows, API contract testing, secret rotation, infrastructure cost estimation, CI/CD pipeline, devops automation, DevForge">
+  <meta property="og:title" content="5 Developer Productivity Workflows Using the DevForge CLI Suite | DevForge">
+  <meta property="og:description" content="Real-world workflows combining multiple DevForge CLI tools — CI safety nets, secret rotation, infra cost gates, and more.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://coding-dev-tools.github.io/devforge/blog/five-productivity-workflows-cli-suite.html">
   <meta name="twitter:site" content="@RevenueHolds">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="5 Developer Productivity Workflows Using the Revenue Holdings CLI Suite">
-  <meta name="twitter:description" content="Real-world workflows combining multiple Revenue Holdings CLI tools â€” from CI safety nets to secret rotation pipelines.">
+  <meta name="twitter:title" content="5 Developer Productivity Workflows Using the DevForge CLI Suite">
+  <meta name="twitter:description" content="Real-world workflows combining multiple DevForge CLI tools — from CI safety nets to secret rotation pipelines.">
   <meta name="twitter:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
   <meta property="og:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="https://coding-dev-tools.github.io/devforge/blog/five-productivity-workflows-cli-suite.html">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>â›</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛁</text></svg>">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <link rel="stylesheet" href="blog.css">
   <!-- Plausible Analytics -->
-  <script defer data-domain="revenueholdings.dev" src="https://plausible.io/js/script.js"></script>
+  <script defer data-domain="devforge" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
 
 <nav>
   <div class="inner">
-    <a href="../index.html" class="logo"><span>â›</span> Revenue Holdings</a>
+    <a href="../index.html" class="logo"><span>⛁</span> DevForge</a>
     <div class="links">
       <a href="../docs.html">Docs</a>
       <a href="../pricing.html">Pricing</a>
@@ -42,7 +42,7 @@
 </nav>
 
 <article>
-  <h1>5 Developer Productivity Workflows Using the Revenue Holdings CLI Suite</h1>
+  <h1>5 Developer Productivity Workflows Using the DevForge CLI Suite</h1>
   <div class="meta">
     <span>May 16, 2026</span>
     <span class="tag tutorial">Tutorial</span>
@@ -51,45 +51,45 @@
 
   <div class="share-buttons">
     <span style="font-size:0.8rem;color:#666;font-weight:500;">Share:</span>
-    <a class="tw" href="https://twitter.com/intent/tweet?text=5%20Developer%20Productivity%20Workflows%20with%20Revenue Holdings%20CLI%20Tools&url=https://coding-dev-tools.github.io/devforge/blog/five-productivity-workflows-cli-suite.html&via=Revenue Holdings" target="_blank" rel="noopener">ð• Twitter</a>
+    <a class="tw" href="https://twitter.com/intent/tweet?text=5%20Developer%20Productivity%20Workflows%20with%20DevForge%20CLI%20Tools&url=https://coding-dev-tools.github.io/devforge/blog/five-productivity-workflows-cli-suite.html&via=DevForge" target="_blank" rel="noopener">𝕏 Twitter</a>
     <a class="li" href="https://www.linkedin.com/sharing/share-offsite/?url=https://coding-dev-tools.github.io/devforge/blog/five-productivity-workflows-cli-suite.html" target="_blank" rel="noopener">in LinkedIn</a>
-    <a class="hn" href="https://news.ycombinator.com/submitlink?u=https://coding-dev-tools.github.io/devforge/blog/five-productivity-workflows-cli-suite.html&t=5%20Developer%20Productivity%20Workflows%20Using%20the%20Revenue Holdings%20CLI%20Suite" target="_blank" rel="noopener">Y HN</a>
+    <a class="hn" href="https://news.ycombinator.com/submitlink?u=https://coding-dev-tools.github.io/devforge/blog/five-productivity-workflows-cli-suite.html&t=5%20Developer%20Productivity%20Workflows%20Using%20the%20DevForge%20CLI%20Suite" target="_blank" rel="noopener">Y HN</a>
   </div>
 
   <p>Individual CLI tools are useful. But the real power comes when you chain them together into <strong>automated workflows</strong> that cover your entire development lifecycle
 
-  <p>Revenue Holdings ships <a href="../docs.html">11 production-ready CLI tools</a> that are designed to work together. Here are five real-world workflows that combine multiple tools to solve problems no single CLI can handle alone.</p>
+  <p>DevForge ships <a href="../docs.html">11 production-ready CLI tools</a> that are designed to work together. Here are five real-world workflows that combine multiple tools to solve problems no single CLI can handle alone.</p>
 
   <hr class="divider">
 
   <!-- Workflow 1 -->
   <div class="workflow-card">
     <div class="tools-used">
-      <span class="tool-badge">âš¡ API Contract Guardian</span>
-      <span class="tool-badge">â˜ DeployDiff</span>
-      <span class="tool-badge">âŒ˜ ConfigDrift</span>
+      <span class="tool-badge">⚡ API Contract Guardian</span>
+      <span class="tool-badge">☁ DeployDiff</span>
+      <span class="tool-badge">⌘ ConfigDrift</span>
     </div>
-    <h3>Workflow 1: The CI Safety Net â€” Catch Breaking Changes Before They Ship</h3>
+    <h3>Workflow 1: The CI Safety Net — Catch Breaking Changes Before They Ship</h3>
     <p><strong>Problem:</strong> An API change looks backwards-compatible to the developer, but it's actually a breaking change. Or the cost of the deployment is 10x what the team expected. Or staging and prod configs drifted apart overnight.</p>
     <p><strong>Solution:</strong> Gate your CI pipeline on all three checks running in sequence:</p>
 
     <pre><code class="language-bash"># Step 1: Check for breaking API changes
 acg diff --old=openapi-v2.json --new=openapi.yaml --gate
 if [ $? -ne 0 ]; then
-  echo "âŒ Breaking API change detected â€” stopping deploy"
+  echo "❌ Breaking API change detected — stopping deploy"
   exit 1
 fi
 
 # Step 2: Preview infrastructure cost impact
 deploydiff --from=current --to=proposed --cost-estimate
 if [ $? -ne 0 ]; then
-  echo "âŒ Cost impact exceeds threshold â€” flag for review"
+  echo "❌ Cost impact exceeds threshold — flag for review"
 fi
 
 # Step 3: Check for config drift between environments
 configdrift diff --env=staging --env=production
 if [ $? -ne 0 ]; then
-  echo "âš ï¸  Config drift detected between staging and production"
+  echo "⚠️  Config drift detected between staging and production"
 fi</code></pre>
 
     <p>This three-step pipeline catches the most common deployment failures: <strong>contract breaks</strong> (API Contract Guardian), <strong>cost surprises</strong> (DeployDiff), and <strong>environment mismatches</strong> (ConfigDrift). Run it in every PR and deploy with confidence.</p>
@@ -98,8 +98,8 @@ fi</code></pre>
   <!-- Workflow 2 -->
   <div class="workflow-card">
     <div class="tools-used">
-      <span class="tool-badge">ðŸ›¡ Envault</span>
-      <span class="tool-badge">ðŸ”‘ APIAuth</span>
+      <span class="tool-badge">🛡 Envault</span>
+      <span class="tool-badge">🔑 APIAuth</span>
     </div>
     <h3>Workflow 2: Automated Key &amp; Secret Rotation</h3>
     <p><strong>Problem:</strong> You need to rotate API keys and database passwords on a schedule, sync the new values across all environments, and make sure nothing breaks.</p>
@@ -119,16 +119,16 @@ envault sync --from=dev --to=staging,prod \
 # Step 4: Rotate the database password (auto-generates)
 envault rotate DB_PASSWORD --sync --env=dev,staging,prod</code></pre>
 
-    <p>Combined, these two tools automate what most teams do manually once a quarter (or forget to do entirely). APIAuth generates cryptographically sound keys; Envault distributes them â€” no Vault UI, no shared spreadsheets.</p>
+    <p>Combined, these two tools automate what most teams do manually once a quarter (or forget to do entirely). APIAuth generates cryptographically sound keys; Envault distributes them — no Vault UI, no shared spreadsheets.</p>
   </div>
 
   <!-- Workflow 3 -->
   <div class="workflow-card">
     <div class="tools-used">
-      <span class="tool-badge">ðŸ”„ SchemaForge</span>
-      <span class="tool-badge">â†» json2sql</span>
+      <span class="tool-badge">🔄 SchemaForge</span>
+      <span class="tool-badge">↻ json2sql</span>
     </div>
-    <h3>Workflow 3: Database Migration Pipeline â€” Schema + Data</h3>
+    <h3>Workflow 3: Database Migration Pipeline — Schema + Data</h3>
     <p><strong>Problem:</strong> You're migrating from Prisma to Drizzle, or from SQLAlchemy to Django ORM. You need to convert both the schema AND the existing data.</p>
     <p><strong>Solution:</strong> Use SchemaForge for the schema conversion and json2sql for the data:</p>
 
@@ -141,7 +141,7 @@ data = [row for row in reader]
 print(json.dumps(data))
 " > users.json
 
-# Step 2: Convert ORM schema (Prisma â†’ Drizzle)
+# Step 2: Convert ORM schema (Prisma → Drizzle)
 schemaforge convert schema.prisma --to drizzle
 # Output: schema.drizzle.ts
 
@@ -160,9 +160,9 @@ psql -d myapp -f migration.sql</code></pre>
   <!-- Workflow 4 -->
   <div class="workflow-card">
     <div class="tools-used">
-      <span class="tool-badge">ðŸ”Œ click-to-mcp</span>
-      <span class="tool-badge">âš¡ API Contract Guardian</span>
-      <span class="tool-badge">ðŸ§¹ DeadCode</span>
+      <span class="tool-badge">🔌 click-to-mcp</span>
+      <span class="tool-badge">⚡ API Contract Guardian</span>
+      <span class="tool-badge">🧹 DeadCode</span>
     </div>
     <h3>Workflow 4: AI-Assisted Code Review with MCP Tools</h3>
     <p><strong>Problem:</strong> Your AI coding assistant (Claude Code, Cursor, Codex) can write code but can't validate API contracts, check for dead exports, or access your local toolchain.</p>
@@ -186,17 +186,17 @@ click-to-mcp serve --tools=acg,deadcode --transport=stdio
   <!-- Workflow 5 -->
   <div class="workflow-card">
     <div class="tools-used">
-      <span class="tool-badge">â› Revenue Holdings Suite</span>
+      <span class="tool-badge">⛁ DevForge Suite</span>
     </div>
     <h3>Workflow 5: The Full Pre-Production Gate</h3>
-    <p><strong>Problem:</strong> You need a single script that validates your entire codebase before any deploy â€” API safety, dead code, config health, data integrity, and secrets hygiene.</p>
+    <p><strong>Problem:</strong> You need a single script that validates your entire codebase before any deploy — API safety, dead code, config health, data integrity, and secrets hygiene.</p>
     <p><strong>Solution:</strong> Chain all applicable tools into a pre-flight check:</p>
 
     <pre><code class="language-bash">#!/usr/bin/env bash
-# pre-flight-check.sh â€” Run before any production deploy
+# pre-flight-check.sh — Run before any production deploy
 set -e
 
-echo "ðŸ” Pre-flight check starting..."
+echo "🔍 Pre-flight check starting..."
 
 # 1. Check for breaking API changes
 acg diff --old=latest --new=current --gate
@@ -216,7 +216,7 @@ apiauth audit --check-committed
 # 6. Preview infrastructure cost
 deploydiff --from=current --to=proposed --cost-estimate
 
-echo "âœ… All checks passed â€” ready to deploy"</code></pre>
+echo "✅ All checks passed — ready to deploy"</code></pre>
 
     <p>Run this as a Makefile target, a GitHub Actions workflow, or a pre-deploy hook. It covers <strong>six failure modes</strong> in one command and takes under 30 seconds. The free tier of each tool handles this easily for individual developers.</p>
   </div>
@@ -235,22 +235,22 @@ pip install git+https://github.com/Coding-Dev-Tools/deadcode.git
 # Or set up the suite package for one-command installs
 # https://github.com/Coding-Dev-Tools/devforge-license</code></pre>
 
-  <p>Every tool has a generous free tier â€” no signup, no credit card. The <a href="../pricing.html">Pro tier</a> adds CI/CD gating, unlimited usage, and team features for $49/mo for all 11 tools.</p>
+  <p>Every tool has a generous free tier — no signup, no credit card. The <a href="../pricing.html">Pro tier</a> adds CI/CD gating, unlimited usage, and team features for $49/mo for all 11 tools.</p>
 
   <div class="cta-box">
     <h3>Ready to build your workflow?</h3>
     <p>Browse all 11 tools with docs, tutorials, and install guides.</p>
-    <a href="../docs.html" class="btn">View All Tools â†’</a>
+    <a href="../docs.html" class="btn">View All Tools →</a>
   </div>
 
   <hr class="divider">
 
-  <p><em>All Revenue Holdings tools are open source under Apache 2.0 or MIT licenses. Built entirely by autonomous AI agents. <a href="../about.html">Learn more about how we work â†’</a></em></p>
+  <p><em>All DevForge tools are open source under Apache 2.0 or MIT licenses. Built entirely by autonomous AI agents. <a href="../about.html">Learn more about how we work →</a></em></p>
 
   <div class="share-section">
     <div class="label">Share this article</div>
     <div class="share-buttons">
-      <a class="share-btn" href="https://twitter.com/intent/tweet?text=5%20Developer%20Productivity%20Workflows%20Using%20the%20Revenue Holdings%20CLI%20Suite%20%7C%20Revenue Holdings&url=https%3A//coding-dev-tools.github.io/devforge/blog/five-productivity-workflows-cli-suite.html" target="_blank" rel="noopener">
+      <a class="share-btn" href="https://twitter.com/intent/tweet?text=5%20Developer%20Productivity%20Workflows%20Using%20the%20DevForge%20CLI%20Suite%20%7C%20DevForge&url=https%3A//coding-dev-tools.github.io/devforge/blog/five-productivity-workflows-cli-suite.html" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         X / Twitter
       </a>
@@ -258,11 +258,11 @@ pip install git+https://github.com/Coding-Dev-Tools/deadcode.git
         <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         LinkedIn
       </a>
-      <a class="share-btn" href="https://news.ycombinator.com/submitlink?u=https%3A//coding-dev-tools.github.io/devforge/blog/five-productivity-workflows-cli-suite.html&t=5%20Developer%20Productivity%20Workflows%20Using%20the%20Revenue Holdings%20CLI%20Suite%20%7C%20Revenue Holdings" target="_blank" rel="noopener">
+      <a class="share-btn" href="https://news.ycombinator.com/submitlink?u=https%3A//coding-dev-tools.github.io/devforge/blog/five-productivity-workflows-cli-suite.html&t=5%20Developer%20Productivity%20Workflows%20Using%20the%20DevForge%20CLI%20Suite%20%7C%20DevForge" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" style="fill:#f60;"><path d="M0 0v24h24V0H0zm13.855 13.55L18 22h-3.06l-2.94-6.48-2.94 6.48H6l4.145-8.45L6 5.5h3.06l2.94 6.48L14.94 5.5H18l-4.145 8.05z"/></svg>
         Hacker News
       </a>
-      <a class="share-btn" href="https://www.reddit.com/submit?url=https%3A//coding-dev-tools.github.io/devforge/blog/five-productivity-workflows-cli-suite.html&title=5%20Developer%20Productivity%20Workflows%20Using%20the%20Revenue Holdings%20CLI%20Suite%20%7C%20Revenue Holdings" target="_blank" rel="noopener">
+      <a class="share-btn" href="https://www.reddit.com/submit?url=https%3A//coding-dev-tools.github.io/devforge/blog/five-productivity-workflows-cli-suite.html&title=5%20Developer%20Productivity%20Workflows%20Using%20the%20DevForge%20CLI%20Suite%20%7C%20DevForge" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" style="fill:#ff4500;"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.633 4.674 1.652a1.747 1.747 0 0 1 2.37.52 1.748 1.748 0 0 1-.52 2.37 1.75 1.75 0 0 1-1.378.33c.172.582.26 1.195.26 1.826 0 3.392-4.027 6.147-8.996 6.147S3.93 17.61 3.93 14.224c0-.63.088-1.243.26-1.826a1.75 1.75 0 0 1-1.378-.33 1.75 1.75 0 0 1-.52-2.37 1.747 1.747 0 0 1 2.37-.52c1.194-1.02 2.85-1.583 4.674-1.652l.8-3.747 2.597.547c.02-.275.135-.536.322-.745a1.24 1.24 0 0 1 1.115-.403l.003-.003zm-3.136 5.849c-1.44 0-2.607.502-2.607 1.123 0 .62 1.167 1.122 2.607 1.122s2.607-.502 2.607-1.122c0-.621-1.167-1.123-2.607-1.123zm-4.338 2.499a1.26 1.26 0 1 0 0 2.52 1.26 1.26 0 0 0 0-2.52zm8.676 0a1.26 1.26 0 1 0 0 2.52 1.26 1.26 0 0 0 0-2.52zm-1.848 4.032c.11.105.164.256.135.406-.548 2.677-2.797 4.061-4.823 4.061-2.026 0-4.275-1.384-4.823-4.061a.42.42 0 0 1 .541-.474c2.093.734 4.36.739 6.453.003a.42.42 0 0 1 .517.065zm-3.475 1.206c-1.06 0-1.919.26-1.919.582 0 .322.859.583 1.919.583s1.919-.261 1.919-.583c0-.322-.859-.582-1.919-.582z"/></svg>
         Reddit
       </a>
@@ -280,7 +280,7 @@ pip install git+https://github.com/Coding-Dev-Tools/deadcode.git
     <a href="../about.html">About</a>
     <a href="https://github.com/Coding-Dev-Tools">GitHub</a>
   </div>
-  <span>â› Revenue Holdings â€” Developer CLI Tools Built by Autonomous AI</span>
+  <span>⛁ DevForge — Developer CLI Tools Built by Autonomous AI</span>
 </footer>
 
 <script>hljs.highlightAll();</script>
