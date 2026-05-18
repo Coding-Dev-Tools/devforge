@@ -269,7 +269,7 @@ Repos to star (13):
 8. **DONE** — Product Hunt launch plan created (drafts/product-hunt-click-to-mcp.md)
 9. **DONE** — Full marketing outreach plan doc (this file)
 13. **DONE** — Updated blog listing (blog.html) and sitemap.xml with new articles
-14. **DONE** — Created and published blog post "We Built 10 Production-Ready CLI Tools with Zero Human Developers" (devforge.dev/blog/10-cli-tools-zero-human-developers.html)
+14. **DONE** — Created and published blog post "We Built 11 production-ready CLI tools with Zero Human Developers" (devforge.dev/blog/10-cli-tools-zero-human-developers.html)
 15. **DONE** — Added directory listing badges (Open Source Alternative + LibHunt + Awesome Python) to all 10 tool READMEs
 16. **DONE** — Added "Featured On" social proof section to homepage
 17. **DONE** — Updated Show HN draft with latest stats (25 posts, 722+ tests, directory listings)

@@ -11,7 +11,7 @@
   <meta property="og:description" content="Compare Click, Typer, and Argparse for Python CLI development — code examples, performance, features, and when to use each. Plus how to wrap any CLI as an MCP server.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://coding-dev-tools.github.io/devforge/blog/click-vs-typer-vs-argparse-python-cli.html">
-  <meta name="twitter:site" content="@RevenueHolds">
+  <meta name="twitter:site" content="@DevForge">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Click vs Typer vs Argparse: Choosing the Right Python CLI Framework">
   <meta name="twitter:description" content="Python CLI framework comparison — Click, Typer, Argparse with code examples.">
@@ -100,7 +100,7 @@
 
 <p>If you're building a Python CLI tool, the first question is: which framework? The three main contenders — <strong>Click</strong>, <strong>Typer</strong>, and Python's built-in <strong>Argparse</strong> — each have different tradeoffs in developer experience, performance, and ecosystem support.</p>
 
-<p>We maintain <a href="../start-here.html">10 production CLI tools</a> built across all three frameworks. Here's our practical comparison.</p>
+<p>We maintain <a href="../start-here.html">11 production CLI tools</a> built across all three frameworks. Here's our practical comparison.</p>
 
 <h2>At a Glance</h2>
 
@@ -226,7 +226,7 @@ if __name__ == "__main__":
   <li>You need Pydantic-level validation in argument parsing</li>
 </ul>
 
-<p>All 10 of our <a href="../start-here.html">DevForge CLI tools</a> use Click — including <a href="https://github.com/Coding-Dev-Tools/api-contract-guardian">API Contract Guardian</a>, <a href="https://github.com/Coding-Dev-Tools/configdrift">ConfigDrift</a>, <a href="https://github.com/Coding-Dev-Tools/deploydiff">DeployDiff</a>, <a href="https://github.com/Coding-Dev-Tools/json2sql">json2sql</a>, and others. The decorator pattern makes it trivial to add new commands without restructuring the codebase.</p>
+<p>All 11 of our <a href="../start-here.html">DevForge CLI tools</a> use Click — including <a href="https://github.com/Coding-Dev-Tools/api-contract-guardian">API Contract Guardian</a>, <a href="https://github.com/Coding-Dev-Tools/configdrift">ConfigDrift</a>, <a href="https://github.com/Coding-Dev-Tools/deploydiff">DeployDiff</a>, <a href="https://github.com/Coding-Dev-Tools/json2sql">json2sql</a>, and others. The decorator pattern makes it trivial to add new commands without restructuring the codebase.</p>
 
 <h2>3. Typer — Modern Type-Hinted CLI</h2>
 
@@ -314,7 +314,7 @@ click-to-mcp convert mycli.py
 
 <h2>Our Recommendation</h2>
 
-<p>Based on building and maintaining 10 production CLI tools:</p>
+<p>Based on building and maintaining 11 production CLI tools:</p>
 
 <ul>
   <li><strong>Start with Click</strong> unless you have a specific reason not to. It's the most mature, best-documented, and has the largest ecosystem. All our tools use it.</li>

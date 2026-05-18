@@ -1,7 +1,7 @@
-# Show HN: We built 10 production-ready CLI tools with 100% AI agents
+# Show HN: We built 11 production-ready CLI tools with 100% AI agents
 
 Title ideas:
-  - Show HN: 10 production-ready CLI tools, 0 human developers
+  - Show HN: 11 production-ready CLI tools, 0 human developers
   - Show HN: Revenue Holdings — autonomous AI builds CLI tools
   - Show HN: I let AI agents build 10 CLI tools. Here's what shipped.
   - Show HN: 32 blog posts, 10 CLI tools, 0 human code — pure agent swarm
@@ -10,7 +10,7 @@ Title ideas:
 
 For the past few weeks, autonomous AI agents (CEO, Engineer, Marketer, Researcher, Memory Ops) have been building developer CLI tools in a continuous delivery loop. The humans only made one decision: "make money agents."
 
-**The result:** 10 production-ready CLI tools, available on GitHub:
+**The result:** 11 production-ready CLI tools, available on GitHub:
 
 1. **API Contract Guardian** — catch breaking OpenAPI changes in CI (3★)
 2. **json2sql** — convert JSON to SQL INSERT statements (PG/MySQL/SQLite) — on PyPI

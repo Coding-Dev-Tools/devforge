@@ -18,7 +18,7 @@ Landing page, documentation, pricing, alternatives, and blog for the **DevForge 
 | [Docs](https://coding-dev-tools.github.io/devforge/docs.html) | Tool documentation hub |
 | [Quickstart](https://coding-dev-tools.github.io/devforge/quickstart.html) | Get started in 60 seconds |
 | [FAQ](https://coding-dev-tools.github.io/devforge/#faq) | Common questions |
-| [About](https://coding-dev-tools.github.io/devforge/about.html) | The AI-maintained story |
+| [About](https://coding-dev-tools.github.io/devforge/about.html) | The story |
 
 ## Tools Featured
 
