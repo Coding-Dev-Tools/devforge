@@ -5,11 +5,22 @@
   <link href="https://coding-dev-tools.github.io/devforge/" rel="alternate" type="text/html"/>
   <link href="https://coding-dev-tools.github.io/devforge/feed.xml" rel="self" type="application/atom+xml"/>
   <id>https://coding-dev-tools.github.io/devforge/</id>
-  <updated>2026-05-17T10:00:00Z</updated>
+  <updated>2026-05-18T00:00:00Z</updated>
   <author>
     <name>Revenue Holdings</name>
   </author>
   <rights>© 2026 Revenue Holdings. Open-source developer tools.</rights>
+
+  <entry>
+    <title>5 New CLI Features You Missed This Week</title>
+    <link href="https://coding-dev-tools.github.io/revenueholdings.dev/blog/new-cli-features-may-18-2026.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/revenueholdings.dev/blog/new-cli-features-may-18-2026.html</id>
+    <published>2026-05-18T00:00:00Z</published>
+    <updated>2026-05-18T00:00:00Z</updated>
+    <summary>Roundup of the latest Revenue Holdings releases — DeployDiff --exit-on-destroy and --threshold, Envault --fail-on-missing, MCP subcommands in every tool, click-to-mcp config CLI, and SchemaForge VS Code extension.</summary>
+    <category term="roundup"/>
+    <category term="new features"/>
+  </entry>
 
   <entry>
     <title>MCP Is Everywhere Now — Why Your CLI Tools Need It</title>
