@@ -1,8 +1,8 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <base href="/devforge/">
+  <base href="/revenueholdings.dev/">
   <link rel="canonical" href="https://coding-dev-tools.github.io/devforge/blog/openapi-diff-tools-comparison.html">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OpenAPI Diffing Tools Compared: API Contract Guardian vs Spectral vs OAS Diff | DevForge</title>
@@ -20,7 +20,7 @@
   <meta property="og:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>â›</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛁</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="blog.css">
   <!-- Plausible Analytics -->
@@ -30,7 +30,7 @@
 
 <nav>
   <div class="inner">
-    <div class="logo"><span>â›</span> DevForge</div>
+    <div class="logo"><span>⛁</span> DevForge</div>
     <div class="links">
             <a href="../start-here.html">Start Here</a>
       <a href="../quickstart.html">Get Started</a>
@@ -51,12 +51,12 @@
 
 <article class="post-content">
   <span class="badge">Comparison</span>
-  <p style="color:#666;font-size:0.85rem;margin-top:8px;">May 15, 2026 Â· 6 min read</p>
+  <p style="color:#666;font-size:0.85rem;margin-top:8px;">May 15, 2026 · 6 min read</p>
 
   <h1>OpenAPI Diffing Tools Compared: API Contract Guardian vs Spectral vs OAS Diff</h1>
-  <p class="subtitle">A no-nonsense comparison of three tools that catch breaking API changes â€” when to use each, and why you might want all three in your pipeline.</p>
+  <p class="subtitle">A no-nonsense comparison of three tools that catch breaking API changes — when to use each, and why you might want all three in your pipeline.</p>
 
-  <p>Your API is a contract between your backend and every consumer â€” mobile apps, SPAs, third-party integrations, internal microservices. When that contract breaks silently, the result is a production incident that's hard to trace: a mobile client crashes on a renamed field, an integration partner sees 4xx errors for no obvious reason, a frontend renders empty data because an endpoint response shape changed.</p>
+  <p>Your API is a contract between your backend and every consumer — mobile apps, SPAs, third-party integrations, internal microservices. When that contract breaks silently, the result is a production incident that's hard to trace: a mobile client crashes on a renamed field, an integration partner sees 4xx errors for no obvious reason, a frontend renders empty data because an endpoint response shape changed.</p>
 
   <p>Three tools have emerged as the leaders in preventing these incidents: <strong>Spectral</strong> (the most well-known API linter), <strong>OAS Diff</strong> (the dedicated diff engine), and <strong>API Contract Guardian</strong> (our CI-first entry). Each takes a fundamentally different approach. Here's how they compare and when you should use each.</p>
 
@@ -88,7 +88,7 @@
         <td>Migration guide generation</td>
         <td><span style="color:#555;">No</span></td>
         <td><span style="color:#555;">No</span></td>
-        <td><span style="color:#34d399;">Yes</span> â€” auto-generated</td>
+        <td><span style="color:#34d399;">Yes</span> — auto-generated</td>
       </tr>
       <tr>
         <td>Git branch comparison</td>
@@ -141,17 +141,17 @@
 
   <h3>What Spectral Does Well</h3>
   <ul>
-    <li><strong>Style enforcement</strong> â€” "Every endpoint must have a summary", "operationIds must be camelCase", "all responses must have examples". Spectral excels at consistency.</li>
-    <li><strong>Custom rule DSL</strong> â€” The <code>spectral:extends</code> and custom function support is the most mature rule system of any OpenAPI tool.</li>
-    <li><strong>Ecosystem</strong> â€” Pre-built rule sets for common standards (OWASP, RESTful API guidelines, Stoplight style guide).</li>
-    <li><strong>SARIF output</strong> â€” Integrates with GitHub Code Scanning, making violations visible in PR diffs.</li>
+    <li><strong>Style enforcement</strong> — "Every endpoint must have a summary", "operationIds must be camelCase", "all responses must have examples". Spectral excels at consistency.</li>
+    <li><strong>Custom rule DSL</strong> — The <code>spectral:extends</code> and custom function support is the most mature rule system of any OpenAPI tool.</li>
+    <li><strong>Ecosystem</strong> — Pre-built rule sets for common standards (OWASP, RESTful API guidelines, Stoplight style guide).</li>
+    <li><strong>SARIF output</strong> — Integrates with GitHub Code Scanning, making violations visible in PR diffs.</li>
   </ul>
 
   <h3>Where Spectral Falls Short</h3>
   <ul>
-    <li><strong>Not a diffing tool</strong> â€” Spectral validates a single spec file. It doesn't compare two versions of your API to find breaking changes. You can hack this with custom rules and two passes, but it's not the tool's purpose.</li>
-    <li><strong>Breaking change detection is bolted on</strong> â€” Community rules exist for detecting removed endpoints or renamed fields, but they're fragile and not comprehensive. Spectral won't catch a required field being added to an existing response, for example.</li>
-    <li><strong>Node.js dependency</strong> â€” If your stack is Python or Go, adding npm to your CI just for linting feels heavy.</li>
+    <li><strong>Not a diffing tool</strong> — Spectral validates a single spec file. It doesn't compare two versions of your API to find breaking changes. You can hack this with custom rules and two passes, but it's not the tool's purpose.</li>
+    <li><strong>Breaking change detection is bolted on</strong> — Community rules exist for detecting removed endpoints or renamed fields, but they're fragile and not comprehensive. Spectral won't catch a required field being added to an existing response, for example.</li>
+    <li><strong>Node.js dependency</strong> — If your stack is Python or Go, adding npm to your CI just for linting feels heavy.</li>
   </ul>
 
   <p><span style="color:#6366f1;font-weight:500;">Best for:</span> Teams that need API style consistency across many services, with pre-built rule sets for REST best practices.</p>
@@ -162,52 +162,52 @@
 
   <h3>What OAS Diff Does Well</h3>
   <ul>
-    <li><strong>Comprehensive diffing</strong> â€” It catches everything: endpoint changes, schema additions and removals, parameter shifts, response body modifications.</li>
-    <li><strong>Multiple output formats</strong> â€” Markdown reports, HTML pages, and JSON machine-readable output make it flexible for both human review and CI integration.</li>
-    <li><strong>OpenAPI standards-aligned</strong> â€” It's maintained by the OAS community, so it tracks the spec closely.</li>
+    <li><strong>Comprehensive diffing</strong> — It catches everything: endpoint changes, schema additions and removals, parameter shifts, response body modifications.</li>
+    <li><strong>Multiple output formats</strong> — Markdown reports, HTML pages, and JSON machine-readable output make it flexible for both human review and CI integration.</li>
+    <li><strong>OpenAPI standards-aligned</strong> — It's maintained by the OAS community, so it tracks the spec closely.</li>
   </ul>
 
   <h3>Where OAS Diff Falls Short</h3>
   <ul>
-    <li><strong>No migration guide</strong> â€” It tells you what changed but doesn't generate upgrade instructions or migration steps for API consumers.</li>
-    <li><strong>CI-first design is second-class</strong> â€” The CLI works, but there's no built-in concept of git branch comparison (you have to check out both files yourself and run the diff command).</li>
-    <li><strong>Exit codes are binary</strong> â€” It either found changes or it didn't. No way to say "breaking changes should fail CI, but additions should pass."</li>
-    <li><strong>npm-only install</strong> â€” Like Spectral, it assumes a Node.js environment.</li>
+    <li><strong>No migration guide</strong> — It tells you what changed but doesn't generate upgrade instructions or migration steps for API consumers.</li>
+    <li><strong>CI-first design is second-class</strong> — The CLI works, but there's no built-in concept of git branch comparison (you have to check out both files yourself and run the diff command).</li>
+    <li><strong>Exit codes are binary</strong> — It either found changes or it didn't. No way to say "breaking changes should fail CI, but additions should pass."</li>
+    <li><strong>npm-only install</strong> — Like Spectral, it assumes a Node.js environment.</li>
   </ul>
 
   <p><span style="color:#6366f1;font-weight:500;">Best for:</span> Deep schema audits, release-to-release diff reports, and documentation-driven API reviews.</p>
 
   <h2>API Contract Guardian: The CI Pipeline Gate</h2>
 
-  <p><strong>API Contract Guardian</strong> is our entry â€” built from scratch with CI pipelines as the primary use case. It combines breaking change detection with severity-based gating, git branch awareness, and automatic migration guide generation.</p>
+  <p><strong>API Contract Guardian</strong> is our entry — built from scratch with CI pipelines as the primary use case. It combines breaking change detection with severity-based gating, git branch awareness, and automatic migration guide generation.</p>
 
   <h3>What ACG Does Well</h3>
   <ul>
-    <li><strong>Git-first design</strong> â€” The <code>--base main --head feature-branch</code> flags are designed for PR workflows. One command compares your feature branch spec against main, exits non-zero if blocking changes are detected.</li>
-    <li><strong>Severity-gated exit codes</strong> â€” Breaking changes fail the pipeline (exit 1). Non-breaking additions pass with a warning (exit 0). This lets you use ACG as a merge gate without blocking on non-critical changes.</li>
-    <li><strong>Auto-generated migration guides</strong> â€” When a breaking change is detected, ACG generates <code>MIGRATION.md</code> with the exact changes, affected consumers, and upgrade steps. This is unique â€” no other tool does it.</li>
-    <li><strong>Python-native</strong> â€” Install with <code>pip</code>, no npm dependency. Fits naturally into Python stacks and general CI runners.</li>
-    <li><strong>CI-optimized output</strong> â€” <code>--output silent</code> mode keeps CI logs clean. JSON mode for machine processing. Table mode for human review.</li>
+    <li><strong>Git-first design</strong> — The <code>--base main --head feature-branch</code> flags are designed for PR workflows. One command compares your feature branch spec against main, exits non-zero if blocking changes are detected.</li>
+    <li><strong>Severity-gated exit codes</strong> — Breaking changes fail the pipeline (exit 1). Non-breaking additions pass with a warning (exit 0). This lets you use ACG as a merge gate without blocking on non-critical changes.</li>
+    <li><strong>Auto-generated migration guides</strong> — When a breaking change is detected, ACG generates <code>MIGRATION.md</code> with the exact changes, affected consumers, and upgrade steps. This is unique — no other tool does it.</li>
+    <li><strong>Python-native</strong> — Install with <code>pip</code>, no npm dependency. Fits naturally into Python stacks and general CI runners.</li>
+    <li><strong>CI-optimized output</strong> — <code>--output silent</code> mode keeps CI logs clean. JSON mode for machine processing. Table mode for human review.</li>
   </ul>
 
   <h3>Where ACG Is Newer</h3>
   <ul>
-    <li><strong>No custom rule DSL</strong> â€” You can configure severity per rule type, but there's no equivalent to Spectral's function-based rule system. For style enforcement, you'll still want Spectral.</li>
-    <li><strong>Smaller ecosystem</strong> â€” Being newer, there are fewer pre-built configs and community integrations. We're working on GitHub Action, GitLab CI template, and SARIF output.</li>
-    <li><strong>OpenAPI only (for now)</strong> â€” Unlike Spectral (which also handles AsyncAPI and JSON Schema), ACG is focused on OpenAPI 3.0 and 3.1.</li>
+    <li><strong>No custom rule DSL</strong> — You can configure severity per rule type, but there's no equivalent to Spectral's function-based rule system. For style enforcement, you'll still want Spectral.</li>
+    <li><strong>Smaller ecosystem</strong> — Being newer, there are fewer pre-built configs and community integrations. We're working on GitHub Action, GitLab CI template, and SARIF output.</li>
+    <li><strong>OpenAPI only (for now)</strong> — Unlike Spectral (which also handles AsyncAPI and JSON Schema), ACG is focused on OpenAPI 3.0 and 3.1.</li>
   </ul>
 
   <p><span style="color:#6366f1;font-weight:500;">Best for:</span> CI pipeline gating on PRs, automated breaking change detection, and teams that want a migration guide with every API change.</p>
 
   <h2>When to Use Each (And When to Use All)</h2>
 
-  <p>These tools aren't mutually exclusive â€” they solve different layers of the same problem:</p>
+  <p>These tools aren't mutually exclusive — they solve different layers of the same problem:</p>
 
   <div style="background:#121213;border:1px solid #1e1e20;border-radius:10px;padding:20px;margin:24px 0;">
     <p style="color:#e1e1e3;font-weight:600;margin-bottom:12px;">Recommended Pipeline Stack</p>
-    <p style="color:#bbb;margin-bottom:8px;"><strong style="color:#a78bfa;">1. Spectral</strong> â€” Run first as a quality gate. Catches style violations, missing descriptions, inconsistent naming. Fails fast on spec hygiene.</p>
-    <p style="color:#bbb;margin-bottom:8px;"><strong style="color:#a78bfa;">2. API Contract Guardian</strong> â€” Run second as a contract gate. Compares against the base branch, catches breaking changes, generates migration guide. This is your "would merging this break production?" check.</p>
-    <p style="color:#bbb;margin-bottom:8px;"><strong style="color:#a78bfa;">3. OAS Diff</strong> â€” Run on release (not on every PR). Produces a changelog-style diff report for the release notes. Helps communicate API changes to downstream consumers.</p>
+    <p style="color:#bbb;margin-bottom:8px;"><strong style="color:#a78bfa;">1. Spectral</strong> — Run first as a quality gate. Catches style violations, missing descriptions, inconsistent naming. Fails fast on spec hygiene.</p>
+    <p style="color:#bbb;margin-bottom:8px;"><strong style="color:#a78bfa;">2. API Contract Guardian</strong> — Run second as a contract gate. Compares against the base branch, catches breaking changes, generates migration guide. This is your "would merging this break production?" check.</p>
+    <p style="color:#bbb;margin-bottom:8px;"><strong style="color:#a78bfa;">3. OAS Diff</strong> — Run on release (not on every PR). Produces a changelog-style diff report for the release notes. Helps communicate API changes to downstream consumers.</p>
   </div>  <div class="share-bar">
     <span>Share this article:</span>
     <a href="https://twitter.com/intent/tweet?text=$(document.title)&url=$(location.href)" target="_blank" rel="noopener" class="share-link">X Twitter</a>
@@ -215,7 +215,7 @@
     <a href="https://www.linkedin.com/sharing/share-offsite/?url=$(location.href)" target="_blank" rel="noopener" class="share-link">in LinkedIn</a>
   </div>
 
-  <p>In our own pipeline, we run Spectral for style â†’ ACG for breaking changes â†’ OAS Diff for release reports. Each tool fills a gap the others don't address.</p>
+  <p>In our own pipeline, we run Spectral for style → ACG for breaking changes → OAS Diff for release reports. Each tool fills a gap the others don't address.</p>
 
   <h2>Quick Comparison: Breaking Change Detection</h2>
 
@@ -284,15 +284,15 @@
 
   <h2>The Bottom Line</h2>
 
-  <p>If you're already using Spectral for API linting (and you should be), adding API Contract Guardian to your PR pipeline isn't a replacement â€” it's a complementary layer. Spectral solves "does this spec follow our style?" ACG solves "would deploying this spec break a consumer?" They work best together.</p>
+  <p>If you're already using Spectral for API linting (and you should be), adding API Contract Guardian to your PR pipeline isn't a replacement — it's a complementary layer. Spectral solves "does this spec follow our style?" ACG solves "would deploying this spec break a consumer?" They work best together.</p>
 
   <p>OAS Diff is ideal for release-level changelog generation. Its detailed output is great for documentation but too verbose for per-PR gating.</p>
 
-  <p>Our recommendation: <strong>use Spectral + ACG on every PR</strong>, and OAS Diff on release. It takes 5 minutes to set up and catches the kind of API contract violations that cause production incidents â€” the ones tests alone don't catch.</p>
+  <p>Our recommendation: <strong>use Spectral + ACG on every PR</strong>, and OAS Diff on release. It takes 5 minutes to set up and catches the kind of API contract violations that cause production incidents — the ones tests alone don't catch.</p>
 
   <div style="background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.15);border-radius:10px;padding:20px;margin:32px 0;text-align:center;">
     <p style="color:#bbb;font-size:0.9rem;margin-bottom:8px;">Want to try API Contract Guardian in your pipeline?</p>
-    <a href="../docs.html#api-contract-guardian" style="display:inline-block;padding:10px 28px;border-radius:10px;background:#6366f1;color:#fff;text-decoration:none;font-weight:600;font-size:0.85rem;margin-top:4px;">View Quickstart â†’</a>
+    <a href="../docs.html#api-contract-guardian" style="display:inline-block;padding:10px 28px;border-radius:10px;background:#6366f1;color:#fff;text-decoration:none;font-weight:600;font-size:0.85rem;margin-top:4px;">View Quickstart →</a>
   </div>
 
   <p style="color:#555;font-size:0.82rem;margin-top:40px;">

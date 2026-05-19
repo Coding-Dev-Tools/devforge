@@ -1,26 +1,26 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <base href="/devforge/">
+  <base href="/revenueholdings.dev/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>From CLI to MCP in One Command: Introducing click-to-mcp | DevForge</title>
   <meta name="description" content="Auto-wrap any Click or Typer CLI as an MCP server with zero code changes. click-to-mcp bridges the gap between your existing CLI tools and AI coding agents. No other tool does this.">
   <meta name="keywords" content="MCP, Model Context Protocol, click-to-mcp, CLI to MCP, MCP server, AI agent tools, Click CLI, Typer, Claude MCP, Codex MCP, Cursor MCP, developer tools, autonomous AI">
   <meta property="og:title" content="From CLI to MCP in One Command: Introducing click-to-mcp | DevForge">
-  <meta property="og:description" content="Auto-wrap any Click or Typer CLI as an MCP server with zero code changes. One command bridges your CLI tools with AI coding agents â€” no other tool does this.">
+  <meta property="og:description" content="Auto-wrap any Click or Typer CLI as an MCP server with zero code changes. One command bridges your CLI tools with AI coding agents — no other tool does this.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://coding-dev-tools.github.io/devforge/blog/click-to-mcp-intro.html">
   <meta name="twitter:site" content="@DevForge">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="From CLI to MCP in One Command: Introducing click-to-mcp | DevForge">
-  <meta name="twitter:description" content="Auto-wrap any Click or Typer CLI as an MCP server. One command bridges your tools with AI agents â€” unique, open source, and free.">
+  <meta name="twitter:description" content="Auto-wrap any Click or Typer CLI as an MCP server. One command bridges your tools with AI agents — unique, open source, and free.">
   <meta name="twitter:image" content="https://coding-dev-tools.github.io/devforge/click-to-mcp-og.svg">
   <meta property="og:image" content="https://coding-dev-tools.github.io/devforge/click-to-mcp-og.svg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="https://coding-dev-tools.github.io/devforge/blog/click-to-mcp-intro.html">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>â›</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛁</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="blog.css">
   <!-- Plausible Analytics -->
@@ -30,7 +30,7 @@
 
 <nav>
   <div class="inner">
-    <div class="logo"><span>â›</span> DevForge</div>
+    <div class="logo"><span>⛁</span> DevForge</div>
     <div class="links">
             <a href="../start-here.html">Start Here</a>
       <a href="../quickstart.html">Get Started</a>
@@ -53,33 +53,33 @@
 
 <article class="post-content">
   <span class="badge">Product Launch</span>
-  <p style="color:#666;font-size:0.85rem;margin-top:8px;">May 15, 2026 Â· 7 min read</p>
+  <p style="color:#666;font-size:0.85rem;margin-top:8px;">May 15, 2026 · 7 min read</p>
 
   <h1>From CLI to MCP in One Command</h1>
-  <div class="subtitle">Introducing click-to-mcp â€” auto-wrap any Click or Typer CLI as an MCP server without changing a line of code.</div>  <div class="share-bar">
+  <div class="subtitle">Introducing click-to-mcp — auto-wrap any Click or Typer CLI as an MCP server without changing a line of code.</div>  <div class="share-bar">
     <span>Share this article:</span>
     <a href="https://twitter.com/intent/tweet?text=$(document.title)&url=$(location.href)" target="_blank" rel="noopener" class="share-link">X Twitter</a>
     <a href="https://news.ycombinator.com/submitlink?u=$(location.href)&t=$(document.title)" target="_blank" rel="noopener" class="share-link">Y Hacker News</a>
     <a href="https://www.linkedin.com/sharing/share-offsite/?url=$(location.href)" target="_blank" rel="noopener" class="share-link">in LinkedIn</a>
   </div>
 
-  <p>The Model Context Protocol (MCP) is reshaping how AI coding agents interact with developer tools. Claude Code, OpenAI Codex, Cursor, and every major AI IDE now speaks MCP. But there's a gap: <strong>tens of thousands of existing Python CLIs</strong> â€” built with Click or Typer â€” weren't designed for AI agents. They expect a human at the terminal.</p>
+  <p>The Model Context Protocol (MCP) is reshaping how AI coding agents interact with developer tools. Claude Code, OpenAI Codex, Cursor, and every major AI IDE now speaks MCP. But there's a gap: <strong>tens of thousands of existing Python CLIs</strong> — built with Click or Typer — weren't designed for AI agents. They expect a human at the terminal.</p>
 
   <p>Today we're open-sourcing <strong>click-to-mcp</strong>, the first tool that auto-wraps any Click or Typer CLI as a full MCP server. One command, zero code changes, and your existing CLI becomes a first-class AI agent tool.</p>
 
   <div class="cta-box">
     <h3>Try it now</h3>
-    <p>pip install git+https://github.com/Coding-Dev-Tools/click-to-mcp.git Â· Apache 2.0 Â· Free forever</p>
-    <a href="https://github.com/Coding-Dev-Tools/click-to-mcp" target="_blank">View on GitHub â†’</a>
+    <p>pip install git+https://github.com/Coding-Dev-Tools/click-to-mcp.git · Apache 2.0 · Free forever</p>
+    <a href="https://github.com/Coding-Dev-Tools/click-to-mcp" target="_blank">View on GitHub →</a>
   </div>
 
   <h2>The Problem: CLI Tools Don't Speak MCP</h2>
 
-  <p>AI coding agents need structured tool definitions â€” typed parameters, descriptions, and schemas â€” not raw terminal I/O. The MCP protocol solves this by defining a standard for AI-tool communication over stdio or HTTP. When an agent calls <code>tools/list</code>, it expects a JSON array of tool definitions with typed inputs. When it calls <code>tools/call</code>, it sends structured JSON, not shell arguments.</p>
+  <p>AI coding agents need structured tool definitions — typed parameters, descriptions, and schemas — not raw terminal I/O. The MCP protocol solves this by defining a standard for AI-tool communication over stdio or HTTP. When an agent calls <code>tools/list</code>, it expects a JSON array of tool definitions with typed inputs. When it calls <code>tools/call</code>, it sends structured JSON, not shell arguments.</p>
 
-  <p>Rewriting every CLI tool as a dedicated MCP server from scratch isn't practical. It's hundreds of lines of boilerplate per tool, duplicates command logic, and introduces a maintenance drag â€” every CLI change needs a matching MCP change.</p>
+  <p>Rewriting every CLI tool as a dedicated MCP server from scratch isn't practical. It's hundreds of lines of boilerplate per tool, duplicates command logic, and introduces a maintenance drag — every CLI change needs a matching MCP change.</p>
 
-  <p>But here's the thing: <strong>Click and Typer CLIs already have everything MCP needs</strong>. Your <code>@click.command()</code> decorators define commands. Your <code>@click.option()</code> and <code>@click.argument()</code> declarations define typed parameters, defaults, help text, enums, and validators. It's all structured metadata â€” it just needs a bridge to the MCP wire format.</p>
+  <p>But here's the thing: <strong>Click and Typer CLIs already have everything MCP needs</strong>. Your <code>@click.command()</code> decorators define commands. Your <code>@click.option()</code> and <code>@click.argument()</code> declarations define typed parameters, defaults, help text, enums, and validators. It's all structured metadata — it just needs a bridge to the MCP wire format.</p>
 
   <p>That bridge is <strong>click-to-mcp</strong>.</p>
 
@@ -106,7 +106,7 @@ click-to-mcp demo</code></pre>
   <p>That's it. Your CLI is now a live MCP server. Connect it to Claude Code, Codex, Cursor, or any MCP-compatible client, and your tools appear as native agent capabilities.</p>
 
   <div class="tip">
-    <strong>Pro tip:</strong> <code>click-to-mcp discover</code> scans all <code>console_scripts</code> entry points in your Python environment. It finds CLIs installed via pip, local development installs (<code>pip install -e .</code>), and even Typer-generated commands â€” all automatically.
+    <strong>Pro tip:</strong> <code>click-to-mcp discover</code> scans all <code>console_scripts</code> entry points in your Python environment. It finds CLIs installed via pip, local development installs (<code>pip install -e .</code>), and even Typer-generated commands — all automatically.
   </div>
 
   <h2>Features</h2>
@@ -131,13 +131,13 @@ click-to-mcp demo</code></pre>
   <h3>Library API</h3>
   <p>Embed MCP server capabilities directly into your CLI with two lines of Python:</p>
 
-  <pre><code># Option 1: serve_stdio() â€” standalone MCP server
+  <pre><code># Option 1: serve_stdio() — standalone MCP server
 from click_to_mcp import serve_stdio
 from my_cli import cli
 
 serve_stdio(cli, name="my-cli", description="My CLI as MCP")
 
-# Option 2: run() â€” auto-detect Click/Typer
+# Option 2: run() — auto-detect Click/Typer
 from click_to_mcp import run
 from my_typer_app import app
 
@@ -154,10 +154,10 @@ run(app, prefix="my-cli")</code></pre>
   <p>With click-to-mcp:</p>
 
   <pre><code>click-to-mcp discover
-# â†’ Found: api-contract-guardian, json2sql, deploydiff, ...
+# → Found: api-contract-guardian, json2sql, deploydiff, ...
 
 click-to-mcp serve api-contract-guardian
-# â†’ MCP server running. Claude Code can now call:
+# → MCP server running. Claude Code can now call:
 #   api-contract-guardian_diff(base_branch, head_branch, format)
 #   api-contract-guardian_check(spec_file, ruleset)</code></pre>
 
@@ -177,49 +177,49 @@ click-to-mcp serve api-contract-guardian
     </tr>
     <tr>
       <td><strong>click-to-mcp</strong></td>
-      <td style="color:#34d399;">âœ“</td>
-      <td style="color:#34d399;">âœ“</td>
-      <td style="color:#34d399;">âœ“</td>
-      <td style="color:#34d399;">âœ“</td>
+      <td style="color:#34d399;">✓</td>
+      <td style="color:#34d399;">✓</td>
+      <td style="color:#34d399;">✓</td>
+      <td style="color:#34d399;">✓</td>
     </tr>
     <tr>
       <td>FastMCP (lib)</td>
-      <td style="color:#ef4444;">âœ—</td>
-      <td style="color:#ef4444;">âœ—</td>
-      <td style="color:#ef4444;">âœ—</td>
+      <td style="color:#ef4444;">✗</td>
+      <td style="color:#ef4444;">✗</td>
+      <td style="color:#ef4444;">✗</td>
       <td>N/A</td>
     </tr>
     <tr>
       <td>mcp2cli (reverse)</td>
-      <td style="color:#ef4444;">âœ—</td>
-      <td style="color:#ef4444;">âœ—</td>
-      <td style="color:#ef4444;">âœ—</td>
+      <td style="color:#ef4444;">✗</td>
+      <td style="color:#ef4444;">✗</td>
+      <td style="color:#ef4444;">✗</td>
       <td>N/A</td>
     </tr>
     <tr>
       <td>Manual MCP server</td>
-      <td style="color:#ef4444;">âœ—</td>
-      <td style="color:#ef4444;">âœ—</td>
-      <td style="color:#ef4444;">âœ—</td>
+      <td style="color:#ef4444;">✗</td>
+      <td style="color:#ef4444;">✗</td>
+      <td style="color:#ef4444;">✗</td>
       <td>N/A</td>
     </tr>
   </table>
 
-  <p><strong>FastMCP</strong> (66M monthly PyPI downloads) is a library for building new MCP servers â€” not for wrapping existing CLIs. <strong>mcp2cli</strong> does the reverse: it exposes MCP tools as a CLI. Neither solves the "I have 30 Click CLIs and I want them in Claude Code today" problem.</p>
+  <p><strong>FastMCP</strong> (66M monthly PyPI downloads) is a library for building new MCP servers — not for wrapping existing CLIs. <strong>mcp2cli</strong> does the reverse: it exposes MCP tools as a CLI. Neither solves the "I have 30 Click CLIs and I want them in Claude Code today" problem.</p>
 
-  <p>click-to-mcp occupies a unique niche. It's the only tool that takes <strong>existing CLI metadata</strong> â€” your Click/Typer decorators â€” and bridges it directly to MCP without you writing a single line of glue code.</p>
+  <p>click-to-mcp occupies a unique niche. It's the only tool that takes <strong>existing CLI metadata</strong> — your Click/Typer decorators — and bridges it directly to MCP without you writing a single line of glue code.</p>
 
   <h2>Part of Something Bigger</h2>
 
-  <p>click-to-mcp is part of the <strong>DevForge</strong> developer tool ecosystem â€” a suite of production-grade CLI tools designed, coded, and tested entirely by autonomous AI agents. Every DevForge CLI tool works with click-to-mcp out of the box:</p>
+  <p>click-to-mcp is part of the <strong>DevForge</strong> developer tool ecosystem — a suite of production-grade CLI tools designed, coded, and tested entirely by autonomous AI agents. Every DevForge CLI tool works with click-to-mcp out of the box:</p>
 
   <ul>
-    <li><strong>api-contract-guardian</strong> â€” breakage detection for OpenAPI schemas</li>
-    <li><strong>json2sql</strong> â€” JSON-to-SQL with smart type inference</li>
-    <li><strong>deploydiff</strong> â€” infrastructure change blast radius analysis</li>
-    <li><strong>configdrift</strong> â€” cross-environment config consistency</li>
-    <li><strong>deadcode</strong> â€” dead code detection for TypeScript/React</li>
-    <li><strong>apiauth</strong>, <strong>apighost</strong>, <strong>envault</strong>, <strong>schemaforge</strong> â€” and more</li>
+    <li><strong>api-contract-guardian</strong> — breakage detection for OpenAPI schemas</li>
+    <li><strong>json2sql</strong> — JSON-to-SQL with smart type inference</li>
+    <li><strong>deploydiff</strong> — infrastructure change blast radius analysis</li>
+    <li><strong>configdrift</strong> — cross-environment config consistency</li>
+    <li><strong>deadcode</strong> — dead code detection for TypeScript/React</li>
+    <li><strong>apiauth</strong>, <strong>apighost</strong>, <strong>envault</strong>, <strong>schemaforge</strong> — and more</li>
   </ul>
 
   <p>Install the suite, run <code>click-to-mcp discover</code>, and you'll see all of them available as MCP tools in your AI agent.</p>
@@ -227,17 +227,17 @@ click-to-mcp serve api-contract-guardian
   <div class="cta-box">
     <h3>Ready to Bridge Your CLI Tools?</h3>
     <p>Free and open source under Apache 2.0. No license key, no rate limits, no telemetry.</p>
-    <a href="https://github.com/Coding-Dev-Tools/click-to-mcp" target="_blank">Get click-to-mcp â†’</a>
+    <a href="https://github.com/Coding-Dev-Tools/click-to-mcp" target="_blank">Get click-to-mcp →</a>
   </div>
 
   <h2>What's Next</h2>
 
   <ul>
-    <li><strong>HTTP transport</strong> â€” serve MCP over HTTP/S in addition to stdio</li>
-    <li><strong>Custom tool names</strong> â€” override how CLI commands are exposed as tool names</li>
-    <li><strong>Streaming tools</strong> â€” support MCP streaming for long-running commands</li>
-    <li><strong>Plugin system</strong> â€” custom parameter transformers for non-standard Click patterns</li>
-    <li><strong>PyPI publishing</strong> â€” click-to-mcp is already on PyPI via <code>pip install click-to-mcp</code></li>
+    <li><strong>HTTP transport</strong> — serve MCP over HTTP/S in addition to stdio</li>
+    <li><strong>Custom tool names</strong> — override how CLI commands are exposed as tool names</li>
+    <li><strong>Streaming tools</strong> — support MCP streaming for long-running commands</li>
+    <li><strong>Plugin system</strong> — custom parameter transformers for non-standard Click patterns</li>
+    <li><strong>PyPI publishing</strong> — click-to-mcp is already on PyPI via <code>pip install click-to-mcp</code></li>
   </ul>
 
   <hr>
@@ -266,21 +266,21 @@ click-to-mcp serve api-contract-guardian
 
   <div class="article-waitlist">
     <h3>Get DevForge Updates</h3>
-    <p>New tools, deep dives, and AI agent dev stories â€” delivered to your inbox.</p>
+    <p>New tools, deep dives, and AI agent dev stories — delivered to your inbox.</p>
     <form onsubmit="submitWaitlist(event)">
       <div class="form-row">
         <input type="email" id="wl-email" placeholder="you@company.com" required>
-        <button type="submit" class="submit-btn">Subscribe â†’</button>
+        <button type="submit" class="submit-btn">Subscribe →</button>
       </div>
-      <div class="form-msg" id="wl-msg">âœ“ You're on the list.</div>
+      <div class="form-msg" id="wl-msg">✓ You're on the list.</div>
     </form>
   </div>
 
   <p style="text-align:center;font-size:0.85rem;color:#666;">
-    Star us on <a href="https://github.com/Coding-Dev-Tools" style="color:#6366f1;">GitHub</a> Â·
-    <a href="mcp-server-directories-where-to-list-your-server.html" style="color:#6366f1;">MCP Directory Guide â†’</a> Â·
-    <a href="../pricing.html" style="color:#6366f1;">View Pricing â†’</a> Â·
-    <a href="../docs.html" style="color:#6366f1;">Documentation â†’</a>
+    Star us on <a href="https://github.com/Coding-Dev-Tools" style="color:#6366f1;">GitHub</a> ·
+    <a href="mcp-server-directories-where-to-list-your-server.html" style="color:#6366f1;">MCP Directory Guide →</a> ·
+    <a href="../pricing.html" style="color:#6366f1;">View Pricing →</a> ·
+    <a href="../docs.html" style="color:#6366f1;">Documentation →</a>
   </p>
 
 </article>
