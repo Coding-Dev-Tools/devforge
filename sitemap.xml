@@ -1,277 +1,277 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/start-here.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/start-here.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/pricing.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/pricing.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/docs.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/docs.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/quickstart.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/quickstart.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/alternatives.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/alternatives.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/about.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/about.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/releases.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/releases.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/10-cli-tools-zero-human-developers.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/10-cli-tools-zero-human-developers.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/ai-built-cli-tools-zero-humans.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/ai-built-cli-tools-zero-humans.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/api-key-management-from-terminal.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/api-key-management-from-terminal.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/api-mock-server-from-openapi-spec.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/api-mock-server-from-openapi-spec.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/apighost-advanced-mock-patterns.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/apighost-advanced-mock-patterns.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/autonomous-ai-experiment.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/autonomous-ai-experiment.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/catch-breaking-api-changes-in-ci.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/catch-breaking-api-changes-in-ci.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/catch-config-drift-before-production.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/catch-config-drift-before-production.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/clean-up-react-dead-code.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/clean-up-react-dead-code.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/click-to-mcp-intro.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/click-to-mcp-intro.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/datamorph-batch-data-conversion.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/datamorph-batch-data-conversion.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/deadcode-technical-deep-dive.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/deadcode-technical-deep-dive.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/envault-secret-rotation-guide.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/envault-secret-rotation-guide.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/five-productivity-workflows-cli-suite.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/five-productivity-workflows-cli-suite.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/json-to-sql-one-command.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/json-to-sql-one-command.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/license-key-rate-limiting-cli-tools.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/license-key-rate-limiting-cli-tools.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/openapi-diff-tools-comparison.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/openapi-diff-tools-comparison.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/preview-infra-cost-before-deploy.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/preview-infra-cost-before-deploy.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/python-cli-to-mcp-server.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/python-cli-to-mcp-server.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/schemaforge-v0-2-0-drizzle.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/schemaforge-v0-2-0-drizzle.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/schemaforge-v0-5-0-sqlalchemy.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/schemaforge-v0-5-0-sqlalchemy.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/schemaforge-v1-7-0-vscode-extension.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/schemaforge-v1-7-0-vscode-extension.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/stop-breaking-production.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/stop-breaking-production.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/sync-env-variables-across-environments.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/sync-env-variables-across-environments.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/welcome-revenue-holdings.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/welcome-revenue-holdings.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/white-label-ai-agent-deployment.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/white-label-ai-agent-deployment.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/zero-to-ci-safety-net.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/zero-to-ci-safety-net.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/10-open-source-cli-tools-ai-development.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/10-open-source-cli-tools-ai-development.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/get-your-cli-tool-listed-awesome-directories.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/get-your-cli-tool-listed-awesome-directories.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/mcp-server-directories-where-to-list-your-server.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/mcp-server-directories-where-to-list-your-server.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/ci-cd-python-cli-tools-guide.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/ci-cd-python-cli-tools-guide.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/click-vs-typer-vs-argparse-python-cli.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/click-vs-typer-vs-argparse-python-cli.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/before-you-deploy-config-drift-and-cost.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/before-you-deploy-config-drift-and-cost.html</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/revenue-hits-680-developers.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/revenue-hits-680-developers.html</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/new-cli-features-may-18-2026.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/new-cli-features-may-18-2026.html</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/click-to-mcp-usage-guide.html</loc>
+    <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/click-to-mcp-usage-guide.html</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
     <url>
-        <loc>https://coding-dev-tools.github.io/devforge/blog/mcp-everywhere-why-your-cli-tools-need-it.html</loc>
+        <loc>https://coding-dev-tools.github.io/revenueholdings.dev/blog/mcp-everywhere-why-your-cli-tools-need-it.html</loc>
         <lastmod>2026-05-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
