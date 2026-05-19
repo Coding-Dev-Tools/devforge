@@ -1,20 +1,20 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <base href="/revenueholdings.dev/">
+  <base href="/devforge/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Batch Data Conversion at Scale: Why Streaming Matters | DevForge</title>
   <meta name="description" content="Learn why streaming row-by-row conversion beats loading everything into memory. Practical examples converting CSV, Parquet, JSON, and YAML at scale with DataMorph CLI.">
   <meta name="keywords" content="data conversion, batch processing, CSV to Parquet, streaming, ETL pipeline, data engineering, CLI tools, DataMorph, DevForge, schema validation">
   <meta property="og:title" content="Batch Data Conversion at Scale: Why Streaming Matters">
-  <meta property="og:description" content="Stream row-by-row conversion between CSV, Parquet, JSON, YAML, Avro, and more — without running out of memory.">
+  <meta property="og:description" content="Stream row-by-row conversion between CSV, Parquet, JSON, YAML, Avro, and more ï¿½ without running out of memory.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://coding-dev-tools.github.io/devforge/blog/datamorph-data-conversion-batch-processing.html">
   <meta name="twitter:site" content="@DevForge">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Batch Data Conversion at Scale: Why Streaming Matters">
-  <meta name="twitter:description" content="Stream row-by-row data conversion — handle 10GB+ files without OOM errors.">
+  <meta name="twitter:description" content="Stream row-by-row data conversion ï¿½ handle 10GB+ files without OOM errors.">
   <meta name="twitter:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
   <meta property="og:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
   <meta property="og:image:width" content="1200">
@@ -90,21 +90,21 @@
 
   <p>Data format conversion is a universal problem in data engineering. Yet most teams solve it by writing custom scripts with pandas, csvkit, or ad-hoc Python. These approaches work fine for small files, but they break down at production scale.</p>
 
-  <p>This post explains <strong>why streaming row-by-row conversion matters</strong>, how it differs from load-everything-in-memory approaches, and how to use <strong>DataMorph</strong> — an open-source CLI tool purpose-built for this problem.</p>
+  <p>This post explains <strong>why streaming row-by-row conversion matters</strong>, how it differs from load-everything-in-memory approaches, and how to use <strong>DataMorph</strong> ï¿½ an open-source CLI tool purpose-built for this problem.</p>
 
   <h2>The Problem with Load-Everything Conversion</h2>
 
-  <p>Most data conversion tools — including pandas' `read_csv()` ? `to_parquet()` — load the entire dataset into memory before writing output. This works for small files, but breaks down in these scenarios:</p>
+  <p>Most data conversion tools ï¿½ including pandas' `read_csv()` ? `to_parquet()` ï¿½ load the entire dataset into memory before writing output. This works for small files, but breaks down in these scenarios:</p>
 
   <table>
     <thead>
       <tr><th>Scenario</th><th>File Size</th><th>pandas Memory</th><th>Result</th></tr>
     </thead>
     <tbody>
-      <tr><td>Dev laptop</td><td>500 MB CSV</td><td>~2 GB (4× overhead)</td><td>Slow but works</td></tr>
+      <tr><td>Dev laptop</td><td>500 MB CSV</td><td>~2 GB (4ï¿½ overhead)</td><td>Slow but works</td></tr>
       <tr><td>CI runner</td><td>2 GB file</td><td>~8 GB peak</td><td>OOM on small runners</td></tr>
       <tr><td>Production export</td><td>10 GB CSV</td><td>~40 GB peak</td><td>Guaranteed OOM</td></tr>
-      <tr><td>Batch directory</td><td>50× 200 MB files</td><td>Varies per file</td><td>Manual loop needed</td></tr>
+      <tr><td>Batch directory</td><td>50ï¿½ 200 MB files</td><td>Varies per file</td><td>Manual loop needed</td></tr>
     </tbody>
   </table>
 
@@ -114,10 +114,10 @@
 
   <p>Streaming converters process one row at a time: read a row, transform it, write it, discard it from memory. The memory footprint stays constant regardless of file size:</p>
 
-  <pre><code># Streaming — constant memory (~20 MB)
+  <pre><code># Streaming ï¿½ constant memory (~20 MB)
 datamorph convert 10gb-file.csv output.parquet
 
-# Load-everything — OOM on large files
+# Load-everything ï¿½ OOM on large files
 python -c "
 import pandas as pd
 df = pd.read_csv('10gb-file.csv')   # ?? 40+ GB RAM
@@ -128,12 +128,12 @@ df.to_parquet('output.parquet')
 
   <h2>DataMorph: Streaming from Day One</h2>
 
-  <p>DataMorph is built on a streaming architecture. Every format pair (CSV ? Parquet, JSON ? YAML, etc.) processes rows one at a time. This means you can convert files of any size on any machine — from a Raspberry Pi to a production CI runner.</p>
+  <p>DataMorph is built on a streaming architecture. Every format pair (CSV ? Parquet, JSON ? YAML, etc.) processes rows one at a time. This means you can convert files of any size on any machine ï¿½ from a Raspberry Pi to a production CI runner.</p>
 
   <pre><code><span style="color:#34d399;"># Install once</span>
 pip install datamorph
 
-<span style="color:#34d399;"># Convert anything to anything — streamed</span>
+<span style="color:#34d399;"># Convert anything to anything ï¿½ streamed</span>
 datamorph convert sales_2025.csv sales_2025.parquet
 datamorph convert events.json events.yaml
 datamorph convert users.parquet users.csv
@@ -150,11 +150,11 @@ datamorph schema reference.parquet --json-output > schema.json
 
 <span style="color:#34d399;"># Validate every file in CI</span>
 datamorph validate data/events.csv --schema schema.json --strict
-<span style="color:#888;"># Exit code 1 on mismatch — blocks deployment</span></code></pre>
+<span style="color:#888;"># Exit code 1 on mismatch ï¿½ blocks deployment</span></code></pre>
 
   <div class="highlight-box">
     <p>? CI Integration Example</p>
-    <p style="color:#999;font-size:0.85rem;font-weight:400;">Fail your pipeline on schema drift, data type changes, or missing columns — before they reach production.</p>
+    <p style="color:#999;font-size:0.85rem;font-weight:400;">Fail your pipeline on schema drift, data type changes, or missing columns ï¿½ before they reach production.</p>
   </div>
 
   <p>This turns DataMorph from a "convert utility" into a <strong>data quality gate</strong>. Combine it with GitHub Actions, GitLab CI, or any pipeline tool to enforce data contracts.</p>
@@ -172,7 +172,7 @@ datamorph batch ./incoming/ ./clean/ --from csv --to parquet --validate
 <span style="color:#34d399;"># Dry-run to see what would happen</span>
 datamorph batch ./data/ ./out/ --from json --to yaml --dry-run</code></pre>
 
-  <p>The `--recursive` flag walks subdirectories. The `--validate` flag runs schema checks before conversion. And `--dry-run` shows the plan without touching files — useful for reviewing before executing.</p>
+  <p>The `--recursive` flag walks subdirectories. The `--validate` flag runs schema checks before conversion. And `--dry-run` shows the plan without touching files ï¿½ useful for reviewing before executing.</p>
 
   <h2>Supported Format Pairs</h2>
 
@@ -236,9 +236,9 @@ datamorph convert ./athena-tables/monthly-summary.parquet \
     </tbody>
   </table>
 
-  <p><strong>DataMorph vs. pandas:</strong> pandas is a full data analysis framework. DataMorph is a focused CLI tool — install it once and use it in any pipeline without importing libraries. The streaming architecture means you don't need 32 GB RAM machines for data conversion.</p>
+  <p><strong>DataMorph vs. pandas:</strong> pandas is a full data analysis framework. DataMorph is a focused CLI tool ï¿½ install it once and use it in any pipeline without importing libraries. The streaming architecture means you don't need 32 GB RAM machines for data conversion.</p>
 
-  <p><strong>DataMorph vs. csvkit:</strong> csvkit is excellent for CSV but limited to one format. DataMorph handles Parquet, Avro, JSON, and YAML — the formats that real data pipelines use.</p>
+  <p><strong>DataMorph vs. csvkit:</strong> csvkit is excellent for CSV but limited to one format. DataMorph handles Parquet, Avro, JSON, and YAML ï¿½ the formats that real data pipelines use.</p>
 
   <p><strong>DataMorph vs. frictionless:</strong> frictionless is a Python framework with a rich API. DataMorph is a CLI tool you can run in CI without writing Python. If you need programmatic control, frictionless is the right choice. If you need a one-liner in your pipeline, reach for DataMorph.</p>
 
@@ -263,16 +263,16 @@ datamorph schema sample.parquet --json-output</code></pre>
 
   <p>DataMorph is free and open source (MIT). No account, no telemetry, no rate limits. The CLI works fully offline.</p>
 
-  <p>It's one of 11 tools in the <strong>DevForge suite</strong> — a collection of CLI-first developer tools built for real engineering problems. Check out the other tools at <a href="https://github.com/Coding-Dev-Tools" style="color:#6366f1;">github.com/Coding-Dev-Tools</a>.</p>
+  <p>It's one of 11 tools in the <strong>DevForge suite</strong> ï¿½ a collection of CLI-first developer tools built for real engineering problems. Check out the other tools at <a href="https://github.com/Coding-Dev-Tools" style="color:#6366f1;">github.com/Coding-Dev-Tools</a>.</p>
 
   <hr>
 
-  <p style="color:#666;font-size:0.85rem;text-align:center;"><em>DataMorph is part of DevForge — 11 developer CLI tools built by autonomous AI agents. Also check out <a href="https://github.com/Coding-Dev-Tools/api-contract-guardian" style="color:#6366f1;">API Contract Guardian</a>, <a href="https://github.com/Coding-Dev-Tools/json2sql" style="color:#6366f1;">json2sql</a>, <a href="https://github.com/Coding-Dev-Tools/deploydiff" style="color:#6366f1;">DeployDiff</a>, <a href="https://github.com/Coding-Dev-Tools/envault" style="color:#6366f1;">Envault</a>, and <a href="https://github.com/Coding-Dev-Tools/click-to-mcp" style="color:#6366f1;">click-to-mcp</a>.</em></p>
+  <p style="color:#666;font-size:0.85rem;text-align:center;"><em>DataMorph is part of DevForge ï¿½ 11 developer CLI tools built by autonomous AI agents. Also check out <a href="https://github.com/Coding-Dev-Tools/api-contract-guardian" style="color:#6366f1;">API Contract Guardian</a>, <a href="https://github.com/Coding-Dev-Tools/json2sql" style="color:#6366f1;">json2sql</a>, <a href="https://github.com/Coding-Dev-Tools/deploydiff" style="color:#6366f1;">DeployDiff</a>, <a href="https://github.com/Coding-Dev-Tools/envault" style="color:#6366f1;">Envault</a>, and <a href="https://github.com/Coding-Dev-Tools/click-to-mcp" style="color:#6366f1;">click-to-mcp</a>.</em></p>
 
 </article>
 
 <footer>
-  <span>© 2026 <a href="https://github.com/Coding-Dev-Tools">DevForge</a> — Open source developer CLI tools.</span>
+  <span>ï¿½ 2026 <a href="https://github.com/Coding-Dev-Tools">DevForge</a> ï¿½ Open source developer CLI tools.</span>
 </footer>
 
 </body>
