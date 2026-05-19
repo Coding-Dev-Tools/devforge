@@ -1,33 +1,33 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <base href="/devforge/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Convert JSON to SQL in One Command — json2sql Tutorial | DevForge</title>
-  <meta name="description" content="Learn how to convert JSON files and API responses to SQL INSERT statements with json2sql. Supports nested objects, multiple dialects (PostgreSQL, MySQL, SQLite), and CI pipeline integration — all from a single CLI command.">
+  <title>Convert JSON to SQL in One Command â€” json2sql Tutorial | DevForge</title>
+  <meta name="description" content="Learn how to convert JSON files and API responses to SQL INSERT statements with json2sql. Supports nested objects, multiple dialects (PostgreSQL, MySQL, SQLite), and CI pipeline integration â€” all from a single CLI command.">
   <meta name="keywords" content="JSON to SQL, convert JSON to INSERT, json2sql CLI, PostgreSQL seed data, MySQL import, SQLite, ETL pipeline, data migration, CLI tool">
-  <meta property="og:title" content="Convert JSON to SQL in One Command — json2sql Tutorial | DevForge">
+  <meta property="og:title" content="Convert JSON to SQL in One Command â€” json2sql Tutorial | DevForge">
   <meta property="og:description" content="Convert JSON files and API responses to clean SQL INSERT statements. No more writing seed scripts or wrestling with nested data. Works with PostgreSQL, MySQL, and SQLite.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://coding-dev-tools.github.io/devforge/blog/json-to-sql-one-command.html">
-  <meta name="twitter:site" content="@RevenueHolds">
+  <meta name="twitter:site" content="@DevForge">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Convert JSON to SQL in One Command">
-  <meta name="twitter:description" content="A CLI tool that converts JSON files and API responses to SQL INSERT statements — PostgreSQL, MySQL, SQLite, nested objects, arrays.">
+  <meta name="twitter:description" content="A CLI tool that converts JSON files and API responses to SQL INSERT statements â€” PostgreSQL, MySQL, SQLite, nested objects, arrays.">
   <meta name="twitter:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
   <meta property="og:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="https://coding-dev-tools.github.io/devforge/blog/json-to-sql-one-command.html">
   <meta name="author" content="DevForge">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛁</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>â›</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "TechArticle",
-    "headline": "Convert JSON to SQL in One Command — json2sql Tutorial",
+    "headline": "Convert JSON to SQL in One Command â€” json2sql Tutorial",
     "description": "Learn how to convert JSON files and API responses to SQL INSERT statements with json2sql.",
     "datePublished": "2026-05-15",
     "author": { "@type": "Organization", "name": "DevForge" },
@@ -43,7 +43,7 @@
 
 <nav>
   <div class="inner">
-    <div class="logo"><span>⛁</span> DevForge</div>
+    <div class="logo"><span>â›</span> DevForge</div>
     <div class="links">
             <a href="../start-here.html">Start Here</a>
       <a href="../index.html">Home</a>
@@ -55,7 +55,7 @@
 </nav>
 
 <div class="blog-nav">
-  <a href="../blog.html">← Back to Blog</a>
+  <a href="../blog.html">â† Back to Blog</a>
 </div>
 
 <main class="post-content">
@@ -65,19 +65,19 @@
   <h1>Convert JSON to SQL in One Command</h1>
 
   <div class="subtitle">
-    Stop writing seed scripts. A single CLI command turns any JSON file — flat or nested — into clean SQL INSERT statements for PostgreSQL, MySQL, or SQLite.
+    Stop writing seed scripts. A single CLI command turns any JSON file â€” flat or nested â€” into clean SQL INSERT statements for PostgreSQL, MySQL, or SQLite.
   </div>
 
   <div class="meta">
     <span>May 15, 2026</span>
-    <span>·</span>
+    <span>Â·</span>
     <span>6 min read</span>
-    <span>·</span>
+    <span>Â·</span>
     <span>DevForge</span>
   </div>
   <div class="share-bar">
     <span>Share this article:</span>
-    <a href="https://twitter.com/intent/tweet?text=$(document.title)&url=$(location.href)" target="_blank" rel="noopener" class="share-link">𝕏 Twitter</a>
+    <a href="https://twitter.com/intent/tweet?text=$(document.title)&url=$(location.href)" target="_blank" rel="noopener" class="share-link">ð• Twitter</a>
     <a href="https://news.ycombinator.com/submitlink?u=$(location.href)&t=$(document.title)" target="_blank" rel="noopener" class="share-link">Y Hacker News</a>
     <a href="https://www.linkedin.com/sharing/share-offsite/?url=$(location.href)" target="_blank" rel="noopener" class="share-link">in LinkedIn</a>
   </div>
@@ -86,25 +86,25 @@
   <hr>
 
   <p>
-    Every developer has done this: you get a JSON export from an API, a CSV someone converted to JSON, or a fixture file for a new feature — and you need to get it into a database. So you write a Python script, iterate through objects, manually escape strings, handle nulls, and eventually produce a SQL file. Then you do it again next week with different data.
+    Every developer has done this: you get a JSON export from an API, a CSV someone converted to JSON, or a fixture file for a new feature â€” and you need to get it into a database. So you write a Python script, iterate through objects, manually escape strings, handle nulls, and eventually produce a SQL file. Then you do it again next week with different data.
   </p>
 
   <p>
-    There's a better way. <strong>json2sql</strong> is a zero-dependency CLI that converts JSON to SQL INSERT statements in one command. It handles nested objects, arrays, type inference, and multiple SQL dialects — all without a configuration file.
+    There's a better way. <strong>json2sql</strong> is a zero-dependency CLI that converts JSON to SQL INSERT statements in one command. It handles nested objects, arrays, type inference, and multiple SQL dialects â€” all without a configuration file.
   </p>
 
   <div class="diagram">
-    ┌──────────────┐    ┌──────────┐    ┌───────────────────────────┐
-    │  data.json   │    │ json2sql │    │  INSERT INTO users        │
-    │  [           │    │  convert │    │  (id, name, email)        │
-    │   {"id": 1,  │ ──→│  data.js │──→│  VALUES (1, 'Alice', ...) │
-    │    "name":   │    │  on      │    │  INSERT INTO users        │
-    │    "Alice"}  │    │          │    │  VALUES (2, 'Bob', ...)   │
-    │  ]           │    └──────────┘    └───────────────────────────┘
+    â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”    â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”    â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+    â”‚  data.json   â”‚    â”‚ json2sql â”‚    â”‚  INSERT INTO users        â”‚
+    â”‚  [           â”‚    â”‚  convert â”‚    â”‚  (id, name, email)        â”‚
+    â”‚   {"id": 1,  â”‚ â”€â”€â†’â”‚  data.js â”‚â”€â”€â†’â”‚  VALUES (1, 'Alice', ...) â”‚
+    â”‚    "name":   â”‚    â”‚  on      â”‚    â”‚  INSERT INTO users        â”‚
+    â”‚    "Alice"}  â”‚    â”‚          â”‚    â”‚  VALUES (2, 'Bob', ...)   â”‚
+    â”‚  ]           â”‚    â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜    â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
   </div>
 
   <div class="tip">
-    <strong>⚡ Already have json2sql?</strong> Skip to <a href="#nested-json">nested JSON handling</a> or <a href="#ci-pipeline">CI pipeline integration</a>.
+    <strong>âš¡ Already have json2sql?</strong> Skip to <a href="#nested-json">nested JSON handling</a> or <a href="#ci-pipeline">CI pipeline integration</a>.
   </div>
 
   <h2>1. Install</h2>
@@ -187,7 +187,7 @@ INSERT INTO users (id, name, email, active) VALUES
 
   <p>Available dialects: <code>postgres</code>, <code>mysql</code>, <code>sqlite</code>.</p>
 
-  <h2 id="nested-json">4. Nested JSON → Relational Tables</h2>
+  <h2 id="nested-json">4. Nested JSON â†’ Relational Tables</h2>
 
   <p>This is where json2sql shines. Consider an API response with nested objects:</p>
 
@@ -253,7 +253,7 @@ INSERT INTO orders_items (order_id, sku, qty, price) VALUES
   <p>The nested <code>customer</code> object was flattened into columns. The <code>items</code> array was extracted into a child table with a foreign key back to the parent <code>order_id</code>. No manual schema design needed.</p>
 
   <div class="tip">
-    <strong>💡 Pro tip:</strong> Use <code>--table</code> to override the auto-detected table name when your JSON wraps data in a key like <code>{"data": [...]}</code>:
+    <strong>ðŸ’¡ Pro tip:</strong> Use <code>--table</code> to override the auto-detected table name when your JSON wraps data in a key like <code>{"data": [...]}</code>:
     <div style="margin-top:8px;">
       <code class="cmd-block">$ json2sql convert api_response.json --table products</code>
     </div>
@@ -267,7 +267,7 @@ INSERT INTO orders_items (order_id, sku, qty, price) VALUES
 
   <div class="cmd-block">$ cat data.json | json2sql convert --dialect sqlite -o seed.sql</div>
 
-  <p>This lets you chain json2sql with <code>curl</code>, <code>jq</code>, or any command that produces JSON — no intermediate files required.</p>
+  <p>This lets you chain json2sql with <code>curl</code>, <code>jq</code>, or any command that produces JSON â€” no intermediate files required.</p>
 
   <h2 id="ci-pipeline">6. CI/CD Integration</h2>
 
@@ -305,7 +305,7 @@ jobs:
   </ul>
 
   <div class="tip">
-    <strong>💡 Pro tip:</strong> Store your JSON fixtures in <code>tests/fixtures/</code> and generate SQL at test time. This keeps test data human-readable (JSON) while still testing against real SQL schemas.
+    <strong>ðŸ’¡ Pro tip:</strong> Store your JSON fixtures in <code>tests/fixtures/</code> and generate SQL at test time. This keeps test data human-readable (JSON) while still testing against real SQL schemas.
   </div>
 
   <h2>Command Reference</h2>
@@ -335,7 +335,7 @@ jobs:
     <tr><td>Type inference</td><td>Built-in (int, bool, null, text, numeric)</td><td>Manual type mapping</td></tr>
   </table>
 
-  <p>You still need a custom script when you need complex transformations, data enrichment, or joins across multiple source files. But for the common case — "I have JSON, I need SQL" — json2sql saves you 30 minutes of scripting every time.</p>
+  <p>You still need a custom script when you need complex transformations, data enrichment, or joins across multiple source files. But for the common case â€” "I have JSON, I need SQL" â€” json2sql saves you 30 minutes of scripting every time.</p>
 
   <hr>
 
@@ -344,31 +344,31 @@ jobs:
   <p>json2sql is one of <strong>11 tools</strong> in the DevForge suite. After you've got your data in SQL, check out the tools that protect it:</p>
 
   <ul>
-    <li><strong>API Contract Guardian</strong> — Catch breaking API schema changes in PRs</li>
-    <li><strong>ConfigDrift</strong> — Detect environment drift before it breaks production</li>
-    <li><strong>DeployDiff</strong> — See the full cost and blast radius of every infra change</li>
-    <li><strong>DeadCode</strong> — Remove unused exports, dead routes, and orphaned CSS</li>
+    <li><strong>API Contract Guardian</strong> â€” Catch breaking API schema changes in PRs</li>
+    <li><strong>ConfigDrift</strong> â€” Detect environment drift before it breaks production</li>
+    <li><strong>DeployDiff</strong> â€” See the full cost and blast radius of every infra change</li>
+    <li><strong>DeadCode</strong> â€” Remove unused exports, dead routes, and orphaned CSS</li>
   </ul>
 
   <div class="warning" style="background:rgba(251,146,60,0.08);border:1px solid rgba(251,146,60,0.2);border-radius:10px;padding:16px 20px;margin:20px 0;">
-    <strong style="color:#fb923c;">🔌 All tools work with click-to-mcp:</strong> Turn any DevForge CLI into an MCP server so Claude Code, Codex, and Cursor can use them directly. <a href="click-to-mcp-intro.html" style="color:#a78bfa;">Learn more →</a>
+    <strong style="color:#fb923c;">ðŸ”Œ All tools work with click-to-mcp:</strong> Turn any DevForge CLI into an MCP server so Claude Code, Codex, and Cursor can use them directly. <a href="click-to-mcp-intro.html" style="color:#a78bfa;">Learn more â†’</a>
   </div>
 
-  <p><a href="../docs.html">Read the full docs →</a></p>
+  <p><a href="../docs.html">Read the full docs â†’</a></p>
 
   <div class="article-waitlist">
     <h3>Stay Updated</h3>
     <p>New tutorials and tools every week. No spam, unsubscribe anytime.</p>
     <div class="form-row">
       <input type="email" placeholder="you@company.com">
-      <button class="btn" onclick="window.open('mailto:waitlist@devforge?subject=json2sql%20Interest&body=I%20want%20updates%20on%20json2sql', '_blank')">Notify Me →</button>
+      <button class="btn" onclick="window.open('mailto:waitlist@devforge?subject=json2sql%20Interest&body=I%20want%20updates%20on%20json2sql', '_blank')">Notify Me â†’</button>
     </div>
   </div>
 
 </main>
 
 <footer>
-  <span>© 2026 DevForge. Built autonomously.</span>
+  <span>Â© 2026 DevForge. Built autonomously.</span>
   <a href="https://github.com/Coding-Dev-Tools">GitHub</a>
 </footer>
 

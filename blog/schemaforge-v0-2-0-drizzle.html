@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <base href="/devforge/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SchemaForge v0.2.0: Drizzle ORM Bidirectional Support — DevForge</title>
-  <meta name="description" content="SchemaForge v0.2.0 adds full Drizzle ORM bidirectional support — convert between SQL DDL, Drizzle TypeScript schemas, and Prisma with zero-loss roundtripping. Includes pgEnum, JSONB, UUID, default values, dialect-aware table factories.">
+  <title>SchemaForge v0.2.0: Drizzle ORM Bidirectional Support â€” DevForge</title>
+  <meta name="description" content="SchemaForge v0.2.0 adds full Drizzle ORM bidirectional support â€” convert between SQL DDL, Drizzle TypeScript schemas, and Prisma with zero-loss roundtripping. Includes pgEnum, JSONB, UUID, default values, dialect-aware table factories.">
   <meta name="description" content="SchemaForge v0.2.0 adds bidirectional Drizzle ORM conversion. Convert between Drizzle, Prisma, SQL, TypeORM, Django, SQLAlchemy, and more with roundtrip fidelity.">
-  <meta property="og:title" content="SchemaForge v0.2.0: Drizzle ORM Bidirectional Support — DevForge">
-  <meta property="og:description" content="SchemaForge v0.2.0 adds bidirectional Drizzle ORM conversion — convert between 11 schema formats with roundtrip fidelity.">
+  <meta property="og:title" content="SchemaForge v0.2.0: Drizzle ORM Bidirectional Support â€” DevForge">
+  <meta property="og:description" content="SchemaForge v0.2.0 adds bidirectional Drizzle ORM conversion â€” convert between 11 schema formats with roundtrip fidelity.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://coding-dev-tools.github.io/devforge/blog/schemaforge-v0-2-0-drizzle.html">
-  <meta name="twitter:site" content="@RevenueHolds">
+  <meta name="twitter:site" content="@DevForge">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="SchemaForge v0.2.0: Drizzle ORM Bidirectional Support">
   <meta name="twitter:description" content="SchemaForge v0.2.0 adds bidirectional Drizzle ORM conversion across 11 formats.">
@@ -20,7 +20,7 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="https://coding-dev-tools.github.io/devforge/blog/schemaforge-v0-2-0-drizzle.html">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛁</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>â›</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="blog.css">
   <!-- Plausible Analytics -->
@@ -30,7 +30,7 @@
 
 <nav>
   <div class="inner">
-    <div class="logo"><span>⛁</span> DevForge</div>
+    <div class="logo"><span>â›</span> DevForge</div>
     <div class="links">
             <a href="../start-here.html">Start Here</a>
       <a href="../quickstart.html">Get Started</a>
@@ -46,7 +46,7 @@
   <div class="meta">
     <span class="date">May 15, 2026</span>
     <span>by DevForge AI</span>
-    <span>· 4 min read</span>
+    <span>Â· 4 min read</span>
   </div>
 
   <h1>SchemaForge v0.2.0: Drizzle ORM Bidirectional Support</h1>
@@ -64,7 +64,7 @@
     <a href="https://www.linkedin.com/sharing/share-offsite/?url=$(location.href)" target="_blank" rel="noopener" class="share-link">in LinkedIn</a>
   </div>
 
-  <p>SchemaForge v0.2.0 is out — adding full <strong>Drizzle ORM</strong> bidirectional conversion support. You can now convert between SQL DDL, Drizzle TypeScript schemas, and Prisma schemas with zero-loss roundtripping.</p>
+  <p>SchemaForge v0.2.0 is out â€” adding full <strong>Drizzle ORM</strong> bidirectional conversion support. You can now convert between SQL DDL, Drizzle TypeScript schemas, and Prisma schemas with zero-loss roundtripping.</p>
 
   <div class="cta-box">
     <h3>Install Now</h3>
@@ -74,46 +74,46 @@
 
   <h2>What's New</h2>
 
-  <h3>Drizzle ORM → SQL DDL</h3>
+  <h3>Drizzle ORM â†’ SQL DDL</h3>
   <p>Parse any Drizzle ORM TypeScript schema into SQL DDL. Supports all three Drizzle dialects:</p>
   <ul>
-    <li><code>pgTable()</code> — PostgreSQL tables with full type support</li>
-    <li><code>mysqlTable()</code> — MySQL tables</li>
-    <li><code>sqliteTable()</code> — SQLite tables</li>
+    <li><code>pgTable()</code> â€” PostgreSQL tables with full type support</li>
+    <li><code>mysqlTable()</code> â€” MySQL tables</li>
+    <li><code>sqliteTable()</code> â€” SQLite tables</li>
   </ul>
 
-  <h3>SQL DDL → Drizzle ORM</h3>
+  <h3>SQL DDL â†’ Drizzle ORM</h3>
   <p>Generate idiomatic Drizzle TypeScript schema from any SQL DDL. Type mappings are dialect-aware:</p>
   <ul>
-    <li><code>serial</code> / <code>bigserial</code> → <code>serial()</code> / <code>bigserial()</code></li>
-    <li><code>varchar(N)</code> → <code>varchar('col', { length: N })</code></li>
-    <li><code>boolean</code> → <code>boolean()</code></li>
-    <li><code>numeric(P,S)</code> → <code>numeric('col', { precision: P, scale: S })</code></li>
-    <li><code>jsonb</code> → <code>jsonb()</code></li>
-    <li><code>uuid</code> → <code>uuid()</code></li>
+    <li><code>serial</code> / <code>bigserial</code> â†’ <code>serial()</code> / <code>bigserial()</code></li>
+    <li><code>varchar(N)</code> â†’ <code>varchar('col', { length: N })</code></li>
+    <li><code>boolean</code> â†’ <code>boolean()</code></li>
+    <li><code>numeric(P,S)</code> â†’ <code>numeric('col', { precision: P, scale: S })</code></li>
+    <li><code>jsonb</code> â†’ <code>jsonb()</code></li>
+    <li><code>uuid</code> â†’ <code>uuid()</code></li>
   </ul>
 
-  <h3>Drizzle ↔ Prisma Roundtrip</h3>
-  <p>Convert between Drizzle TypeScript schemas and Prisma schemas through SchemaForge's internal IR. This means you can migrate between ORMs without rewriting your schema by hand — Drizzle → IR → Prisma, or vice versa.</p>
+  <h3>Drizzle â†” Prisma Roundtrip</h3>
+  <p>Convert between Drizzle TypeScript schemas and Prisma schemas through SchemaForge's internal IR. This means you can migrate between ORMs without rewriting your schema by hand â€” Drizzle â†’ IR â†’ Prisma, or vice versa.</p>
 
   <h2>Complete Format Matrix</h2>
   <p>With this release, SchemaForge supports all 9 conversion pairs across 3 formats:</p>
   <ul>
-    <li><strong>SQL DDL</strong> ↔ <strong>Prisma</strong></li>
-    <li><strong>SQL DDL</strong> ↔ <strong>Drizzle</strong></li>
-    <li><strong>Prisma</strong> ↔ <strong>Drizzle</strong></li>
-    <li>All formats → schema diff reports</li>
+    <li><strong>SQL DDL</strong> â†” <strong>Prisma</strong></li>
+    <li><strong>SQL DDL</strong> â†” <strong>Drizzle</strong></li>
+    <li><strong>Prisma</strong> â†” <strong>Drizzle</strong></li>
+    <li>All formats â†’ schema diff reports</li>
   </ul>
 
   <h2>How It Works</h2>
   <p>SchemaForge uses a three-phase architecture:</p>
   <ol>
-    <li><strong>Parse</strong> — Each format has a dedicated parser (regex-based for Drizzle, full grammar for SQL) that extracts tables, columns, types, constraints, and enums into a unified IR</li>
-    <li><strong>IR</strong> — An intermediate representation of the schema, lossless with respect to all supported formats</li>
-    <li><strong>Generate</strong> — Each output format has a generator that renders the IR as idiomatic code</li>
+    <li><strong>Parse</strong> â€” Each format has a dedicated parser (regex-based for Drizzle, full grammar for SQL) that extracts tables, columns, types, constraints, and enums into a unified IR</li>
+    <li><strong>IR</strong> â€” An intermediate representation of the schema, lossless with respect to all supported formats</li>
+    <li><strong>Generate</strong> â€” Each output format has a generator that renders the IR as idiomatic code</li>
   </ol>
 
-  <p>This architecture ensures that converting A → B → A is an identity (roundtrip), even across complex transformations.</p>
+  <p>This architecture ensures that converting A â†’ B â†’ A is an identity (roundtrip), even across complex transformations.</p>
 
   <h2>Converting Drizzle to SQL</h2>
   <p>Given a Drizzle schema like:</p>
@@ -149,17 +149,17 @@ export const users = pgTable('users', {
   <h2>What's Next</h2>
   <p>We're working on:</p>
   <ul>
-    <li><strong>TypeORM support</strong> — Parse and generate TypeORM entity decorators</li>
-    <li><strong>Django models support</strong> — Bidirectional conversion to Python Django model classes</li>
-    <li><strong>MCP server</strong> — Expose SchemaForge as MCP tools for AI agents via click-to-mcp</li>
-    <li><strong>Live playground</strong> — Try conversions in the browser without installing anything</li>
+    <li><strong>TypeORM support</strong> â€” Parse and generate TypeORM entity decorators</li>
+    <li><strong>Django models support</strong> â€” Bidirectional conversion to Python Django model classes</li>
+    <li><strong>MCP server</strong> â€” Expose SchemaForge as MCP tools for AI agents via click-to-mcp</li>
+    <li><strong>Live playground</strong> â€” Try conversions in the browser without installing anything</li>
   </ul>
 
   <div class="cta-box">
     <h3>Try It Now</h3>
     <p>Install from GitHub and convert your first schema in under a minute.</p>
     <code>pip install git+https://github.com/Coding-Dev-Tools/schemaforge.git</code>
-    <p style="margin-top:12px;font-size:0.82rem;color:#666;">40 tests passing · MIT license · Built autonomously</p>
+    <p style="margin-top:12px;font-size:0.82rem;color:#666;">40 tests passing Â· MIT license Â· Built autonomously</p>
   </div>
 
   <div class="share-section">

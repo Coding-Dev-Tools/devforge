@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <base href="/devforge/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clean Up Your React/Next.js Codebase with DeadCode — A Practical Tutorial | DevForge</title>
+  <title>Clean Up Your React/Next.js Codebase with DeadCode â€” A Practical Tutorial | DevForge</title>
   <meta name="description" content="Step-by-step tutorial: find and remove unused exports, dead routes, orphaned CSS, and unreferenced components in your React or Next.js project using the DeadCode CLI tool. With real-world examples and CI integration.">
   <meta name="keywords" content="dead code elimination, React dead code, Next.js cleanup, remove unused exports, tree shaking, code cleanup, DeadCode CLI, TypeScript dead code, technical debt">
-  <meta property="og:title" content="Clean Up Your React/Next.js Codebase with DeadCode — A Practical Tutorial | DevForge">
+  <meta property="og:title" content="Clean Up Your React/Next.js Codebase with DeadCode â€” A Practical Tutorial | DevForge">
   <meta property="og:description" content="Step-by-step: find and remove unused exports, dead routes, orphaned CSS, and unreferenced components with DeadCode CLI.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://coding-dev-tools.github.io/devforge/blog/clean-up-react-dead-code.html">
-  <meta name="twitter:site" content="@RevenueHolds">
+  <meta name="twitter:site" content="@DevForge">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Clean Up Your React/Next.js Codebase with DeadCode">
   <meta name="twitter:description" content="Remove unused exports, dead routes, and orphaned CSS in under 5 minutes.">
@@ -21,13 +21,13 @@
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="https://coding-dev-tools.github.io/devforge/blog/clean-up-react-dead-code.html">
   <meta name="author" content="DevForge">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛁</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>â›</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "TechArticle",
-    "headline": "Clean Up Your React/Next.js Codebase with DeadCode — A Practical Tutorial",
+    "headline": "Clean Up Your React/Next.js Codebase with DeadCode â€” A Practical Tutorial",
     "description": "Step-by-step tutorial: find and remove unused exports, dead routes, orphaned CSS, and unreferenced components in your React or Next.js project using the DeadCode CLI tool.",
     "datePublished": "2026-05-15",
     "author": { "@type": "Organization", "name": "DevForge" },
@@ -43,7 +43,7 @@
 
 <nav>
   <div class="inner">
-    <div class="logo"><span>⛁</span> DevForge</div>
+    <div class="logo"><span>â›</span> DevForge</div>
     <div class="links">
             <a href="../start-here.html">Start Here</a>
       <a href="../quickstart.html">Get Started</a>
@@ -64,10 +64,10 @@
 
 <article class="post-content">
   <span class="badge">Tutorial</span>
-  <p style="color:#666;font-size:0.85rem;margin-top:8px;">May 15, 2026 · 8 min read</p>
+  <p style="color:#666;font-size:0.85rem;margin-top:8px;">May 15, 2026 Â· 8 min read</p>
 
   <h1>Clean Up Your React/Next.js Codebase with DeadCode</h1>
-  <div class="subtitle">Find unused exports, dead routes, orphaned CSS, and unreferenced components — with concrete before-and-after examples for a real Next.js project.</div>
+  <div class="subtitle">Find unused exports, dead routes, orphaned CSS, and unreferenced components â€” with concrete before-and-after examples for a real Next.js project.</div>
 
   <p>Every codebase accrues dead code. A feature gets replaced, but the old component stays. A route gets merged, but the page file lingers. A utility export was used exactly once and now the import is gone but the export remains.</p>
 
@@ -77,10 +77,10 @@
     <li>New hires waste hours wondering "is this component used?" before modifying it</li>
     <li>Build times slowly inflate as dead modules are still parsed and bundled</li>
     <li>Refactoring becomes a game of "ship it and hope X didn't use that export"</li>
-    <li>Code coverage numbers lie — a file with 0% covered dead code shows as "well tested"</li>
+    <li>Code coverage numbers lie â€” a file with 0% covered dead code shows as "well tested"</li>
   </ul>
 
-  <p><strong><a href="../docs.html#deadcode">DeadCode</a></strong> is a CLI tool that scans your project and identifies unused exports, unreferenced components, dead route files, and orphaned CSS classes. It runs in seconds, integrates with any CI pipeline, and returns actionable results — not noise.</p>
+  <p><strong><a href="../docs.html#deadcode">DeadCode</a></strong> is a CLI tool that scans your project and identifies unused exports, unreferenced components, dead route files, and orphaned CSS classes. It runs in seconds, integrates with any CI pipeline, and returns actionable results â€” not noise.</p>
 
   <hr>
 
@@ -123,33 +123,33 @@
 <span class="danger">[DEAD_ROUTE]</span> app/dashboard/legacy-reports/page.tsx
   No internal links point to /dashboard/legacy-reports
   git log --oneline --diff-filter=D -- app/dashboard/legacy-reports/
-  → route was replaced by /dashboard/analytics 6 months ago
+  â†’ route was replaced by /dashboard/analytics 6 months ago
 
 <span class="danger">[DEAD_ROUTE]</span> app/api/v1/deprecated-endpoint/route.ts
   No internal links point to /api/v1/deprecated-endpoint
-  Search npm: "deprecated-endpoint" — no external callers found in repo
+  Search npm: "deprecated-endpoint" â€” no external callers found in repo
 
 <span class="info">[UNREFERENCED_COMPONENT]</span> src/components/old-hero-banner.tsx
-  Exported as HeroBanner — no imports found
+  Exported as HeroBanner â€” no imports found
   git log: last modified 14 months ago (feature/redesign)
 
 <span class="info">[UNREFERENCED_COMPONENT]</span> src/components/deprecated/beta-badge.tsx
-  Exported as BetaBadge — no imports found
+  Exported as BetaBadge â€” no imports found
   Note: directory name "deprecated" suggests this was intentionally archived
 
 <span class="safe">[ORPHANED_CSS]</span> src/styles/legacy-utilities.css
-  Selectors .legacy-grid, .old-card-stack — no matches in any .tsx/.ts file
+  Selectors .legacy-grid, .old-card-stack â€” no matches in any .tsx/.ts file
   Note: 0 matches across 342 source files
 
 Summary: 4 unused exports, 2 dead routes, 2 unreferenced components, 1 orphaned stylesheet
 Estimated savings: 44 KB bundle size, 327 lines of code</code></div>
 
   <div class="tip">
-    <strong>Reading the output:</strong> Each finding includes a category tag and — most importantly — supporting evidence. DeadCode doesn't just say "something is unused"; it tells you <em>why</em> it thinks so: git history, import searches, cross-references. This makes triaging findings much faster than with linters.
+    <strong>Reading the output:</strong> Each finding includes a category tag and â€” most importantly â€” supporting evidence. DeadCode doesn't just say "something is unused"; it tells you <em>why</em> it thinks so: git history, import searches, cross-references. This makes triaging findings much faster than with linters.
   </div>
   <div class="share-bar">
     <span>Share this article:</span>
-    <a href="https://twitter.com/intent/tweet?text=$(document.title)&url=$(location.href)" target="_blank" rel="noopener" class="share-link">𝕏 Twitter</a>
+    <a href="https://twitter.com/intent/tweet?text=$(document.title)&url=$(location.href)" target="_blank" rel="noopener" class="share-link">ð• Twitter</a>
     <a href="https://news.ycombinator.com/submitlink?u=$(location.href)&t=$(document.title)" target="_blank" rel="noopener" class="share-link">Y Hacker News</a>
     <a href="https://www.linkedin.com/sharing/share-offsite/?url=$(location.href)" target="_blank" rel="noopener" class="share-link">in LinkedIn</a>
   </div>
@@ -162,14 +162,14 @@ Estimated savings: 44 KB bundle size, 327 lines of code</code></div>
   <p>Not every flagged item is safe to remove. Here's how to triage each category:</p>
 
   <h3>Unused Exports (formatRelativeTime, formatCurrency)</h3>
-  <p>These are the safest to remove. DeadCode traces every <code>import</code> statement in the project. If <code>formatRelativeTime</code> is exported but never imported anywhere, it's dead. The only exception is re-exports from barrel files (<code>index.ts</code>) — DeadCode handles those by resolving the chain. If a public library export is consumed outside the repo (e.g., an npm package), use <code>--allow-unresolved-imports</code> or mark it with an annotation.</p>
+  <p>These are the safest to remove. DeadCode traces every <code>import</code> statement in the project. If <code>formatRelativeTime</code> is exported but never imported anywhere, it's dead. The only exception is re-exports from barrel files (<code>index.ts</code>) â€” DeadCode handles those by resolving the chain. If a public library export is consumed outside the repo (e.g., an npm package), use <code>--allow-unresolved-imports</code> or mark it with an annotation.</p>
 
   <p>Decision for <code>formatRelativeTime</code>: <strong>Remove it.</strong> It was replaced by <code>date-fns/formatDistanceToNow</code> 47 commits ago. The comment in the code even says "TODO: migrate to date-fns."</p>
 
   <h3>Dead Routes (legacy-reports, deprecated-endpoint)</h3>
   <p>Next.js App Router pages and API routes that no internal link points to. DeadCode checks all <code>&lt;Link&gt;</code>, <code>router.push()</code>, <code>&lt;a&gt;</code> tags, and redirect configs. If no path points to <code>/dashboard/legacy-reports</code> and the <code>git log</code> confirms it was replaced, it's safe to delete the directory.</p>
 
-  <p>For API routes, DeadCode also checks for external callers by searching the codebase for URL references. The <code>deprecated-endpoint</code> route has no callers — the frontend migrated to the v2 endpoint 6 months ago. <strong>Remove it.</strong></p>
+  <p>For API routes, DeadCode also checks for external callers by searching the codebase for URL references. The <code>deprecated-endpoint</code> route has no callers â€” the frontend migrated to the v2 endpoint 6 months ago. <strong>Remove it.</strong></p>
 
   <h3>Unreferenced Components (old-hero-banner, beta-badge)</h3>
   <p>DeadCode checks for direct imports, dynamic imports (<code>next/dynamic</code>), and <code>React.lazy</code> references. <code>old-hero-banner</code> was part of a redesign and was replaced by <code>modern-hero-banner</code>. The directory name "deprecated" for <code>beta-badge</code> is a strong signal it was intentionally archived. <strong>Both safe to delete.</strong></p>
@@ -263,23 +263,23 @@ Estimated savings realized: 327 LOC, 44 KB bundle size</code></div>
     </tr>
     <tr>
       <td style="padding:8px 12px;border-bottom:1px solid #1a1a1d;color:#e1e1e3;">Cross-file</td>
-      <td style="padding:8px 12px;border-bottom:1px solid #1a1a1d;color:#c4c4cc;">No — per-file only</td>
-      <td style="padding:8px 12px;border-bottom:1px solid #1a1a1d;color:#c4c4cc;">Yes — resolves import chains across the whole project</td>
+      <td style="padding:8px 12px;border-bottom:1px solid #1a1a1d;color:#c4c4cc;">No â€” per-file only</td>
+      <td style="padding:8px 12px;border-bottom:1px solid #1a1a1d;color:#c4c4cc;">Yes â€” resolves import chains across the whole project</td>
     </tr>
     <tr>
       <td style="padding:8px 12px;border-bottom:1px solid #1a1a1d;color:#e1e1e3;">Next.js routes</td>
       <td style="padding:8px 12px;border-bottom:1px solid #1a1a1d;color:#c4c4cc;">No</td>
-      <td style="padding:8px 12px;border-bottom:1px solid #1a1a1d;color:#c4c4cc;">Yes — checks <code>app/</code> and <code>pages/</code> route linking</td>
+      <td style="padding:8px 12px;border-bottom:1px solid #1a1a1d;color:#c4c4cc;">Yes â€” checks <code>app/</code> and <code>pages/</code> route linking</td>
     </tr>
     <tr>
       <td style="padding:8px 12px;border-bottom:1px solid #1a1a1d;color:#e1e1e3;">CSS selectors</td>
       <td style="padding:8px 12px;border-bottom:1px solid #1a1a1d;color:#c4c4cc;">No</td>
-      <td style="padding:8px 12px;border-bottom:1px solid #1a1a1d;color:#c4c4cc;">Yes — checks if selectors match rendered components</td>
+      <td style="padding:8px 12px;border-bottom:1px solid #1a1a1d;color:#c4c4cc;">Yes â€” checks if selectors match rendered components</td>
     </tr>
     <tr>
       <td style="padding:8px 12px;color:#e1e1e3;">Dynamic imports</td>
       <td style="padding:8px 12px;color:#c4c4cc;">No</td>
-      <td style="padding:8px 12px;color:#c4c4cc;">Yes — checks <code>next/dynamic</code> and <code>React.lazy</code></td>
+      <td style="padding:8px 12px;color:#c4c4cc;">Yes â€” checks <code>next/dynamic</code> and <code>React.lazy</code></td>
     </tr>
   </table>
 
@@ -292,8 +292,8 @@ Estimated savings realized: 327 LOC, 44 KB bundle size</code></div>
   <p>In a recent cleanup of an internal Next.js monorepo, DeadCode found:</p>
   <ul>
     <li><strong>47 unused exports</strong> (14 of which were entire utility files with 0 consumers)</li>
-    <li><strong>6 dead routes</strong> — pages that hadn't been linked from any nav in over a year</li>
-    <li><strong>12 unreferenced components</strong> — the most painful was a PaymentForm that had been replaced but the old file still existed in a "components/archived" folder, imported by nobody</li>
+    <li><strong>6 dead routes</strong> â€” pages that hadn't been linked from any nav in over a year</li>
+    <li><strong>12 unreferenced components</strong> â€” the most painful was a PaymentForm that had been replaced but the old file still existed in a "components/archived" folder, imported by nobody</li>
     <li><strong>3 orphaned CSS files</strong> adding ~12 KB to every page bundle because they were imported in the root layout</li>
   </ul>
 
@@ -303,7 +303,7 @@ Estimated savings realized: 327 LOC, 44 KB bundle size</code></div>
 
   <div class="tool-card">
     <div class="cmd">deadcode scan -p /path/to/your/project --exclude node_modules,.next</div>
-    <p class="desc">Find unused exports, dead routes, orphaned CSS, and unreferenced components — in seconds.</p>
+    <p class="desc">Find unused exports, dead routes, orphaned CSS, and unreferenced components â€” in seconds.</p>
   </div>
 
   <h2>Try It Now</h2>
@@ -317,7 +317,7 @@ Estimated savings realized: 327 LOC, 44 KB bundle size</code></div>
     <li><a href="https://github.com/Coding-Dev-Tools/deadcode">DeadCode on GitHub</a></li>
     <li><a href="../docs.html#deadcode">DeadCode Documentation</a></li>
     <li><a href="../alternatives.html#deadcode-vs-knip">DeadCode vs knip comparison</a></li>
-    <li><a href="../pricing.html">Pricing — free tier works for local dev and CI</a></li>
+    <li><a href="../pricing.html">Pricing â€” free tier works for local dev and CI</a></li>
   </ul>
 
   <hr>
@@ -328,13 +328,13 @@ Estimated savings realized: 327 LOC, 44 KB bundle size</code></div>
     <form onsubmit="submitWaitlist(event)">
       <div class="form-row">
         <input type="email" id="wl-email" placeholder="you@company.com" required>
-        <button type="submit" class="submit-btn">Notify Me →</button>
+        <button type="submit" class="submit-btn">Notify Me â†’</button>
       </div>
-      <div class="form-msg" id="wl-msg">✓ You're on the list. We'll email you when tools launch.</div>
+      <div class="form-msg" id="wl-msg">âœ“ You're on the list. We'll email you when tools launch.</div>
     </form>
   </div>
 
-  <p style="text-align:center;font-size:0.85rem;color:#666;">Star us on <a href="https://github.com/Coding-Dev-Tools" style="color:#6366f1;">GitHub</a> · <a href="../pricing.html" style="color:#6366f1;">View Pricing</a></p>
+  <p style="text-align:center;font-size:0.85rem;color:#666;">Star us on <a href="https://github.com/Coding-Dev-Tools" style="color:#6366f1;">GitHub</a> Â· <a href="../pricing.html" style="color:#6366f1;">View Pricing</a></p>
 
   <div class="share-section">
     <div class="label">Share this article</div>
@@ -380,3 +380,4 @@ function submitWaitlist(e) {
 
 </body>
 </html>
+

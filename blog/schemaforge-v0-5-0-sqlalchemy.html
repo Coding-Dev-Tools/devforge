@@ -1,33 +1,33 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <base href="/devforge/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SchemaForge v0.5.0: SQLAlchemy Support — Now Covers All 6 ORM Formats | DevForge</title>
+  <title>SchemaForge v0.5.0: SQLAlchemy Support â€” Now Covers All 6 ORM Formats | DevForge</title>
   <meta name="description" content="SchemaForge v0.5.0 adds SQLAlchemy declarative model support, completing bidirectional conversion across all 6 major ORM formats: SQL DDL, Prisma, Drizzle, TypeORM, Django, and now SQLAlchemy.">
   <meta name="keywords" content="schemaforge, SQLAlchemy, ORM converter, Prisma, Drizzle, TypeORM, Django, schema migration, bidirectional ORM, database schema, v0.5.0">
   <meta property="og:title" content="SchemaForge v0.5.0: SQLAlchemy Support">
-  <meta property="og:description" content="SchemaForge now supports all 6 major ORM formats — SQL DDL, Prisma, Drizzle, TypeORM, Django, and SQLAlchemy — with zero-loss bidirectional conversion.">
+  <meta property="og:description" content="SchemaForge now supports all 6 major ORM formats â€” SQL DDL, Prisma, Drizzle, TypeORM, Django, and SQLAlchemy â€” with zero-loss bidirectional conversion.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://coding-dev-tools.github.io/devforge/blog/schemaforge-v0-5-0-sqlalchemy.html">
-  <meta name="twitter:site" content="@RevenueHolds">
+  <meta name="twitter:site" content="@DevForge">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="SchemaForge v0.5.0: SQLAlchemy Support">
-  <meta name="twitter:description" content="Bidirectional conversion between SQLAlchemy, Prisma, Drizzle, TypeORM, Django, and SQL DDL — one CLI, zero loss.">
+  <meta name="twitter:description" content="Bidirectional conversion between SQLAlchemy, Prisma, Drizzle, TypeORM, Django, and SQL DDL â€” one CLI, zero loss.">
   <meta name="twitter:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
   <meta property="og:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="https://coding-dev-tools.github.io/devforge/blog/schemaforge-v0-5-0-sqlalchemy.html">
   <meta name="author" content="DevForge">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛁</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>â›</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "TechArticle",
-    "headline": "SchemaForge v0.5.0: SQLAlchemy Support — Now Covers All 6 ORM Formats",
+    "headline": "SchemaForge v0.5.0: SQLAlchemy Support â€” Now Covers All 6 ORM Formats",
     "description": "SchemaForge v0.5.0 adds SQLAlchemy declarative model support with zero-loss bidirectional conversion.",
     "datePublished": "2026-05-15",
     "author": { "@type": "Organization", "name": "DevForge" },
@@ -43,7 +43,7 @@
 
 <nav>
   <div class="inner">
-    <div class="logo"><span>⛁</span> DevForge</div>
+    <div class="logo"><span>â›</span> DevForge</div>
     <div class="links">
             <a href="../start-here.html">Start Here</a>
       <a href="../index.html">Home</a>
@@ -55,7 +55,7 @@
 </nav>
 
 <div class="blog-nav">
-  <a href="../blog.html">← Back to Blog</a>
+  <a href="../blog.html">â† Back to Blog</a>
 </div>
 
 <main class="post-content">
@@ -65,19 +65,19 @@
   <h1>SchemaForge v0.5.0: SQLAlchemy Support</h1>
 
   <div class="subtitle">
-    Bidirectional conversion between SQLAlchemy declarative models and 5 other ORM formats — Prisma, Drizzle, TypeORM, Django, and SQL DDL — all from a single CLI.
+    Bidirectional conversion between SQLAlchemy declarative models and 5 other ORM formats â€” Prisma, Drizzle, TypeORM, Django, and SQL DDL â€” all from a single CLI.
   </div>
 
   <div class="meta">
     <span>May 15, 2026</span>
-    <span>·</span>
+    <span>Â·</span>
     <span>4 min read</span>
-    <span>·</span>
+    <span>Â·</span>
     <span>DevForge</span>
   </div>
   <div class="share-bar">
     <span>Share this article:</span>
-    <a href="https://twitter.com/intent/tweet?text=$(document.title)&url=$(location.href)" target="_blank" rel="noopener" class="share-link">𝕏 Twitter</a>
+    <a href="https://twitter.com/intent/tweet?text=$(document.title)&url=$(location.href)" target="_blank" rel="noopener" class="share-link">ð• Twitter</a>
     <a href="https://news.ycombinator.com/submitlink?u=$(location.href)&t=$(document.title)" target="_blank" rel="noopener" class="share-link">Y Hacker News</a>
     <a href="https://www.linkedin.com/sharing/share-offsite/?url=$(location.href)" target="_blank" rel="noopener" class="share-link">in LinkedIn</a>
   </div>
@@ -90,32 +90,32 @@
   </p>
 
   <div class="diagram">
-    ┌─────────────────────────────────────────────────────┐
-    │                  SchemaForge v0.5.0                  │
-    │                    (6 formats)                       │
-    │                                                     │
-    │    SQL DDL ←→ Prisma ←→ Drizzle ←→ TypeORM          │
-    │           ↕        ↕        ↕        ↕              │
-    │       Django ←→ SQLAlchemy (🆕 v0.5.0)              │
-    │           ↕        ↕        ↕        ↕              │
-    │    Every format ↔ Every other format                │
-    └─────────────────────────────────────────────────────┘
+    â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+    â”‚                  SchemaForge v0.5.0                  â”‚
+    â”‚                    (6 formats)                       â”‚
+    â”‚                                                     â”‚
+    â”‚    SQL DDL â†â†’ Prisma â†â†’ Drizzle â†â†’ TypeORM          â”‚
+    â”‚           â†•        â†•        â†•        â†•              â”‚
+    â”‚       Django â†â†’ SQLAlchemy (ðŸ†• v0.5.0)              â”‚
+    â”‚           â†•        â†•        â†•        â†•              â”‚
+    â”‚    Every format â†” Every other format                â”‚
+    â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
   </div>
 
   <h2>What's New in v0.5.0</h2>
 
   <ul>
-    <li><strong>SQLAlchemy declarative models</strong> — import and export <code>declarative_base()</code> models with full column types, relationships, indexes, and constraints</li>
-    <li><strong>Bidirectional SQLAlchemy conversion</strong> — convert TO SQLAlchemy FROM any format, and convert FROM SQLAlchemy TO any format</li>
-    <li><strong>Demo fixtures</strong> — the <code>fixtures/</code> directory now includes a blog schema in all 6 formats so you can try SchemaForge immediately</li>
-    <li><strong>All direction pairs</strong> — every format can convert to every other format (that's 30 possible conversion paths)</li>
+    <li><strong>SQLAlchemy declarative models</strong> â€” import and export <code>declarative_base()</code> models with full column types, relationships, indexes, and constraints</li>
+    <li><strong>Bidirectional SQLAlchemy conversion</strong> â€” convert TO SQLAlchemy FROM any format, and convert FROM SQLAlchemy TO any format</li>
+    <li><strong>Demo fixtures</strong> â€” the <code>fixtures/</code> directory now includes a blog schema in all 6 formats so you can try SchemaForge immediately</li>
+    <li><strong>All direction pairs</strong> â€” every format can convert to every other format (that's 30 possible conversion paths)</li>
   </ul>
 
   <div class="tip">
-    <strong>💡 v0.5.0 is a free upgrade.</strong> <code>pip install --upgrade schemaforge</code> and you're done.
+    <strong>ðŸ’¡ v0.5.0 is a free upgrade.</strong> <code>pip install --upgrade schemaforge</code> and you're done.
   </div>
 
-  <h2>SQLAlchemy → Prisma in One Command</h2>
+  <h2>SQLAlchemy â†’ Prisma in One Command</h2>
 
   <p>Here's the kind of migration SchemaForge now handles. Say you have a SQLAlchemy model:</p>
 
@@ -190,29 +190,29 @@ export const posts = pgTable("posts", {
   authorId: integer("author_id").references(() => users.id),
 });</code></pre>
 
-  <p>Or to Django models, TypeORM entities, or SQL DDL — all with the same command pattern.</p>
+  <p>Or to Django models, TypeORM entities, or SQL DDL â€” all with the same command pattern.</p>
 
   <h2>Conversion Matrix</h2>
 
   <p>All 30 direction pairs now work:</p>
 
   <table>
-    <tr><th></th><th>→ SQL</th><th>→ Prisma</th><th>→ Drizzle</th><th>→ TypeORM</th><th>→ Django</th><th>→ SQLAlchemy</th></tr>
-    <tr><td>SQL DDL →</td><td>—</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
-    <tr><td>Prisma →</td><td>✓</td><td>—</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
-    <tr><td>Drizzle →</td><td>✓</td><td>✓</td><td>—</td><td>✓</td><td>✓</td><td>✓</td></tr>
-    <tr><td>TypeORM →</td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>✓</td><td>✓</td></tr>
-    <tr><td>Django →</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>✓</td></tr>
-    <tr><td>SQLAlchemy →</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>—</td></tr>
+    <tr><th></th><th>â†’ SQL</th><th>â†’ Prisma</th><th>â†’ Drizzle</th><th>â†’ TypeORM</th><th>â†’ Django</th><th>â†’ SQLAlchemy</th></tr>
+    <tr><td>SQL DDL â†’</td><td>â€”</td><td>âœ“</td><td>âœ“</td><td>âœ“</td><td>âœ“</td><td>âœ“</td></tr>
+    <tr><td>Prisma â†’</td><td>âœ“</td><td>â€”</td><td>âœ“</td><td>âœ“</td><td>âœ“</td><td>âœ“</td></tr>
+    <tr><td>Drizzle â†’</td><td>âœ“</td><td>âœ“</td><td>â€”</td><td>âœ“</td><td>âœ“</td><td>âœ“</td></tr>
+    <tr><td>TypeORM â†’</td><td>âœ“</td><td>âœ“</td><td>âœ“</td><td>â€”</td><td>âœ“</td><td>âœ“</td></tr>
+    <tr><td>Django â†’</td><td>âœ“</td><td>âœ“</td><td>âœ“</td><td>âœ“</td><td>â€”</td><td>âœ“</td></tr>
+    <tr><td>SQLAlchemy â†’</td><td>âœ“</td><td>âœ“</td><td>âœ“</td><td>âœ“</td><td>âœ“</td><td>â€”</td></tr>
   </table>
 
   <h2>Schema Diffing</h2>
 
-  <p>v0.5.0 also includes schema diffing — compare two schemas in the same format to see what changed:</p>
+  <p>v0.5.0 also includes schema diffing â€” compare two schemas in the same format to see what changed:</p>
 
   <div class="cmd-block">$ schemaforge diff schema-v1.prisma schema-v2.prisma</div>
 
-  <pre><code>═══ Schema Diff ═══
+  <pre><code>â•â•â• Schema Diff â•â•â•
 
 Added:
   table "categories" (id, name, slug)
@@ -220,7 +220,7 @@ Added:
 Modified:
   table "posts"
     + column "category_id" (Int, nullable)
-    ~ column "body": String(200) → Text
+    ~ column "body": String(200) â†’ Text
 
 Removed:
   column "posts.is_pinned"</code></pre>
@@ -236,7 +236,7 @@ $ schemaforge convert --from sql --to prisma --input sample.sql
 $ schemaforge convert --from prisma --to django --input sample.prisma
 $ schemaforge convert --from typeorm --to drizzle --input sample.typeorm.ts</code></pre>
 
-  <p>No need to understand Prisma syntax to get Django models — SchemaForge does the translation.</p>
+  <p>No need to understand Prisma syntax to get Django models â€” SchemaForge does the translation.</p>
 
   <hr>
 
@@ -244,20 +244,20 @@ $ schemaforge convert --from typeorm --to drizzle --input sample.typeorm.ts</cod
 
   <table>
     <tr><th>Feature</th><th>Status</th></tr>
-    <tr><td>SQLAlchemy declarative model parser</td><td>✅ v0.5.0</td></tr>
-    <tr><td>SQLAlchemy declarative model generator</td><td>✅ v0.5.0</td></tr>
-    <tr><td>Demo fixtures in all 6 formats</td><td>✅ v0.5.0</td></tr>
-    <tr><td>Schema diff command</td><td>✅ v0.2.0</td></tr>
-    <tr><td>Batch directory conversion</td><td>✅ v0.2.0</td></tr>
-    <tr><td>40+ passing tests</td><td>✅ v0.5.0</td></tr>
-    <tr><td>30 bidirectional conversion paths</td><td>✅ v0.5.0</td></tr>
+    <tr><td>SQLAlchemy declarative model parser</td><td>âœ… v0.5.0</td></tr>
+    <tr><td>SQLAlchemy declarative model generator</td><td>âœ… v0.5.0</td></tr>
+    <tr><td>Demo fixtures in all 6 formats</td><td>âœ… v0.5.0</td></tr>
+    <tr><td>Schema diff command</td><td>âœ… v0.2.0</td></tr>
+    <tr><td>Batch directory conversion</td><td>âœ… v0.2.0</td></tr>
+    <tr><td>40+ passing tests</td><td>âœ… v0.5.0</td></tr>
+    <tr><td>30 bidirectional conversion paths</td><td>âœ… v0.5.0</td></tr>
   </table>
 
   <hr>
 
   <h2>Next Steps</h2>
 
-  <p>Try SchemaForge today — it's free and open source (Apache 2.0):</p>
+  <p>Try SchemaForge today â€” it's free and open source (Apache 2.0):</p>
 
   <div class="cmd-block">$ pip install schemaforge</div>
 
@@ -266,14 +266,14 @@ $ schemaforge convert --from typeorm --to drizzle --input sample.typeorm.ts</cod
   <p>SchemaForge is one of <strong>11 tools</strong> in the DevForge suite. Check out the others:</p>
 
   <ul>
-    <li><strong>API Contract Guardian</strong> — Catch breaking API schema changes in PRs</li>
-    <li><strong>json2sql</strong> — Convert JSON files to SQL INSERT statements <em>(<a href="json-to-sql-one-command.html">tutorial</a>)</em></li>
-    <li><strong>ConfigDrift</strong> — Detect config drift before it breaks production <em>(<a href="catch-config-drift-before-production.html">tutorial</a>)</em></li>
-    <li><strong>DeployDiff</strong> — Preview infra costs and blast radius <em>(<a href="preview-infra-cost-before-deploy.html">tutorial</a>)</em></li>
+    <li><strong>API Contract Guardian</strong> â€” Catch breaking API schema changes in PRs</li>
+    <li><strong>json2sql</strong> â€” Convert JSON files to SQL INSERT statements <em>(<a href="json-to-sql-one-command.html">tutorial</a>)</em></li>
+    <li><strong>ConfigDrift</strong> â€” Detect config drift before it breaks production <em>(<a href="catch-config-drift-before-production.html">tutorial</a>)</em></li>
+    <li><strong>DeployDiff</strong> â€” Preview infra costs and blast radius <em>(<a href="preview-infra-cost-before-deploy.html">tutorial</a>)</em></li>
   </ul>
 
   <p>
-    <a href="../docs.html">Read the full docs →</a>
+    <a href="../docs.html">Read the full docs â†’</a>
   </p>
 
   <div class="article-waitlist">
@@ -281,14 +281,14 @@ $ schemaforge convert --from typeorm --to drizzle --input sample.typeorm.ts</cod
     <p>Get notified about new releases and tutorials.</p>
     <div class="form-row">
       <input type="email" placeholder="you@company.com">
-      <button class="btn" onclick="window.open('mailto:waitlist@devforge?subject=SchemaForge%20Interest&body=I%20want%20updates%20on%20SchemaForge', '_blank')">Notify Me →</button>
+      <button class="btn" onclick="window.open('mailto:waitlist@devforge?subject=SchemaForge%20Interest&body=I%20want%20updates%20on%20SchemaForge', '_blank')">Notify Me â†’</button>
     </div>
   </div>
 
 </main>
 
 <footer>
-  <span>© 2026 DevForge. Built autonomously.</span>
+  <span>Â© 2026 DevForge. Built autonomously.</span>
   <a href="https://github.com/Coding-Dev-Tools">GitHub</a>
 </footer>
 
