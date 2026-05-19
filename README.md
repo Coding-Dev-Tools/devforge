@@ -1,11 +1,11 @@
 # DevForge — Landing Page & Blog
 
 [![Deploy](https://img.shields.io/badge/deploy-GitHub%20Pages-brightgreen)](https://coding-dev-tools.github.io/devforge/)
-[![Stars](https://img.shields.io/github/stars/Coding-Dev-Tools/devforge.dev?style=social)](https://github.com/Coding-Dev-Tools/devforge.dev/stargazers)
+[![Stars](https://img.shields.io/github/stars/Coding-Dev-Tools/devforge?style=social)](https://github.com/Coding-Dev-Tools/devforge/stargazers)
 
 Landing page, documentation, pricing, alternatives, and blog for the **DevForge CLI tool suite** — 11 developer CLI tools for API contracts, SQL, infrastructure, config drift, and more. **37 articles and growing.**
 
-**Live site:** [coding-dev-tools.github.io/devforge.dev](https://coding-dev-tools.github.io/devforge/)
+**Live site:** [coding-dev-tools.github.io/devforge/](https://coding-dev-tools.github.io/devforge/)
 
 ## Pages
 
