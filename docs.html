@@ -149,19 +149,20 @@
 
 <!-- Quick Jump -->
 <div class="quick-jump">
-  <a href="#api-contract-guardian">âš¡ API Contract Guardian</a>
-  <a href="#json2sql">ðŸ—ƒï¸ json2sql</a>
-  <a href="#deploydiff">â˜ï¸ DeployDiff</a>
-  <a href="#configdrift">âŒ˜ ConfigDrift</a>
-  <a href="#apighost">ðŸ‘» APIGhost</a>
-  <a href="#apiauth">ðŸ”‘ APIAuth</a>
-<a href="#envault">ðŸ›¡ï¸ Envault</a>
-  <a href="#schemaforge">ðŸ”„ SchemaForge</a>
-  <a href="#click-to-mcp">ðŸ”Œ click-to-mcp</a>
-  <a href="#deadcode">ðŸ§¹ DeadCode</a>
-  <a href="#meta-package">âš’ï¸ DevForge Suite</a>
-  <a href="#ci-pipeline">âš™ï¸ CI Pipeline</a>
-  <a href="#license">ðŸ”‘ License</a>
+  <a href="#api-contract-guardian">⚡ API Contract Guardian</a>
+  <a href="#json2sql">🗃️ json2sql</a>
+  <a href="#deploydiff">☁️ DeployDiff</a>
+  <a href="#configdrift">⌘ ConfigDrift</a>
+  <a href="#apighost">👻 APIGhost</a>
+  <a href="#apiauth">🔑 APIAuth</a>
+<a href="#envault">🛡️ Envault</a>
+  <a href="#schemaforge">🔄 SchemaForge</a>
+  <a href="#click-to-mcp">🔌 click-to-mcp</a>
+  <a href="#datamorph">🔄 DataMorph</a>
+  <a href="#deadcode">🧹 DeadCode</a>
+  <a href="#meta-package">⚒️ DevForge Suite</a>
+  <a href="#ci-pipeline">⚙️ CI Pipeline</a>
+  <a href="#license">🔑 License</a>
 </div>
 
 <div class="notice-banner">
@@ -480,6 +481,37 @@ envault rotate JWT_SECRET # 256-bit base64 secret</code></pre>
     </div>
   </div>
 
+  <!-- ==================== DATAMORPH ==================== -->
+  <div class="tool-section" id="datamorph">
+    <h2><span class="icon" style="background:rgba(59,130,246,.15)">🔄</span> DataMorph</h2>
+    <div class="subtitle">v0.1.0 — Convert between CSV, JSON, YAML, Parquet, Avro & Protobuf</div>
+    <p class="desc">Convert data files between CSV, JSON, YAML, Parquet, Avro, and Protobuf with a single command. Auto-detects input format, preserves schemas, handles batch conversions, and outputs clean structured data — no manual parsing scripts needed.</p>
+    <a href="https://github.com/Coding-Dev-Tools/datamorph" class="gh-link" target="_blank">View on GitHub →</a>
+
+    <div class="install-block">
+<code>pip install git+https://github.com/Coding-Dev-Tools/datamorph.git</code>
+      <span class="note">Requires Python 3.9+</span>
+    </div>
+
+    <ul class="features">
+      <li>Auto-detect input format from file extension</li>
+      <li>Convert between CSV, JSON, YAML, Parquet, Avro, Protobuf</li>
+      <li>Batch conversion across multiple files</li>
+      <li>Schema inference and preservation</li>
+      <li>Streaming support for large datasets</li>
+    </ul>
+
+    <p style="font-size:0.82rem;color:#888;font-weight:600;margin-bottom:8px;">Convert JSON to CSV</p>
+    <pre><code class="language-bash">datamorph convert data.json data.csv</code></pre>
+
+    <p style="font-size:0.82rem;color:#888;font-weight:600;margin-bottom:8px;">Batch convert a directory</p>
+    <pre><code class="language-bash">datamorph batch ./input/ --format csv --output ./output/</code></pre>
+
+    <div class="insight">
+      <p><strong>Why you need it:</strong> Data format conversion is a recurring chore — parsing CSV into JSON, flattening YAML, converting Parquet for analysis. Writing one-off scripts is error-prone and time-wasting. DataMorph handles all common formats with a single command, auto-detecting types and preserving schemas so you never lose data in translation.</p>
+    </div>
+  </div>
+
   <!-- ==================== DEADCODE ==================== -->
   <div class="tool-section" id="deadcode">
     <h2><span class="icon" style="background:rgba(239,68,68,.15)">ðŸ§¹</span> DeadCode</h2>
@@ -515,8 +547,8 @@ envault rotate JWT_SECRET # 256-bit base64 secret</code></pre>
   <div class="tool-section" id="meta-package">
     <h2><span class="icon icon-rh">âš’ï¸</span> DevForge Suite</h2>
     <div class="subtitle">One install. All eleven tools.</div>
-    <p class="desc">Install every tool in the DevForge ecosystem with a single command. Perfect for CI/CD pipelines, dev workstations, or teams that want the full safety net across API contracts, SQL, infrastructure, configs, API mocking, key management, env syncing, schema conversion, MCP wrapping, and dead code cleanup.</p>
-    <a href="https://github.com/Coding-Dev-Tools/devforge" class="gh-link" target="_blank">View on GitHub â†’</a>
+    <p class="desc">Install every tool in the DevForge ecosystem with a single command. Perfect for CI/CD pipelines, dev workstations, or teams that want the full safety net across API contracts, SQL, infrastructure, configs, API mocking, key management, env syncing, schema conversion, data format conversion, MCP wrapping, and dead code cleanup.</p>
+    <a href="https://github.com/Coding-Dev-Tools/devforge" class="gh-link" target="_blank">View on GitHub →</a>
 
     <div class="install-block">
 <code>pip install git+https://github.com/Coding-Dev-Tools/devforge.git</code>

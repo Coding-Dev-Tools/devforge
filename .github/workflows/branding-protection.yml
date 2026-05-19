@@ -1,0 +1,44 @@
+name: Branding Protection
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+
+jobs:
+  check-branding:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check for unauthorized branding changes
+        run: |
+          CHANGED_FILES=$(git diff --name-only origin/main...HEAD)
+          BRANDING_FILES=$(echo "$CHANGED_FILES" | grep -iE '\.(html|htm|md|json|yaml|yml|toml|cfg|ini|txt)$' || true)
+          
+          if [ -z "$BRANDING_FILES" ]; then
+            echo "No content files changed. OK."
+            exit 0
+          fi
+          
+          # Check for branding changes in the diff
+          DIFF=$(git diff origin/main...HEAD -- $BRANDING_FILES)
+          
+          # Forbidden patterns
+          FORBIDDEN=$(echo "$DIFF" | grep -iE '^\+.*(<title>|<base\s+href|Revenue\s+Holdings|revenueholdings)' || true)
+          
+          if [ -n "$FORBIDDEN" ]; then
+            echo "::error::Unauthorized branding changes detected. These require BRANDING-APPROVED label."
+            echo "$FORBIDDEN"
+            # Check if PR has BRANDING-APPROVED label
+            LABELS=$(gh pr view ${{ github.event.pull_request.number }} --json labels -q '.labels[].name' 2>/dev/null || echo "")
+            if echo "$LABELS" | grep -q "BRANDING-APPROVED"; then
+              echo "PR has BRANDING-APPROVED label. OK."
+              exit 0
+            fi
+            exit 1
+          fi
+          
+          echo "No unauthorized branding changes. OK."
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
