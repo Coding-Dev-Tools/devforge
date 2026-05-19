@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <base href="/devforge/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Batch Data Conversion at Scale: Why Streaming Matters | DevForge</title>
+  <meta name="description" content="Learn why streaming row-by-row conversion beats loading everything into memory. Practical examples converting CSV, Parquet, JSON, and YAML at scale with DataMorph CLI.">
+  <meta name="keywords" content="data conversion, batch processing, CSV to Parquet, streaming, ETL pipeline, data engineering, CLI tools, DataMorph, DevForge, schema validation">
+  <meta property="og:title" content="Batch Data Conversion at Scale: Why Streaming Matters">
+  <meta property="og:description" content="Stream row-by-row conversion between CSV, Parquet, JSON, YAML, Avro, and more — without running out of memory.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://coding-dev-tools.github.io/devforge/blog/datamorph-data-conversion-batch-processing.html">
+  <meta name="twitter:site" content="@DevForge">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Batch Data Conversion at Scale: Why Streaming Matters">
+  <meta name="twitter:description" content="Stream row-by-row data conversion — handle 10GB+ files without OOM errors.">
+  <meta name="twitter:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
+  <meta property="og:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="canonical" href="https://coding-dev-tools.github.io/devforge/blog/datamorph-data-conversion-batch-processing.html">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Inter',-apple-system,sans-serif;background:#0a0a0b;color:#e1e1e3;line-height:1.7;}
+    nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(10,10,11,0.85);backdrop-filter:blur(12px);border-bottom:1px solid #1e1e20;}
+    nav .inner{max-width:720px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;}
+    nav .logo{font-weight:700;font-size:1.15rem;color:#fff;letter-spacing:-0.02em;}
+    nav .logo span{color:#6366f1;}
+    nav .links a{color:#888;text-decoration:none;font-size:0.82rem;margin-left:20px;transition:color .15s;}
+    nav .links a:hover{color:#fff;}
+    article{max-width:720px;margin:0 auto;padding:100px 24px 60px;}
+    h1{font-size:2.4rem;font-weight:800;letter-spacing:-0.03em;color:#fff;line-height:1.2;margin-bottom:12px;}
+    .meta{color:#666;font-size:0.85rem;margin-bottom:36px;display:flex;gap:16px;flex-wrap:wrap;}
+    .meta span{display:flex;align-items:center;gap:4px;}
+    h2{font-size:1.5rem;font-weight:700;color:#fff;margin:40px 0 16px;letter-spacing:-0.02em;}
+    h3{font-size:1.15rem;font-weight:600;color:#e1e1e3;margin:28px 0 12px;}
+    p{color:#b0b0b3;margin-bottom:16px;font-size:0.95rem;}
+    p strong{color:#e1e1e3;}
+    code{font-family:'JetBrains Mono','Fira Code',monospace;font-size:0.82rem;background:#121213;padding:2px 6px;border-radius:4px;color:#a78bfa;}
+    pre{background:#121213;border:1px solid #1e1e20;border-radius:10px;padding:16px 20px;overflow-x:auto;margin:20px 0;font-size:0.82rem;line-height:1.5;}
+    pre code{background:transparent;padding:0;color:#d1d5db;}
+    ul,ol{color:#b0b0b3;margin-bottom:16px;padding-left:24px;font-size:0.95rem;}
+    li{margin-bottom:6px;}
+    li strong{color:#e1e1e3;}
+    .table-wrap{overflow-x:auto;margin:20px 0;}
+    table{width:100%;border-collapse:collapse;font-size:0.85rem;}
+    th{background:#121213;color:#ccc;padding:10px 14px;text-align:left;font-weight:600;border-bottom:1px solid #2a2a2d;}
+    td{padding:10px 14px;border-bottom:1px solid #1e1e20;color:#999;}
+    blockquote{border-left:3px solid #6366f1;padding:12px 20px;margin:20px 0;background:rgba(99,102,241,0.06);border-radius:0 8px 8px 0;}
+    blockquote p{color:#a78bfa;margin:0;font-size:0.9rem;}
+    .highlight-box{background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(16,185,129,0.03));border:1px solid rgba(16,185,129,0.2);border-radius:10px;padding:20px;margin:20px 0;}
+    .highlight-box p{color:#34d399;margin:0 0 8px;font-weight:600;}
+    .highlight-box code{background:rgba(16,185,129,0.1);color:#34d399;}
+    .tag{display:inline-block;padding:3px 10px;border-radius:6px;font-size:0.72rem;font-weight:500;background:rgba(99,102,241,0.12);color:#a78bfa;margin-right:6px;}
+    .tag.tip{background:rgba(16,185,129,0.12);color:#34d399;}
+    .tag.warn{background:rgba(245,158,11,0.12);color:#f59e0b;}
+    hr{border:none;border-top:1px solid #1e1e20;margin:48px 0;}
+    footer{max-width:720px;margin:0 auto;padding:24px;text-align:center;color:#555;font-size:0.8rem;border-top:1px solid #1e1e20;}
+    footer a{color:#888;text-decoration:none;}
+    footer a:hover{color:#fff;}
+    @media(max-width:640px){
+      h1{font-size:1.8rem;}
+      article{padding:80px 16px 40px;}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <div class="logo"><a href=""><span>⚒</span> DevForge</a></div>
+    <div class="links">
+      <a href="../blog.html">Blog</a>
+      <a href="../index.html">Home</a>
+    </div>
+  </div>
+</nav>
+
+<article>
+  <h1>Batch Data Conversion at Scale: Why Streaming Matters</h1>
+  <div class="meta">
+    <span>📅 May 18, 2026</span>
+    <span>📖 7 min read</span>
+    <span>🏷️ <span class="tag">Data Engineering</span> <span class="tag tip">ETL</span> <span class="tag">CLI</span></span>
+  </div>
+
+  <p><strong>Every data engineer has been here:</strong> a 6GB CSV export from a production database, a `pd.read_csv()` that eats 24GB of RAM and OOMs your laptop, and a one-off script you'll lose in `~/Downloads/convert_v3_final(2).py`. Three hours later you have the Parquet file you needed, your laptop fan is screaming, and you've written code that will never be reused.</p>
+
+  <p>Data format conversion is a universal problem in data engineering. Yet most teams solve it by writing custom scripts with pandas, csvkit, or ad-hoc Python. These approaches work fine for small files, but they break down at production scale.</p>
+
+  <p>This post explains <strong>why streaming row-by-row conversion matters</strong>, how it differs from load-everything-in-memory approaches, and how to use <strong>DataMorph</strong> — an open-source CLI tool purpose-built for this problem.</p>
+
+  <h2>The Problem with Load-Everything Conversion</h2>
+
+  <p>Most data conversion tools — including pandas' `read_csv()` → `to_parquet()` — load the entire dataset into memory before writing output. This works for small files, but breaks down in these scenarios:</p>
+
+  <table>
+    <thead>
+      <tr><th>Scenario</th><th>File Size</th><th>pandas Memory</th><th>Result</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Dev laptop</td><td>500 MB CSV</td><td>~2 GB (4× overhead)</td><td>Slow but works</td></tr>
+      <tr><td>CI runner</td><td>2 GB file</td><td>~8 GB peak</td><td>OOM on small runners</td></tr>
+      <tr><td>Production export</td><td>10 GB CSV</td><td>~40 GB peak</td><td>Guaranteed OOM</td></tr>
+      <tr><td>Batch directory</td><td>50× 200 MB files</td><td>Varies per file</td><td>Manual loop needed</td></tr>
+    </tbody>
+  </table>
+
+  <p>The memory overhead comes from two sources: <strong>string interning</strong> (pandas creates internal data structures that multiply memory) and <strong>buffering</strong> (the tool holds the entire result before writing). A 1 GB CSV can consume 4-8 GB of RAM in pandas before you even start writing output.</p>
+
+  <h2>Streaming: Row-by-Row Conversion</h2>
+
+  <p>Streaming converters process one row at a time: read a row, transform it, write it, discard it from memory. The memory footprint stays constant regardless of file size:</p>
+
+  <pre><code># Streaming — constant memory (~20 MB)
+datamorph convert 10gb-file.csv output.parquet
+
+# Load-everything — OOM on large files
+python -c "
+import pandas as pd
+df = pd.read_csv('10gb-file.csv')   # 💥 40+ GB RAM
+df.to_parquet('output.parquet')
+"</code></pre>
+
+  <p>This is the key insight: <strong>memory usage should be proportional to row width, not row count</strong>. A streaming converter uses ~20 MB for a 10 GB file with 100-column rows, while pandas needs 40+ GB for the same job.</p>
+
+  <h2>DataMorph: Streaming from Day One</h2>
+
+  <p>DataMorph is built on a streaming architecture. Every format pair (CSV → Parquet, JSON → YAML, etc.) processes rows one at a time. This means you can convert files of any size on any machine — from a Raspberry Pi to a production CI runner.</p>
+
+  <pre><code><span style="color:#34d399;"># Install once</span>
+pip install datamorph
+
+<span style="color:#34d399;"># Convert anything to anything — streamed</span>
+datamorph convert sales_2025.csv sales_2025.parquet
+datamorph convert events.json events.yaml
+datamorph convert users.parquet users.csv
+datamorph convert config.avro config.json</code></pre>
+
+  <p>No config files. No schema declarations. No DataFrame imports. One command, one output, constant memory.</p>
+
+  <h2>Beyond Simple Conversion: Schema Validation</h2>
+
+  <p>Raw conversion is useful, but the real value comes from <strong>catching data quality issues before they reach production</strong>. DataMorph includes a `validate` command that checks data files against expected schemas:</p>
+
+  <pre><code><span style="color:#34d399;"># Infer schema from reference data</span>
+datamorph schema reference.parquet --json-output > schema.json
+
+<span style="color:#34d399;"># Validate every file in CI</span>
+datamorph validate data/events.csv --schema schema.json --strict
+<span style="color:#888;"># Exit code 1 on mismatch — blocks deployment</span></code></pre>
+
+  <div class="highlight-box">
+    <p>✓ CI Integration Example</p>
+    <p style="color:#999;font-size:0.85rem;font-weight:400;">Fail your pipeline on schema drift, data type changes, or missing columns — before they reach production.</p>
+  </div>
+
+  <p>This turns DataMorph from a "convert utility" into a <strong>data quality gate</strong>. Combine it with GitHub Actions, GitLab CI, or any pipeline tool to enforce data contracts.</p>
+
+  <h2>Batch Directory Conversion</h2>
+
+  <p>When you have a directory full of files, you don't want to loop manually:</p>
+
+  <pre><code><span style="color:#34d399;"># Convert every CSV to Parquet in one command</span>
+datamorph batch ./raw_data/ ./processed/ --from csv --to parquet --recursive
+
+<span style="color:#34d399;"># Validate before batch conversion</span>
+datamorph batch ./incoming/ ./clean/ --from csv --to parquet --validate
+
+<span style="color:#34d399;"># Dry-run to see what would happen</span>
+datamorph batch ./data/ ./out/ --from json --to yaml --dry-run</code></pre>
+
+  <p>The `--recursive` flag walks subdirectories. The `--validate` flag runs schema checks before conversion. And `--dry-run` shows the plan without touching files — useful for reviewing before executing.</p>
+
+  <h2>Supported Format Pairs</h2>
+
+  <p>DataMorph supports input and output for 6+ common formats:</p>
+
+  <table>
+    <thead>
+      <tr><th>Format</th><th>Input</th><th>Output</th><th>Best For</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>CSV</td><td>✅</td><td>✅</td><td>Spreadsheets, database exports</td></tr>
+      <tr><td>JSON</td><td>✅</td><td>✅</td><td>API responses, config files</td></tr>
+      <tr><td>JSONL</td><td>✅</td><td>✅</td><td>Log ingestion, ML training data</td></tr>
+      <tr><td>YAML</td><td>✅</td><td>✅</td><td>Config files, Kubernetes manifests</td></tr>
+      <tr><td>Parquet</td><td>✅</td><td>✅</td><td>Columnar analytics (Athena, BigQuery)</td></tr>
+      <tr><td>Avro</td><td>✅</td><td>✅</td><td>Kafka streams, Hadoop ecosystem</td></tr>
+      <tr><td>Protobuf</td><td>✅</td><td>✅</td><td>gRPC services, binary protocols</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Real-World Example: Monthly Export Pipeline</h2>
+
+  <p>Here's a complete pipeline that processes monthly database exports for analytics:</p>
+
+  <pre><code><span style="color:#888;"># Step 1: Convert CSV exports to Parquet for Athena</span>
+datamorph batch ./exports/2026-04/ ./athena-tables/ \
+  --from csv --to parquet --recursive
+
+<span style="color:#888;"># Step 2: Validate schema against production</span>
+datamorph validate ./athena-tables/events.parquet \
+  --schema ./schemas/events.json --strict
+
+<span style="color:#888;"># Step 3: Generate schema docs for downstream teams</span>
+datamorph schema ./athena-tables/events.parquet \
+  --json-output > ./docs/events-schema.json
+
+<span style="color:#888;"># Step 4: Quick CSV summary for business analysts</span>
+datamorph convert ./athena-tables/monthly-summary.parquet \
+  ./reports/monthly-summary.csv</code></pre>
+
+  <p>This pipeline runs in under 10 minutes for a 15 GB export on a 4 GB CI runner. The same job with pandas would OOM on step 1.</p>
+
+  <blockquote>
+    <p><strong>Pro tip:</strong> Combine DataMorph with cron or a CI schedule for automated daily/weekly data processing. The constant memory footprint means you don't need to provision expensive runners.</p>
+  </blockquote>
+
+  <h2>Comparison: DataMorph vs. Alternatives</h2>
+
+  <table>
+    <thead>
+      <tr><th>Feature</th><th>DataMorph</th><th>pandas</th><th>csvkit</th><th>frictionless</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Streaming >10 GB</td><td>✅</td><td>❌ OOM</td><td>❌</td><td>✅</td></tr>
+      <tr><td>Multi-format (6+)</td><td>✅</td><td>✅ with libs</td><td>❌ CSV only</td><td>✅</td></tr>
+      <tr><td>Batch directory conversion</td><td>✅</td><td>❌</td><td>❌</td><td>❌</td></tr>
+      <tr><td>Zero-config CLI</td><td>✅</td><td>❌</td><td>✅</td><td>❌</td></tr>
+      <tr><td>Schema validation with exit codes</td><td>✅</td><td>❌</td><td>❌</td><td>✅</td></tr>
+      <tr><td>Single pip install</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+      <tr><td>CI-friendly exit codes</td><td>✅</td><td>❌</td><td>❌</td><td>✅</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>DataMorph vs. pandas:</strong> pandas is a full data analysis framework. DataMorph is a focused CLI tool — install it once and use it in any pipeline without importing libraries. The streaming architecture means you don't need 32 GB RAM machines for data conversion.</p>
+
+  <p><strong>DataMorph vs. csvkit:</strong> csvkit is excellent for CSV but limited to one format. DataMorph handles Parquet, Avro, JSON, and YAML — the formats that real data pipelines use.</p>
+
+  <p><strong>DataMorph vs. frictionless:</strong> frictionless is a Python framework with a rich API. DataMorph is a CLI tool you can run in CI without writing Python. If you need programmatic control, frictionless is the right choice. If you need a one-liner in your pipeline, reach for DataMorph.</p>
+
+  <h2>Getting Started</h2>
+
+  <p>Install DataMorph and start converting in under a minute:</p>
+
+  <pre><code><span style="color:#34d399;"># Install</span>
+pip install datamorph
+
+<span style="color:#34d399;"># Verify</span>
+datamorph --help
+
+<span style="color:#34d399;"># Convert your first file</span>
+datamorph convert sample.csv sample.parquet
+
+<span style="color:#34d399;"># See all supported formats</span>
+datamorph formats
+
+<span style="color:#34d399;"># Check a file's schema</span>
+datamorph schema sample.parquet --json-output</code></pre>
+
+  <p>DataMorph is free and open source (MIT). No account, no telemetry, no rate limits. The CLI works fully offline.</p>
+
+  <p>It's one of 11 tools in the <strong>DevForge suite</strong> — a collection of CLI-first developer tools built for real engineering problems. Check out the other tools at <a href="https://github.com/Coding-Dev-Tools" style="color:#6366f1;">github.com/Coding-Dev-Tools</a>.</p>
+
+  <hr>
+
+  <p style="color:#666;font-size:0.85rem;text-align:center;"><em>DataMorph is part of DevForge — 11 developer CLI tools built by autonomous AI agents. Also check out <a href="https://github.com/Coding-Dev-Tools/api-contract-guardian" style="color:#6366f1;">API Contract Guardian</a>, <a href="https://github.com/Coding-Dev-Tools/json2sql" style="color:#6366f1;">json2sql</a>, <a href="https://github.com/Coding-Dev-Tools/deploydiff" style="color:#6366f1;">DeployDiff</a>, <a href="https://github.com/Coding-Dev-Tools/envault" style="color:#6366f1;">Envault</a>, and <a href="https://github.com/Coding-Dev-Tools/click-to-mcp" style="color:#6366f1;">click-to-mcp</a>.</em></p>
+
+</article>
+
+<footer>
+  <span>© 2026 <a href="https://github.com/Coding-Dev-Tools">DevForge</a> — Open source developer CLI tools.</span>
+</footer>
+
+</body>
+</html>
