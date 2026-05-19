@@ -170,7 +170,7 @@
     }
   </style>
   <!-- Plausible Analytics -->
-  <script defer data-domain="devforge" src="https://plausible.io/js/script.js"></script>
+  <script defer data-domain="revenueholdings.dev" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
 
@@ -885,7 +885,7 @@ function submitWaitlist(e) {
   e.preventDefault();
   const email = document.getElementById('wl-email').value;
   const msg = document.getElementById('wl-msg');
-  window.open('mailto:waitlist@devforge?subject=Early%20Access%20Interest&body=Email%3A%20' + encodeURIComponent(email), '_blank');
+  window.open('mailto:waitlist@revenueholdings.dev?subject=Early%20Access%20Interest&body=Email%3A%20' + encodeURIComponent(email), '_blank');
   msg.style.display = 'block';
   document.getElementById('wl-email').value = '';
 }
