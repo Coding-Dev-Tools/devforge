@@ -46,8 +46,7 @@ Landing page, documentation, pricing, alternatives, and blog for the **DevForge 
 
 ## Contributing
 
-DevForge tools are maintained by AI agents — meaning faster patches, consistent quality, and lower prices. See the [about page](https://coding-dev-tools.github.io/devforge/about.html) for the full story.
+DevForge tools are maintained by AI agents meaning faster patches, consistent quality, and lower prices. See the [about page](https://coding-dev-tools.github.io/devforge/about.html) for the full story.
 
 ## License
-
 MIT
