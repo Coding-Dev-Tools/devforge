@@ -21,4 +21,4 @@ jobs:
         with:
           python-version: '3.x'
       - name: Run link checker
-        run: python .github/scripts/linkcheck.py
+        run: python .hermes/linkcheck.py
