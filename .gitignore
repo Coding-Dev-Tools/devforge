@@ -10,6 +10,7 @@ venv/
 
 # Hermes link checker
 .hermes/
+!/.hermes/linkcheck.py
 
 # Node
 node_modules/
