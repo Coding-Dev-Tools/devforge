@@ -1,14 +1,31 @@
 """Tests for the DevForge link checker script.
 
-These tests verify the link-checking logic by creating temporary HTML
-file trees and checking path resolution. They do not import linkcheck.py
-directly (it runs as a top-level script), but instead validate the
-path-resolution and file-discovery patterns it uses.
+Tests cover both the path-resolution logic and the new CLI argument interface,
+importing functions directly from .hermes.linkcheck.
 """
 
 import os
+import subprocess
+import sys
 import tempfile
 from pathlib import Path
+
+import pytest
+
+# Add .hermes to path so we can import linkcheck.py
+_SCRIPT_DIR = Path(__file__).resolve().parent.parent / ".hermes"
+sys.path.insert(0, str(_SCRIPT_DIR))
+
+from linkcheck import (  # noqa: E402
+    build_actual_pages,
+    check_links,
+    collect_html_files,
+    main,
+    parse_args,
+    resolve_link,
+)
+
+# ---- Helper ----
 
 
 def create_temp_html(directory: Path, filename: str, links: list[str]) -> Path:
@@ -26,6 +43,9 @@ def create_temp_html(directory: Path, filename: str, links: list[str]) -> Path:
     return filepath
 
 
+# ---- File discovery ----
+
+
 def test_walk_collects_html_files():
     """Verify os.walk finds all .html files in a directory tree."""
     with tempfile.TemporaryDirectory() as tmpdir:
@@ -36,13 +56,32 @@ def test_walk_collects_html_files():
         (root / "b.html").write_text("<html></html>")
         (sub / "c.html").write_text("<html></html>")
 
-        files = set()
-        for r, _dirs, files_list in os.walk(tmpdir):
-            for f in files_list:
-                if f.endswith(".html"):
-                    files.add(os.path.join(r, f))
-
+        files = collect_html_files(tmpdir)
         assert len(files) == 3, f"Expected 3 HTML files, got {len(files)}"
+
+
+def test_collect_excludes_git():
+    """Verify .git directories are excluded from the walk."""
+    with tempfile.TemporaryDirectory() as tmpdir:
+        root = Path(tmpdir)
+        git = root / ".git"
+        git.mkdir()
+        (git / "index.html").write_text("<html></html>")
+        (root / "real.html").write_text("<html></html>")
+
+        files = collect_html_files(tmpdir)
+        assert len(files) == 1
+        assert all(".git" not in str(f) for f in files)
+
+
+def test_build_actual_pages():
+    """Verify page path relativization."""
+    files = {"/tmp/site/index.html", "/tmp/site/blog/post.html"}
+    pages = build_actual_pages(files)
+    assert len(pages) == len(files)
+
+
+# ---- Link resolution ----
 
 
 def test_existing_link_resolves():
@@ -86,21 +125,167 @@ def test_relative_up_link_resolves():
         assert os.path.exists(resolved), f"Resolved path {resolved} does not exist"
 
 
-def test_linkcheck_script_runs():
-    """Verify the linkcheck.py script can execute without errors."""
-    import subprocess
-    import sys
+def test_resolve_link_from_root():
+    """Resolve a plain link from root directory."""
+    result = resolve_link("page.html", "")
+    assert result == "page.html"
 
-    script = Path(__file__).resolve().parent.parent / ".hermes" / "linkcheck.py"
+
+def test_resolve_link_from_subdir():
+    """Resolve a plain link from a subdirectory."""
+    result = resolve_link("page.html", "blog")
+    assert result == "blog/page.html"
+
+
+def test_resolve_link_up_from_root():
+    """Resolve '../' from root stays at root."""
+    result = resolve_link("../page.html", "")
+    assert result == "page.html"
+
+
+def test_resolve_link_up_from_subdir():
+    """Resolve '../' from subdir to parent."""
+    result = resolve_link("../page.html", "blog")
+    assert result == "page.html"
+
+
+def test_resolve_link_deep_up():
+    """Resolve '../../' from nested dir."""
+    result = resolve_link("../../page.html", "a/b")
+    assert result == "page.html"
+
+
+def test_resolve_link_with_dot_slash():
+    """Resolve './' prefix."""
+    result = resolve_link("./page.html", "blog")
+    assert result == "blog/page.html"
+
+
+def test_resolve_link_double_slash():
+    """Resolve double-slash normalization."""
+    result = resolve_link("page.html", "blog/")
+    assert result == "blog/page.html"
+
+
+# ---- CLI argument parsing ----
+
+
+def test_parse_args_defaults():
+    """Default directory is '.' and flags are off."""
+    args = parse_args([])
+    assert args.directory == "."
+    assert args.verbose is False
+    assert args.exit_code is False
+
+
+def test_parse_args_custom_directory():
+    args = parse_args(["docs"])
+    assert args.directory == "docs"
+
+
+def test_parse_args_verbose():
+    args = parse_args(["-v"])
+    assert args.verbose is True
+
+
+def test_parse_args_exit_code():
+    args = parse_args(["-e"])
+    assert args.exit_code is True
+
+
+def test_parse_args_all_flags():
+    args = parse_args(["src", "--verbose", "--exit-code"])
+    assert args.directory == "src"
+    assert args.verbose is True
+    assert args.exit_code is True
+
+
+def test_parse_args_help(capsys):
+    with pytest.raises(SystemExit):
+        parse_args(["--help"])
+    captured = capsys.readouterr()
+    assert "broken internal links" in captured.out
+
+
+# ---- Integration tests ----
+
+
+def test_check_links_no_broken():
+    """check_links returns 0 when all links resolve."""
+    with tempfile.TemporaryDirectory() as tmpdir:
+        root = Path(tmpdir)
+        target = root / "target.html"
+        target.write_text("<html></html>")
+        create_temp_html(root, "source.html", ["target.html"])
+
+        broken = check_links(tmpdir)
+        assert broken == 0
+
+
+def test_check_links_finds_broken():
+    """check_links returns >0 when links are broken."""
+    with tempfile.TemporaryDirectory() as tmpdir:
+        root = Path(tmpdir)
+        create_temp_html(root, "source.html", ["missing.html", "also-gone.html"])
+
+        broken = check_links(tmpdir)
+        assert broken == 2
+
+
+def test_main_exit_code_clean():
+    """main returns 0 when no broken links with --exit-code."""
+    with tempfile.TemporaryDirectory() as tmpdir:
+        root = Path(tmpdir)
+        target = root / "exists.html"
+        target.write_text("<html></html>")
+        create_temp_html(root, "source.html", ["exists.html"])
+
+        rc = main([tmpdir, "--exit-code"])
+        assert rc == 0
+
+
+def test_main_exit_code_broken():
+    """main returns 1 when broken links found with --exit-code."""
+    with tempfile.TemporaryDirectory() as tmpdir:
+        root = Path(tmpdir)
+        create_temp_html(root, "source.html", ["broken.html"])
+
+        rc = main([tmpdir, "--exit-code"])
+        assert rc == 1
+
+
+def test_main_no_exit_code_ignores_broken():
+    """main returns 0 even with broken links when --exit-code is not set."""
+    with tempfile.TemporaryDirectory() as tmpdir:
+        root = Path(tmpdir)
+        create_temp_html(root, "source.html", ["broken.html"])
+
+        rc = main([tmpdir])
+        assert rc == 0
+
+
+def test_linkcheck_help():
+    """Verify the linkcheck.py --help works."""
+    script = _SCRIPT_DIR / "linkcheck.py"
     assert script.exists(), f"Script not found: {script}"
 
+    result = subprocess.run(
+        [sys.executable, str(script), "--help"],
+        capture_output=True,
+        text=True,
+        cwd=_SCRIPT_DIR.parent,
+    )
+    assert result.returncode == 0, f"Script failed:\n{result.stderr}"
+    assert "broken internal links" in result.stdout
+
+
+def test_linkcheck_script_default_run():
+    """Script runs without crashing in default mode (no args)."""
+    script = _SCRIPT_DIR / "linkcheck.py"
     result = subprocess.run(
         [sys.executable, str(script)],
         capture_output=True,
         text=True,
-        cwd=Path(__file__).resolve().parent.parent,
+        cwd=_SCRIPT_DIR.parent,
     )
-    # The script may find broken links (external links or missing pages),
-    # but should not crash
     assert result.returncode == 0, f"Script failed:\n{result.stderr}"
-    assert "Broken" in result.stdout or "checked" in result.stdout

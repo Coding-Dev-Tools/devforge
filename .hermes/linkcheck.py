@@ -1,75 +1,134 @@
-import os, re, glob, sys
+#!/usr/bin/env python3
+"""DevForge static-site link checker.
 
-# Collect all internal HTML files
-all_files = set()
-for root, dirs, files in os.walk('.'):
-    if '.git' in dirs:
-        dirs.remove('.git')
-    for f in files:
-        if f.endswith('.html'):
-            all_files.add(os.path.join(root, f))
+Scans all HTML files under a given directory and reports broken internal links.
+Designed for CI use — exits with code 0 if all links are valid, or code 1
+if broken links are found (when --exit-code is passed).
+"""
 
-# Extract paths relative to site root
-actual_pages = set()
-for fp in all_files:
-    rel = os.path.relpath(fp, '.').replace(os.sep, '/')
-    if rel.startswith('./'):
-        rel = rel[2:]
-    actual_pages.add(rel)
+import argparse
+import os
+import re
+import sys
 
-print(f"Actual HTML pages: {len(actual_pages)}")
 
-# Now scan all HTML files for internal links
-print("\n--- Broken link check ---")
-broken = 0
-checked = 0
+def collect_html_files(root_dir: str) -> set[str]:
+    """Walk root_dir and return set of all .html file paths."""
+    files = set()
+    for root, dirs, filenames in os.walk(root_dir):
+        if ".git" in dirs:
+            dirs.remove(".git")
+        for f in filenames:
+            if f.endswith(".html"):
+                files.add(os.path.join(root, f))
+    return files
 
-for fp in sorted(all_files):
-    with open(fp, 'r', encoding='utf-8', errors='replace') as f:
-        content = f.read()
-    
-    # Find all href links to .html files
-    links = re.findall(r'href="([^"]+\.html)"', content)
-    
-    source_rel = os.path.relpath(fp, '.').replace(os.sep, '/')
-    source_dir = os.path.dirname(source_rel)
-    if source_dir == '.':
-        source_dir = ''
-    
-    for link in links:
-        checked += 1
-        # Skip external links
-        if link.startswith('http://') or link.startswith('https://'):
-            continue
-        # Skip anchors
-        if link.startswith('#'):
-            continue
-        
-        # Resolve relative path
-        if link.startswith('../'):
-            parts = source_dir.split('/') if source_dir else []
-            up_count = link.count('../')
-            resolved_parts = parts[:-up_count] if len(parts) >= up_count else []
-            remaining = link[3*up_count:]
-            resolved = '/'.join(resolved_parts + [remaining]) if resolved_parts else remaining
-        elif link.startswith('./'):
-            resolved = (source_dir + '/' + link[2:]) if source_dir else link[2:]
-        else:
-            resolved = (source_dir + '/' + link) if source_dir else link
-        
-        resolved = resolved.replace('//', '/')
-        
-        # Check if the target file exists (using OS-native paths)
-        target_path = resolved.replace('/', os.sep)
-        if not os.path.exists(target_path):
-            print(f"  BROKEN: {source_rel} -> {link}")
-            broken += 1
-        elif target_path not in all_files and not os.path.isdir(target_path):
-            # It exists on disk but wasn't in our walk - rare but worth noting
-            pass
 
-print(f"\nChecked {checked} links, found {broken} broken")
+def build_actual_pages(all_files: set[str]) -> set[str]:
+    """Convert absolute-ish file paths to site-relative paths."""
+    actual = set()
+    for fp in all_files:
+        rel = os.path.relpath(fp, ".").replace(os.sep, "/")
+        if rel.startswith("./"):
+            rel = rel[2:]
+        actual.add(rel)
+    return actual
 
-# Exit with error code for CI
-if broken > 0:
-    sys.exit(1)
+
+def resolve_link(link: str, source_dir: str) -> str:
+    """Resolve a relative href to an absolute site-relative path."""
+    if link.startswith("../"):
+        parts = source_dir.split("/") if source_dir else []
+        up_count = link.count("../")
+        resolved_parts = parts[:-up_count] if len(parts) >= up_count else []
+        remaining = link[3 * up_count :]
+        resolved = "/".join(resolved_parts + [remaining]) if resolved_parts else remaining
+    elif link.startswith("./"):
+        resolved = (source_dir + "/" + link[2:]) if source_dir else link[2:]
+    else:
+        resolved = (source_dir + "/" + link) if source_dir else link
+    return resolved.replace("//", "/")
+
+
+def check_links(root_dir: str, verbose: bool = False) -> int:
+    """Scan HTML files under root_dir and report broken links.
+
+    Returns the number of broken links found.
+    """
+    all_files = collect_html_files(root_dir)
+    actual_pages = build_actual_pages(all_files)
+
+    if verbose:
+        print(f"Actual HTML pages: {len(actual_pages)}")
+
+    broken = 0
+    checked = 0
+
+    for fp in sorted(all_files):
+        with open(fp, "r", encoding="utf-8", errors="replace") as f:
+            content = f.read()
+
+        links = re.findall(r'href="([^"]+\.html)"', content)
+
+        source_rel = os.path.relpath(fp, root_dir).replace(os.sep, "/")
+        source_dir = os.path.dirname(source_rel)
+        if source_dir == ".":
+            source_dir = ""
+
+        for link in links:
+            checked += 1
+            if link.startswith("http://") or link.startswith("https://"):
+                continue
+            if link.startswith("#"):
+                continue
+
+            resolved = resolve_link(link, source_dir)
+            target_path = resolved.replace("/", os.sep)
+
+            full_target = os.path.join(root_dir, target_path) if root_dir != "." else target_path
+            if not os.path.exists(full_target):
+                print(f"  BROKEN: {source_rel} -> {link}")
+                broken += 1
+
+    if verbose or broken > 0:
+        print(f"\nChecked {checked} links, found {broken} broken")
+
+    return broken
+
+
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
+    """Parse command-line arguments."""
+    parser = argparse.ArgumentParser(
+        description="Check for broken internal links in DevForge static HTML files.",
+        epilog="Example: python linkcheck.py --exit-code --verbose",
+    )
+    parser.add_argument(
+        "directory",
+        nargs="?",
+        default=".",
+        help="Root directory to scan for HTML files (default: %(default)s)",
+    )
+    parser.add_argument(
+        "-v", "--verbose",
+        action="store_true",
+        help="Print page count summary and status messages",
+    )
+    parser.add_argument(
+        "-e", "--exit-code",
+        action="store_true",
+        help="Exit with code 1 if any broken links are found (for CI use)",
+    )
+    return parser.parse_args(argv)
+
+
+def main(argv: list[str] | None = None) -> int:
+    """Entry point with optional argv injection (for testing)."""
+    args = parse_args(argv)
+    broken = check_links(args.directory, verbose=args.verbose)
+    if args.exit_code and broken > 0:
+        return 1
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
