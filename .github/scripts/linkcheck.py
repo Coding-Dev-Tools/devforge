@@ -1,4 +1,6 @@
-import os, re, glob, sys
+import os
+import re
+import sys
 
 # Collect all internal HTML files
 all_files = set()
@@ -25,17 +27,17 @@ broken = 0
 checked = 0
 
 for fp in sorted(all_files):
-    with open(fp, 'r', encoding='utf-8', errors='replace') as f:
+    with open(fp, encoding='utf-8', errors='replace') as f:
         content = f.read()
-    
+
     # Find all href links to .html files
     links = re.findall(r'href="([^"]+\.html)"', content)
-    
+
     source_rel = os.path.relpath(fp, '.').replace(os.sep, '/')
     source_dir = os.path.dirname(source_rel)
     if source_dir == '.':
         source_dir = ''
-    
+
     for link in links:
         checked += 1
         # Skip external links
@@ -44,7 +46,7 @@ for fp in sorted(all_files):
         # Skip anchors
         if link.startswith('#'):
             continue
-        
+
         # Resolve relative path
         if link.startswith('../'):
             parts = source_dir.split('/') if source_dir else []
@@ -56,9 +58,9 @@ for fp in sorted(all_files):
             resolved = (source_dir + '/' + link[2:]) if source_dir else link[2:]
         else:
             resolved = (source_dir + '/' + link) if source_dir else link
-        
+
         resolved = resolved.replace('//', '/')
-        
+
         # Check if the target file exists (using OS-native paths)
         target_path = resolved.replace('/', os.sep)
         if not os.path.exists(target_path):
