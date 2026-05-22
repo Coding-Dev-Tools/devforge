@@ -65,7 +65,7 @@ def check_links(root_dir: str, verbose: bool = False) -> int:
     checked = 0
 
     for fp in sorted(all_files):
-        with open(fp, "r", encoding="utf-8", errors="replace") as f:
+        with open(fp, encoding="utf-8", errors="replace") as f:
             content = f.read()
 
         links = re.findall(r'href="([^"]+\.html)"', content)
