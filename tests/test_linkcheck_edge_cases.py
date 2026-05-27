@@ -41,10 +41,10 @@ class TestCheckLinksEdgeCases:
         with tempfile.TemporaryDirectory() as tmpdir:
             root = Path(tmpdir)
             (root / "index.html").write_text(
-                f'<html><body>'
-                f'<a href="https://example.com/page.html">external</a>'
-                f'<a href="http://example.org/page.html">external2</a>'
-                f'</body></html>'
+                '<html><body>'
+                '<a href="https://example.com/page.html">external</a>'
+                '<a href="http://example.org/page.html">external2</a>'
+                '</body></html>'
             )
             (root / "other.html").write_text('<html><body>Hi</body></html>')
             broken = check_links(tmpdir)
@@ -55,10 +55,10 @@ class TestCheckLinksEdgeCases:
         with tempfile.TemporaryDirectory() as tmpdir:
             root = Path(tmpdir)
             (root / "index.html").write_text(
-                f'<html><body>'
-                f'<a href="#section">section</a>'
-                f'<a href="#top">top</a>'
-                f'</body></html>'
+                '<html><body>'
+                '<a href="#section">section</a>'
+                '<a href="#top">top</a>'
+                '</body></html>'
             )
             broken = check_links(tmpdir)
             assert broken == 0
@@ -68,9 +68,9 @@ class TestCheckLinksEdgeCases:
         with tempfile.TemporaryDirectory() as tmpdir:
             root = Path(tmpdir)
             (root / "index.html").write_text(
-                f'<html><body>'
-                f'<a href="missing.html">broken</a>'
-                f'</body></html>'
+                '<html><body>'
+                '<a href="missing.html">broken</a>'
+                '</body></html>'
             )
             broken = check_links(tmpdir, verbose=True)
             assert broken == 1
