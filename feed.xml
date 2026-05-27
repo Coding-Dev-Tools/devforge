@@ -4,8 +4,8 @@
   <subtitle>Product updates, CI/CD guides, DevOps deep-dives, and tutorials for the DevForge CLI tool suite â€” Open-source developer tools.</subtitle>
   <link href="https://coding-dev-tools.github.io/devforge/" rel="alternate" type="text/html" />
   <link href="https://coding-dev-tools.github.io/devforge/feed.xml" rel="self" type="application/atom+xml" />
-  <id>https://coding-dev-tools.github.io/devforge/</id>
-  <updated>2026-05-18T00:00:00Z</updated>
+ <id>https://coding-dev-tools.github.io/devforge/</id>
+ <updated>2026-05-28T00:00:00Z</updated>
   <author>
     <name>DevForge</name>
   </author>
@@ -328,4 +328,275 @@
     <category term="announcement" />
   </entry>
 
-<entry><title>Infrastructure Change Review Compared: DeployDiff vs Terraform Plan vs Pulumi Preview vs Infracost</title><link href="https://coding-dev-tools.github.io/devforge/blog/deploydiff-vs-terraform-plan-vs-pulumi-preview-vs-infracost.html" rel="alternate" /><id>deploydiff-vs-terraform-plan-vs-pulumi-preview-vs-infracost</id><updated>2026-05-27T00:00:00Z</updated><summary>Four approaches to reviewing infrastructure changes before deploy -- DeployDiff CLI for diff rendering + rollback + cost + CI gating, Terraform Plan for HashiCorp-native change plans, Pulumi Preview for Pulumi stack diffs, and Infracost for precise cloud cost estimation.</summary></entry><entry><title>Data Format Conversion Compared: DataMorph vs Pandas vs Apache NiFi vs AWS Glue</title><link href="https://coding-dev-tools.github.io/devforge/blog/datamorph-vs-pandas-vs-nifi-vs-aws-glue.html" rel="alternate" /><id>datamorph-vs-pandas-vs-nifi-vs-aws-glue</id><updated>2026-05-27T00:00:00Z</updated><summary>Four approaches to converting between data formats -- DataMorph CLI for one-command CSV/JSON/YAML/Parquet/Avro/Protobuf conversion with streaming, Pandas for programmatic transformation, Apache NiFi for visual pipelines, and AWS Glue for serverless ETL.</summary></entry></feed>
+<entry><title>Infrastructure Change Review Compared: DeployDiff vs Terraform Plan vs Pulumi Preview vs Infracost</title><link href="https://coding-dev-tools.github.io/devforge/blog/deploydiff-vs-terraform-plan-vs-pulumi-preview-vs-infracost.html" rel="alternate" /><id>deploydiff-vs-terraform-plan-vs-pulumi-preview-vs-infracost</id><updated>2026-05-27T00:00:00Z</updated><summary>Four approaches to reviewing infrastructure changes before deploy -- DeployDiff CLI for diff rendering + rollback + cost + CI gating, Terraform Plan for HashiCorp-native change plans, Pulumi Preview for Pulumi stack diffs, and Infracost for precise cloud cost estimation.</summary></entry><entry><title>Data Format Conversion Compared: DataMorph vs Pandas vs Apache NiFi vs AWS Glue</title><link href="https://coding-dev-tools.github.io/devforge/blog/datamorph-vs-pandas-vs-nifi-vs-aws-glue.html" rel="alternate" /><id>datamorph-vs-pandas-vs-nifi-vs-aws-glue</id><updated>2026-05-27T00:00:00Z</updated><summary>Four approaches to converting between data formats -- DataMorph CLI for one-command CSV/JSON/YAML/Parquet/Avro/Protobuf conversion with streaming, Pandas for programmatic transformation, Apache NiFi for visual pipelines, and AWS Glue for serverless ETL.</summary></entry>
+
+<entry>
+<title>All 11 DevForge CLI Tools Are Now Type-Safe (PEP 561)</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/python-cli-type-safe-pep561.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/python-cli-type-safe-pep561.html</id>
+<published>2026-05-28T00:00:00Z</published>
+<updated>2026-05-28T00:00:00Z</updated>
+<summary>Every DevForge CLI tool now ships with py.typed markers and full public-function type annotations. Mypy clean out of the box — no stub packages, no type: ignore gymnastics. 11 packages, 175+ annotated functions, 0 mypy errors.</summary>
+<category term="release" />
+<category term="PEP 561" />
+<category term="type safety" />
+<category term="mypy" />
+</entry>
+
+<entry>
+<title>Envault Serve: A Lightweight Secrets HTTP API for MCP Sidecars and CI/CD</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/envault-serve-http-api-secrets.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/envault-serve-http-api-secrets.html</id>
+<published>2026-05-28T00:00:00Z</published>
+<updated>2026-05-28T00:00:00Z</updated>
+<summary>The envault serve command exposes your .env secrets over HTTP — perfect for MCP sidecars, CI/CD pipelines, and AI agent runtimes that need config without file access.</summary>
+<category term="envault" />
+<category term="MCP" />
+<category term="API" />
+</entry>
+
+<entry>
+<title>Monetize MCP Servers with x402 Per-Tool-Call Payments</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/monetize-mcp-servers-x402-mpp.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/monetize-mcp-servers-x402-mpp.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>click-to-mcp now supports MPP/x402 per-tool-call monetization — any API wrapped by click-to-mcp becomes a paid agent service. Charge per invocation with zero custom billing code.</summary>
+<category term="MCP" />
+<category term="monetization" />
+<category term="x402" />
+</entry>
+
+<entry>
+<title>Envault vs Doppler vs Infisical vs Dotenv Vault: Secret Management Compared</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/envault-vs-doppler-vs-infisical-vs-dotenv-vault.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/envault-vs-doppler-vs-infisical-vs-dotenv-vault.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Four approaches to .env secret management — envault CLI for local-first sync + rotation, Doppler for SaaS config hub, Infisical for enterprise secrets platform, and Dotenv Vault for simple .env encryption.</summary>
+<category term="comparison" />
+<category term="envault" />
+</entry>
+
+<entry>
+<title>Envault + APIAuth: Rotate API Keys Across Environments</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/envault-apiauth-rotate-keys-across-environments.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/envault-apiauth-rotate-keys-across-environments.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Combine envault and apiauth to automate key rotation across dev, staging, and production. Zero-downtime rotation with environment sync in one command.</summary>
+<category term="tutorial" />
+<category term="envault" />
+<category term="apiauth" />
+</entry>
+
+<entry>
+<title>CLI Tools as MCP Servers: Give AI Agents Access to Your Dev Tools</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/cli-tools-as-mcp-servers.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/cli-tools-as-mcp-servers.html</id>
+<published>2026-05-19T00:00:00Z</published>
+<updated>2026-05-19T00:00:00Z</updated>
+<summary>Any Click-based CLI tool becomes an MCP server with click-to-mcp. Give AI coding agents native access to your dev tools — no API wrappers, no HTTP servers, just one command.</summary>
+<category term="MCP" />
+<category term="CLI" />
+</entry>
+
+<entry>
+<title>ConfigDrift CI/CD Gating: Block Deploys on Config Drift</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/configdrift-ci-cd-gating-before-deploy.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/configdrift-ci-cd-gating-before-deploy.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Use configdrift in CI pipelines to detect configuration drift between environments and fail builds before production deployment.</summary>
+<category term="configdrift" />
+<category term="CI/CD" />
+</entry>
+
+<entry>
+<title>ConfigDrift vs Driftctl vs Terraform Plan vs Checkov: Infrastructure Drift Detection Compared</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/configdrift-vs-driftctl-vs-terraform-plan-vs-checkov.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/configdrift-vs-driftctl-vs-terraform-plan-vs-checkov.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Four approaches to infrastructure drift detection — ConfigDrift for config-file drift in CI, Driftctl for IaC coverage gaps, Terraform Plan for state drift, and Checkov for policy violations.</summary>
+<category term="comparison" />
+<category term="configdrift" />
+</entry>
+
+<entry>
+<title>DeadCode: Fail CI on Dead Code</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/deadcode-fail-ci-on-dead-code.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/deadcode-fail-ci-on-dead-code.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Add deadcode to your CI pipeline to detect and block unused exports before they ship. Keep your codebase lean and your bundle small.</summary>
+<category term="deadcode" />
+<category term="CI/CD" />
+</entry>
+
+<entry>
+<title>DeadCode vs Knip vs ts-prune vs ESLint: Dead Code Detection Compared</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/deadcode-vs-knip-vs-ts-prune-vs-eslint.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/deadcode-vs-knip-vs-ts-prune-vs-eslint.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Four approaches to finding dead code — DeadCode CLI for language-agnostic export tracking, Knip for Node.js dependency analysis, ts-prune for TypeScript export checking, and ESLint for JS/TS lint rules.</summary>
+<category term="comparison" />
+<category term="deadcode" />
+</entry>
+
+<entry>
+<title>DeployDiff: Preview Infrastructure Changes Before Apply</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/deploydiff-preview-infrastructure-changes-before-apply.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/deploydiff-preview-infrastructure-changes-before-apply.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Use DeployDiff to render infrastructure diffs with cost estimates before you apply. Catch destructive changes and cost spikes in CI.</summary>
+<category term="deploydiff" />
+<category term="CI/CD" />
+</entry>
+
+<entry>
+<title>DeployDiff Rollback Commands for Terraform and CloudFormation</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/deploydiff-rollback-commands-terraform-cloudformation.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/deploydiff-rollback-commands-terraform-cloudformation.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>DeployDiff now generates rollback commands for Terraform and CloudFormation. One command to undo any infrastructure change.</summary>
+<category term="deploydiff" />
+<category term="rollback" />
+</entry>
+
+<entry>
+<title>DataMorph Data Conversion and Batch Processing</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/datamorph-data-conversion-batch-processing.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/datamorph-data-conversion-batch-processing.html</id>
+<published>2026-05-17T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>DataMorph batch processing — convert entire directories between CSV, JSON, YAML, Parquet, Avro, and Protobuf with a single command.</summary>
+<category term="datamorph" />
+<category term="batch" />
+</entry>
+
+<entry>
+<title>DataMorph: Validate Data Schema in CI Pipelines</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/datamorph-validate-data-schema-ci-pipeline.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/datamorph-validate-data-schema-ci-pipeline.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Use DataMorph validate in CI to catch schema violations in data files before they reach production. Supports JSON Schema, Pydantic, and custom validators.</summary>
+<category term="datamorph" />
+<category term="CI/CD" />
+</entry>
+
+<entry>
+<title>APIAuth: Zero-Downtime Key Rotation in CI/CD</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/apiauth-zero-downtime-key-rotation-cicd.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/apiauth-zero-downtime-key-rotation-cicd.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Automate API key rotation in CI/CD with apiauth. Zero-downtime rotation, revocation checking, and credential auditing from the terminal.</summary>
+<category term="apiauth" />
+<category term="CI/CD" />
+</entry>
+
+<entry>
+<title>APIAuth: Audit API Credentials and Catch Expired or Revoked Keys</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/apiauth-audit-api-credentials-catch-expired-revoked-keys.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/apiauth-audit-api-credentials-catch-expired-revoked-keys.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Use apiauth audit to scan your environment for expired, revoked, or weak API credentials. Catch security issues before they become incidents.</summary>
+<category term="apiauth" />
+<category term="security" />
+</entry>
+
+<entry>
+<title>APIAuth: Verify API Keys at Runtime with Import Revocation Checking</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/apiauth-verify-api-keys-runtime-import-revocation.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/apiauth-verify-api-keys-runtime-import-revocation.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>apiauth verify lets you check API key validity at import time. Catch revoked keys in your Python code before they cause runtime failures.</summary>
+<category term="apiauth" />
+<category term="runtime" />
+</entry>
+
+<entry>
+<title>APIAuth vs Dotenv vs AWS Secrets Manager vs Vault: API Key Management Compared</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/apiauth-vs-dotenv-vs-aws-secrets-manager-vs-vault.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/apiauth-vs-dotenv-vs-aws-secrets-manager-vs-vault.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Four approaches to API key management — APIAuth for CLI-native rotation + auditing, Dotenv for simple env files, AWS Secrets Manager for cloud-native storage, and HashiCorp Vault for enterprise secret platforms.</summary>
+<category term="comparison" />
+<category term="apiauth" />
+</entry>
+
+<entry>
+<title>API Contract Guardian: Generate API Migration Guides</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/apicontractguardian-generate-api-migration-guides.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/apicontractguardian-generate-api-migration-guides.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>API Contract Guardian now generates migration guides for breaking API changes. Go from diff detection to developer-readable migration steps automatically.</summary>
+<category term="api-contract-guardian" />
+<category term="migration" />
+</entry>
+
+<entry>
+<title>APIGhost: OpenAPI Mock Server in 60 Seconds</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/apighost-openapi-mock-server-60-seconds.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/apighost-openapi-mock-server-60-seconds.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Spin up a fully functional mock server from any OpenAPI spec in 60 seconds with apighost. No backend needed — test frontend, SDKs, and integrations against realistic responses.</summary>
+<category term="apighost" />
+<category term="mock" />
+</entry>
+
+<entry>
+<title>APIGhost vs Prism vs WireMock vs Mockoon: API Mocking Compared</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/apighost-vs-prism-vs-wiremock-vs-mockoon.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/apighost-vs-prism-vs-wiremock-vs-mockoon.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Four approaches to API mocking — APIGhost for OpenAPI-native CLI mocking, Prism for Stoplight-powered spec validation, WireMock for JVM stub services, and Mockoon for GUI-based mock APIs.</summary>
+<category term="comparison" />
+<category term="apighost" />
+</entry>
+
+<entry>
+<title>JSON2SQL: Generate CREATE TABLE from JSON Schema-First</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/json2sql-generate-create-table-from-json-schema-first.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/json2sql-generate-create-table-from-json-schema-first.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Generate CREATE TABLE statements from JSON Schema definitions with json2sql. Schema-first approach keeps your DDL in sync with your data contracts.</summary>
+<category term="json2sql" />
+<category term="schema" />
+</entry>
+
+<entry>
+<title>JSON2SQL: Nested JSON to Relational Tables</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/json2sql-nested-json-relational-tables.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/json2sql-nested-json-relational-tables.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Convert nested JSON structures into properly normalized relational tables with json2sql. Handles arrays of objects, nested references, and foreign key generation.</summary>
+<category term="json2sql" />
+<category term="nested" />
+</entry>
+
+<entry>
+<title>JSON2SQL vs Papa Parse vs AWS DMS vs Airbyte: Data Ingestion Compared</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/json2sql-vs-papa-parse-vs-aws-dms-vs-airbyte.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/json2sql-vs-papa-parse-vs-aws-dms-vs-airbyte.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Four approaches to JSON-to-SQL conversion — json2sql CLI for one-command inserts, Papa Parse for browser-side CSV parsing, AWS DMS for managed database migration, and Airbyte for ELT pipelines.</summary>
+<category term="comparison" />
+<category term="json2sql" />
+</entry>
+
+</feed>
