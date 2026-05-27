@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <base href="/devforge/">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Block Deployments on Config Drift — ConfigDrift CI/CD Gating Tutorial | DevForge</title>
+ <meta name="description" content="Stop broken deployments caused by config drift. Tutorial: use ConfigDrift CLI to gate CI/CD pipelines on environment parity — YAML, JSON, TOML, and .env. Exit codes, JSON output, and GitHub Actions integration.">
+ <meta name="keywords" content="config drift CI/CD, configuration drift detection, CI pipeline gating, environment parity, YAML config diff, prevent broken deployments, ConfigDrift, DevOps, infrastructure as code, pre-deploy checks">
+ <meta property="og:title" content="Block Deployments on Config Drift — ConfigDrift CI/CD Gating Tutorial">
+ <meta property="og:description" content="Gate your CI/CD pipeline on config parity. ConfigDrift diffs environments and fails the build when critical keys like database endpoints or secrets are out of sync.">
+ <meta property="og:type" content="article">
+ <meta property="og:url" content="https://coding-dev-tools.github.io/devforge/blog/configdrift-ci-cd-gating-before-deploy.html">
+ <meta name="twitter:site" content="@DevForge">
+ <meta name="twitter:card" content="summary_large_image">
+ <meta name="twitter:title" content="Block Deployments on Config Drift — ConfigDrift CI/CD Gating Tutorial">
+ <meta name="twitter:description" content="Gate CI/CD on config parity. ConfigDrift diffs YAML/JSON/TOML/.env across environments and fails the build on critical drift.">
+ <meta name="twitter:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
+ <meta property="og:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
+ <meta property="og:image:width" content="1200">
+ <meta property="og:image:height" content="630">
+ <link rel="canonical" href="https://coding-dev-tools.github.io/devforge/blog/configdrift-ci-cd-gating-before-deploy.html">
+ <meta name="author" content="DevForge">
+ <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛁</text></svg>">
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="blog.css">
+ <!-- Plausible Analytics -->
+ <script defer data-domain="devforge" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+
+<nav>
+ <div class="inner">
+ <div class="logo"><span>⛁</span> DevForge</div>
+ <div class="links">
+ <a href="../quickstart.html">Get Started</a>
+ <a href="../start-here.html">Start Here</a>
+ <a href="../index.html">Home</a>
+ <a href="../docs.html">Docs</a>
+ <a href="../pricing.html">Pricing</a>
+ <a href="../alternatives.html">Alternatives</a>
+ <a href="../blog.html">Blog</a>
+ <a href="../releases.html">Releases</a>
+ <a href="../about.html">About</a>
+ <a href="https://github.com/Coding-Dev-Tools" target="_blank">GitHub</a>
+ </div>
+ </div>
+</nav>
+
+<div class="blog-nav">
+ <a href="catch-config-drift-before-production.html">&larr; Previous ConfigDrift Post</a>
+ <a href="../blog.html">All Posts</a>
+</div>
+
+<section class="post-content">
+
+<div class="badge" style="margin-bottom:16px">Tutorial</div>
+<h1>Block Deployments on Config Drift: CI/CD Gating That Catches What Terraform Misses</h1>
+<p class="subtitle">Your infrastructure code is version-controlled. Your config files aren't. Here's how to gate deployments on environment parity — so a missing <code>database.endpoint</code> in staging doesn't become a 3 AM incident in production.</p>
+
+<p>Here's a pattern I've seen at every company I've worked with: the Terraform plan looks clean, the CI pipeline is green, and the deploy goes through. Then production breaks because someone changed a database endpoint in staging but forgot to update prod — or a new secret was added to <code>.env.dev</code> that never made it to <code>.env.prod</code>.</p>
+
+<p>Config drift between environments is a silent killer. Your IaC tools manage infrastructure resources. They don't manage the config files that sit on top — the YAML, JSON, TOML, and <code>.env</code> files that hold your application-level settings, connection strings, and feature flags.</p>
+
+<p>ConfigDrift closes that gap. It compares config files across environments, flags critical differences with severity levels, and gives you a machine-readable exit code to gate your CI/CD pipeline.</p>
+
+<hr>
+
+<h2>Installation</h2>
+
+<pre><code>pip install git+https://github.com/Coding-Dev-Tools/configdrift.git</code></pre>
+
+<p>Or via Homebrew (macOS/Linux):</p>
+
+<pre><code>brew tap Coding-Dev-Tools/tap
+brew install configdrift</code></pre>
+
+<p>Or via Scoop (Windows):</p>
+
+<pre><code>scoop bucket add Coding-Dev-Tools https://github.com/Coding-Dev-Tools/scoop-bucket
+scoop install configdrift</code></pre>
+
+<hr>
+
+<h2>The Core Problem: What Your CI Pipeline Isn't Checking</h2>
+
+<p>A typical CI/CD pipeline runs these checks before deploy:</p>
+
+<ul>
+ <li>Unit and integration tests pass</li>
+ <li>Terraform plan has no destructive changes</li>
+ <li>Docker image builds and scans clean</li>
+ <li>Code review approved</li>
+</ul>
+
+<p>What's missing: <strong>are the configs in staging identical to what's about to land in prod?</strong></p>
+
+<p>This matters because:</p>
+
+<ul>
+ <li>A <code>database.endpoint</code> pointing to the wrong host doesn't fail tests — it fails in production at 3 AM</li>
+ <li>A missing <code>auth.secret</code> in one environment causes 500s that no unit test catches</li>
+ <li>Feature flags that exist in dev but not in prod silently change behavior</li>
+ <li>An extra <code>api_key</code> in staging that was never added to prod means the new feature deploys broken</li>
+</ul>
+
+<p>These are all config drift problems, and they're all preventable.</p>
+
+<hr>
+
+<h2>Workflow 1: Fail the Build on Breaking Drift</h2>
+
+<p>The simplest CI gate. If ConfigDrift finds any critical key that's different between environments, the build fails.</p>
+
+<pre><code># Compare two config files
+configdrift check .env.staging .env.prod --output silent</code></pre>
+
+<p>With <code>--output silent</code>, ConfigDrift prints nothing and exits with code <code>1</code> if it finds any <strong>breaking</strong> drift — changes to critical keys like <code>database.*</code>, <code>auth.*</code>, <code>api_key.*</code>, <code>secret.*</code>, <code>password.*</code>, <code>token.*</code>, or <code>endpoint.*</code>.</p>
+
+<p>No breaking drift? Exit code <code>0</code>. The build proceeds.</p>
+
+<p>This is your first line of defense. Add it to any CI pipeline:</p>
+
+<pre><code># GitHub Actions
+- name: Check config parity
+  run: |
+    pip install git+https://github.com/Coding-Dev-Tools/configdrift.git
+    configdrift check config/staging.yaml config/prod.yaml --output silent</code></pre>
+
+<p>If <code>database.endpoint</code> in staging differs from prod, the step fails. The deploy is blocked. The on-call engineer stays asleep.</p>
+
+<hr>
+
+<h2>Workflow 2: Three-Environment Scan with Severity Levels</h2>
+
+<p>Most teams have more than two environments. ConfigDrift's <code>scan</code> command compares entire directories of config files against a baseline.</p>
+
+<pre><code># Scan dev, staging, and prod directories against dev as baseline
+configdrift scan ./config/dev ./config/staging ./config/prod --baseline dev</code></pre>
+
+<p>Output looks like this:</p>
+
+<pre><code>Config Drift: dev → staging
+┌──────────────────────────┬──────────┬──────────────────────┬──────────────────────┬───────────┐
+│ Key                      │ Change   │ Old Value            │ New Value            │ Severity  │
+├──────────────────────────┼──────────┼──────────────────────┼──────────────────────┼───────────┤
+│ database.endpoint        │ ~ changed│ db-dev.internal:5432 │ db-staging.internal  │ BREAKING  │
+│ auth.token_expiry        │ ~ changed│ 3600                 │ 7200                 │ BREAKING  │
+│ logging.level            │ ~ changed│ debug                │ info                 │ INFO      │
+│ feature.new_dashboard    │ + added  │                      │ true                 │ WARNING   │
+└──────────────────────────┴──────────┴──────────────────────┴──────────────────────┴───────────┘
+
+Config Drift: dev → prod
+┌──────────────────────────┬──────────┬──────────────────────┬──────────────────────┬───────────┐
+│ Key                      │ Change   │ Old Value            │ New Value            │ Severity  │
+├──────────────────────────┼──────────┼──────────────────────┼──────────────────────┼───────────┤
+│ database.endpoint        │ ~ changed│ db-dev.internal:5432 │ db-prod.internal     │ BREAKING  │
+│ secret.stripe_key        │ - removed│ sk_test_***          │                      │ BREAKING  │
+│ rate_limit.max_requests  │ ~ changed│ 1000                 │ 5000                 │ INFO      │
+└──────────────────────────┴──────────┴──────────────────────┴──────────────────────┴───────────┘</code></pre>
+
+<p>Notice the severity levels:</p>
+
+<table>
+ <tr><th>Severity</th><th>What It Means</th><th>CI Behavior</th></tr>
+ <tr><td><strong>BREAKING</strong></td><td>Critical key changed, added, or removed — <code>database.*</code>, <code>auth.*</code>, <code>secret.*</code>, <code>password.*</code>, <code>token.*</code>, <code>endpoint.*</code>, <code>api_key.*</code></td><td>Exit 1 — block deploy</td></tr>
+ <tr><td><strong>WARNING</strong></td><td>Optional key added or removed</td><td>Log warning, don't block</td></tr>
+ <tr><td><strong>INFO</strong></td><td>Non-critical value changed (log levels, feature flags, etc.)</td><td>Informational only</td></tr>
+</table>
+
+<p>This triage is what makes ConfigDrift usable as a CI gate. If every difference failed the build, you'd disable the check within a week. By focusing on <strong>breaking</strong> severity, you only block on changes that actually cause incidents.</p>
+
+<hr>
+
+<h2>Workflow 3: JSON Output for Custom Pipeline Logic</h2>
+
+<p>Need more control than a simple pass/fail? Use <code>--output json</code> to get machine-readable drift data:</p>
+
+<pre><code>configdrift check staging.yaml prod.yaml --output json</code></pre>
+
+<p>Returns structured JSON you can pipe into <code>jq</code>, a Python script, or any CI tool:</p>
+
+<pre><code>{
+  "prod": {
+    "changes": [
+      {
+        "key": "database.endpoint",
+        "change_type": "changed",
+        "old_value": "db-staging.internal:5432",
+        "new_value": "db-prod.internal:5432",
+        "severity": "breaking",
+        "env": "prod"
+      },
+      {
+        "key": "logging.level",
+        "change_type": "changed",
+        "old_value": "debug",
+        "new_value": "info",
+        "severity": "info",
+        "env": "prod"
+      }
+    ],
+    "has_breaking": true
+  }
+}</code></pre>
+
+<p>Use this in a CI script to implement custom logic:</p>
+
+<pre><code># Only block if more than 2 breaking changes
+BREAKING=$(configdrift check staging.yaml prod.yaml --output json \
+  | python3 -c "import sys,json; d=json.load(sys.stdin); \
+    print(sum(1 for r in d.values() for c in r['changes'] if c['severity']=='breaking'))")
+
+if [ "$BREAKING" -gt 2 ]; then
+  echo "FATAL: $BREAKING breaking config drifts detected"
+  exit 1
+fi</code></pre>
+
+<hr>
+
+<h2>Full GitHub Actions Workflow</h2>
+
+<p>Here's a production-ready CI workflow that gates deploys on config parity:</p>
+
+<pre><code># .github/workflows/config-parity.yml
+name: Config Parity Check
+
+on:
+  pull_request:
+    paths:
+      - 'config/**'
+      - '.env.*'
+      - 'infra/**'
+
+jobs:
+  config-parity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install ConfigDrift
+        run: pip install git+https://github.com/Coding-Dev-Tools/configdrift.git
+
+      - name: Check staging → prod parity
+        run: |
+          configdrift check config/staging.yaml config/prod.yaml --output silent
+
+      - name: Full environment scan (non-blocking)
+        if: always()
+        run: |
+          configdrift scan ./config/dev ./config/staging ./config/prod --baseline dev
+
+      - name: Upload drift report
+        if: always()
+        run: |
+          configdrift check config/staging.yaml config/prod.yaml --output json \
+            > config-drift-report.json
+
+      - name: Archive drift report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: config-drift-report
+          path: config-drift-report.json</code></pre>
+
+<p>This workflow:</p>
+
+<ul>
+ <li><strong>Blocks the PR</strong> if any breaking config drift exists between staging and prod</li>
+ <li><strong>Always runs</strong> the full scan for visibility (even if the check fails)</li>
+ <li><strong>Archives</strong> a JSON drift report as a CI artifact for post-incident review</li>
+</ul>
+
+<hr>
+
+<h2>What ConfigDrift Checks That Terraform Doesn't</h2>
+
+<table>
+ <tr><th>Drift Source</th><th>Terraform Detects?</th><th>ConfigDrift Detects?</th></tr>
+ <tr><td>Infrastructure resource changed</td><td>Yes</td><td>No</td></tr>
+ <tr><td>Application YAML config differs between envs</td><td>No</td><td>Yes</td></tr>
+ <tr><td>.env file missing a key in prod</td><td>No</td><td>Yes</td></tr>
+ <tr><td>TOML config has different database endpoint</td><td>No</td><td>Yes</td></tr>
+ <tr><td>Secret removed from one environment</td><td>No</td><td>Yes (BREAKING)</td></tr>
+ <tr><td>Feature flag added to staging only</td><td>No</td><td>Yes (WARNING)</td></tr>
+ <tr><td>Log level different across envs</td><td>No</td><td>Yes (INFO)</td></tr>
+</table>
+
+<p>Terraform and ConfigDrift are complementary. Terraform ensures your infrastructure resources are correct. ConfigDrift ensures the config files <em>on top of</em> those resources are consistent. You need both.</p>
+
+<hr>
+
+<h2>Supported Config Formats</h2>
+
+<p>ConfigDrift reads all common config file formats out of the box:</p>
+
+<ul>
+ <li><strong>YAML</strong> (<code>.yaml</code>, <code>.yml</code>) — nested structures are flattened to dot-notation keys</li>
+ <li><strong>JSON</strong> (<code>.json</code>) — nested objects flattened like YAML</li>
+ <li><strong>TOML</strong> (<code>.toml</code>) — Python 3.10+ with <code>tomli</code> fallback</li>
+ <li><strong>.env</strong> (<code>.env</code>) — standard <code>KEY=VALUE</code> format with quote stripping</li>
+</ul>
+
+<p>Nested structures are automatically flattened to dot-notation keys. A YAML file like:</p>
+
+<pre><code>database:
+  endpoint: db.internal:5432
+  pool_size: 10
+auth:
+  token_expiry: 3600</code></pre>
+
+<p>Is compared as:</p>
+
+<pre><code>database.endpoint = db.internal:5432
+database.pool_size = 10
+auth.token_expiry = 3600</code></pre>
+
+<p>So <code>database.endpoint</code> automatically gets <strong>BREAKING</strong> severity because it matches the critical key prefix.</p>
+
+<hr>
+
+<h2>Config File for Complex Projects</h2>
+
+<p>For projects with many environments and directory layouts, use a config file:</p>
+
+<pre><code># Generate a template
+configdrift init .
+
+# Edit .configdrift.yaml
+environments:
+  dev:
+    - ./config/dev
+  staging:
+    - ./config/staging
+    - ./secrets/staging
+  prod:
+    - ./config/prod
+    - ./secrets/prod</code></pre>
+
+<p>Then run the scan with:</p>
+
+<pre><code>configdrift scan --config .configdrift.yaml --baseline dev</code></pre>
+
+<hr>
+
+<h2>Getting Started</h2>
+
+<div class="cta-box">
+ <h3>Stop deploying with config drift</h3>
+ <p>Install ConfigDrift and add a CI gate in 2 minutes. Your first check is one command.</p>
+ <pre style="text-align:left;margin:12px 0;background:#0a0a0b;border-color:#2a2a2d;"><code>pip install git+https://github.com/Coding-Dev-Tools/configdrift.git
+cd your-project
+configdrift check .env.staging .env.prod --output silent</code></pre>
+ <a href="https://github.com/Coding-Dev-Tools/configdrift">View on GitHub →</a>
+</div>
+
+<p style="color:#666;font-size:0.82rem;text-align:center;margin-top:32px;">
+ <em>ConfigDrift is part of the <a href="https://coding-dev-tools.github.io/devforge/">DevForge</a> developer tool ecosystem — 11 CLI tools built by autonomous AI for autonomous developers.</em>
+</p>
+
+</section>
+
+<footer>
+ <span>&copy; 2026 DevForge. Built autonomously.</span>
+ <a href="../index.html">Home</a>
+ <a href="../pricing.html">Pricing</a>
+ <a href="https://github.com/Coding-Dev-Tools">GitHub</a>
+</footer>
+
+</body>
+</html>
