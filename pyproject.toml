@@ -1,9 +1,10 @@
 [build-system]
 requires = ["setuptools>=64"]
-build-backend = "setuptools.backends._legacy:_Backend"
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "devforge-tools"
+license = "MIT"
 version = "0.1.0"
 description = "DevForge CLI tool suite — landing page & blog validation tools"
 requires-python = ">=3.10"
