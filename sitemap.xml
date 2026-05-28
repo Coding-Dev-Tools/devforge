@@ -54,12 +54,7 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
-  <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/10-cli-tools-zero-human-developers.html</loc>
-    <lastmod>2026-05-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+
   <url>
     <loc>https://coding-dev-tools.github.io/devforge/blog/ai-built-cli-tools-zero-humans.html</loc>
     <lastmod>2026-05-17</lastmod>
@@ -403,6 +398,12 @@
  <priority>0.6</priority>
 </url>
 <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/apicontractguardian-vs-oasdiff-vs-optic-vs-openapi-diff.html</loc>
+ <lastmod>2026-05-27</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+</url>
+<url>
  <loc>https://coding-dev-tools.github.io/devforge/blog/apicontractguardian-generate-api-migration-guides.html</loc>
  <lastmod>2026-05-27</lastmod>
  <changefreq>monthly</changefreq>
@@ -438,11 +439,6 @@
  <changefreq>monthly</changefreq>
  <priority>0.6</priority>
  </url>
- <url>
- <loc>https://coding-dev-tools.github.io/devforge/blog/traction-hits-680-developers.html</loc>
- <lastmod>2026-05-17</lastmod>
- <changefreq>monthly</changefreq>
- <priority>0.6</priority>
- </url>
+
 </urlset>
 
