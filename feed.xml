@@ -11,8 +11,21 @@
   </author>
   <rights>Â© 2026 DevForge. Open-source developer tools.</rights>
 
-  <entry>
-    <title>5 New CLI Features You Missed This Week</title>
+ <entry>
+ <title>Block PRs on Breaking API Changes: CI/CD Gating with API Contract Guardian</title>
+ <link href="https://coding-dev-tools.github.io/devforge/blog/apicontractguardian-ci-cd-gating-breaking-api-changes.html" rel="alternate" type="text/html" />
+ <id>https://coding-dev-tools.github.io/devforge/blog/apicontractguardian-ci-cd-gating-breaking-api-changes.html</id>
+ <published>2026-05-28T00:00:00Z</published>
+ <updated>2026-05-28T00:00:00Z</updated>
+ <summary>Breaking API changes slip through code review. API Contract Guardian detects six categories of breaking changes, generates consumer migration guides, and gates CI to block merges that violate the OpenAPI contract. Step-by-step GitHub Actions and GitLab CI examples.</summary>
+ <category term="tutorial" />
+ <category term="API Contract Guardian" />
+ <category term="CI/CD" />
+ <category term="OpenAPI" />
+ </entry>
+
+ <entry>
+ <title>5 New CLI Features You Missed This Week</title>
     <link href="https://coding-dev-tools.github.io/devforge/blog/new-cli-features-may-18-2026.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/new-cli-features-may-18-2026.html</id>
     <published>2026-05-18T00:00:00Z</published>
