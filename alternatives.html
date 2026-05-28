@@ -5,8 +5,8 @@
   <base href="/devforge/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alternatives — DevForge CLI Tools Compared</title>
-  <meta name="description" content="Honest feature-by-feature comparisons: API Contract Guardian vs Spectral vs OAS Diff, DeployDiff vs Terraform Plan, ConfigDrift vs Steampipe, json2sql vs csvsql, DeadCode vs knip, click-to-mcp vs FastMCP, APIGhost vs Prism, Envault vs dotenv-vault, APIAuth vs Vault, SchemaForge vs sqlacodegen. Find the right tool for your workflow.">
-  <meta name="keywords" content="api contract guardian vs spectral, openapi diff tool comparison, deploydiff vs terraform, config drift detection tools, json to sql converter alternatives, deadcode vs knip, click-to-mcp vs fastmcp, apighost vs prism, envault vs dotenv-vault, apiauth vs vault, schemaforge vs sqlacodegen, mcp server alternatives, mock server comparison, env management tools, api key management, orm schema converter, spectral alternatives, oas diff alternatives">
+  <meta name="description" content="Honest feature-by-feature comparisons: API Contract Guardian vs Spectral vs OAS Diff, DeployDiff vs Terraform Plan, ConfigDrift vs Steampipe, json2sql vs csvsql, DeadCode vs knip, click-to-mcp vs FastMCP, APIGhost vs Prism, Envault vs dotenv-vault, APIAuth vs Vault, SchemaForge vs sqlacodegen, DataMorph vs pandas. Find the right tool for your workflow.">
+  <meta name="keywords" content="api contract guardian vs spectral, openapi diff tool comparison, deploydiff vs terraform, config drift detection tools, json to sql converter alternatives, deadcode vs knip, click-to-mcp vs fastmcp, apighost vs prism, envault vs dotenv-vault, apiauth vs vault, schemaforge vs sqlacodegen, datamorph vs pandas, data format converter alternatives, csv to parquet, mcp server alternatives, mock server comparison, env management tools, api key management, orm schema converter, spectral alternatives, oas diff alternatives">
   <meta property="og:title" content="Alternatives — DevForge CLI Tools Compared">
   <meta property="og:description" content="Feature-by-feature comparisons of DevForge CLI tools vs popular alternatives. Make an informed choice.">
   <meta property="og:type" content="website">
@@ -142,6 +142,7 @@
   <a href="#envault-vs-dotenv-vault">Envault vs dotenv-vault</a>
   <a href="#apiauth-vs-vault">APIAuth vs Vault</a>
   <a href="#schemaforge-vs-sqlacodegen">SchemaForge vs sqlacodegen</a>
+ <a href="#datamorph-vs-pandas">DataMorph vs pandas</a>
 </div>
 
 <div class="comparisons">
@@ -950,10 +951,83 @@
       <div class="label">Verdict</div>
       <p><strong>sqlacodegen</strong> is a mature, focused tool for generating SQLAlchemy models from SQL DDL — it does one thing well. <strong>SchemaForge</strong> is a multi-format bidirectional converter that spans Prisma, Drizzle, TypeORM, Django, and SQLAlchemy with lossless roundtrip verification. If you work across multiple ORMs, need bidirectional conversion, or migrate between frameworks, SchemaForge covers ground no single tool matches.</p>
     </div>
-    <div class="cta-row">
-      <a href="docs.html#schemaforge">Read SchemaForge Docs</a>
-    </div>
-  </div>
+ <div class="cta-row">
+ <a href="docs.html#schemaforge">Read SchemaForge Docs</a>
+ </div>
+ </div>
+
+ <!-- ============================================ -->
+ <!-- DataMorph vs pandas -->
+ <!-- ============================================ -->
+ <div class="comparison" id="datamorph-vs-pandas">
+ <h2>DataMorph <span class="vs">vs</span> pandas</h2>
+ <p class="subtitle">One-command format conversion vs full data transformation — different scope, different workflow.</p>
+
+ <table class="feat-table">
+ <thead>
+ <tr>
+ <th>Feature</th>
+ <th class="tool-col">DataMorph</th>
+ <th>pandas</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>One-command format conversion</td>
+ <td class="yes">Yes — CSV ↔ JSON ↔ Parquet ↔ YAML ↔ Avro</td>
+ <td class="no">No — requires Python script</td>
+ </tr>
+ <tr>
+ <td>Streaming (files &gt;10GB)</td>
+ <td class="yes">Yes — row-by-row, no OOM</td>
+ <td class="no">No — in-memory DataFrame</td>
+ </tr>
+ <tr>
+ <td>Schema inference</td>
+ <td class="yes">Yes — auto-detect types, export JSON Schema</td>
+ <td class="partial">Partial — dtype inference only</td>
+ </tr>
+ <tr>
+ <td>Batch directory processing</td>
+ <td class="yes">Yes — convert whole dirs with --recursive</td>
+ <td class="no">No — custom loop needed</td>
+ </tr>
+ <tr>
+ <td>CI/CD validation</td>
+ <td class="yes">Yes — exit codes, schema checks</td>
+ <td class="partial">Partial — via Python scripts</td>
+ </tr>
+ <tr>
+ <td>Data transformation</td>
+ <td class="no">No — format conversion only</td>
+ <td class="yes">Yes — filter, join, pivot, aggregate</td>
+ </tr>
+ <tr>
+ <td>In-memory analytics</td>
+ <td class="no">No</td>
+ <td class="yes">Yes — full DataFrame API</td>
+ </tr>
+ <tr>
+ <td>Setup time</td>
+ <td class="tool-col">30 seconds (pip install + go)</td>
+ <td>5 minutes (install + script)</td>
+ </tr>
+ <tr>
+ <td>Price</td>
+ <td class="tool-col">Free (OSS, MIT)</td>
+ <td>Free (OSS, BSD)</td>
+ </tr>
+ </tbody>
+ </table>
+
+ <div class="verdict">
+ <div class="label">Verdict</div>
+ <p><strong>pandas</strong> is the Swiss army knife for data analysis — filtering, aggregation, joins, pivoting, and any in-memory transformation. <strong>DataMorph</strong> is the purpose-built format converter: one CLI command to stream CSV to Parquet, JSON to YAML, or validate schemas in CI. If you need data transformation, pandas is unmatched. If you just need to convert or validate data files without writing a script — especially large ones — DataMorph is faster and safer.</p>
+ </div>
+ <div class="cta-row">
+ <a href="docs.html#datamorph">Read DataMorph Docs</a>
+ </div>
+ </div>
 
 </div>
 
