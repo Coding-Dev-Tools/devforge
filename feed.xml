@@ -52,6 +52,21 @@
  </entry>
 
  <entry>
+ <title>click-to-mcp Transport Modes: stdio, HTTP+SSE, and Streamable HTTP</title>
+ <link href="https://coding-dev-tools.github.io/devforge/blog/click-to-mcp-three-transport-modes.html" rel="alternate" type="text/html" />
+ <id>https://coding-dev-tools.github.io/devforge/blog/click-to-mcp-three-transport-modes.html</id>
+ <published>2026-05-28T00:00:00Z</published>
+ <updated>2026-05-28T00:00:00Z</updated>
+ <summary>Deep dive into click-to-mcp's three MCP transport modes — stdio for local agents, HTTP+SSE for web clients, and Streamable HTTP for the newest MCP clients. Includes config generation for 5 MCP clients, list-tools previewing, and a decision framework for when to use each transport.</summary>
+ <category term="guide" />
+ <category term="click-to-mcp" />
+ <category term="MCP" />
+ <category term="transport" />
+ <category term="stdio" />
+ <category term="Streamable HTTP" />
+ </entry>
+
+ <entry>
  <title>5 New CLI Features You Missed This Week</title>
     <link href="https://coding-dev-tools.github.io/devforge/blog/new-cli-features-may-18-2026.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/new-cli-features-may-18-2026.html</id>
@@ -68,11 +83,25 @@
     <id>https://coding-dev-tools.github.io/devforge/blog/mcp-everywhere-why-your-cli-tools-need-it.html</id>
     <published>2026-05-17T17:00:00Z</published>
     <updated>2026-05-17T17:00:00Z</updated>
-    <summary>85K+ GitHub stars on the official MCP servers repo. Every major AI coding agent speaks MCP natively. If your CLI tools aren't MCP-servable, they're invisible to AI. Here's how to fix that in 30 seconds with click-to-mcp.</summary>
-  </entry>
+ <summary>85K+ GitHub stars on the official MCP servers repo. Every major AI coding agent speaks MCP natively. If your CLI tools aren't MCP-servable, they're invisible to AI. Here's how to fix that in 30 seconds with click-to-mcp.</summary>
+ </entry>
 
-  <entry>
-    <title>Where to List Your MCP Server: 6 Directories Every Developer Should Know (2026)</title>
+ <entry>
+ <title>How to Use click-to-mcp with Claude Desktop, Cursor, and Any MCP Client</title>
+ <link href="https://coding-dev-tools.github.io/devforge/blog/click-to-mcp-usage-guide.html" rel="alternate" type="text/html" />
+ <id>https://coding-dev-tools.github.io/devforge/blog/click-to-mcp-usage-guide.html</id>
+ <published>2026-05-17T16:00:00Z</published>
+ <updated>2026-05-17T16:00:00Z</updated>
+ <summary>Complete guide to using click-to-mcp with Claude Desktop, Cursor IDE, Claude Code CLI, and any MCP client. Real config examples for wrapping your CLIs as MCP servers.</summary>
+ <category term="guide" />
+ <category term="click-to-mcp" />
+ <category term="MCP" />
+ <category term="Claude Desktop" />
+ <category term="Cursor" />
+ </entry>
+
+ <entry>
+ <title>Where to List Your MCP Server: 6 Directories Every Developer Should Know (2026)</title>
     <link href="https://coding-dev-tools.github.io/devforge/blog/mcp-server-directories-where-to-list-your-server.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/mcp-server-directories-where-to-list-your-server.html</id>
     <published>2026-05-17T11:00:00Z</published>
