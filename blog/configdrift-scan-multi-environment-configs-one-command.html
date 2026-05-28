@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <base href="/devforge/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scan Multi-Environment Configs in One Command — ConfigDrift Directory Scan Tutorial | DevForge</title>
+  <meta name="description" content="ConfigDrift scan compares entire directories of YAML, JSON, TOML, and .env files across dev/staging/prod in a single command. Tutorial with real sample configs, severity interpretation, and config-driven workflows.">
+  <meta name="keywords" content="config drift scan, multi-environment config comparison, YAML config diff, environment parity check, ConfigDrift scan tutorial, detect config drift across environments, dev staging prod config, configuration management CLI">
+  <meta property="og:title" content="Scan Multi-Environment Configs in One Command — ConfigDrift Directory Scan Tutorial">
+  <meta property="og:description" content="Compare entire config directories across dev, staging, and prod with one command. ConfigDrift scan detects drift in YAML, JSON, TOML, and .env files with severity triage.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://coding-dev-tools.github.io/devforge/blog/configdrift-scan-multi-environment-configs-one-command.html">
+  <meta name="twitter:site" content="@DevForge">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Scan Multi-Environment Configs in One Command — ConfigDrift Directory Scan Tutorial">
+  <meta name="twitter:description" content="One command to scan all config files across dev, staging, and prod. ConfigDrift detects drift in YAML, JSON, TOML, .env with severity triage.">
+  <meta name="twitter:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
+  <meta property="og:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="canonical" href="https://coding-dev-tools.github.io/devforge/blog/configdrift-scan-multi-environment-configs-one-command.html">
+  <meta name="author" content="DevForge">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛁</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="blog.css">
+  <!-- Plausible Analytics -->
+  <script defer data-domain="devforge" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <div class="logo"><span>⛁</span> DevForge</div>
+    <div class="links">
+      <a href="../quickstart.html">Get Started</a>
+      <a href="../start-here.html">Start Here</a>
+      <a href="../index.html">Home</a>
+      <a href="../docs.html">Docs</a>
+      <a href="../pricing.html">Pricing</a>
+      <a href="../alternatives.html">Alternatives</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../releases.html">Releases</a>
+      <a href="../about.html">About</a>
+      <a href="https://github.com/Coding-Dev-Tools" target="_blank">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<div class="blog-nav">
+  <a href="configdrift-ci-cd-gating-before-deploy.html">&larr; Previous ConfigDrift Post</a>
+  <a href="../blog.html">All Posts</a>
+</div>
+
+<section class="post-content">
+
+<div class="badge" style="margin-bottom:16px">Tutorial</div>
+<h1>Scan Multi-Environment Configs in One Command: ConfigDrift <code>scan</code> Walkthrough</h1>
+<p class="subtitle">You know <code>configdrift check</code> for comparing two files. But real projects have entire directories of YAML, JSON, TOML, and <code>.env</code> files spread across dev, staging, and prod. Here's how to scan all of them against a baseline in a single command.</p>
+
+<p>The <code>configdrift check</code> command is great for quick two-file diffs. But when your project has 8 config files per environment — a database YAML, an app JSON, a secrets <code>.env</code>, a feature-flag TOML — running <code>check</code> on every pair gets old fast.</p>
+
+<p>That's what <code>configdrift scan</code> solves. Point it at your environment directories, pick a baseline, and it compares every config file it finds — matching by filename, flattening nested structures, and triaging differences by severity.</p>
+
+<p>This tutorial walks through a realistic 3-environment setup from scratch: sample configs, the scan command, interpreting results, and the config-driven workflow for larger projects.</p>
+
+<hr>
+
+<h2>Installation</h2>
+
+<pre><code>pip install git+https://github.com/Coding-Dev-Tools/configdrift.git</code></pre>
+
+<p>Or via Homebrew (macOS/Linux):</p>
+
+<pre><code>brew tap Coding-Dev-Tools/tap
+brew install configdrift</code></pre>
+
+<p>Or via Scoop (Windows):</p>
+
+<pre><code>scoop bucket add Coding-Dev-Tools https://github.com/Coding-Dev-Tools/scoop-bucket
+scoop install configdrift</code></pre>
+
+<hr>
+
+<h2>The Setup: A Real 3-Environment Project</h2>
+
+<p>Let's build a realistic scenario. Your project has three environments, each with its own directory of config files:</p>
+
+<pre><code>config/
+├── dev/
+│   ├── database.yaml
+│   ├── app.json
+│   ├── features.toml
+│   └── secrets.env
+├── staging/
+│   ├── database.yaml
+│   ├── app.json
+│   ├── features.toml
+│   └── secrets.env
+└── prod/
+    ├── database.yaml
+    ├── app.json
+    ├── features.toml
+    └── secrets.env</code></pre>
+
+<p>Here's what each file looks like in <strong>dev</strong>:</p>
+
+<h3>config/dev/database.yaml</h3>
+<pre><code>database:
+  endpoint: db-dev.internal:5432
+  pool_size: 5
+  timeout: 30
+auth:
+  token_expiry: 3600
+  refresh_enabled: true</code></pre>
+
+<h3>config/dev/app.json</h3>
+<pre><code>{
+  "app": {
+    "name": "myapp-dev",
+    "port": 3000,
+    "debug": true,
+    "log_level": "debug"
+  },
+  "rate_limit": {
+    "max_requests": 1000,
+    "window_seconds": 60
+  }
+}</code></pre>
+
+<h3>config/dev/features.toml</h3>
+<pre><code>[features]
+new_dashboard = true
+api_v2 = false
+beta_export = true
+
+[rate_limit]
+enabled = false
+max_rps = 100</code></pre>
+
+<h3>config/dev/secrets.env</h3>
+<pre><code>STRIPE_API_KEY=sk_test_abc123
+DATABASE_URL=postgresql://dev:devpass@db-dev.internal:5432/myapp
+SESSION_SECRET=dev-session-secret-32chars
+REDIS_URL=redis://localhost:6379</code></pre>
+
+<p>Now staging and prod have <em>mostly</em> the same files — but with critical differences. That's where drift hides.</p>
+
+<hr>
+
+<h2>The One Command: <code>configdrift scan</code></h2>
+
+<pre><code>configdrift scan ./config/dev ./config/staging ./config/prod --baseline dev</code></pre>
+
+<p>That's it. ConfigDrift:</p>
+
+<ol>
+  <li>Reads every supported file in each directory (<code>.yaml</code>, <code>.json</code>, <code>.toml</code>, <code>.env</code>)</li>
+  <li>Matches files by name across environments</li>
+  <li>Flattens nested structures to dot-notation keys</li>
+  <li>Compares each environment against the baseline</li>
+  <li>Triages every difference by severity</li>
+</ol>
+
+<p>Output for our scenario:</p>
+
+<pre><code>Scanning 3 environments: dev (baseline), staging, prod
+Found 4 config files per environment
+
+Config Drift: dev → staging (database.yaml)
+┌──────────────────────────┬──────────┬──────────────────────┬──────────────────────┬───────────┐
+│ Key                      │ Change   │ Old Value            │ New Value            │ Severity  │
+├──────────────────────────┼──────────┼──────────────────────┼──────────────────────┼───────────┤
+│ database.endpoint        │ ~ changed│ db-dev.internal:5432 │ db-staging.internal  │ BREAKING  │
+│ database.pool_size       │ ~ changed│ 5                    │ 10                   │ INFO      │
+│ auth.token_expiry        │ ~ changed│ 3600                 │ 7200                 │ BREAKING  │
+│ auth.refresh_enabled     │ ~ changed│ true                 │ true                 │ INFO      │
+└──────────────────────────┴──────────┴──────────────────────┴──────────────────────┴───────────┘
+
+Config Drift: dev → staging (secrets.env)
+┌──────────────────────────┬──────────┬──────────────────────┬──────────────────────┬───────────┐
+│ Key                      │ Change   │ Old Value            │ New Value            │ Severity  │
+├──────────────────────────┼──────────┼──────────────────────┼──────────────────────┼───────────┤
+│ STRIPE_API_KEY           │ ~ changed│ sk_test_abc123       │ sk_live_staging_***  │ BREAKING  │
+│ DATABASE_URL             │ ~ changed│ ...db-dev.internal…  │ ...db-staging.int…   │ BREAKING  │
+│ SESSION_SECRET           │ ~ changed│ dev-session-secret   │ staging-session-sec  │ BREAKING  │
+└──────────────────────────┴──────────┴──────────────────────┴──────────────────────┴───────────┘
+
+Config Drift: dev → staging (app.json)
+┌──────────────────────────┬──────────┬──────────────────────┬──────────────────────┬───────────┐
+│ Key                      │ Change   │ Old Value            │ New Value            │ Severity  │
+├──────────────────────────┼──────────┼──────────────────────┼──────────────────────┼───────────┤
+│ app.debug                │ ~ changed│ true                 │ false                │ INFO      │
+│ app.log_level            │ ~ changed│ debug                │ info                 │ INFO      │
+└──────────────────────────┴──────────┴──────────────────────┴──────────────────────┴───────────┘
+
+Config Drift: dev → prod (database.yaml)
+┌──────────────────────────┬──────────┬──────────────────────┬──────────────────────┬───────────┐
+│ Key                      │ Change   │ Old Value            │ New Value            │ Severity  │
+├──────────────────────────┼──────────┼──────────────────────┼──────────────────────┼───────────┤
+│ database.endpoint        │ ~ changed│ db-dev.internal:5432 │ db-prod.internal     │ BREAKING  │
+│ database.pool_size       │ ~ changed│ 5                    │ 50                   │ INFO      │
+│ auth.token_expiry        │ ~ changed│ 3600                 │ 86400                │ BREAKING  │
+└──────────────────────────┴──────────┴──────────────────────┴──────────────────────┴───────────┘
+
+Config Drift: dev → prod (secrets.env)
+┌──────────────────────────┬──────────┬──────────────────────┬──────────────────────┬───────────┐
+│ Key                      │ Change   │ Old Value            │ New Value            │ Severity  │
+├──────────────────────────┼──────────┼──────────────────────┼──────────────────────┼───────────┤
+│ STRIPE_API_KEY           │ ~ changed│ sk_test_abc123       │ sk_live_prod_***     │ BREAKING  │
+│ DATABASE_URL             │ ~ changed│ ...db-dev.internal…  │ ...db-prod.int…      │ BREAKING  │
+│ SESSION_SECRET           │ ~ changed│ dev-session-secret   │ prod-session-secret  │ BREAKING  │
+│ REDIS_URL                │ - removed│ redis://localhost…   │                      │ BREAKING  │
+└──────────────────────────┴──────────┴──────────────────────┴──────────────────────┴───────────┘
+
+Config Drift: dev → prod (features.toml)
+┌──────────────────────────┬──────────┬──────────────────────┬──────────────────────┬───────────┐
+│ Key                      │ Change   │ Old Value            │ New Value            │ Severity  │
+├──────────────────────────┼──────────┼──────────────────────┼──────────────────────┼───────────┤
+│ features.new_dashboard   │ ~ changed│ true                 │ false                │ INFO      │
+│ features.api_v2          │ ~ changed│ false                │ true                 │ INFO      │
+│ rate_limit.enabled       │ ~ changed│ false                │ true                 │ INFO      │
+│ rate_limit.max_rps       │ ~ changed│ 100                  │ 10000                │ INFO      │
+└──────────────────────────┴──────────┴──────────────────────┴──────────────────────┴───────────┘</code></pre>
+
+<p>That one command compared 12 config files (4 files × 3 environments) and surfaced every difference, triaged by severity.</p>
+
+<hr>
+
+<h2>Interpreting Severity Levels</h2>
+
+<p>Not all drift is equal. ConfigDrift's severity triage is what makes the output actionable instead of overwhelming:</p>
+
+<table>
+  <tr><th>Severity</th><th>Trigger</th><th>What to Do</th></tr>
+  <tr><td><strong>BREAKING</strong></td><td>Critical key changed, added, or removed — any key matching <code>database.*</code>, <code>auth.*</code>, <code>secret.*</code>, <code>password.*</code>, <code>token.*</code>, <code>endpoint.*</code>, <code>api_key.*</code></td><td>Block deploy. These cause incidents.</td></tr>
+  <tr><td><strong>WARNING</strong></td><td>Optional key added or removed (non-critical keys that appear in one environment but not another)</td><td>Review before deploy. Could indicate incomplete rollout.</td></tr>
+  <tr><td><strong>INFO</strong></td><td>Non-critical value changed (log levels, feature flags, pool sizes, debug flags)</td><td>Informational. Expected in multi-environment setups.</td></tr>
+</table>
+
+<p>Looking at our scan results, the triage tells a clear story:</p>
+
+<ul>
+  <li><strong>BREAKING</strong>: <code>database.endpoint</code>, <code>STRIPE_API_KEY</code>, <code>DATABASE_URL</code> — these <em>should</em> differ between environments (dev vs prod endpoints are expected). But the <code>REDIS_URL</code> being removed from prod is a real problem — that service is about to break.</li>
+  <li><strong>INFO</strong>: <code>app.debug=false</code> in staging, <code>database.pool_size=50</code> in prod — these are expected environment-specific values. No action needed.</li>
+  <li><strong>WARNING</strong>: If a key exists in staging but not prod, that's a signal that a feature was partially rolled out — worth reviewing.</li>
+</ul>
+
+<p>The key insight: <strong>not all drift is a problem, but you can't manage what you can't see</strong>. ConfigDrift scan surfaces everything so you can make informed decisions about which differences are intentional and which are time bombs.</p>
+
+<hr>
+
+<h2>JSON Output: Pipe Results into Your Pipeline</h2>
+
+<p>For CI/CD integration or custom scripts, use <code>--output json</code>:</p>
+
+<pre><code>configdrift scan ./config/dev ./config/staging ./config/prod --baseline dev --output json</code></pre>
+
+<p>Returns structured JSON you can filter with <code>jq</code> or Python:</p>
+
+<pre><code>{
+  "staging": {
+    "database.yaml": {
+      "changes": [
+        {
+          "key": "database.endpoint",
+          "change_type": "changed",
+          "old_value": "db-dev.internal:5432",
+          "new_value": "db-staging.internal:5432",
+          "severity": "breaking"
+        }
+      ],
+      "has_breaking": true
+    }
+  },
+  "prod": {
+    "secrets.env": {
+      "changes": [
+        {
+          "key": "REDIS_URL",
+          "change_type": "removed",
+          "old_value": "redis://localhost:6379",
+          "new_value": null,
+          "severity": "breaking"
+        }
+      ],
+      "has_breaking": true
+    }
+  }
+}</code></pre>
+
+<p>Filter for only removed keys — the most dangerous drift:</p>
+
+<pre><code>configdrift scan ./config/dev ./config/staging ./config/prod \
+  --baseline dev --output json \
+  | python3 -c "import sys,json; d=json.load(sys.stdin); \
+    [print(f'{env}/{file}: {c[\"key\"]} REMOVED') \
+     for env,files in d.items() for file,data in files.items() \
+     for c in data['changes'] if c['change_type']=='removed']"</code></pre>
+
+<p>Output:</p>
+
+<pre><code>prod/secrets.env: REDIS_URL REMOVED</code></pre>
+
+<p>That's the signal you need — a secret that exists in dev and staging but was accidentally dropped from prod.</p>
+
+<hr>
+
+<h2>Silent Mode: CI Gate on Multi-Environment Scans</h2>
+
+<p>Use <code>--output silent</code> to get a pass/fail exit code with no output — perfect for CI pipelines:</p>
+
+<pre><code>configdrift scan ./config/dev ./config/staging ./config/prod \
+  --baseline dev --output silent</code></pre>
+
+<p>Exit code <code>0</code> = no breaking drift. Exit code <code>1</code> = at least one breaking difference found. Add this to any CI pipeline:</p>
+
+<pre><code># .github/workflows/config-parity.yml
+name: Config Parity
+
+on:
+  pull_request:
+    paths:
+      - 'config/**'
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install ConfigDrift
+        run: pip install git+https://github.com/Coding-Dev-Tools/configdrift.git
+
+      - name: Scan all environments
+        run: |
+          configdrift scan ./config/dev ./config/staging ./config/prod \
+            --baseline dev --output silent</code></pre>
+
+<p>This gates your PRs on config parity across all environments — not just two files, but every config file in every directory.</p>
+
+<hr>
+
+<h2>Config-Driven Workflow: <code>configdrift init</code></h2>
+
+<p>For projects with complex directory layouts, typing out every environment path gets repetitive. ConfigDrift has a config-driven workflow:</p>
+
+<h3>Step 1: Generate a config template</h3>
+
+<pre><code>configdrift init .
+# Creates .configdrift.yaml</code></pre>
+
+<h3>Step 2: Define your environments</h3>
+
+<pre><code># .configdrift.yaml
+environments:
+  dev:
+    - ./config/dev
+  staging:
+    - ./config/staging
+    - ./secrets/staging   # Multiple directories per environment
+  prod:
+    - ./config/prod
+    - ./secrets/prod</code></pre>
+
+<p>Each environment can reference multiple directories. ConfigDrift merges all files from all listed directories for that environment before comparing. This handles the common pattern where secrets live in a separate directory from application configs.</p>
+
+<h3>Step 3: Run the scan</h3>
+
+<pre><code>configdrift scan --config .configdrift.yaml --baseline dev</code></pre>
+
+<p>No need to type directory paths. The config file becomes your source of truth for environment layout — commit it, review it, and let your CI pipeline use it.</p>
+
+<h3>CI integration with config file</h3>
+
+<pre><code># .github/workflows/config-parity.yml
+name: Config Parity
+
+on:
+  pull_request:
+    paths:
+      - 'config/**'
+      - 'secrets/**'
+      - '.configdrift.yaml'
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install ConfigDrift
+        run: pip install git+https://github.com/Coding-Dev-Tools/configdrift.git
+
+      - name: Scan environments
+        run: configdrift scan --config .configdrift.yaml --baseline dev --output silent</code></pre>
+
+<p>Now any PR that touches config files, secrets, or the ConfigDrift config itself automatically triggers a full environment parity check.</p>
+
+<hr>
+
+<h2>What <code>scan</code> Does That <code>check</code> Doesn't</h2>
+
+<table>
+  <tr><th>Feature</th><th><code>configdrift check</code></th><th><code>configdrift scan</code></th></tr>
+  <tr><td>Compare two files</td><td>✓</td><td>—</td></tr>
+  <tr><td>Compare entire directories</td><td>—</td><td>✓</td></tr>
+  <tr><td>3+ environments at once</td><td>—</td><td>✓</td></tr>
+  <tr><td>Auto-discover all config files</td><td>—</td><td>✓</td></tr>
+  <tr><td>Match files by name across envs</td><td>—</td><td>✓</td></tr>
+  <tr><td>Multiple dirs per environment</td><td>—</td><td>✓</td></tr>
+  <tr><td>Config-driven workflow</td><td>—</td><td>✓</td></tr>
+  <tr><td>Severity triage</td><td>✓</td><td>✓</td></tr>
+  <tr><td>JSON / silent output</td><td>✓</td><td>✓</td></tr>
+</table>
+
+<p>Use <code>check</code> for quick two-file diffs. Use <code>scan</code> for everything else — it's the command you'll run in CI and the command you'll run before every deploy.</p>
+
+<hr>
+
+<h2>Supported Config Formats</h2>
+
+<p><code>configdrift scan</code> reads all common config file formats automatically:</p>
+
+<ul>
+  <li><strong>YAML</strong> (<code>.yaml</code>, <code>.yml</code>) — nested structures flattened to dot-notation keys</li>
+  <li><strong>JSON</strong> (<code>.json</code>) — nested objects flattened like YAML</li>
+  <li><strong>TOML</strong> (<code>.toml</code>) — Python 3.10+ with <code>tomli</code> fallback</li>
+  <li><strong>.env</strong> (<code>.env</code>) — standard <code>KEY=VALUE</code> format with quote stripping</li>
+</ul>
+
+<p>Nested keys are flattened automatically. This YAML:</p>
+
+<pre><code>database:
+  endpoint: db-prod.internal:5432
+  pool_size: 50
+auth:
+  token_expiry: 86400</code></pre>
+
+<p>Becomes these comparison keys:</p>
+
+<pre><code>database.endpoint = db-prod.internal:5432
+database.pool_size = 50
+auth.token_expiry = 86400</code></pre>
+
+<p>Keys matching critical prefixes (<code>database.*</code>, <code>auth.*</code>, <code>secret.*</code>, <code>endpoint.*</code>, <code>api_key.*</code>) automatically get <strong>BREAKING</strong> severity — no custom rules needed on the free tier.</p>
+
+<hr>
+
+<h2>Getting Started</h2>
+
+<div class="cta-box">
+  <h3>Stop flying blind on config drift</h3>
+  <p>Scan all your environment directories in one command. ConfigDrift surfaces every difference, triages by severity, and gives you the exit code to gate your pipeline.</p>
+  <pre style="text-align:left;margin:12px 0;background:#0a0a0b;border-color:#2a2a2d;"><code>pip install git+https://github.com/Coding-Dev-Tools/configdrift.git
+cd your-project
+configdrift scan ./config/dev ./config/staging ./config/prod --baseline dev</code></pre>
+  <a href="https://github.com/Coding-Dev-Tools/configdrift">View on GitHub →</a>
+</div>
+
+<p style="color:#666;font-size:0.82rem;text-align:center;margin-top:32px;">
+  <em>ConfigDrift is part of the <a href="https://coding-dev-tools.github.io/devforge/">DevForge</a> developer tool ecosystem — 11 CLI tools built autonomously for developers who ship.</em>
+</p>
+
+</section>
+
+<footer>
+  <span>&copy; 2026 DevForge. Built autonomously.</span>
+  <a href="../index.html">Home</a>
+  <a href="../pricing.html">Pricing</a>
+  <a href="https://github.com/Coding-Dev-Tools">GitHub</a>
+</footer>
+
+</body>
+</html>
