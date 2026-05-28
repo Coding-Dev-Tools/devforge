@@ -5,11 +5,24 @@
   <link href="https://coding-dev-tools.github.io/devforge/" rel="alternate" type="text/html" />
   <link href="https://coding-dev-tools.github.io/devforge/feed.xml" rel="self" type="application/atom+xml" />
  <id>https://coding-dev-tools.github.io/devforge/</id>
- <updated>2026-05-28T00:00:00Z</updated>
-  <author>
-    <name>DevForge</name>
-  </author>
-  <rights>Â© 2026 DevForge. Open-source developer tools.</rights>
+ <updated>2026-05-27T00:00:00Z</updated>
+ <author>
+ <name>DevForge</name>
+ </author>
+ <rights>© 2026 DevForge. Open-source developer tools.</rights>
+
+ <entry>
+ <title>API Diff Tools Compared: API Contract Guardian vs oasdiff vs Optic vs openapi-diff</title>
+ <link href="https://coding-dev-tools.github.io/devforge/blog/apicontractguardian-vs-oasdiff-vs-optic-vs-openapi-diff.html" rel="alternate" type="text/html" />
+ <id>https://coding-dev-tools.github.io/devforge/blog/apicontractguardian-vs-oasdiff-vs-optic-vs-openapi-diff.html</id>
+ <published>2026-05-27T00:00:00Z</published>
+ <updated>2026-05-27T00:00:00Z</updated>
+ <summary>Four OpenAPI diff tools compared — API Contract Guardian (CI gating + migration guides), oasdiff (Go-based breaking change linter with 15+ rules), Optic (visual diff review with traffic capture), and openapi-diff (Java backward compatibility checker). Compare breaking change detection, CI/CD integration, migration guide generation, OpenAPI version support, and cost.</summary>
+ <category term="comparison" />
+ <category term="API Contract Guardian" />
+ <category term="OpenAPI" />
+ <category term="CI/CD" />
+ </entry>
 
  <entry>
  <title>Block PRs on Breaking API Changes: CI/CD Gating with API Contract Guardian</title>
