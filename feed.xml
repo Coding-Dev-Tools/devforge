@@ -5,11 +5,25 @@
   <link href="https://coding-dev-tools.github.io/devforge/" rel="alternate" type="text/html" />
   <link href="https://coding-dev-tools.github.io/devforge/feed.xml" rel="self" type="application/atom+xml" />
  <id>https://coding-dev-tools.github.io/devforge/</id>
- <updated>2026-05-27T00:00:00Z</updated>
+ <updated>2026-05-28T00:00:00Z</updated>
  <author>
  <name>DevForge</name>
  </author>
  <rights>© 2026 DevForge. Open-source developer tools.</rights>
+
+ <entry>
+ <title>Schema Conversion Tools Compared: SchemaForge vs Prisma Migrate vs Alembic vs Atlas</title>
+ <link href="https://coding-dev-tools.github.io/devforge/blog/schemaforge-vs-prisma-migrate-vs-alembic-vs-atlas.html" rel="alternate" type="text/html" />
+ <id>https://coding-dev-tools.github.io/devforge/blog/schemaforge-vs-prisma-migrate-vs-alembic-vs-atlas.html</id>
+ <published>2026-05-28T00:00:00Z</published>
+ <updated>2026-05-28T00:00:00Z</updated>
+ <summary>Four schema conversion and migration tools compared — SchemaForge (bidirectional 11-format converter with 110 direction pairs), Prisma Migrate (schema-first Prisma migrations), Alembic (SQLAlchemy auto-generated migrations), and Atlas (declarative schema management with CI linting). Compare format coverage, bidirectional conversion, migration generation, JSON Schema/GraphQL output, CI/CD integration, and cost.</summary>
+ <category term="comparison" />
+ <category term="SchemaForge" />
+ <category term="Prisma" />
+ <category term="SQLAlchemy" />
+ <category term="schema migration" />
+ </entry>
 
  <entry>
  <title>API Diff Tools Compared: API Contract Guardian vs oasdiff vs Optic vs openapi-diff</title>
