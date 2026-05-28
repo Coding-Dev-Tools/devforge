@@ -12,6 +12,20 @@
  <rights>© 2026 DevForge. Open-source developer tools.</rights>
 
  <entry>
+ <title>Scan Multi-Environment Configs in One Command: ConfigDrift scan Walkthrough</title>
+ <link href="https://coding-dev-tools.github.io/devforge/blog/configdrift-scan-multi-environment-configs-one-command.html" rel="alternate" type="text/html" />
+ <id>https://coding-dev-tools.github.io/devforge/blog/configdrift-scan-multi-environment-configs-one-command.html</id>
+ <published>2026-05-28T00:00:00Z</published>
+ <updated>2026-05-28T00:00:00Z</updated>
+ <summary>Compare entire directories of YAML, JSON, TOML, and .env files across dev, staging, and prod with one command. ConfigDrift scan auto-discovers config files, matches them by name, flattens nested structures, and triages every difference by severity (breaking/warning/info). Tutorial with real sample configs, JSON output filtering, config-driven workflow with configdrift init, and CI pipeline integration.</summary>
+ <category term="tutorial" />
+ <category term="ConfigDrift" />
+ <category term="DevOps" />
+ <category term="CI/CD" />
+ <category term="config drift" />
+ </entry>
+
+<entry>
  <title>Schema Conversion Tools Compared: SchemaForge vs Prisma Migrate vs Alembic vs Atlas</title>
  <link href="https://coding-dev-tools.github.io/devforge/blog/schemaforge-vs-prisma-migrate-vs-alembic-vs-atlas.html" rel="alternate" type="text/html" />
  <id>https://coding-dev-tools.github.io/devforge/blog/schemaforge-vs-prisma-migrate-vs-alembic-vs-atlas.html</id>
