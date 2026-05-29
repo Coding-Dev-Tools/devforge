@@ -1,4 +1,4 @@
-﻿# Python
+# Python
 __pycache__/
 *.py[cod]
 *.pyo
@@ -14,3 +14,9 @@ venv/
 
 # Node
 node_modules/
+
+# Testing and Coverage Cache
+.coverage
+.pytest_cache/
+.ruff_cache/
+
