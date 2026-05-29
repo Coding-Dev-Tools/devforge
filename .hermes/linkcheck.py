@@ -19,6 +19,15 @@ for fp in all_files:
 
 print(f"Actual HTML pages: {len(actual_pages)}")
 
+# Pre-scan for <base href> per file
+base_href_map = {}
+for fp in sorted(all_files):
+    with open(fp, 'r', encoding='utf-8', errors='replace') as f:
+        content = f.read()
+    m = re.search(r'<base\s+href="([^"]+)"', content, re.IGNORECASE)
+    if m:
+        base_href_map[fp] = m.group(1)
+
 # Now scan all HTML files for internal links
 print("\n--- Broken link check ---")
 broken = 0
@@ -36,6 +45,8 @@ for fp in sorted(all_files):
     if source_dir == '.':
         source_dir = ''
     
+    base_href = base_href_map.get(fp, None)
+    
     for link in links:
         checked += 1
         # Skip external links
@@ -45,8 +56,13 @@ for fp in sorted(all_files):
         if link.startswith('#'):
             continue
         
-        # Resolve relative path
-        if link.startswith('../'):
+        # If the file has <base href>, resolve relative to that base (site root)
+        if base_href and not link.startswith('/') and not link.startswith('../'):
+            # <base href="/devforge/"> means links resolve from /devforge/
+            # which corresponds to the repo root on the filesystem
+            # So we just resolve the link from the repo root, ignoring the base prefix
+            resolved = link
+        elif link.startswith('../'):
             parts = source_dir.split('/') if source_dir else []
             up_count = link.count('../')
             resolved_parts = parts[:-up_count] if len(parts) >= up_count else []
@@ -62,7 +78,7 @@ for fp in sorted(all_files):
         # Check if the target file exists (using OS-native paths)
         target_path = resolved.replace('/', os.sep)
         if not os.path.exists(target_path):
-            print(f"  BROKEN: {source_rel} -> {link}")
+            print(f" BROKEN: {source_rel} -> {link}")
             broken += 1
         elif target_path not in all_files and not os.path.isdir(target_path):
             # It exists on disk but wasn't in our walk - rare but worth noting

@@ -54,7 +54,7 @@
 
 <p>AI coding agents — Claude Code, Codex, Cursor — are reshaping how we build software. But these agents are only as capable as the tools you give them. Every CLI becomes an MCP tool. Every automation becomes an agent workflow.</p>
 
-<p>This is the <strong>DevForge</strong> ecosystem: 11 open-source CLI tools designed for this new paradigm. Each one solves a concrete problem, runs from your terminal, and integrates seamlessly with AI agents via <a href="click-to-mcp-intro.html">click-to-mcp</a>.</p>
+<p>This is the <strong>DevForge</strong> ecosystem: 11 open-source CLI tools designed for this new paradigm. Each one solves a concrete problem, runs from your terminal, and integrates seamlessly with AI agents via <a href="blog/click-to-mcp-intro.html">click-to-mcp</a>.</p>
 
 <p>Best part? They're all free, all open-source, and installable in under 10 seconds.</p>
 
@@ -81,7 +81,7 @@
 <p><strong>The bridge.</strong> Auto-wrap any Click or typer CLI as an MCP server — zero code changes. AI agents can invoke your tools directly via stdin or HTTP+SSE.</p>
 <pre><code>pip install git+https://github.com/Coding-Dev-Tools/click-to-mcp.git
 click-to-mcp serve your-cli</code></pre>
-<p>↳ <a href="https://github.com/Coding-Dev-Tools/click-to-mcp">GitHub</a> &middot; <a href="click-to-mcp-intro.html">Read more</a></p>
+<p>↳ <a href="https://github.com/Coding-Dev-Tools/click-to-mcp">GitHub</a> &middot; <a href="blog/click-to-mcp-intro.html">Read more</a></p>
 </div>
 
 <!-- Tool 2 -->
@@ -91,7 +91,7 @@ click-to-mcp serve your-cli</code></pre>
 <p><strong>Find and remove dead code.</strong> Scans JavaScript/TypeScript/React projects for unused exports, components, and modules. Integrates into CI pipelines so dead code never reaches production.</p>
 <pre><code>pip install deadcode-cli
 deadcode scan ./src</code></pre>
-<p>↳ <a href="https://github.com/Coding-Dev-Tools/deadcode">GitHub</a> &middot; <a href="deadcode-technical-deep-dive.html">Read more</a></p>
+<p>↳ <a href="https://github.com/Coding-Dev-Tools/deadcode">GitHub</a> &middot; <a href="blog/deadcode-technical-deep-dive.html">Read more</a></p>
 </div>
 
 <!-- Tool 3 -->
@@ -101,7 +101,7 @@ deadcode scan ./src</code></pre>
 <p><strong>Query JSON files with SQL.</strong> No database needed. Pipe a JSON file into json2sql and run SQL SELECT/WHERE/GROUP BY against it. Perfect for log analysis, API response exploration, and data pipeline debugging.</p>
 <pre><code>pip install json2sql-cli
 cat data.json | json2sql "SELECT count(*) GROUP BY status"</code></pre>
-<p>↳ <a href="https://github.com/Coding-Dev-Tools/json2sql">GitHub</a> &middot; <a href="json-to-sql-one-command.html">Read more</a></p>
+<p>↳ <a href="https://github.com/Coding-Dev-Tools/json2sql">GitHub</a> &middot; <a href="blog/json-to-sql-one-command.html">Read more</a></p>
 </div>
 
 <!-- Tool 4 -->
@@ -111,7 +111,7 @@ cat data.json | json2sql "SELECT count(*) GROUP BY status"</code></pre>
 <p><strong>Secure environment variable manager.</strong> Encrypt, share, and rotate secrets across environments. Works with .env files, CI/CD systems, and container orchestration. Built-in audit logging.</p>
 <pre><code>pip install envault-secrets
 envault init && envault set API_KEY=sk-xxx</code></pre>
-<p>↳ <a href="https://github.com/Coding-Dev-Tools/envault">GitHub</a> &middot; <a href="envault-secret-rotation-guide.html">Read more</a></p>
+<p>↳ <a href="https://github.com/Coding-Dev-Tools/envault">GitHub</a> &middot; <a href="blog/envault-secret-rotation-guide.html">Read more</a></p>
 </div>
 
 <!-- Tool 5 -->
@@ -121,7 +121,7 @@ envault init && envault set API_KEY=sk-xxx</code></pre>
 <p><strong>Database schema migrations, simplified.</strong> Define your schema in Python, TypeScript, or YAML. SchemaForge generates migrations for PostgreSQL, MySQL, SQLite, and more. Supports SQLAlchemy, Drizzle ORM, and raw SQL output.</p>
 <pre><code>pip install schemaforge-cli
 schemaforge init && schemaforge migrate</code></pre>
-<p>↳ <a href="https://github.com/Coding-Dev-Tools/schemaforge">GitHub</a> &middot; <a href="schemaforge-v0-2-0-drizzle.html">Read more</a></p>
+<p>↳ <a href="https://github.com/Coding-Dev-Tools/schemaforge">GitHub</a> &middot; <a href="blog/schemaforge-v0-2-0-drizzle.html">Read more</a></p>
 </div>
 
 <!-- Tool 6 -->
@@ -131,7 +131,7 @@ schemaforge init && schemaforge migrate</code></pre>
 <p><strong>Mock API server from OpenAPI specs.</strong> Generate a fully functional mock server from any OpenAPI 3.x specification. Supports realistic responses, validation, and delay simulation. Handy for frontend development and testing.</p>
 <pre><code>pip install apighost
 apighost serve openapi.yaml --port 4000</code></pre>
-<p>↳ <a href="https://github.com/Coding-Dev-Tools/apighost">GitHub</a> &middot; <a href="api-mock-server-from-openapi-spec.html">Read more</a></p>
+<p>↳ <a href="https://github.com/Coding-Dev-Tools/apighost">GitHub</a> &middot; <a href="blog/api-mock-server-from-openapi-spec.html">Read more</a></p>
 </div>
 
 <!-- Tool 7 -->
@@ -141,7 +141,7 @@ apighost serve openapi.yaml --port 4000</code></pre>
 <p><strong>Catch configuration drift before it breaks things.</strong> Monitor config files, environment variables, and Kubernetes ConfigMaps for unexpected changes. Set baselines and get alerts when drift is detected.</p>
 <pre><code>pip install configdrift
 configdrift baseline && configdrift check</code></pre>
-<p>↳ <a href="https://github.com/Coding-Dev-Tools/configdrift">GitHub</a> &middot; <a href="catch-config-drift-before-production.html">Read more</a></p>
+<p>↳ <a href="https://github.com/Coding-Dev-Tools/configdrift">GitHub</a> &middot; <a href="blog/catch-config-drift-before-production.html">Read more</a></p>
 </div>
 
 <!-- Tool 8 -->
@@ -151,7 +151,7 @@ configdrift baseline && configdrift check</code></pre>
 <p><strong>Preview infrastructure changes before deploying.</strong> Diff your Kubernetes manifests, Terraform plans, and Docker Compose files against the current state. Catch breaking changes before they hit production.</p>
 <pre><code>pip install deploydiff
 deploydiff diff --before deploy.yaml --after deploy-v2.yaml</code></pre>
-<p>↳ <a href="https://github.com/Coding-Dev-Tools/deploydiff">GitHub</a> &middot; <a href="preview-infra-cost-before-deploy.html">Read more</a></p>
+<p>↳ <a href="https://github.com/Coding-Dev-Tools/deploydiff">GitHub</a> &middot; <a href="blog/preview-infra-cost-before-deploy.html">Read more</a></p>
 </div>
 
 <!-- Tool 9 -->
@@ -161,7 +161,7 @@ deploydiff diff --before deploy.yaml --after deploy-v2.yaml</code></pre>
 <p><strong>Batch data transformation in your terminal.</strong> Convert between JSON, CSV, YAML, XML, and Parquet. Filter, map, join, and aggregate datasets without writing scripts. Pipes compose naturally with jq, sed, and awk.</p>
 <pre><code>pip install datamorph-cli
 datamorph convert input.csv --to json | jq '.[0]'</code></pre>
-<p>↳ <a href="https://github.com/Coding-Dev-Tools/datamorph">GitHub</a> &middot; <a href="datamorph-batch-data-conversion.html">Read more</a></p>
+<p>↳ <a href="https://github.com/Coding-Dev-Tools/datamorph">GitHub</a> &middot; <a href="blog/datamorph-batch-data-conversion.html">Read more</a></p>
 </div>
 
 <!-- Tool 10 -->
@@ -171,7 +171,7 @@ datamorph convert input.csv --to json | jq '.[0]'</code></pre>
 <p><strong>Breaking change detection for OpenAPI specs.</strong> Drop this into your CI pipeline and it catches every breaking API change — removed endpoints, changed response schemas, modified request bodies. Generates human-readable diffs.</p>
 <pre><code>pip install api-contract-guardian
 api-contract-guardian check --before spec-v1.yaml --after spec-v2.yaml</code></pre>
-<p>↳ <a href="https://github.com/Coding-Dev-Tools/api-contract-guardian">GitHub</a> &middot; <a href="catch-breaking-api-changes-in-ci.html">Read more</a></p>
+<p>↳ <a href="https://github.com/Coding-Dev-Tools/api-contract-guardian">GitHub</a> &middot; <a href="blog/catch-breaking-api-changes-in-ci.html">Read more</a></p>
 </div>
 
 <hr>
