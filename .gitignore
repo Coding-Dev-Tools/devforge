@@ -20,3 +20,18 @@ node_modules/
 .pytest_cache/
 .ruff_cache/
 
+# Merge artifacts and cache (added by workspace stabilization)
+*.pyc
+*.egg-info/
+dist/
+build/
+*.egg
+.DS_Store
+Thumbs.db
+*.orig
+*.BACKUP.*
+*.BASE.*
+*.LOCAL.*
+*.REMOTE.*
+local.db
+*.sqlite3
