@@ -1,0 +1,16 @@
+title: DevForge
+description: Developer CLI tool portfolio and hub
+baseurl: /devforge
+url: https://coding-dev-tools.github.io
+
+theme: null
+markdown: kramdown
+
+defaults: []
+
+exclude:
+  - "*.py"
+  - "*.toml"
+  - tests/
+  - drafts/
+  - .hermes/
