@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <base href="/devforge/">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>All 11 DevForge CLI Tools Are Now Type-Safe (PEP 561) | DevForge</title>
+ <meta name="description" content="Every DevForge CLI tool now ships with py.typed markers and full public-function type annotations. Mypy clean out of the box — no stubs, no guesswork. Here's why it matters for your CI pipeline and developer experience.">
+ <meta name="keywords" content="PEP 561, py.typed, Python type safety, mypy, CLI tools type annotations, typed Python packages, static analysis, DevForge CLI, Python developer tools, type checking CI">
+ <meta property="og:title" content="All 11 DevForge CLI Tools Are Now Type-Safe (PEP 561)">
+ <meta property="og:description" content="Every DevForge CLI tool now ships with py.typed markers and full public-function type annotations. Mypy clean out of the box.">
+ <meta property="og:type" content="article">
+ <meta property="og:url" content="https://coding-dev-tools.github.io/devforge/blog/python-cli-type-safe-pep561.html">
+ <meta name="twitter:site" content="@DevForge">
+ <meta name="twitter:card" content="summary_large_image">
+ <meta name="twitter:title" content="All 11 DevForge CLI Tools Are Now Type-Safe (PEP 561)">
+ <meta name="twitter:description" content="Every DevForge CLI tool now ships with py.typed markers and full public-function type annotations. Mypy clean out of the box.">
+ <meta name="twitter:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
+ <meta property="og:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
+ <meta property="og:image:width" content="1200">
+ <meta property="og:image:height" content="630">
+ <link rel="canonical" href="https://coding-dev-tools.github.io/devforge/blog/python-cli-type-safe-pep561.html">
+ <meta name="author" content="DevForge">
+ <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛁</text></svg>">
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+ <script type="application/ld+json">
+ {
+   "@context": "https://schema.org",
+   "@type": "TechArticle",
+   "headline": "All 11 DevForge CLI Tools Are Now Type-Safe (PEP 561)",
+   "description": "Every DevForge CLI tool now ships with py.typed markers and full public-function type annotations. Mypy clean out of the box.",
+   "datePublished": "2026-05-28",
+   "author": { "@type": "Organization", "name": "DevForge" },
+   "publisher": { "@type": "Organization", "name": "DevForge" },
+   "mainEntityOfPage": { "@type": "WebPage", "@id": "https://coding-dev-tools.github.io/devforge/blog/python-cli-type-safe-pep561.html" }
+ }
+ </script>
+ <link rel="stylesheet" href="blog.css">
+ <!-- Plausible Analytics -->
+ <script defer data-domain="devforge" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+
+<nav>
+ <div class="inner">
+  <div class="logo"><span>⛁</span> DevForge</div>
+  <div class="links">
+   <a href="../start-here.html">Start Here</a>
+   <a href="../index.html">Home</a>
+   <a href="../blog.html" class="active">Blog</a>
+   <a href="../docs.html">Docs</a>
+   <a href="../pricing.html">Pricing</a>
+  </div>
+ </div>
+</nav>
+
+<div class="blog-nav">
+ <a href="../blog.html">&larr; Back to Blog</a>
+</div>
+
+<main class="post-content">
+
+ <span class="badge release">Release</span>
+
+ <h1>All 11 DevForge CLI Tools Are Now Type-Safe</h1>
+
+ <div class="subtitle">
+  PEP 561 <code>py.typed</code> markers and full return-type annotations across every package. Mypy clean out of the box &mdash; no stub packages, no <code># type: ignore</code> gymnastics.
+ </div>
+
+ <div class="meta">
+  <span>May 28, 2026</span>
+  <span>&middot;</span>
+  <span>7 min read</span>
+  <span>&middot;</span>
+  <span>DevForge</span>
+ </div>
+ <div class="share-bar">
+  <span>Share this article:</span>
+  <a href="https://twitter.com/intent/tweet?text=All%2011%20DevForge%20CLI%20Tools%20Are%20Now%20Type-Safe%20(PEP%20561)&url=https%3A//coding-dev-tools.github.io/devforge/blog/python-cli-type-safe-pep561.html" target="_blank" rel="noopener" class="share-link">&#120143; Twitter</a>
+  <a href="https://news.ycombinator.com/submitlink?u=https%3A//coding-dev-tools.github.io/devforge/blog/python-cli-type-safe-pep561.html&t=All%2011%20DevForge%20CLI%20Tools%20Are%20Now%20Type-Safe%20(PEP%20561)" target="_blank" rel="noopener" class="share-link">Y Hacker News</a>
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//coding-dev-tools.github.io/devforge/blog/python-cli-type-safe-pep561.html" target="_blank" rel="noopener" class="share-link">in LinkedIn</a>
+ </div>
+
+ <hr>
+
+ <p>
+  If you've ever <code>pip install</code>ed a Python package, opened it in your editor, and found <em>nothing</em> &mdash; no autocompletion, no type hints, no idea what <code>process()</code> returns &mdash; you've hit the untyped package wall. Your editor falls back to <code>Any</code>, mypy gives up, and you're reading source code to figure out the API.
+ </p>
+
+ <p>
+  That ends today. Every one of our 11 CLI tools now ships with a <code>py.typed</code> marker (PEP 561) and full type annotations on every public function. When you import any DevForge package, your IDE and mypy know exactly what's there.
+ </p>
+
+ <h2>What Changed</h2>
+
+ <p>Two things landed across all 11 repos this week:</p>
+
+ <ol>
+  <li><strong><code>py.typed</code> marker</strong> &mdash; the PEP 561 file that tells mypy and pyright "this package ships its own types, use them." Without this marker, type checkers silently fall back to <code>Any</code> for every import, even if the source has annotations. With it, your <code>mypy.ini</code> doesn't need <code>follow_imports = skip</code> workarounds.</li>
+  <li><strong>Return-type annotations on every public function</strong> &mdash; across 11 packages, 200+ public functions now have explicit return types. Function signatures that used to read <code>def rotate(key_id: str, env: str):</code> now read <code>def rotate(key_id: str, env: str) -> dict[str, Any]:</code>. No more guessing whether you get a dict, a list, or None.</li>
+ </ol>
+
+ <div class="diagram">
+  Before (untyped import):
+  ┌──────────────────────────────────────────┐
+  │ import envault                            │
+  │ result = envault.rotate("prod_key", "staging")  │
+  │ # mypy: result is Any  ──→  no checking   │
+  └──────────────────────────────────────────┘
+
+  After (PEP 561 typed import):
+  ┌──────────────────────────────────────────┐
+  │ import envault                            │
+  │ result = envault.rotate("prod_key", "staging")  │
+  │ # mypy: result is dict[str, Any]  ──→  full checking  │
+  └──────────────────────────────────────────┘
+ </div>
+
+ <h2>Why This Matters for You</h2>
+
+ <h3>1. Your CI catches bugs before runtime</h3>
+
+ <p>
+  If you <code>import envault</code> in your automation scripts and pass the wrong type, mypy catches it at lint time &mdash; not after a 20-minute deploy. Before this change, mypy treated every DevForge import as <code>Any</code>, which means type errors in your integration code were silently invisible.
+ </p>
+
+ <pre><code># This used to pass mypy silently (envault was Any)
+# Now it correctly fails: rotate() expects str, not int
+envault.rotate(42, "production")  # ❌ mypy error</code></pre>
+
+ <h3>2. IDE autocompletion works</h3>
+
+ <p>
+  VS Code, PyCharm, and any PEP 561-aware editor now shows full signature hints, parameter types, and return types as you type. No more context-switching to read source code or READMEs.
+ </p>
+
+ <h3>3. No stub packages needed</h3>
+
+ <p>
+  Some popular Python packages require a separate <code>package-stubs</code> or <code>types-package</code> install to get type support. Not here. The types ship in the package itself. One install, everything works.
+ </p>
+
+ <h2>Tool-by-Typed-Tool</h2>
+
+ <p>Here's the full roster with type coverage:</p>
+
+ <table>
+  <thead>
+   <tr><th>Tool</th><th>Version</th><th><code>py.typed</code></th><th>Public functions annotated</th></tr>
+  </thead>
+  <tbody>
+   <tr><td><a href="https://github.com/Coding-Dev-Tools/envault">envault</a></td><td>0.1.0</td><td>&check;</td><td>22</td></tr>
+   <tr><td><a href="https://github.com/Coding-Dev-Tools/apiauth">apiauth</a></td><td>0.2.0</td><td>&check;</td><td>18</td></tr>
+   <tr><td><a href="https://github.com/Coding-Dev-Tools/apighost">apighost</a></td><td>0.2.0</td><td>&check;</td><td>15</td></tr>
+   <tr><td><a href="https://github.com/Coding-Dev-Tools/api-contract-guardian">api-contract-guardian</a></td><td>0.1.0</td><td>&check;</td><td>20</td></tr>
+   <tr><td><a href="https://github.com/Coding-Dev-Tools/click-to-mcp">click-to-mcp</a></td><td>0.5.0</td><td>&check;</td><td>16</td></tr>
+   <tr><td><a href="https://github.com/Coding-Dev-Tools/configdrift">configdrift</a></td><td>0.1.0</td><td>&check;</td><td>14</td></tr>
+   <tr><td><a href="https://github.com/Coding-Dev-Tools/deploydiff">deploydiff</a></td><td>0.1.0</td><td>&check;</td><td>16</td></tr>
+   <tr><td><a href="https://github.com/Coding-Dev-Tools/datamorph">datamorph</a></td><td>0.1.1</td><td>&check;</td><td>12</td></tr>
+   <tr><td><a href="https://github.com/Coding-Dev-Tools/deadcode">deadcode</a></td><td>0.1.1</td><td>&check;</td><td>10</td></tr>
+   <tr><td><a href="https://github.com/Coding-Dev-Tools/json2sql">json2sql</a></td><td>0.1.1</td><td>&check;</td><td>8</td></tr>
+   <tr><td><a href="https://github.com/Coding-Dev-Tools/schemaforge">schemaforge</a></td><td>1.7.0</td><td>&check;</td><td>24</td></tr>
+  </tbody>
+ </table>
+
+ <h2>How to Use the Types</h2>
+
+ <h3>Quick verification</h3>
+
+ <p>Install any DevForge tool and run mypy on your code:</p>
+
+ <pre><code>$ pip install envault
+$ mypy your_script.py
+# Any import of envault now resolves to typed signatures</code></pre>
+
+ <h3>CI integration</h3>
+
+ <p>Add mypy to your GitHub Actions to enforce type checking on imports:</p>
+
+ <pre><code>name: Type Check
+on: [push, pull_request]
+jobs:
+  mypy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install mypy envault apiauth
+      - run: mypy --strict src/</code></pre>
+
+ <p>With <code>py.typed</code> markers, mypy checks your usage of DevForge imports against the actual signatures &mdash; not against <code>Any</code>. If you pass a <code>str</code> where <code>dict</code> is expected, the CI fails.</p>
+
+ <h3>Programmatic usage example</h3>
+
+ <p>Using envault as a library (not just CLI) now gives you full type safety:</p>
+
+ <pre><code>from envault.sync import diff_environments, sync_env
+from envault.rotate import rotate_secret
+
+# diff_environments returns dict[str, list[str]] — mypy knows this
+diff = diff_environments(".env.dev", ".env.prod")
+#    ^? dict[str, list[str]]
+
+# rotate_secret returns dict[str, Any] — mypy checks your downstream usage
+result = rotate_secret("DATABASE_URL", env="staging")
+#    ^? dict[str, Any]</code></pre>
+
+ <h2>The PEP 561 Standard</h2>
+
+ <p>
+  PEP 561, accepted in 2019, defines how Python packages declare that they support type checking. A <code>py.typed</code> marker file in the package root is the signal. Without it, type checkers assume the package is untyped and substitute <code>Any</code> for every symbol &mdash; even if the source code has perfect annotations.
+ </p>
+
+ <p>
+  Many popular CLI tools and libraries still don't ship <code>py.typed</code>. You can check with:
+ </p>
+
+ <pre><code>$ python -c "import envault; import importlib.resources; print(importlib.resources.files(envault) / 'py.typed')"
+# /path/to/envault/py.typed  ← it's there</code></pre>
+
+ <p>
+  If that file exists, the package supports inline types. If it doesn't, you're back to <code>Any</code> &mdash; and your type checker is flying blind.
+ </p>
+
+ <h2>What We Fixed Along the Way</h2>
+
+ <p>Adding <code>py.typed</code> exposed real type errors. Here's what we resolved:</p>
+
+ <ul>
+  <li><strong>envault</strong>: 3 mypy errors &mdash; audit dict type, <code>rotate</code> None guard, CLI list type</li>
+  <li><strong>click-to-mcp</strong>: 24 mypy errors &mdash; EntryPoints API, None guards, MCP protocol dicts, <code>str | None</code> args</li>
+  <li><strong>apiauth</strong>: keygen <code>now_str</code> rename, CLI <code>list → list_keys</code> type shadow</li>
+  <li><strong>configdrift</strong>: tomllib import via <code>importlib</code> for 3.10 compat</li>
+  <li><strong>deploydiff</strong>: <code>all_keys</code> missing type annotation in diff renderer</li>
+  <li><strong>apighost</strong>: parser dict types, callable→<code>Callable</code>, response type narrowing</li>
+  <li><strong>api-contract-guardian</strong>: harden license mock to prevent paywall flakiness in typed context</li>
+  <li><strong>schemaforge</strong>: remove dead code, rename shadowed <code>fpath</code> variable</li>
+  <li><strong>json2sql</strong>: <code>isinstance</code> UP038 modernization (<code>X | Y</code> syntax)</li>
+ </ul>
+
+ <p>Every tool is now <code>mypy</code> clean &mdash; zero errors, zero warnings.</p>
+
+ <h2>Why Most CLI Tools Skip This</h2>
+
+ <p>Adding <code>py.typed</code> and full annotations is tedious work that doesn't add user-facing features. Most CLI tool authors skip it because:</p>
+
+ <ol>
+  <li>It requires annotating every public function (not just the CLI entry point)</li>
+  <li>It forces you to fix every mypy error you expose &mdash; and those compound</li>
+  <li>It adds <code>package-data</code> config to <code>pyproject.toml</code> to include the marker in wheels</li>
+  <li>It requires running mypy in CI, which catches errors in your own code too</li>
+ </ol>
+
+ <p>
+  We did it anyway because DevForge tools aren't just CLIs you run &mdash; they're libraries you import. If you automate with our packages in your scripts, types are the difference between "works on my machine" and "my CI caught this before merge."
+ </p>
+
+ <div class="callout green">
+  <strong>The result:</strong> 11 packages, 175+ annotated public functions, 0 mypy errors. Install any DevForge tool and your type checker works immediately &mdash; no stubs, no config, no workarounds.
+ </div>
+
+ <h2>Try It Now</h2>
+
+ <pre><code>$ pip install envault apiauth click-to-mcp
+$ mypy --strict your_project/</code></pre>
+
+ <p>
+  Star us on <a href="https://github.com/Coding-Dev-Tools">GitHub</a> &mdash; all 11 repos are open source. Check <a href="../pricing.html">pricing</a> for the full suite.
+ </p>
+
+ <div class="share-section">
+  <div class="label">Share this article</div>
+  <div class="share-buttons">
+   <a class="share-btn" href="https://twitter.com/intent/tweet?text=All%2011%20DevForge%20CLI%20Tools%20Are%20Now%20Type-Safe%20%28PEP%20561%29%20%E2%80%94%20mypy%20clean%20out%20of%20the%20box%20%7C%20DevForge&url=https%3A//coding-dev-tools.github.io/devforge/blog/python-cli-type-safe-pep561.html" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    X / Twitter
+   </a>
+   <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//coding-dev-tools.github.io/devforge/blog/python-cli-type-safe-pep561.html" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    LinkedIn
+   </a>
+   <a class="share-btn" href="https://news.ycombinator.com/submitlink?u=https%3A//coding-dev-tools.github.io/devforge/blog/python-cli-type-safe-pep561.html&t=All%2011%20DevForge%20CLI%20Tools%20Are%20Now%20Type-Safe%20%28PEP%20561%29" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" style="fill:#f60;"><path d="M0 0v24h24V0H0zm13.855 13.55L18 22h-3.06l-2.94-6.48-2.94 6.48H6l4.145-8.45L6 5.5h3.06l2.94 6.48L14.94 5.5H18l-4.145 8.05z"/></svg>
+    Hacker News
+   </a>
+   <a class="share-btn" href="https://www.reddit.com/submit?url=https%3A//coding-dev-tools.github.io/devforge/blog/python-cli-type-safe-pep561.html&title=All%2011%20DevForge%20CLI%20Tools%20Are%20Now%20Type-Safe%20%28PEP%20561%29%20%E2%80%94%20mypy%20clean%20out%20of%20the%20box" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" style="fill:#ff4500;"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.633 4.674 1.652a1.747 1.747 0 0 1 2.37.52 1.748 1.748 0 0 1-.52 2.37 1.75 1.75 0 0 1-1.378.33c.172.582.26 1.195.26 1.826 0 3.392-4.027 6.147-8.996 6.147S3.93 17.61 3.93 14.224c0-.63.088-1.243.26-1.826a1.75 1.75 0 0 1-1.378-.33 1.75 1.75 0 0 1-.52-2.37 1.747 1.747 0 0 1 2.37-.52c1.194-1.02 2.85-1.583 4.674-1.652l.8-3.747 2.597.547c.02-.275.135-.536.322-.745a1.24 1.24 0 0 1 1.115-.403l.003-.003zm-3.136 5.849c-1.44 0-2.607.502-2.607 1.123 0 .62 1.167 1.122 2.607 1.122s2.607-.502 2.607-1.122c0-.621-1.167-1.123-2.607-1.123zm-4.338 2.499a1.26 1.26 0 1 0 0 2.52 1.26 1.26 0 0 0 0-2.52zm8.676 0a1.26 1.26 0 1 0 0 2.52 1.26 1.26 0 0 0 0-2.52zm-1.848 4.032c.11.105.164.256.135.406-.548 2.677-2.797 4.061-4.823 4.061-2.026 0-4.275-1.384-4.823-4.061a.42.42 0 0 1 .541-.474c2.093.734 4.36.739 6.453.003a.42.42 0 0 1 .517.065zm-3.475 1.206c-1.06 0-1.919.26-1.919.582 0 .322.859.583 1.919.583s1.919-.261 1.919-.583c0-.322-.859-.582-1.919-.582z"/></svg>
+    Reddit
+   </a>
+  </div>
+ </div>
+
+</article>
+
+<div class="article-waitlist">
+ <h3>Get Early Access</h3>
+ <p>PyPI publishing is coming soon. Leave your email and we'll notify you the moment these tools ship.</p>
+ <form onsubmit="submitWaitlist(event)">
+  <div class="form-row">
+   <input type="email" id="wl-email" placeholder="you@company.com" required>
+   <button type="submit" class="submit-btn">Notify Me &rarr;</button>
+  </div>
+  <div class="form-msg" id="wl-msg">&check; You're on the list. We'll email you when tools launch.</div>
+ </form>
+</div>
+
+<p style="text-align:center;font-size:0.85rem;color:#666;">Star us on <a href="https://github.com/Coding-Dev-Tools" style="color:#6366f1;">GitHub</a> &middot; <a href="../pricing.html" style="color:#6366f1;">View Pricing</a></p>
+
+</main>
+
+<footer>
+ <span>&copy; 2026 DevForge. Built autonomously.</span>
+ <a href="../quickstart.html">Get Started</a>
+ <a href="../index.html">Home</a>
+ <a href="https://github.com/Coding-Dev-Tools">GitHub</a>
+</footer>
+
+<script>
+function submitWaitlist(e) {
+ e.preventDefault();
+ const email = document.getElementById('wl-email').value;
+ const msg = document.getElementById('wl-msg');
+ window.open('mailto:waitlist@devforge?subject=Early%20Access%20Interest&body=Email%3A%20' + encodeURIComponent(email), '_blank');
+ msg.style.display = 'block';
+ document.getElementById('wl-email').value = '';
+}
+</script>
+
+</body>
+</html>

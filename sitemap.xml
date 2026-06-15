@@ -54,12 +54,12 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
-  <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/10-cli-tools-zero-human-developers.html</loc>
-    <lastmod>2026-05-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+<url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/apicontractguardian-vs-oasdiff-vs-optic-vs-openapi-diff.html</loc>
+ <lastmod>2026-05-17</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+</url>
   <url>
     <loc>https://coding-dev-tools.github.io/devforge/blog/ai-built-cli-tools-zero-humans.html</loc>
     <lastmod>2026-05-17</lastmod>
@@ -181,13 +181,19 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/schemaforge-v1-7-0-vscode-extension.html</loc>
-    <lastmod>2026-05-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://coding-dev-tools.github.io/devforge/blog/stop-breaking-production.html</loc>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/schemaforge-v1-7-0-vscode-extension.html</loc>
+ <lastmod>2026-05-17</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+ </url>
+ <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/schemaforge-vs-prisma-migrate-vs-alembic-vs-atlas.html</loc>
+ <lastmod>2026-05-28</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.7</priority>
+ </url>
+ <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/stop-breaking-production.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -270,11 +276,179 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-    <url>
-        <loc>https://coding-dev-tools.github.io/devforge/blog/mcp-everywhere-why-your-cli-tools-need-it.html</loc>
-        <lastmod>2026-05-17</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
+ <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/mcp-everywhere-why-your-cli-tools-need-it.html</loc>
+ <lastmod>2026-05-17</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.7</priority>
+ </url>
+ <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/python-cli-type-safe-pep561.html</loc>
+ <lastmod>2026-05-28</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.7</priority>
+ </url>
+ <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/envault-serve-http-api-secrets.html</loc>
+ <lastmod>2026-05-28</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+ </url>
+ <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/monetize-mcp-servers-x402-mpp.html</loc>
+ <lastmod>2026-05-27</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+ </url>
+ <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/envault-vs-doppler-vs-infisical-vs-dotenv-vault.html</loc>
+ <lastmod>2026-05-27</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+ </url>
+ <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/envault-apiauth-rotate-keys-across-environments.html</loc>
+ <lastmod>2026-05-27</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+ </url>
+ <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/cli-tools-as-mcp-servers.html</loc>
+ <lastmod>2026-05-19</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+ </url>
+ <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/configdrift-ci-cd-gating-before-deploy.html</loc>
+ <lastmod>2026-05-27</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+ </url>
+ <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/configdrift-vs-driftctl-vs-terraform-plan-vs-checkov.html</loc>
+ <lastmod>2026-05-27</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+ </url>
+ <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/deadcode-fail-ci-on-dead-code.html</loc>
+ <lastmod>2026-05-27</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+ </url>
+ <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/deadcode-vs-knip-vs-ts-prune-vs-eslint.html</loc>
+ <lastmod>2026-05-27</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+ </url>
+ <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/deploydiff-preview-infrastructure-changes-before-apply.html</loc>
+ <lastmod>2026-05-27</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+ </url>
+ <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/deploydiff-rollback-commands-terraform-cloudformation.html</loc>
+ <lastmod>2026-05-27</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+ </url>
+ <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/deploydiff-vs-terraform-plan-vs-pulumi-preview-vs-infracost.html</loc>
+ <lastmod>2026-05-27</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+ </url>
+ <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/datamorph-data-conversion-batch-processing.html</loc>
+ <lastmod>2026-05-27</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+ </url>
+ <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/datamorph-validate-data-schema-ci-pipeline.html</loc>
+ <lastmod>2026-05-27</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+ </url>
+ <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/datamorph-vs-pandas-vs-nifi-vs-aws-glue.html</loc>
+ <lastmod>2026-05-27</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+ </url>
+ <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/apiauth-audit-api-credentials-catch-expired-revoked-keys.html</loc>
+ <lastmod>2026-05-27</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+ </url>
+ <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/apiauth-verify-api-keys-runtime-import-revocation.html</loc>
+ <lastmod>2026-05-27</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+ </url>
+ <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/apiauth-vs-dotenv-vs-aws-secrets-manager-vs-vault.html</loc>
+ <lastmod>2026-05-27</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+ </url>
+ <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/apiauth-zero-downtime-key-rotation-cicd.html</loc>
+ <lastmod>2026-05-27</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+ </url>
+ <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/apicontractguardian-ci-cd-gating-breaking-api-changes.html</loc>
+ <lastmod>2026-05-28</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+</url>
+<url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/apicontractguardian-generate-api-migration-guides.html</loc>
+ <lastmod>2026-05-27</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+ </url>
+ <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/apighost-openapi-mock-server-60-seconds.html</loc>
+ <lastmod>2026-05-27</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+ </url>
+ <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/apighost-vs-prism-vs-wiremock-vs-mockoon.html</loc>
+ <lastmod>2026-05-27</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+ </url>
+ <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/json2sql-generate-create-table-from-json-schema-first.html</loc>
+ <lastmod>2026-05-27</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+ </url>
+ <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/json2sql-nested-json-relational-tables.html</loc>
+ <lastmod>2026-05-27</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+ </url>
+ <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/json2sql-vs-papa-parse-vs-aws-dms-vs-airbyte.html</loc>
+ <lastmod>2026-05-27</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+ </url>
+ <url>
+ <loc>https://coding-dev-tools.github.io/devforge/blog/traction-hits-680-developers.html</loc>
+ <lastmod>2026-05-17</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+ </url>
 </urlset>
 

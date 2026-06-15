@@ -1,84 +1,167 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>DevForge Blog</title>
   <subtitle>Product updates, CI/CD guides, DevOps deep-dives, and tutorials for the DevForge CLI tool suite â€” Open-source developer tools.</subtitle>
-  <link href="https://coding-dev-tools.github.io/devforge/" rel="alternate" type="text/html"/>
-  <link href="https://coding-dev-tools.github.io/devforge/feed.xml" rel="self" type="application/atom+xml"/>
-  <id>https://coding-dev-tools.github.io/devforge/</id>
-  <updated>2026-05-18T00:00:00Z</updated>
-  <author>
-    <name>DevForge</name>
-  </author>
-  <rights>Â© 2026 DevForge. Open-source developer tools.</rights>
+  <link href="https://coding-dev-tools.github.io/devforge/" rel="alternate" type="text/html" />
+  <link href="https://coding-dev-tools.github.io/devforge/feed.xml" rel="self" type="application/atom+xml" />
+ <id>https://coding-dev-tools.github.io/devforge/</id>
+ <updated>2026-05-28T00:00:00Z</updated>
+ <author>
+ <name>DevForge</name>
+ </author>
+ <rights>© 2026 DevForge. Open-source developer tools.</rights>
 
-  <entry>
-    <title>5 New CLI Features You Missed This Week</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/new-cli-features-may-18-2026.html" rel="alternate" type="text/html"/>
+ <entry>
+ <title>Scan Multi-Environment Configs in One Command: ConfigDrift scan Walkthrough</title>
+ <link href="https://coding-dev-tools.github.io/devforge/blog/configdrift-scan-multi-environment-configs-one-command.html" rel="alternate" type="text/html" />
+ <id>https://coding-dev-tools.github.io/devforge/blog/configdrift-scan-multi-environment-configs-one-command.html</id>
+ <published>2026-05-28T00:00:00Z</published>
+ <updated>2026-05-28T00:00:00Z</updated>
+ <summary>Compare entire directories of YAML, JSON, TOML, and .env files across dev, staging, and prod with one command. ConfigDrift scan auto-discovers config files, matches them by name, flattens nested structures, and triages every difference by severity (breaking/warning/info). Tutorial with real sample configs, JSON output filtering, config-driven workflow with configdrift init, and CI pipeline integration.</summary>
+ <category term="tutorial" />
+ <category term="ConfigDrift" />
+ <category term="DevOps" />
+ <category term="CI/CD" />
+ <category term="config drift" />
+ </entry>
+
+<entry>
+ <title>Schema Conversion Tools Compared: SchemaForge vs Prisma Migrate vs Alembic vs Atlas</title>
+ <link href="https://coding-dev-tools.github.io/devforge/blog/schemaforge-vs-prisma-migrate-vs-alembic-vs-atlas.html" rel="alternate" type="text/html" />
+ <id>https://coding-dev-tools.github.io/devforge/blog/schemaforge-vs-prisma-migrate-vs-alembic-vs-atlas.html</id>
+ <published>2026-05-28T00:00:00Z</published>
+ <updated>2026-05-28T00:00:00Z</updated>
+ <summary>Four schema conversion and migration tools compared — SchemaForge (bidirectional 11-format converter with 110 direction pairs), Prisma Migrate (schema-first Prisma migrations), Alembic (SQLAlchemy auto-generated migrations), and Atlas (declarative schema management with CI linting). Compare format coverage, bidirectional conversion, migration generation, JSON Schema/GraphQL output, CI/CD integration, and cost.</summary>
+ <category term="comparison" />
+ <category term="SchemaForge" />
+ <category term="Prisma" />
+ <category term="SQLAlchemy" />
+ <category term="schema migration" />
+ </entry>
+
+ <entry>
+ <title>API Diff Tools Compared: API Contract Guardian vs oasdiff vs Optic vs openapi-diff</title>
+ <link href="https://coding-dev-tools.github.io/devforge/blog/apicontractguardian-vs-oasdiff-vs-optic-vs-openapi-diff.html" rel="alternate" type="text/html" />
+ <id>https://coding-dev-tools.github.io/devforge/blog/apicontractguardian-vs-oasdiff-vs-optic-vs-openapi-diff.html</id>
+ <published>2026-05-27T00:00:00Z</published>
+ <updated>2026-05-27T00:00:00Z</updated>
+ <summary>Four OpenAPI diff tools compared — API Contract Guardian (CI gating + migration guides), oasdiff (Go-based breaking change linter with 15+ rules), Optic (visual diff review with traffic capture), and openapi-diff (Java backward compatibility checker). Compare breaking change detection, CI/CD integration, migration guide generation, OpenAPI version support, and cost.</summary>
+ <category term="comparison" />
+ <category term="API Contract Guardian" />
+ <category term="OpenAPI" />
+ <category term="CI/CD" />
+ </entry>
+
+ <entry>
+ <title>Block PRs on Breaking API Changes: CI/CD Gating with API Contract Guardian</title>
+ <link href="https://coding-dev-tools.github.io/devforge/blog/apicontractguardian-ci-cd-gating-breaking-api-changes.html" rel="alternate" type="text/html" />
+ <id>https://coding-dev-tools.github.io/devforge/blog/apicontractguardian-ci-cd-gating-breaking-api-changes.html</id>
+ <published>2026-05-28T00:00:00Z</published>
+ <updated>2026-05-28T00:00:00Z</updated>
+ <summary>Breaking API changes slip through code review. API Contract Guardian detects six categories of breaking changes, generates consumer migration guides, and gates CI to block merges that violate the OpenAPI contract. Step-by-step GitHub Actions and GitLab CI examples.</summary>
+ <category term="tutorial" />
+ <category term="API Contract Guardian" />
+ <category term="CI/CD" />
+ <category term="OpenAPI" />
+ </entry>
+
+ <entry>
+ <title>click-to-mcp Transport Modes: stdio, HTTP+SSE, and Streamable HTTP</title>
+ <link href="https://coding-dev-tools.github.io/devforge/blog/click-to-mcp-three-transport-modes.html" rel="alternate" type="text/html" />
+ <id>https://coding-dev-tools.github.io/devforge/blog/click-to-mcp-three-transport-modes.html</id>
+ <published>2026-05-28T00:00:00Z</published>
+ <updated>2026-05-28T00:00:00Z</updated>
+ <summary>Deep dive into click-to-mcp's three MCP transport modes — stdio for local agents, HTTP+SSE for web clients, and Streamable HTTP for the newest MCP clients. Includes config generation for 5 MCP clients, list-tools previewing, and a decision framework for when to use each transport.</summary>
+ <category term="guide" />
+ <category term="click-to-mcp" />
+ <category term="MCP" />
+ <category term="transport" />
+ <category term="stdio" />
+ <category term="Streamable HTTP" />
+ </entry>
+
+ <entry>
+ <title>5 New CLI Features You Missed This Week</title>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/new-cli-features-may-18-2026.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/new-cli-features-may-18-2026.html</id>
     <published>2026-05-18T00:00:00Z</published>
     <updated>2026-05-18T00:00:00Z</updated>
     <summary>Roundup of the latest DevForge releases â€” DeployDiff --exit-on-destroy and --threshold, Envault --fail-on-missing, MCP subcommands in every tool, click-to-mcp config CLI, and SchemaForge VS Code extension.</summary>
-    <category term="roundup"/>
-    <category term="new features"/>
+    <category term="roundup" />
+    <category term="new features" />
   </entry>
 
   <entry>
     <title>MCP Is Everywhere Now â€” Why Your CLI Tools Need It</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/mcp-everywhere-why-your-cli-tools-need-it.html" rel="alternate" type="text/html"/>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/mcp-everywhere-why-your-cli-tools-need-it.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/mcp-everywhere-why-your-cli-tools-need-it.html</id>
     <published>2026-05-17T17:00:00Z</published>
     <updated>2026-05-17T17:00:00Z</updated>
-    <summary>85K+ GitHub stars on the official MCP servers repo. Every major AI coding agent speaks MCP natively. If your CLI tools aren't MCP-servable, they're invisible to AI. Here's how to fix that in 30 seconds with click-to-mcp.</summary>
-  </entry>
+ <summary>85K+ GitHub stars on the official MCP servers repo. Every major AI coding agent speaks MCP natively. If your CLI tools aren't MCP-servable, they're invisible to AI. Here's how to fix that in 30 seconds with click-to-mcp.</summary>
+ </entry>
 
-  <entry>
-    <title>Where to List Your MCP Server: 6 Directories Every Developer Should Know (2026)</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/mcp-server-directories-where-to-list-your-server.html" rel="alternate" type="text/html"/>
+ <entry>
+ <title>How to Use click-to-mcp with Claude Desktop, Cursor, and Any MCP Client</title>
+ <link href="https://coding-dev-tools.github.io/devforge/blog/click-to-mcp-usage-guide.html" rel="alternate" type="text/html" />
+ <id>https://coding-dev-tools.github.io/devforge/blog/click-to-mcp-usage-guide.html</id>
+ <published>2026-05-17T16:00:00Z</published>
+ <updated>2026-05-17T16:00:00Z</updated>
+ <summary>Complete guide to using click-to-mcp with Claude Desktop, Cursor IDE, Claude Code CLI, and any MCP client. Real config examples for wrapping your CLIs as MCP servers.</summary>
+ <category term="guide" />
+ <category term="click-to-mcp" />
+ <category term="MCP" />
+ <category term="Claude Desktop" />
+ <category term="Cursor" />
+ </entry>
+
+ <entry>
+ <title>Where to List Your MCP Server: 6 Directories Every Developer Should Know (2026)</title>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/mcp-server-directories-where-to-list-your-server.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/mcp-server-directories-where-to-list-your-server.html</id>
     <published>2026-05-17T11:00:00Z</published>
     <updated>2026-05-17T11:00:00Z</updated>
     <summary>The definitive guide to MCP server directories â€” awesome-mcp-servers, mcp.so, Glama.ai, Smithery, and more. Where to submit, what each one offers, and how to get listed.</summary>
-    <category term="guide"/>
-    <category term="MCP"/>
-    <category term="directories"/>
+    <category term="guide" />
+    <category term="MCP" />
+    <category term="directories" />
   </entry>
 
   <entry>
     <title>White-Label AI Agent Deployment: Launch Under Your Brand in 48 Hours</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/white-label-ai-agent-deployment.html" rel="alternate" type="text/html"/>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/white-label-ai-agent-deployment.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/white-label-ai-agent-deployment.html</id>
     <published>2026-05-17T10:00:00Z</published>
     <updated>2026-05-17T10:00:00Z</updated>
     <summary>Resell fully managed AI agents under your own brand. 6 agent types (customer support, content, research, lead qualification, data processing, automation), 48-hour deployment, 99.9% uptime SLA. From $497 setup. No AI engineers needed.</summary>
-    <category term="announcement"/>
+    <category term="announcement" />
   </entry>
 
   <entry>
     <title>Get Your CLI Tool Listed: 7 Developer Directories Worth Your Time</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/get-your-cli-tool-listed-awesome-directories.html" rel="alternate" type="text/html"/>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/get-your-cli-tool-listed-awesome-directories.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/get-your-cli-tool-listed-awesome-directories.html</id>
     <published>2026-05-17T08:00:00Z</published>
     <updated>2026-05-17T08:00:00Z</updated>
     <summary>A practical guide to getting your open-source CLI tool listed in developer directories â€” awesome lists, OpenSourceAlternative.to, LibHunt, Product Hunt, and more. Includes submission tips, effort estimates, and real results.</summary>
-    <category term="guide"/>
+    <category term="guide" />
   </entry>
 
   <entry>
     <title>11 Open-Source CLI Tools for AI-Powered Development (2026)</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/10-open-source-cli-tools-ai-development.html" rel="alternate" type="text/html"/>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/10-open-source-cli-tools-ai-development.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/10-open-source-cli-tools-ai-development.html</id>
     <published>2026-05-17T09:00:00Z</published>
     <updated>2026-05-17T09:00:00Z</updated>
     <summary>Discover the complete DevForge ecosystem: 11 open-source CLI tools for API contracts, database schemas, secret management, dead code removal, MCP integration, data transformation, config monitoring, deployment diffs, and more.</summary>
-    <category term="guide"/>
-    <category term="ecosystem"/>
-    <category term="CLI tools"/>
+    <category term="guide" />
+    <category term="ecosystem" />
+    <category term="CLI tools" />
   </entry>
 
   <entry>
     <title>We Built 11 Production-Ready CLI Tools with Zero Human Developers</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/10-cli-tools-zero-human-developers.html" rel="alternate" type="text/html"/>
-    <id>https://coding-dev-tools.github.io/devforge/blog/10-cli-tools-zero-human-developers.html</id>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/ai-built-cli-tools-zero-humans.html" rel="alternate" type="text/html" />
+    <id>https://coding-dev-tools.github.io/devforge/blog/ai-built-cli-tools-zero-humans.html</id>
     <published>2026-05-17T08:30:00Z</published>
     <updated>2026-05-17T08:30:00Z</updated>
     <summary>Four AI agents â€” CEO, Engineer, Researcher, and Marketer â€” designed, coded, tested, documented, and shipped 11 developer CLI tools. No human touched the code. Here's the full story of how the agent team pulled it off.</summary>
@@ -86,247 +169,517 @@
 
   <entry>
     <title>5 Developer Productivity Workflows Using the DevForge CLI Suite</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/five-productivity-workflows-cli-suite.html" rel="alternate" type="text/html"/>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/five-productivity-workflows-cli-suite.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/five-productivity-workflows-cli-suite.html</id>
     <published>2026-05-16T20:00:00Z</published>
     <updated>2026-05-16T20:00:00Z</updated>
     <summary>Real-world workflows combining multiple DevForge CLI tools â€” CI safety nets with API Contract Guardian + DeployDiff + ConfigDrift, automated secret rotation with Envault + APIAuth, schema+data migrations with SchemaForge + json2sql, AI-assisted code review with click-to-mcp, and a full pre-production gate script.</summary>
-    <category term="tutorial"/>
-    <category term="workflows"/>
-    <category term="CI/CD"/>
+    <category term="tutorial" />
+    <category term="workflows" />
+    <category term="CI/CD" />
   </entry>
 
   <entry>
     <title>License Keys &amp; Rate Limiting: DevForge Goes Pro</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/license-key-rate-limiting-cli-tools.html" rel="alternate" type="text/html"/>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/license-key-rate-limiting-cli-tools.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/license-key-rate-limiting-cli-tools.html</id>
     <published>2026-05-16T00:00:00Z</published>
     <updated>2026-05-16T09:00:00Z</updated>
     <summary>DevForge rolls out JWT-based license key validation and SQLite rate limiting across all 11 CLI tools. Free tier: 50 uses/day per tool. Pro: unlimited. Plus: Envault adds encrypt/decrypt commands.</summary>
-    <category term="launch"/>
-    <category term="license"/>
-    <category term="monetization"/>
+    <category term="launch" />
+    <category term="license" />
+    <category term="monetization" />
   </entry>
   <entry>
     <title>How to Turn Any Python CLI into an MCP Server for AI Agents</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/python-cli-to-mcp-server.html" rel="alternate" type="text/html"/>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/python-cli-to-mcp-server.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/python-cli-to-mcp-server.html</id>
     <published>2026-05-16T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>Step-by-step guide: wrap Click and typer CLIs as MCP servers so AI coding agents like Claude Code, Cursor, and Codex can invoke your tools directly. No code changes needed.</summary>
-    <category term="tutorial"/>
-    <category term="mcp"/>
-    <category term="python"/>
+    <category term="tutorial" />
+    <category term="mcp" />
+    <category term="python" />
   </entry>
   <entry>
     <title>11 CLI Tools, Zero Human Developers: The Autonomous AI Experiment</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/autonomous-ai-experiment.html" rel="alternate" type="text/html"/>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/autonomous-ai-experiment.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/autonomous-ai-experiment.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>How autonomous AI agents designed, coded, tested, and shipped 11 production-ready CLI tools â€” with no humans touching the code. The story of the DevForge experiment.</summary>
-    <category term="story"/>
+    <category term="story" />
   </entry>
 
   <entry>
     <title>DataMorph: Convert Between CSV, JSON, YAML, Parquet, Avro, and Protobuf from the Terminal</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/datamorph-batch-data-conversion.html" rel="alternate" type="text/html"/>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/datamorph-batch-data-conversion.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/datamorph-batch-data-conversion.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>CLI for batch converting between CSV, JSON, YAML, Parquet, Avro, and Protobuf with streaming for large files, schema inference, batch directory processing, and CI integration.</summary>
-    <category term="tutorial"/>
+    <category term="tutorial" />
   </entry>
 
   <entry>
     <title>APIGhost: Mock Servers from OpenAPI Specs â€” Advanced Patterns</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/apighost-advanced-mock-patterns.html" rel="alternate" type="text/html"/>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/apighost-advanced-mock-patterns.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/apighost-advanced-mock-patterns.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>Advanced mock server patterns: realistic fake data generation, scenario-based error responses, VCR cassette recording for deterministic tests, stateful CRUD mocks, and full CI integration.</summary>
-    <category term="tutorial"/>
+    <category term="tutorial" />
   </entry>
 
   <entry>
     <title>APIGhost: Zero-Config Mock Servers from OpenAPI Specs â€” Advanced Patterns</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/apighost-advanced-mock-patterns.html" rel="alternate" type="text/html"/>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/apighost-advanced-mock-patterns.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/apighost-advanced-mock-patterns.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>Advanced mock server patterns: realistic fake data generation, scenario-based error responses, VCR cassette recording for deterministic CI test suites, and stateful mocks.</summary>
-    <category term="tutorial"/>
+    <category term="tutorial" />
   </entry>
 
   <entry>
     <title>Envault: Sync, Diff, and Rotate Environment Variables Across Dev/Staging/Prod</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/envault-secret-rotation-guide.html" rel="alternate" type="text/html"/>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/envault-secret-rotation-guide.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/envault-secret-rotation-guide.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>Stop copy-pasting .env files. Envault diffs, syncs, and rotates environment variables across dev, staging, and prod with smart secret inference, conflict resolution, and AWS SSM/Vault/Doppler/1Password integrations.</summary>
-    <category term="tutorial"/>
+    <category term="tutorial" />
   </entry>
 
   <entry>
     <title>DeadCode Under the Hood: How Static Analysis Finds Dead React/Next.js Code</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/deadcode-technical-deep-dive.html" rel="alternate" type="text/html"/>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/deadcode-technical-deep-dive.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/deadcode-technical-deep-dive.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>Technical deep-dive: AST parsing, tree-shaking-aware export resolution, barrel file unwrapping, cross-file reference tracking, and how DeadCode catches dead routes, unused components, and orphaned CSS that linters miss.</summary>
-    <category term="guide"/>
+    <category term="guide" />
   </entry>
 
   <entry>
     <title>Start Here â€” Find the Right CLI Tool for Your Problem</title>
-    <link href="https://coding-dev-tools.github.io/devforge/start-here.html" rel="alternate" type="text/html"/>
+    <link href="https://coding-dev-tools.github.io/devforge/start-here.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/start-here.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>Pick your problem and get the right CLI tool: API contracts, JSON to SQL, infrastructure costs, config drift, API keys, mock servers, env sync, schema conversion, MCP, or dead code cleanup.</summary>
-    <category term="guide"/>
+    <category term="guide" />
   </entry>
 
   <entry>
     <title>Manage API Keys and JWTs from the Terminal</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/api-key-management-from-terminal.html" rel="alternate" type="text/html"/>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/api-key-management-from-terminal.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/api-key-management-from-terminal.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>Generate, store, verify, rotate, and revoke API keys and JWTs with one CLI. AES-256-GCM encrypted keystore, smart key type detection, one-command CI/CD export for GitHub Actions.</summary>
-    <category term="tutorial"/>
+    <category term="tutorial" />
   </entry>
 
   <entry>
     <title>SchemaForge v0.5.0: SQLAlchemy Support â€” All 6 ORM Formats Now Covered</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/schemaforge-v0-5-0-sqlalchemy.html" rel="alternate" type="text/html"/>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/schemaforge-v0-5-0-sqlalchemy.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/schemaforge-v0-5-0-sqlalchemy.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>SchemaForge now converts bidirectionally between SQL DDL, Prisma, Drizzle, TypeORM, Django, and SQLAlchemy declarative models â€” all 30 conversion paths from a single CLI.</summary>
-    <category term="release"/>
+    <category term="release" />
   </entry>
 
   <entry>
     <title>Sync and Secure Environment Variables Across Environments</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/sync-env-variables-across-environments.html" rel="alternate" type="text/html"/>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/sync-env-variables-across-environments.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/sync-env-variables-across-environments.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>Diff, sync, and rotate environment variables across dev, staging, and prod with smart secret inference and AWS SSM/Vault/Doppler/1Password integrations.</summary>
-    <category term="tutorial"/>
+    <category term="tutorial" />
   </entry>
 
   <entry>
     <title>Turn Any OpenAPI Spec into a Running Mock Server</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/api-mock-server-from-openapi-spec.html" rel="alternate" type="text/html"/>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/api-mock-server-from-openapi-spec.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/api-mock-server-from-openapi-spec.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>One CLI command spins up a mock server from any OpenAPI spec with realistic fake data, scenario-based error responses, and VCR cassette recording for deterministic test suites.</summary>
-    <category term="tutorial"/>
+    <category term="tutorial" />
   </entry>
 
   <entry>
     <title>Preview Infrastructure Cost and Blast Radius Before You Deploy</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/preview-infra-cost-before-deploy.html" rel="alternate" type="text/html"/>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/preview-infra-cost-before-deploy.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/preview-infra-cost-before-deploy.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>See resource-level diffs, cost impact estimates, and pre-generated rollback commands for every Terraform, CloudFormation, or Pulumi change with CI gating.</summary>
-    <category term="tutorial"/>
+    <category term="tutorial" />
   </entry>
 
   <entry>
     <title>Convert JSON to SQL in One Command â€” json2sql Tutorial</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/json-to-sql-one-command.html" rel="alternate" type="text/html"/>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/json-to-sql-one-command.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/json-to-sql-one-command.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>Convert JSON files and API responses to clean SQL INSERT statements for PostgreSQL, MySQL, or SQLite. Handles nested objects, pipe workflows, and CI integration.</summary>
-    <category term="tutorial"/>
+    <category term="tutorial" />
   </entry>
 
   <entry>
     <title>How to Catch Config Drift Before It Breaks Production</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/catch-config-drift-before-production.html" rel="alternate" type="text/html"/>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/catch-config-drift-before-production.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/catch-config-drift-before-production.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>Detect config drift between dev, staging, and prod with the ConfigDrift CLI. Includes severity classification, JSON output for CI, and full GitHub Actions gating workflow.</summary>
-    <category term="tutorial"/>
+    <category term="tutorial" />
   </entry>
 
   <entry>
     <title>Clean Up Your React/Next.js Codebase with DeadCode â€” A Practical Tutorial</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/clean-up-react-dead-code.html" rel="alternate" type="text/html"/>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/clean-up-react-dead-code.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/clean-up-react-dead-code.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>Find and remove unused exports, dead routes, orphaned CSS, and unreferenced components in your React or Next.js project using the DeadCode CLI tool.</summary>
-    <category term="tutorial"/>
+    <category term="tutorial" />
   </entry>
 
   <entry>
     <title>From CLI to MCP in One Command: Introducing click-to-mcp</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/click-to-mcp-intro.html" rel="alternate" type="text/html"/>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/click-to-mcp-intro.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/click-to-mcp-intro.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>Auto-wrap any Click or Typer CLI as an MCP server â€” bridge your tools with AI agents, zero code changes required.</summary>
-    <category term="launch"/>
+    <category term="launch" />
   </entry>
 
   <entry>
     <title>OpenAPI Diffing Tools Compared: ACG vs Spectral vs OAS Diff</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/openapi-diff-tools-comparison.html" rel="alternate" type="text/html"/>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/openapi-diff-tools-comparison.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/openapi-diff-tools-comparison.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>A practical comparison of three tools that catch breaking API changes: API Contract Guardian, Spectral, and OAS Diff.</summary>
-    <category term="comparison"/>
+    <category term="comparison" />
   </entry>
 
   <entry>
     <title>Zero to CI Safety Net: A Hands-On Tutorial</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/zero-to-ci-safety-net.html" rel="alternate" type="text/html"/>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/zero-to-ci-safety-net.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/zero-to-ci-safety-net.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>Set up API Contract Guardian, json2sql, DeployDiff, and ConfigDrift in your CI pipeline â€” from scratch to combined pre-deploy workflow in 15 minutes.</summary>
-    <category term="tutorial"/>
+    <category term="tutorial" />
   </entry>
 
   <entry>
     <title>Stop Breaking Production: 4 CI Checks Every DevOps Team Should Run</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/stop-breaking-production.html" rel="alternate" type="text/html"/>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/stop-breaking-production.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/stop-breaking-production.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>Four critical CI safety checks your pipeline is probably missing.</summary>
-    <category term="guide"/>
+    <category term="guide" />
   </entry>
 
   <entry>
     <title>SchemaForge v0.2.0: Drizzle ORM Bidirectional Support</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/schemaforge-v0-2-0-drizzle.html" rel="alternate" type="text/html"/>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/schemaforge-v0-2-0-drizzle.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/schemaforge-v0-2-0-drizzle.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>SchemaForge now supports Drizzle ORM â€” convert between SQL DDL, Drizzle TypeScript schemas, Prisma, TypeORM, and Django.</summary>
-    <category term="release"/>
+    <category term="release" />
   </entry>
 
   <entry>
     <title>Welcome to DevForge â€” 11 CLI Tools, 100% AI-Built</title>
-    <link href="https://coding-dev-tools.github.io/devforge/blog/welcome-devforge.html" rel="alternate" type="text/html"/>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/welcome-devforge.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/welcome-devforge.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
     <summary>Eleven production-ready CLI tools â€” all designed, coded, tested, and documented by autonomous AI agents.</summary>
-    <category term="announcement"/>
+    <category term="announcement" />
   </entry>
 
-</feed>
+<entry><title>Infrastructure Change Review Compared: DeployDiff vs Terraform Plan vs Pulumi Preview vs Infracost</title><link href="https://coding-dev-tools.github.io/devforge/blog/deploydiff-vs-terraform-plan-vs-pulumi-preview-vs-infracost.html" rel="alternate" /><id>deploydiff-vs-terraform-plan-vs-pulumi-preview-vs-infracost</id><updated>2026-05-27T00:00:00Z</updated><summary>Four approaches to reviewing infrastructure changes before deploy -- DeployDiff CLI for diff rendering + rollback + cost + CI gating, Terraform Plan for HashiCorp-native change plans, Pulumi Preview for Pulumi stack diffs, and Infracost for precise cloud cost estimation.</summary></entry><entry><title>Data Format Conversion Compared: DataMorph vs Pandas vs Apache NiFi vs AWS Glue</title><link href="https://coding-dev-tools.github.io/devforge/blog/datamorph-vs-pandas-vs-nifi-vs-aws-glue.html" rel="alternate" /><id>datamorph-vs-pandas-vs-nifi-vs-aws-glue</id><updated>2026-05-27T00:00:00Z</updated><summary>Four approaches to converting between data formats -- DataMorph CLI for one-command CSV/JSON/YAML/Parquet/Avro/Protobuf conversion with streaming, Pandas for programmatic transformation, Apache NiFi for visual pipelines, and AWS Glue for serverless ETL.</summary></entry>
 
+<entry>
+<title>All 11 DevForge CLI Tools Are Now Type-Safe (PEP 561)</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/python-cli-type-safe-pep561.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/python-cli-type-safe-pep561.html</id>
+<published>2026-05-28T00:00:00Z</published>
+<updated>2026-05-28T00:00:00Z</updated>
+<summary>Every DevForge CLI tool now ships with py.typed markers and full public-function type annotations. Mypy clean out of the box — no stub packages, no type: ignore gymnastics. 11 packages, 175+ annotated functions, 0 mypy errors.</summary>
+<category term="release" />
+<category term="PEP 561" />
+<category term="type safety" />
+<category term="mypy" />
+</entry>
+
+<entry>
+<title>Envault Serve: A Lightweight Secrets HTTP API for MCP Sidecars and CI/CD</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/envault-serve-http-api-secrets.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/envault-serve-http-api-secrets.html</id>
+<published>2026-05-28T00:00:00Z</published>
+<updated>2026-05-28T00:00:00Z</updated>
+<summary>The envault serve command exposes your .env secrets over HTTP — perfect for MCP sidecars, CI/CD pipelines, and AI agent runtimes that need config without file access.</summary>
+<category term="envault" />
+<category term="MCP" />
+<category term="API" />
+</entry>
+
+<entry>
+<title>Monetize MCP Servers with x402 Per-Tool-Call Payments</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/monetize-mcp-servers-x402-mpp.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/monetize-mcp-servers-x402-mpp.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>click-to-mcp now supports MPP/x402 per-tool-call monetization — any API wrapped by click-to-mcp becomes a paid agent service. Charge per invocation with zero custom billing code.</summary>
+<category term="MCP" />
+<category term="monetization" />
+<category term="x402" />
+</entry>
+
+<entry>
+<title>Envault vs Doppler vs Infisical vs Dotenv Vault: Secret Management Compared</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/envault-vs-doppler-vs-infisical-vs-dotenv-vault.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/envault-vs-doppler-vs-infisical-vs-dotenv-vault.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Four approaches to .env secret management — envault CLI for local-first sync + rotation, Doppler for SaaS config hub, Infisical for enterprise secrets platform, and Dotenv Vault for simple .env encryption.</summary>
+<category term="comparison" />
+<category term="envault" />
+</entry>
+
+<entry>
+<title>Envault + APIAuth: Rotate API Keys Across Environments</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/envault-apiauth-rotate-keys-across-environments.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/envault-apiauth-rotate-keys-across-environments.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Combine envault and apiauth to automate key rotation across dev, staging, and production. Zero-downtime rotation with environment sync in one command.</summary>
+<category term="tutorial" />
+<category term="envault" />
+<category term="apiauth" />
+</entry>
+
+<entry>
+<title>CLI Tools as MCP Servers: Give AI Agents Access to Your Dev Tools</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/cli-tools-as-mcp-servers.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/cli-tools-as-mcp-servers.html</id>
+<published>2026-05-19T00:00:00Z</published>
+<updated>2026-05-19T00:00:00Z</updated>
+<summary>Any Click-based CLI tool becomes an MCP server with click-to-mcp. Give AI coding agents native access to your dev tools — no API wrappers, no HTTP servers, just one command.</summary>
+<category term="MCP" />
+<category term="CLI" />
+</entry>
+
+<entry>
+<title>ConfigDrift CI/CD Gating: Block Deploys on Config Drift</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/configdrift-ci-cd-gating-before-deploy.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/configdrift-ci-cd-gating-before-deploy.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Use configdrift in CI pipelines to detect configuration drift between environments and fail builds before production deployment.</summary>
+<category term="configdrift" />
+<category term="CI/CD" />
+</entry>
+
+<entry>
+<title>ConfigDrift vs Driftctl vs Terraform Plan vs Checkov: Infrastructure Drift Detection Compared</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/configdrift-vs-driftctl-vs-terraform-plan-vs-checkov.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/configdrift-vs-driftctl-vs-terraform-plan-vs-checkov.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Four approaches to infrastructure drift detection — ConfigDrift for config-file drift in CI, Driftctl for IaC coverage gaps, Terraform Plan for state drift, and Checkov for policy violations.</summary>
+<category term="comparison" />
+<category term="configdrift" />
+</entry>
+
+<entry>
+<title>DeadCode: Fail CI on Dead Code</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/deadcode-fail-ci-on-dead-code.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/deadcode-fail-ci-on-dead-code.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Add deadcode to your CI pipeline to detect and block unused exports before they ship. Keep your codebase lean and your bundle small.</summary>
+<category term="deadcode" />
+<category term="CI/CD" />
+</entry>
+
+<entry>
+<title>DeadCode vs Knip vs ts-prune vs ESLint: Dead Code Detection Compared</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/deadcode-vs-knip-vs-ts-prune-vs-eslint.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/deadcode-vs-knip-vs-ts-prune-vs-eslint.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Four approaches to finding dead code — DeadCode CLI for language-agnostic export tracking, Knip for Node.js dependency analysis, ts-prune for TypeScript export checking, and ESLint for JS/TS lint rules.</summary>
+<category term="comparison" />
+<category term="deadcode" />
+</entry>
+
+<entry>
+<title>DeployDiff: Preview Infrastructure Changes Before Apply</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/deploydiff-preview-infrastructure-changes-before-apply.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/deploydiff-preview-infrastructure-changes-before-apply.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Use DeployDiff to render infrastructure diffs with cost estimates before you apply. Catch destructive changes and cost spikes in CI.</summary>
+<category term="deploydiff" />
+<category term="CI/CD" />
+</entry>
+
+<entry>
+<title>DeployDiff Rollback Commands for Terraform and CloudFormation</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/deploydiff-rollback-commands-terraform-cloudformation.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/deploydiff-rollback-commands-terraform-cloudformation.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>DeployDiff now generates rollback commands for Terraform and CloudFormation. One command to undo any infrastructure change.</summary>
+<category term="deploydiff" />
+<category term="rollback" />
+</entry>
+
+<entry>
+<title>DataMorph Data Conversion and Batch Processing</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/datamorph-data-conversion-batch-processing.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/datamorph-data-conversion-batch-processing.html</id>
+<published>2026-05-17T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>DataMorph batch processing — convert entire directories between CSV, JSON, YAML, Parquet, Avro, and Protobuf with a single command.</summary>
+<category term="datamorph" />
+<category term="batch" />
+</entry>
+
+<entry>
+<title>DataMorph: Validate Data Schema in CI Pipelines</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/datamorph-validate-data-schema-ci-pipeline.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/datamorph-validate-data-schema-ci-pipeline.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Use DataMorph validate in CI to catch schema violations in data files before they reach production. Supports JSON Schema, Pydantic, and custom validators.</summary>
+<category term="datamorph" />
+<category term="CI/CD" />
+</entry>
+
+<entry>
+<title>APIAuth: Zero-Downtime Key Rotation in CI/CD</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/apiauth-zero-downtime-key-rotation-cicd.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/apiauth-zero-downtime-key-rotation-cicd.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Automate API key rotation in CI/CD with apiauth. Zero-downtime rotation, revocation checking, and credential auditing from the terminal.</summary>
+<category term="apiauth" />
+<category term="CI/CD" />
+</entry>
+
+<entry>
+<title>APIAuth: Audit API Credentials and Catch Expired or Revoked Keys</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/apiauth-audit-api-credentials-catch-expired-revoked-keys.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/apiauth-audit-api-credentials-catch-expired-revoked-keys.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Use apiauth audit to scan your environment for expired, revoked, or weak API credentials. Catch security issues before they become incidents.</summary>
+<category term="apiauth" />
+<category term="security" />
+</entry>
+
+<entry>
+<title>APIAuth: Verify API Keys at Runtime with Import Revocation Checking</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/apiauth-verify-api-keys-runtime-import-revocation.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/apiauth-verify-api-keys-runtime-import-revocation.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>apiauth verify lets you check API key validity at import time. Catch revoked keys in your Python code before they cause runtime failures.</summary>
+<category term="apiauth" />
+<category term="runtime" />
+</entry>
+
+<entry>
+<title>APIAuth vs Dotenv vs AWS Secrets Manager vs Vault: API Key Management Compared</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/apiauth-vs-dotenv-vs-aws-secrets-manager-vs-vault.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/apiauth-vs-dotenv-vs-aws-secrets-manager-vs-vault.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Four approaches to API key management — APIAuth for CLI-native rotation + auditing, Dotenv for simple env files, AWS Secrets Manager for cloud-native storage, and HashiCorp Vault for enterprise secret platforms.</summary>
+<category term="comparison" />
+<category term="apiauth" />
+</entry>
+
+<entry>
+<title>API Contract Guardian: Generate API Migration Guides</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/apicontractguardian-generate-api-migration-guides.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/apicontractguardian-generate-api-migration-guides.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>API Contract Guardian now generates migration guides for breaking API changes. Go from diff detection to developer-readable migration steps automatically.</summary>
+<category term="api-contract-guardian" />
+<category term="migration" />
+</entry>
+
+<entry>
+<title>APIGhost: OpenAPI Mock Server in 60 Seconds</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/apighost-openapi-mock-server-60-seconds.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/apighost-openapi-mock-server-60-seconds.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Spin up a fully functional mock server from any OpenAPI spec in 60 seconds with apighost. No backend needed — test frontend, SDKs, and integrations against realistic responses.</summary>
+<category term="apighost" />
+<category term="mock" />
+</entry>
+
+<entry>
+<title>APIGhost vs Prism vs WireMock vs Mockoon: API Mocking Compared</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/apighost-vs-prism-vs-wiremock-vs-mockoon.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/apighost-vs-prism-vs-wiremock-vs-mockoon.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Four approaches to API mocking — APIGhost for OpenAPI-native CLI mocking, Prism for Stoplight-powered spec validation, WireMock for JVM stub services, and Mockoon for GUI-based mock APIs.</summary>
+<category term="comparison" />
+<category term="apighost" />
+</entry>
+
+<entry>
+<title>JSON2SQL: Generate CREATE TABLE from JSON Schema-First</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/json2sql-generate-create-table-from-json-schema-first.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/json2sql-generate-create-table-from-json-schema-first.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Generate CREATE TABLE statements from JSON Schema definitions with json2sql. Schema-first approach keeps your DDL in sync with your data contracts.</summary>
+<category term="json2sql" />
+<category term="schema" />
+</entry>
+
+<entry>
+<title>JSON2SQL: Nested JSON to Relational Tables</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/json2sql-nested-json-relational-tables.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/json2sql-nested-json-relational-tables.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Convert nested JSON structures into properly normalized relational tables with json2sql. Handles arrays of objects, nested references, and foreign key generation.</summary>
+<category term="json2sql" />
+<category term="nested" />
+</entry>
+
+<entry>
+<title>JSON2SQL vs Papa Parse vs AWS DMS vs Airbyte: Data Ingestion Compared</title>
+<link href="https://coding-dev-tools.github.io/devforge/blog/json2sql-vs-papa-parse-vs-aws-dms-vs-airbyte.html" rel="alternate" type="text/html" />
+<id>https://coding-dev-tools.github.io/devforge/blog/json2sql-vs-papa-parse-vs-aws-dms-vs-airbyte.html</id>
+<published>2026-05-27T00:00:00Z</published>
+<updated>2026-05-27T00:00:00Z</updated>
+<summary>Four approaches to JSON-to-SQL conversion — json2sql CLI for one-command inserts, Papa Parse for browser-side CSV parsing, AWS DMS for managed database migration, and Airbyte for ELT pipelines.</summary>
+<category term="comparison" />
+<category term="json2sql" />
+</entry>
+
+</feed>

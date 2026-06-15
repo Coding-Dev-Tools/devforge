@@ -1,4 +1,4 @@
-﻿# Python
+# Python
 __pycache__/
 *.py[cod]
 *.pyo
@@ -10,6 +10,13 @@ venv/
 
 # Hermes link checker
 .hermes/
+!/.hermes/linkcheck.py
 
 # Node
 node_modules/
+
+# Testing and Coverage Cache
+.coverage
+.pytest_cache/
+.ruff_cache/
+

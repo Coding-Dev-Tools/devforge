@@ -1,0 +1,461 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <base href="/devforge/">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>click-to-mcp Transport Modes: stdio, HTTP+SSE, and Streamable HTTP Explained | DevForge</title>
+ <meta name="description" content="Deep dive into click-to-mcp's three MCP transport modes — stdio for local agents, HTTP+SSE for web clients, and Streamable HTTP for the newest MCP clients. Includes config generation, list-tools previewing, and when to use each transport.">
+ <meta name="keywords" content="click-to-mcp, MCP transport, stdio, HTTP+SSE, Streamable HTTP, Model Context Protocol, MCP server, Claude Desktop, Cursor, AI agent tools, MCP configuration, list-tools, config command">
+ <meta property="og:title" content="click-to-mcp Transport Modes: stdio, HTTP+SSE, and Streamable HTTP Explained | DevForge">
+ <meta property="og:description" content="Deep dive into click-to-mcp's three MCP transport modes — stdio for local agents, HTTP+SSE for web clients, and Streamable HTTP for the newest MCP clients. Includes config generation, list-tools previewing, and when to use each transport.">
+ <meta property="og:type" content="article">
+ <meta property="og:url" content="https://coding-dev-tools.github.io/devforge/blog/click-to-mcp-three-transport-modes.html">
+ <meta name="twitter:site" content="@DevForge">
+ <meta name="twitter:card" content="summary_large_image">
+ <meta name="twitter:title" content="click-to-mcp Transport Modes: stdio, HTTP+SSE, and Streamable HTTP Explained | DevForge">
+ <meta name="twitter:description" content="Deep dive into click-to-mcp's three MCP transport modes — stdio for local agents, HTTP+SSE for web clients, and Streamable HTTP for the newest MCP clients.">
+ <meta name="twitter:image" content="https://coding-dev-tools.github.io/devforge/click-to-mcp-og.svg">
+ <meta property="og:image" content="https://coding-dev-tools.github.io/devforge/click-to-mcp-og.svg">
+ <meta property="og:image:width" content="1200">
+ <meta property="og:image:height" content="630">
+ <link rel="canonical" href="https://coding-dev-tools.github.io/devforge/blog/click-to-mcp-three-transport-modes.html">
+ <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛁</text></svg>">
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="blog.css">
+ <!-- Plausible Analytics -->
+ <script defer data-domain="devforge" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+
+<nav>
+ <div class="inner">
+ <div class="logo"><span>⛁</span> DevForge</div>
+ <div class="links">
+ <a href="../start-here.html">Start Here</a>
+ <a href="../quickstart.html">Get Started</a>
+ <a href="../index.html">Home</a>
+ <a href="../docs.html">Docs</a>
+ <a href="../pricing.html">Pricing</a>
+ <a href="../alternatives.html">Alternatives</a>
+ <a href="../blog.html" class="active">Blog</a>
+ <a href="../releases.html">Releases</a>
+ <a href="../about.html">About</a>
+ <a href="https://github.com/Coding-Dev-Tools" target="_blank">GitHub</a>
+ </div>
+ </div>
+</nav>
+
+<div class="blog-nav">
+ <a href="../blog.html">&larr; Back to Blog</a>
+ <a href="click-to-mcp-usage-guide.html">Previous: Usage Guide &rarr;</a>
+</div>
+
+
+<article>
+
+ <span class="badge">Guide</span>
+ <p style="color:#666;font-size:0.85rem;margin-top:8px;">May 28, 2026 · 9 min read</p>
+
+ <h1>click-to-mcp Transport Modes: stdio, HTTP+SSE, and Streamable HTTP</h1>
+ <div class="subtitle">Three ways to serve your CLI tools as MCP servers — which one you pick depends on your client, your network, and whether you need browser access.</div>
+
+ <div class="share-bar">
+ <span>Share this article:</span>
+ <a href="https://twitter.com/intent/tweet?text=$(document.title)&url=$(location.href)" target="_blank" rel="noopener" class="share-link">X Twitter</a>
+ <a href="https://news.ycombinator.com/submitlink?u=$(location.href)&t=$(document.title)" target="_blank" rel="noopener" class="share-link">Y Hacker News</a>
+ <a href="https://www.linkedin.com/sharing/share-offsite/?url=$(location.href)" target="_blank" rel="noopener" class="share-link">in LinkedIn</a>
+ </div>
+
+ <p>click-to-mcp auto-wraps any Click or Typer CLI as an MCP server. But "MCP server" isn't a single thing — the <strong>Model Context Protocol defines three transport modes</strong>, and each one serves a different use case. Pick the wrong transport and your agent can't connect. Pick the right one and everything clicks into place.</p>
+
+ <p>This guide covers all three transports — <strong>stdio</strong>, <strong>HTTP+SSE</strong>, and <strong>Streamable HTTP</strong> — with concrete commands, client compatibility, and a decision framework. Plus: the <code>config</code> and <code>list-tools</code> commands that make setup a 30-second operation.</p>
+
+ <div class="cta-box">
+ <h3>Try it now</h3>
+ <p>pip install click-to-mcp · Apache 2.0 · Free forever</p>
+ <a href="https://github.com/Coding-Dev-Tools/click-to-mcp" target="_blank">View on GitHub →</a>
+ </div>
+
+ <h2>The Three Transports at a Glance</h2>
+
+ <p>The MCP specification defines how clients and servers communicate. Three transports are currently supported, and click-to-mcp implements all of them:</p>
+
+ <table>
+ <tr>
+  <th>Transport</th>
+  <th>Command</th>
+  <th>Best For</th>
+  <th>Network</th>
+  <th>MCP Spec</th>
+ </tr>
+ <tr>
+  <td><strong>stdio</strong></td>
+  <td><code>click-to-mcp serve</code></td>
+  <td>Local AI agents (Claude Code, Codex)</td>
+  <td>Same process</td>
+  <td>Original</td>
+ </tr>
+ <tr>
+  <td><strong>HTTP+SSE</strong></td>
+  <td><code>click-to-mcp serve-http</code></td>
+  <td>Browser-based clients, remote access</td>
+  <td>HTTP (port 8000)</td>
+  <td>2025-03</td>
+ </tr>
+ <tr>
+  <td><strong>Streamable HTTP</strong></td>
+  <td><code>click-to-mcp serve-http-streamable</code></td>
+  <td>Newer clients, simpler firewall traversal</td>
+  <td>HTTP (port 8001)</td>
+  <td>2025-10</td>
+ </tr>
+ </table>
+
+ <p>Let's break down each one.</p>
+
+ <h2>1. stdio — The Default, and Still the Best for Local Agents</h2>
+
+ <p>When you run <code>click-to-mcp serve your-cli</code>, the server communicates over <strong>standard input and output</strong>. The client (Claude Desktop, Claude Code, Codex) spawns your MCP server as a subprocess, sends JSON-RPC messages via stdin, and reads responses from stdout.</p>
+
+ <pre><code># Serve a CLI over stdio
+click-to-mcp serve api-contract-guardian
+
+# Serve all discovered CLIs (picks the first for stdio)
+click-to-mcp serve --all</code></pre>
+
+ <h3>When to use stdio</h3>
+ <ul>
+ <li><strong>Claude Desktop</strong> — the default transport, configured in <code>claude_desktop_config.json</code></li>
+ <li><strong>Claude Code CLI</strong> — runs MCP servers as child processes</li>
+ <li><strong>OpenAI Codex</strong> — same subprocess model</li>
+ <li><strong>Cursor IDE</strong> — supports both stdio and HTTP; stdio is simpler for local tools</li>
+ <li><strong>Any local-first agent</strong> — if the agent and the server are on the same machine, stdio is zero-configuration</li>
+ </ul>
+
+ <h3>Why stdio wins for local development</h3>
+ <p>No network ports. No CORS. No firewall rules. The agent process and the MCP server process share a pipe. It's the fastest transport, the simplest to debug, and the one that requires zero infrastructure. If your agent runs on the same machine as your CLI tools, stdio is almost always the right answer.</p>
+
+ <div class="tip">
+ <strong>Pro tip:</strong> stdio is also the most secure transport for local use. No open ports means no attack surface from the network. Your CLI tools stay invisible to everything except the agent that spawned them.
+ </div>
+
+ <h3>Configuration for stdio</h3>
+ <p>Use the <code>config</code> command to generate the exact JSON snippet for your client:</p>
+
+ <pre><code># Generate Claude Desktop config (stdio is the default transport)
+click-to-mcp config api-contract-guardian
+
+# Generate Cursor config
+click-to-mcp config api-contract-guardian --client cursor
+
+# Generate for VS Code Copilot
+click-to-mcp config api-contract-guardian --client vscode
+
+# Copy to clipboard instead of stdout
+click-to-mcp config api-contract-guardian --copy</code></pre>
+
+ <p>Output for Claude Desktop:</p>
+ <pre><code>{
+  "mcpServers": {
+    "api-contract-guardian": {
+      "command": "click-to-mcp",
+      "args": ["serve", "api-contract-guardian"]
+    }
+  }
+}</code></pre>
+
+ <p>Paste that into <code>~/Library/Application Support/Claude/claude_desktop_config.json</code> (macOS) or <code>%APPDATA%\Claude\claude_desktop_config.json</code> (Windows), restart Claude Desktop, and your CLI appears as a tool.</p>
+
+ <h2>2. HTTP+SSE — For Browser and Remote Clients</h2>
+
+ <p>Some MCP clients need an HTTP endpoint — web-based tools, remote agents, or setups where the server runs on a different machine. <strong>HTTP+SSE</strong> (Server-Sent Events) was the first HTTP transport in the MCP spec. The client sends requests via <code>POST /message</code> and receives streaming responses via an <code>SSE</code> connection on <code>GET /sse</code>.</p>
+
+ <pre><code># Install with HTTP support
+pip install "click-to-mcp[http]"
+
+# Serve over HTTP+SSE (default port 8000)
+click-to-mcp serve-http api-contract-guardian
+
+# Custom host and port
+click-to-mcp serve-http api-contract-guardian --host 0.0.0.0 --port 9000
+
+# Try it with the built-in demo
+click-to-mcp demo-http</code></pre>
+
+ <h3>When to use HTTP+SSE</h3>
+ <ul>
+ <li><strong>Web-based MCP clients</strong> — browser tools that can't spawn local processes</li>
+ <li><strong>Remote agent access</strong> — agent on machine A, CLI tools on machine B</li>
+ <li><strong>Shared team servers</strong> — one MCP server endpoint, multiple agents consuming it</li>
+ <li><strong>Monitoring and debugging</strong> — you can hit the health endpoint and inspect traffic</li>
+ </ul>
+
+ <h3>The trade-off</h3>
+ <p>HTTP+SSE requires two connections: one SSE stream for server-to-client messages and one POST endpoint for client-to-server requests. Some corporate firewalls and proxies block long-lived SSE connections. If you hit connectivity issues, Streamable HTTP is the fix.</p>
+
+ <h3>Configuration for HTTP+SSE</h3>
+
+ <pre><code># Generate config for HTTP transport
+click-to-mcp config api-contract-guardian --transport http --port 8000
+
+# For Cursor (which supports HTTP MCP servers)
+click-to-mcp config api-contract-guardian --client cursor --transport http</code></pre>
+
+ <p>Output:</p>
+ <pre><code>{
+  "mcpServers": {
+    "api-contract-guardian": {
+      "url": "http://127.0.0.1:8000/sse"
+    }
+  }
+}</code></pre>
+
+ <p><strong>Important:</strong> Start the server before connecting the client:</p>
+ <pre><code>click-to-mcp serve-http api-contract-guardian --port 8000</code></pre>
+
+ <h2>3. Streamable HTTP — The Modern, Simpler HTTP Transport</h2>
+
+ <p>Streamable HTTP is the newest MCP transport. Instead of maintaining a persistent SSE connection alongside the POST endpoint, it uses a <strong>single <code>POST /message</code> endpoint</strong> for everything. The server responds with the full JSON-RPC result in the HTTP response body — no SSE stream needed. Batch requests (arrays of JSON-RPC messages) are also supported.</p>
+
+ <pre><code># Install with HTTP support (same extra as HTTP+SSE)
+pip install "click-to-mcp[http]"
+
+# Serve over Streamable HTTP (default port 8001 — different from HTTP+SSE)
+click-to-mcp serve-http-streamable api-contract-guardian
+
+# Custom host and port
+click-to-mcp serve-http-streamable api-contract-guardian --host 0.0.0.0 --port 9000
+
+# Try it with the built-in demo
+click-to-mcp demo-http-streamable</code></pre>
+
+ <h3>When to use Streamable HTTP</h3>
+ <ul>
+ <li><strong>Firewall-restricted environments</strong> — no SSE means no long-lived connections to block</li>
+ <li><strong>Newer MCP clients</strong> — clients built to the 2025-10 spec revision prefer this transport</li>
+ <li><strong>REST-friendly setups</strong> — standard POST/response pattern works with API gateways, load balancers, and reverse proxies</li>
+ <li><strong>Simpler debugging</strong> — one endpoint, standard HTTP semantics, easy to curl</li>
+ </ul>
+
+ <h3>Why two HTTP transports?</h3>
+ <p>HTTP+SSE came first. It works, but the dual-connection model (POST + SSE) creates complexity: CORS for two endpoints, proxy configurations for long-lived connections, and connection lifecycle management. Streamable HTTP eliminates the SSE channel entirely. The MCP spec added it as the recommended HTTP transport going forward. click-to-mcp supports both so you can choose based on your client's capabilities.</p>
+
+ <div class="tip">
+ <strong>Quick test:</strong> You can verify Streamable HTTP is working with a single curl command:
+ <code>curl -X POST http://127.0.0.1:8001/message -H "Content-Type: application/json" -d '{"jsonrpc":"2.0","method":"initialize","id":1,"params":{"protocolVersion":"2025-03-26","capabilities":{},"clientInfo":{"name":"test","version":"0.1"}}}'</code>
+ If you get a JSON-RPC response, your server is live.
+ </div>
+
+ <h3>Configuration for Streamable HTTP</h3>
+
+ <pre><code># Generate config for Streamable HTTP
+click-to-mcp config api-contract-guardian --transport streamable-http --port 8001
+
+# For VS Code Copilot
+click-to-mcp config api-contract-guardian --client vscode --transport streamable-http</code></pre>
+
+ <p>Output:</p>
+ <pre><code>{
+  "mcpServers": {
+    "api-contract-guardian": {
+      "url": "http://127.0.0.1:8001/message"
+    }
+  }
+}</code></pre>
+
+ <h2>The config Command: One Command, Five Clients</h2>
+
+ <p>The <code>click-to-mcp config</code> command (added in v0.5.0) eliminates the most common setup mistake: wrong JSON structure for your specific MCP client. It generates the exact config format each client expects:</p>
+
+ <table>
+ <tr>
+  <th>Client</th>
+  <th>Config File Location</th>
+  <th>Config Key</th>
+ </tr>
+ <tr>
+  <td>Claude Desktop</td>
+  <td><code>~/Library/Application Support/Claude/claude_desktop_config.json</code></td>
+  <td><code>mcpServers</code></td>
+ </tr>
+ <tr>
+  <td>Cursor IDE</td>
+  <td><code>.cursor/mcp.json</code> (project root)</td>
+  <td><code>mcpServers</code></td>
+ </tr>
+ <tr>
+  <td>VS Code Copilot</td>
+  <td><code>.vscode/mcp.json</code> (project root)</td>
+  <td><code>mcp.servers</code></td>
+ </tr>
+ <tr>
+  <td>Windsurf</td>
+  <td><code>.windsurf/mcp.json</code> (project root)</td>
+  <td><code>mcpServers</code></td>
+ </tr>
+ <tr>
+  <td>Cline</td>
+  <td><code>~/.cline/mcp_config.json</code></td>
+  <td><code>mcpServers</code></td>
+ </tr>
+ </table>
+
+ <pre><code># Claude Desktop (default)
+click-to-mcp config my-cli
+
+# Cursor
+click-to-mcp config my-cli --client cursor
+
+# VS Code Copilot
+click-to-mcp config my-cli --client vscode
+
+# Windsurf
+click-to-mcp config my-cli --client windsurf
+
+# Cline
+click-to-mcp config my-cli --client cline
+
+# Generate config for ALL discovered CLIs at once
+click-to-mcp config --all --client cursor</code></pre>
+
+ <p>The <code>--all</code> flag is especially powerful: it discovers every Click/Typer CLI in your environment and generates a single config block with all of them. One paste and your agent has access to your entire CLI suite.</p>
+
+ <h2>The list-tools Command: Preview Before You Serve</h2>
+
+ <p>Before starting a server, you might want to know <em>what tools will be exposed</em>. The <code>list-tools</code> command (also v0.5.0) shows you the exact MCP tool surface — names, descriptions, and parameter schemas — without starting a server:</p>
+
+ <pre><code># List tools from a specific CLI
+click-to-mcp list-tools api-contract-guardian
+
+# List tools from ALL discovered CLIs
+click-to-mcp list-tools --all
+
+# JSON output for CI pipelines or scripting
+click-to-mcp list-tools --all --json-output</code></pre>
+
+ <p>Human-readable output:</p>
+ <pre><code>Found 6 MCP tool(s):
+
+ api-contract-guardian_diff
+  Compare two OpenAPI specs and detect breaking changes
+  Parameters: base_branch, head_branch, format
+  Required: base_branch, head_branch
+
+ api-contract-guardian_check
+  Validate an OpenAPI spec against a ruleset
+  Parameters: spec_file, ruleset
+  Required: spec_file</code></pre>
+
+ <p>JSON output (pipe into <code>jq</code>, use in CI, feed to documentation generators):</p>
+ <pre><code>click-to-mcp list-tools --all --json-output | jq '.[].name'</code></pre>
+
+ <h3>Use cases for list-tools</h3>
+ <ul>
+ <li><strong>CI validation</strong> — verify your CLI exposes the expected tools before publishing a release</li>
+ <li><strong>Documentation</strong> — generate an API reference from the actual MCP tool surface</li>
+ <li><strong>Debugging</strong> — confirm parameter names, types, and required fields match what your agent sends</li>
+ <li><strong>Audit</strong> — check that internal-only commands aren't accidentally exposed as MCP tools</li>
+ </ul>
+
+ <h2>Decision Framework: Which Transport Should You Use?</h2>
+
+ <p>Here's the simple decision tree:</p>
+
+ <h3>Are you running the agent and the CLI tools on the same machine?</h3>
+ <p><strong>Yes → stdio.</strong> It's faster, simpler, and more secure. No ports, no CORS, no infrastructure.</p>
+
+ <h3>Does your client need HTTP (remote, browser, or shared server)?</h3>
+ <p><strong>Yes → Streamable HTTP if your client supports it, otherwise HTTP+SSE.</strong> Streamable HTTP is the forward-compatible choice — single endpoint, no SSE, works through proxies. Use HTTP+SSE only if your client doesn't support the Streamable HTTP transport yet.</p>
+
+ <h3>Not sure?</h3>
+ <p>Start with stdio. You can always switch to an HTTP transport later — the <code>config</code> command generates the right JSON for any transport/client combination in seconds.</p>
+
+ <div class="cta-box">
+ <h3>Ready to Serve Your CLIs?</h3>
+ <p>Free and open source under Apache 2.0. Three transports, five clients, one command.</p>
+ <a href="https://github.com/Coding-Dev-Tools/click-to-mcp" target="_blank">View on GitHub →</a>
+ </div>
+
+ <h2>Quick Reference: All click-to-mcp Commands</h2>
+
+ <table>
+ <tr>
+  <th>Command</th>
+  <th>What It Does</th>
+ </tr>
+ <tr>
+  <td><code>click-to-mcp discover</code></td>
+  <td>List all installed Click/Typer CLIs</td>
+ </tr>
+ <tr>
+  <td><code>click-to-mcp serve &lt;name&gt;</code></td>
+  <td>Serve a CLI over stdio</td>
+ </tr>
+ <tr>
+  <td><code>click-to-mcp serve-http &lt;name&gt;</code></td>
+  <td>Serve a CLI over HTTP+SSE (port 8000)</td>
+ </tr>
+ <tr>
+  <td><code>click-to-mcp serve-http-streamable &lt;name&gt;</code></td>
+  <td>Serve a CLI over Streamable HTTP (port 8001)</td>
+ </tr>
+ <tr>
+  <td><code>click-to-mcp list-tools &lt;name&gt;</code></td>
+  <td>Preview MCP tools without starting a server</td>
+ </tr>
+ <tr>
+  <td><code>click-to-mcp config &lt;name&gt;</code></td>
+  <td>Generate client config JSON</td>
+ </tr>
+ <tr>
+  <td><code>click-to-mcp demo</code></td>
+  <td>Run the demo CLI over stdio</td>
+ </tr>
+ <tr>
+  <td><code>click-to-mcp demo-http</code></td>
+  <td>Run the demo CLI over HTTP+SSE</td>
+ </tr>
+ <tr>
+  <td><code>click-to-mcp demo-http-streamable</code></td>
+  <td>Run the demo CLI over Streamable HTTP</td>
+ </tr>
+ </table>
+
+ <h2>What's Next</h2>
+
+ <p>The MCP transport landscape is still evolving. The spec team is actively refining HTTP transport semantics, and more clients are adopting Streamable HTTP as the default. click-to-mcp tracks the spec — when a new transport lands, you'll get it as a <code>pip install --upgrade</code> away.</p>
+
+ <p>In the meantime, if you're building with Click or Typer and want your tools available to AI agents, the path is clear: <code>pip install click-to-mcp</code>, <code>click-to-mcp discover</code>, <code>click-to-mcp serve</code>. The transport you need is one flag away.</p>
+
+</article>
+
+
+<footer>
+ <span>&copy; 2026 DevForge. Built autonomously.</span>
+ <a href="../index.html">Home</a>
+ <a href="https://github.com/Coding-Dev-Tools">GitHub</a>
+</footer>
+
+<script>
+function submitWaitlist(e) {
+ e.preventDefault();
+ const email = document.getElementById('wl-email').value;
+ const msg = document.getElementById('wl-msg');
+ window.open('mailto:waitlist@devforge?subject=Early%20Access%20Interest&body=Email%3A%20' + encodeURIComponent(email), '_blank');
+ msg.style.display = 'block';
+ document.getElementById('wl-email').value = '';
+}
+</script>
+
+<div style="max-width:700px;margin:48px auto 0;padding:0 24px;text-align:center;">
+ <div style="font-size:0.8rem;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;">Related Articles</div>
+ <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;">
+ <a href="click-to-mcp-intro.html" style="padding:10px 20px;border-radius:10px;background:#1a1a1c;border:1px solid #2a2a2d;color:#ccc;text-decoration:none;font-size:0.85rem;transition:border-color .15s;">🔌 Introducing click-to-mcp</a>
+ <a href="click-to-mcp-usage-guide.html" style="padding:10px 20px;border-radius:10px;background:#1a1a1c;border:1px solid #2a2a2d;color:#ccc;text-decoration:none;font-size:0.85rem;transition:border-color .15s;">📖 Usage Guide</a>
+ <a href="monetize-mcp-servers-x402-mpp.html" style="padding:10px 20px;border-radius:10px;background:#1a1a1c;border:1px solid #2a2a2d;color:#ccc;text-decoration:none;font-size:0.85rem;transition:border-color .15s;">💰 Monetize MCP Servers</a>
+ </div>
+</div>
+
+</body>
+</html>
