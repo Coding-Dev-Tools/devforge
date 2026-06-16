@@ -303,7 +303,8 @@ jobs:
 
       - name: Install tools
         run: |
-          pip install apiauth
+          pip install --index-url https://coding-dev-tools.github.io/pypi-index/simple/ apiauth &lt;br&gt;
+pip install git+https://github.com/Coding-Dev-Tools/apiauth.git
           pip install git+https://github.com/Coding-Dev-Tools/envault.git
 
       - name: Check environment drift before rotation
@@ -530,7 +531,8 @@ curl -H "Authorization: Bearer my-bearer-token" "http://localhost:8080/secrets?p
 <h2>Install Both Tools</h2>
 
 <pre><code># pip
-pip install apiauth
+pip install --index-url https://coding-dev-tools.github.io/pypi-index/simple/ apiauth &lt;br&gt;
+pip install git+https://github.com/Coding-Dev-Tools/apiauth.git
 pip install git+https://github.com/Coding-Dev-Tools/envault.git
 
 # Homebrew (macOS / Linux)

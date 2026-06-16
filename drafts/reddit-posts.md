@@ -11,7 +11,8 @@ Hey r/Python,
 Tired of rewriting Django models to SQLAlchemy? Or Prisma schemas to Drizzle? I built SchemaForge — a CLI that converts between 11 schema formats with zero-loss roundtripping.
 
 ```bash
-pip install schemaforge
+`pip install --index-url https://coding-dev-tools.github.io/pypi-index/simple/ schemaforge` <br>
+`pip install git+https://github.com/Coding-Dev-Tools/schemaforge.git`
 
 # Django → SQLAlchemy
 schemaforge convert models.py --from django --to sqlalchemy
@@ -135,7 +136,8 @@ Catches when staging and prod configs diverge silently.
 
 **4. Envault** — sync and rotate .env files
 ```bash
-pip install envault
+`pip install --index-url https://coding-dev-tools.github.io/pypi-index/simple/ envault` <br>
+`pip install git+https://github.com/Coding-Dev-Tools/envault.git`
 envault sync .env.production --from .env.staging
 ```
 Diff, sync, and rotate env variables across environments.

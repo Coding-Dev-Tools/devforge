@@ -67,7 +67,8 @@ Key features:
 - Custom .schemaforge editor in VS Code
 - Streaming for large schemas
 
-Install: pip install schemaforge
+Install: `pip install --index-url https://coding-dev-tools.github.io/pypi-index/simple/ schemaforge` <br>
+`pip install git+https://github.com/Coding-Dev-Tools/schemaforge.git`
 VS Code: Search "SchemaForge" in extensions
 
 v1.7.0 adds the VS Code companion, custom editor, and format detection.
@@ -106,7 +107,8 @@ Title: Built a tool to convert between Prisma, Drizzle, TypeORM, SQL, and 7 more
 
 Tired of manually rewriting schema definitions when switching between projects or ORMs. Built SchemaForge — bidirectional converter between 11 schema formats (110 direction pairs).
 
-    pip install schemaforge
+    Install: `pip install --index-url https://coding-dev-tools.github.io/pypi-index/simple/ schemaforge` <br>
+    `pip install git+https://github.com/Coding-Dev-Tools/schemaforge.git`
     schemaforge convert input.prisma --to drizzle
 
 Also has a VS Code extension with live preview and format detection.
@@ -199,7 +201,8 @@ Every developer who switches projects has faced this: your last project used Pri
 Bidirectional conversion between 11 schema formats — SQL DDL, Prisma, Drizzle, TypeORM, Django, SQLAlchemy, Alembic, JSON Schema, GraphQL SDL, EF Core, and Scala case classes. 110 direction pairs, all zero-loss.
 
 ## Quick start
-    pip install schemaforge
+    Install: `pip install --index-url https://coding-dev-tools.github.io/pypi-index/simple/ schemaforge` <br>
+    `pip install git+https://github.com/Coding-Dev-Tools/schemaforge.git`
     schemaforge convert schema.prisma --to drizzle
 
 ## VS Code Extension

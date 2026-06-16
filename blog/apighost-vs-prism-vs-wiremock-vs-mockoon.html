@@ -191,7 +191,8 @@
 <h3>How it works</h3>
 
 <pre><code># Install
-pip install apighost
+pip install --index-url https://coding-dev-tools.github.io/pypi-index/simple/ apighost &lt;br&gt;
+pip install git+https://github.com/Coding-Dev-Tools/apighost.git
 
 # Start mock from spec — zero config
 apighost serve petstore.yaml
@@ -562,7 +563,8 @@ assert response.name == "Buddy"  # PASSES every time</code></pre>
 <pre><code># GitHub Actions
 - name: Start mock API
   run: |
-    pip install apighost
+    pip install --index-url https://coding-dev-tools.github.io/pypi-index/simple/ apighost &lt;br&gt;
+pip install git+https://github.com/Coding-Dev-Tools/apighost.git
     apighost serve api-spec.yaml -p 8080 &
     sleep 2
 
@@ -708,7 +710,8 @@ assert response.name == "Buddy"  # PASSES every time</code></pre>
 <h2>Install APIGhost</h2>
 
 <pre><code># pip
-pip install apighost
+pip install --index-url https://coding-dev-tools.github.io/pypi-index/simple/ apighost &lt;br&gt;
+pip install git+https://github.com/Coding-Dev-Tools/apighost.git
 
 # Start a mock server from your OpenAPI spec
 apighost serve your-api-spec.yaml

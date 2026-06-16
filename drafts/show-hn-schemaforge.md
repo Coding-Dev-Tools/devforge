@@ -28,7 +28,8 @@ So I built SchemaForge: a CLI that converts between 11 schema formats with zero-
 
 **Example:**
 ```bash
-pip install schemaforge
+`pip install --index-url https://coding-dev-tools.github.io/pypi-index/simple/ schemaforge` <br>
+`pip install git+https://github.com/Coding-Dev-Tools/schemaforge.git`
 
 # Prisma → SQLAlchemy
 schemaforge convert schema.prisma --from prisma --to sqlalchemy
