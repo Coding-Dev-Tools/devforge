@@ -37,17 +37,25 @@ def build_actual_pages(all_files: set[str]) -> set[str]:
 
 def resolve_link(link: str, source_dir: str) -> str:
     """Resolve a relative href to an absolute site-relative path."""
-    if link.startswith("../"):
-        parts = source_dir.split("/") if source_dir else []
-        up_count = link.count("../")
-        resolved_parts = parts[:-up_count] if len(parts) >= up_count else []
-        remaining = link[3 * up_count :]
-        resolved = "/".join(resolved_parts + [remaining]) if resolved_parts else remaining
-    elif link.startswith("./"):
-        resolved = (source_dir + "/" + link[2:]) if source_dir else link[2:]
+    if link.startswith("http://") or link.startswith("https://") or link.startswith("#"):
+        return link
+    if link.startswith("/"):
+        return link.lstrip("/")
+
+    if source_dir:
+        path = source_dir + "/" + link
     else:
-        resolved = (source_dir + "/" + link) if source_dir else link
-    return resolved.replace("//", "/")
+        path = link
+
+    normalized = os.path.normpath(path).replace(os.sep, "/")
+
+    # Cap at site root: strip any leading ../ that goes above root
+    while normalized.startswith("../"):
+        normalized = normalized[3:]
+        if normalized.startswith("/"):
+            normalized = normalized[1:]
+
+    return normalized
 
 
 def check_links(root_dir: str, verbose: bool = False) -> int:
