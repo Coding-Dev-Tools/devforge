@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pricing — DevForge</title>
   <meta name="description" content="Simple pricing for DevForge CLI tools. Free tier for solo devs. Pro for CI/CD. Team for organizations. One license covers all 11 tools.">
+
+  <title>Pricing — Revenue Holdings</title>
+  <meta name="description" content="Choose individual developer CLI tools or the full suite. Free tier available. $49/mo for all 10 tools.">
   <meta name="keywords" content="CLI tools pricing, developer tools, OpenAPI, SQL, infrastructure, config drift, API keys, mock server, env variables, ORM schema, subscription">
   <meta property="og:title" content="DevForge — Pricing">
   <meta property="og:description" content="Simple pricing for 11 developer CLI tools. Free tier available. Pro for CI/CD and teams.">
@@ -31,6 +34,8 @@
     "offers": [
       { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD", "description": "CLI only, rate-limited" },
       { "@type": "Offer", "name": "Suite", "price": "49", "priceCurrency": "USD", "description": "Full suite, all 11 tools, unlimited usage" },
+
+      { "@type": "Offer", "name": "Suite", "price": "49", "priceCurrency": "USD", "description": "Full suite, all 10 tools, unlimited usage" },
       { "@type": "Offer", "name": "Team", "price": "79", "priceCurrency": "USD", "description": "Up to 5 devs, dashboard, alerts" },
       { "@type": "Offer", "name": "Enterprise", "price": "199", "priceCurrency": "USD", "description": "SSO, RBAC, compliance" }
     ]
@@ -182,6 +187,11 @@
       <a href="#products">Products</a>
       <a href="docs.html">Docs</a>
       <a href="pricing.html" style="font-weight:700">Pricing</a>
+
+      <a href="quickstart.html">Get Started</a>
+      <a href="index.html">Home</a>
+      <a href="docs.html">Docs</a>
+      <a href="pricing.html" class="active">Pricing</a>
       <a href="alternatives.html">Alternatives</a>
       <a href="releases.html">Changelog</a>
       <a href="blog.html">Blog</a>
@@ -262,6 +272,127 @@
       </ul>
       <a href="mailto:support@devforge" class="btn secondary">Contact Us</a>
     </div>
+    <div class="tool-card">
+      <div class="icon icon-aa">🔑</div>
+      <h3>APIAuth</h3>
+      <div class="price">$12 <span>/ mo</span></div>
+      <div class="annual">$119 / yr (save ~17%)</div>
+      <div class="desc">Generate, rotate, and revoke API keys and JWTs. AES-256-GCM encrypted keystore with CI/CD export.</div>
+      <ul>
+        <li>Unlimited key generation</li>
+        <li>JWT creation & rotation</li>
+        <li>Encrypted local keystore</li>
+        <li>CI/CD env export</li>
+      </ul>
+      <a href="mailto:waitlist@revenueholdings.dev?subject=Interest%3A%20APIAuth%20Pro" class="btn primary">Get Early Access →</a>
+    </div>
+
+    <div class="tool-card">
+      <div class="icon icon-ag">👻</div>
+      <h3>APIGhost</h3>
+      <div class="price">$12 <span>/ mo</span></div>
+      <div class="annual">$119 / yr (save ~17%)</div>
+      <div class="desc">OpenAPI spec to mock server with realistic fake data, scenario overrides, and VCR cassette recording.</div>
+      <ul>
+        <li>Unlimited mock servers</li>
+        <li>Scenario-based responses</li>
+        <li>VCR cassette record/replay</li>
+        <li>Custom response overrides</li>
+      </ul>
+      <a href="mailto:waitlist@revenueholdings.dev?subject=Interest%3A%20APIGhost%20Pro" class="btn primary">Get Early Access →</a>
+    </div>
+
+    <div class="tool-card">
+      <div class="icon icon-ev">🔒</div>
+      <h3>Envault</h3>
+      <div class="price">$12 <span>/ mo</span></div>
+      <div class="annual">$119 / yr (save ~17%)</div>
+      <div class="desc">Diff, sync, and rotate .env variables across environments. Integrates with Vault, AWS SSM, Doppler, 1Password.</div>
+      <ul>
+        <li>Unlimited env comparisons</li>
+        <li>Secret rotation with auto-gen</li>
+        <li>Vault / SSM / Doppler sync</li>
+        <li>Conflict resolution engine</li>
+      </ul>
+      <a href="mailto:waitlist@revenueholdings.dev?subject=Interest%3A%20Envault%20Pro" class="btn primary">Get Early Access →</a>
+    </div>
+
+    <div class="tool-card">
+      <div class="icon icon-sf">🔄</div>
+      <h3>SchemaForge</h3>
+      <div class="price">$15 <span>/ mo</span></div>
+      <div class="annual">$149 / yr (save ~17%)</div>
+      <div class="desc">Bidirectional ORM schema conversion — SQL DDL, Prisma, Drizzle, TypeORM, and Django with zero-loss roundtrips.</div>
+      <ul>
+        <li>Unlimited schema conversions</li>
+        <li>5 ORM format support</li>
+        <li>Zero-loss roundtripping</li>
+        <li>Batch directory conversion</li>
+      </ul>
+      <a href="mailto:waitlist@revenueholdings.dev?subject=Interest%3A%20SchemaForge%20Pro" class="btn primary">Get Early Access →</a>
+    </div>
+
+    <div class="tool-card">
+      <div class="icon" style="background:rgba(139,92,246,.15)">🔌</div>
+      <h3>click-to-mcp</h3>
+      <div class="price">$15 <span>/ mo</span></div>
+      <div class="annual">$149 / yr (save ~17%)</div>
+      <div class="desc">Auto-wrap any Click/Typer CLI as an MCP server — expose your tools to Claude, GPT, and any MCP-compatible AI in one command.</div>
+      <ul>
+        <li>Unlimited CLI-to-MCP conversions</li>
+        <li>Auto-discovery of Click/Typer apps</li>
+        <li>Stdio & SSE transport</li>
+        <li>Multi-server orchestration</li>
+      </ul>
+      <a href="mailto:waitlist@revenueholdings.dev?subject=Interest%3A%20click-to-mcp%20Pro" class="btn primary">Get Early Access →</a>
+    </div>
+
+    <div class="tool-card">
+      <div class="icon" style="background:rgba(239,68,68,.15)">🧹</div>
+      <h3>DeadCode</h3>
+      <div class="price">$12 <span>/ mo</span></div>
+      <div class="annual">$119 / yr (save ~17%)</div>
+      <div class="desc">Detect and remove unused exports, dead routes, orphaned CSS, and unreferenced components in TypeScript/React/Next.js projects.</div>
+      <ul>
+        <li>Unused export detection</li>
+        <li>Dead route identification</li>
+        <li>Orphaned CSS scanning</li>
+        <li>Dry-run removal preview</li>
+      </ul>
+      <a href="mailto:waitlist@revenueholdings.dev?subject=Interest%3A%20DeadCode%20Pro" class="btn primary">Get Early Access →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Suite Bundle Pricing -->
+<section class="pricing-section" id="tab-suite">
+  <div class="suite-hero">
+    <h2>The Revenue Holdings Suite</h2>
+    <p>All ten tools. One subscription. Maximum savings for professionals who need the full toolkit.</p>
+  </div>
+
+  <div class="suite-card featured">
+    <div class="name">Suite Bundle</div>
+    <div class="price">$49 <span>/ mo</span></div>
+    <div class="savings">Save 64% vs buying individually ($136/mo separately)</div>
+    <div class="annual">$499 / yr — save another ~17%</div>
+    <div class="desc">Everything you need: API contracts, SQL generation, infra diffs, config drift, key management, API mocking, env syncing, schema conversion, and dead code cleanup — all under one license key.</div>
+    <ul>
+      <li>API Contract Guardian — unlimited</li>
+      <li>json2sql — unlimited</li>
+      <li>DeployDiff — unlimited</li>
+      <li>ConfigDrift — unlimited</li>
+      <li>APIAuth — unlimited</li>
+      <li>APIGhost — unlimited</li>
+      <li>Envault — unlimited</li>
+      <li>SchemaForge — unlimited</li>
+      <li>click-to-mcp — unlimited</li>
+      <li>DeadCode — unlimited</li>
+      <li>Single license key for all tools</li>
+      <li>CI/CD integration across all tools</li>
+    </ul>
+    <a href="mailto:waitlist@revenueholdings.dev?subject=Interest%3A%20Revenue%20Holdings%20Suite" class="btn">Get Early Access →</a>
+    <a href="#comparison" class="compare-link">Compare features across tiers →</a>
   </div>
 </section>
 
@@ -282,7 +413,7 @@
     </thead>
     <tbody>
       <tr>
-        <td>Price</td>
+        <td>Price (per tool)</td>
         <td>$0</td>
         <td>$29/mo</td>
         <td>$79/mo</td>
@@ -293,6 +424,16 @@
         <td>—</td>
         <td>$23/mo</td>
         <td>$63/mo</td>
+
+        <td>$9–19/mo</td>
+        <td>$12–19/mo each</td>
+        <td>Custom</td>
+      </tr>
+      <tr>
+        <td>Full Suite (all 10 tools)</td>
+        <td>—</td>
+        <td>$49/mo ($499/yr)</td>
+        <td>$49/mo + seats</td>
         <td>Custom</td>
       </tr>
       <tr>
