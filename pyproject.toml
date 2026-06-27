@@ -7,7 +7,7 @@ name = "devforge-tools"
 license = {text = "MIT"}
 version = "0.1.0"
 description = "DevForge CLI tool suite — landing page & blog validation tools"
-authors = [{name = "Revenue Holdings"}]
+authors = [{name = "DevForge"}]
 keywords = ["devforge", "cli", "landing-page", "blog", "validation"]
 classifiers = [
     "Development Status :: 4 - Beta",
