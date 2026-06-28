@@ -53,26 +53,35 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0b; color: #e1e1e3; line-height: 1.6; min-height: 100vh; }
 
+    /* Skip link */
+    .skip-link { position: absolute; top: -100px; left: 16px; background: #10b981; color: #0a0a0b; padding: 8px 16px; border-radius: 6px; font-weight: 600; font-size: 0.85rem; z-index: 200; text-decoration: none; }
+    .skip-link:focus { top: 12px; }
+
+    /* Focus rings */
+    a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px dashed #10b981; outline-offset: 3px; border-radius: 2px; }
+
     /* Navigation */
     nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(10,10,11,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid #1e1e20; }
     nav .inner { max-width: 1100px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
     nav .logo { font-weight: 700; font-size: 1.15rem; color: #fff; letter-spacing: -0.02em; }
-    nav .logo span { color: #6366f1; }
+    nav .logo span { color: #10b981; }
     nav .links a { color: #888; text-decoration: none; font-size: 0.85rem; margin-left: 28px; transition: color .15s; }
     nav .links a:hover { color: #fff; }
+    nav .hamburger { display: none; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; padding: 4px 8px; line-height: 1; }
+    nav .hamburger:focus-visible { outline: 2px dashed #10b981; outline-offset: 3px; }
 
     /* Hero */
     .hero { max-width: 1100px; margin: 0 auto; padding: 140px 24px 80px; text-align: center; }
-    .hero h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.04em; color: #fff; }
-    .hero h1 span { background: linear-gradient(135deg, #6366f1, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.04em; color: #fff; max-width: 720px; margin-left: auto; margin-right: auto; }
+    .hero h1 span { background: linear-gradient(135deg, #10b981, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .hero p { font-size: 1.15rem; color: #888; max-width: 600px; margin: 20px auto 0; }
-    .hero .badge { display: inline-block; padding: 6px 16px; border-radius: 32px; font-size: 0.75rem; font-weight: 600; background: rgba(99,102,241,0.12); color: #a78bfa; border: 1px solid rgba(99,102,241,0.2); margin-bottom: 20px; letter-spacing: 0.3px; text-transform: uppercase; }
+    .hero .badge { display: inline-block; padding: 6px 16px; border-radius: 32px; font-size: 0.75rem; font-weight: 600; background: rgba(16,185,129,0.12); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.2); margin-bottom: 20px; letter-spacing: 0.3px; text-transform: uppercase; }
     .hero .ctas { margin-top: 36px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
     .hero .cta { display: inline-block; padding: 12px 28px; border-radius: 10px; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: all .15s; }
-    .hero .cta.primary { background: #6366f1; color: #fff; }
-    .hero .cta.primary:hover { background: #5558e6; transform: translateY(-1px); }
+    .hero .cta.primary { background: #10b981; color: #fff; }
+    .hero .cta.primary:hover { background: #059669; transform: translateY(-1px); }
     .hero .cta.secondary { background: #1a1a1c; color: #ccc; border: 1px solid #2a2a2d; }
-    .hero .cta.secondary:hover { border-color: #6366f1; color: #fff; }
+    .hero .cta.secondary:hover { border-color: #10b981; color: #fff; }
 
     /* Stats */
     .stats { display: flex; justify-content: center; gap: 48px; margin-top: 56px; flex-wrap: wrap; }
@@ -87,6 +96,16 @@
 
     .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
 
+    .product-featured { grid-column: 1 / -1; background: #121213; border: 1px solid rgba(16,185,129,0.3); border-radius: 14px; padding: 28px; display: flex; gap: 24px; align-items: flex-start; }
+    .product-featured .icon { flex-shrink: 0; width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; background: rgba(16,185,129,0.15); }
+    .product-featured h3 { font-size: 1.25rem; font-weight: 700; color: #fff; }
+    .product-featured p { font-size: 0.88rem; color: #a0a0a0; line-height: 1.55; margin: 10px 0 12px; }
+    .product-featured .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+    .product-featured .stat-row { display: flex; gap: 20px; padding-top: 14px; border-top: 1px solid #1e1e20; flex-wrap: wrap; }
+    .product-featured .view-on-gh { display: inline-block; margin-top: 8px; font-size: 0.78rem; color: #10b981; text-decoration: none; font-weight: 500; }
+    .product-featured .view-on-gh:hover { color: #34d399; text-decoration: underline; }
+    @media (max-width: 640px) { .product-featured { flex-direction: column; } }
+
     .product { background: #121213; border: 1px solid #1e1e20; border-radius: 14px; padding: 28px; transition: border-color .15s, transform .15s; }
     .product:hover { border-color: #2a2a2d; transform: translateY(-2px); }
     .product .icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 16px; }
@@ -95,18 +114,18 @@
     .product .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
     .product .tag { padding: 3px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 500; background: #1e1e20; color: #999; }
     .product .tag.revenue { background: rgba(16,185,129,0.12); color: #34d399; }
-    .product .tag.prod { background: rgba(99,102,241,0.12); color: #a78bfa; }
+    .product .tag.prod { background: rgba(16,185,129,0.12); color: #6ee7b7; }
     .product .stat-row { display: flex; gap: 20px; margin-top: 12px; padding-top: 14px; border-top: 1px solid #1e1e20; }
     .product .stat-row span { font-size: 0.75rem; color: #666; }
     .product .stat-row strong { color: #ccc; font-weight: 600; }
-    .product .view-on-gh { display: inline-block; margin-top: 4px; font-size: 0.78rem; color: #6366f1; text-decoration: none; font-weight: 500; transition: color .15s; }
-    .product .view-on-gh:hover { color: #a78bfa; text-decoration: underline; }
+    .product .view-on-gh { display: inline-block; margin-top: 4px; font-size: 0.78rem; color: #10b981; text-decoration: none; font-weight: 500; transition: color .15s; }
+    .product .view-on-gh:hover { color: #6ee7b7; text-decoration: underline; }
 
-    .icon-acg { background: rgba(99,102,241,0.15); }
+    .icon-acg { background: rgba(16,185,129,0.15); }
     .icon-j2s { background: rgba(16,185,129,0.15); }
     .icon-dd { background: rgba(245,158,11,0.15); }
     .icon-cd { background: rgba(239,68,68,0.15); }
-    .icon-aa { background: rgba(168,85,247,0.15); }
+    .icon-aa { background: rgba(110,231,183,0.15); }
     .icon-ag { background: rgba(6,182,212,0.15); }
     .icon-ev { background: rgba(34,197,94,0.15); }
     .icon-sf { background: rgba(251,146,60,0.15); }
@@ -118,8 +137,8 @@
 
     .pricing-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
     .plan { background: #121213; border: 1px solid #1e1e20; border-radius: 14px; padding: 28px; display: flex; flex-direction: column; }
-    .plan.featured { border-color: #6366f1; position: relative; }
-    .plan.featured::before { content: 'Most Popular'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); padding: 4px 16px; border-radius: 24px; background: #6366f1; color: #fff; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.3px; text-transform: uppercase; }
+    .plan.featured { border-color: #10b981; position: relative; }
+    .plan.featured::before { content: 'Most Popular'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); padding: 4px 16px; border-radius: 24px; background: #10b981; color: #fff; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.3px; text-transform: uppercase; }
     .plan .name { font-size: 1.1rem; font-weight: 600; color: #fff; }
     .plan .price { font-size: 2.4rem; font-weight: 800; color: #fff; margin: 16px 0 8px; letter-spacing: -0.03em; }
     .plan .price span { font-size: 1rem; font-weight: 400; color: #666; }
@@ -130,8 +149,8 @@
     .plan li.na::before { content: '—'; color: #444; }
     .plan li.na { color: #555; }
     .plan .btn { display: block; text-align: center; padding: 12px; border-radius: 10px; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: all .15s; }
-    .plan .btn.primary { background: #6366f1; color: #fff; }
-    .plan .btn.primary:hover { background: #5558e6; }
+    .plan .btn.primary { background: #10b981; color: #fff; }
+    .plan .btn.primary:hover { background: #059669; }
     .plan .btn.secondary { background: #1a1a1c; color: #ccc; border: 1px solid #2a2a2d; }
     .plan .btn.secondary:hover { border-color: #444; }
 
@@ -141,18 +160,18 @@
     .waitlist p { color: #888; max-width: 480px; margin: 12px auto 28px; font-size: 0.95rem; }
     .waitlist .form-row { display: flex; gap: 10px; max-width: 460px; margin: 0 auto; }
     .waitlist input[type="email"] { flex: 1; padding: 14px 18px; border-radius: 10px; border: 1px solid #2a2a2d; background: #121213; color: #e1e1e3; font-family: 'Inter', sans-serif; font-size: 0.9rem; outline: none; transition: border-color .15s; }
-    .waitlist input[type="email"]:focus { border-color: #6366f1; }
+    .waitlist input[type="email"]:focus { border-color: #10b981; }
     .waitlist input[type="email"]::placeholder { color: #555; }
-    .waitlist .submit-btn { padding: 14px 28px; border-radius: 10px; border: none; background: #6366f1; color: #fff; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: background .15s, transform .15s; white-space: nowrap; }
-    .waitlist .submit-btn:hover { background: #5558e6; transform: translateY(-1px); }
+    .waitlist .submit-btn { padding: 14px 28px; border-radius: 10px; border: none; background: #10b981; color: #fff; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: background .15s, transform .15s; white-space: nowrap; }
+    .waitlist .submit-btn:hover { background: #059669; transform: translateY(-1px); }
     .waitlist .form-msg { margin-top: 12px; font-size: 0.82rem; color: #34d399; display: none; }
 
     /* CTA section */
     .cta-section { max-width: 1100px; margin: 0 auto; padding: 60px 24px 100px; text-align: center; }
     .cta-section h2 { font-size: 2rem; font-weight: 700; color: #fff; letter-spacing: -0.03em; }
     .cta-section p { color: #888; max-width: 500px; margin: 12px auto 28px; font-size: 0.95rem; }
-    .cta-section .cta { display: inline-block; padding: 14px 36px; border-radius: 10px; font-weight: 600; font-size: 0.95rem; text-decoration: none; background: #6366f1; color: #fff; transition: all .15s; }
-    .cta-section .cta:hover { background: #5558e6; transform: translateY(-1px); }
+    .cta-section .cta { display: inline-block; padding: 14px 36px; border-radius: 10px; font-weight: 600; font-size: 0.95rem; text-decoration: none; background: #10b981; color: #fff; transition: all .15s; }
+    .cta-section .cta:hover { background: #059669; transform: translateY(-1px); }
 
     /* Footer */
     footer { max-width: 1100px; margin: 0 auto; padding: 40px 24px; border-top: 1px solid #1e1e20; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
@@ -165,19 +184,25 @@
       .stats { gap: 24px; }
       .product-grid { grid-template-columns: 1fr; }
       .pricing-grid { grid-template-columns: 1fr; }
-      nav .links a { margin-left: 16px; font-size: 0.78rem; }
+      nav .hamburger { display: block; }
+      nav .links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(10,10,11,0.95); backdrop-filter: blur(12px); flex-direction: column; padding: 12px 24px; border-bottom: 1px solid #1e1e20; }
+      nav .links.open { display: flex; }
+      nav .links a { margin: 0; padding: 10px 0; border-bottom: 1px solid #1e1e20; }
+      nav .links a:last-child { border-bottom: none; }
     }
   </style>
   <!-- Plausible Analytics -->
   <script defer data-domain="devforge" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
+<a href="#install" class="skip-link">Skip to install commands</a>
 <!-- rebuild trigger 2026-05-19T10:29:21 -->
 
 <nav>
   <div class="inner">
     <div class="logo"><a href=""><span>⚒</span> DevForge</a></div>
-    <div class="links">
+    <button class="hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <div class="links" id="nav-links">
       <a href="start-here.html">Start Here</a>
       <a href="quickstart.html">Get Started</a>
       <a href="#products">Products</a>
@@ -209,11 +234,9 @@
     <p style="color:#666;font-size:0.72rem;margin:6px 0 0;">Each tool installs independently. See all install commands below.</p>
   </div>
   <div class="stats">
-    <div class="stat"><div class="num">11</div><div class="label">CLI Tools</div></div>
-    <div class="stat"><div class="num">70+</div><div class="label">Tutorials &amp; Articles</div></div>
-    <div class="stat"><div class="num">722+</div><div class="label">Passing Tests</div></div>
-    <div class="stat"><div class="num">11</div><div class="label">Schema Formats</div></div>
-    <div class="stat"><div class="num" id="star-count">—</div><div class="label">GitHub Stars</div></div>
+    <div class="stat"><div class="num">11</div><div class="label">CLI tools that gate CI</div></div>
+    <div class="stat"><div class="num">722+</div><div class="label">Tests that back every tool</div></div>
+    <div class="stat"><div class="num">70+</div><div class="label">Articles with real workflows</div></div>
   </div>
 </section>
 
@@ -223,6 +246,33 @@
   <p>CLI-first utilities that solve real engineering problems. No dashboards, no bloat, no SaaS lock-in.</p>
 
   <div class="product-grid">
+
+    <!-- Featured: SchemaForge -->
+    <div class="product-featured">
+      <div class="icon icon-sf">🔄</div>
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          <h3>SchemaForge</h3>
+          <span class="tag prod">v1.7.0</span>
+          <span class="tag revenue">Free + Pro</span>
+          <span style="font-size:0.7rem;color:#10b981;font-weight:600;">★ Featured</span>
+        </div>
+        <p>Convert between SQL DDL, Prisma, Drizzle, TypeORM, Django, SQLAlchemy, JSON Schema, GraphQL SDL, EF Core, and Scala case classes with zero-loss roundtripping. Bidirectional ORM schema converter supporting 11 formats. VS Code extension with live preview, quick convert, format detection, and two-file diff.</p>
+        <div class="tags">
+          <span class="tag">orm</span>
+          <span class="tag">sqlalchemy</span>
+          <span class="tag">migration</span>
+          <span class="tag">vscode</span>
+        </div>
+        <div class="stat-row">
+          <span>Tests: <strong>270</strong></span>
+          <span>Formats: <strong>11</strong></span>
+          <span>Directions: <strong>110</strong></span>
+          <span>Status: <strong style="color:#34d399;">Ready</strong></span>
+        </div>
+        <a href="https://github.com/Coding-Dev-Tools/schemaforge/releases/tag/v1.7.0" class="view-on-gh" target="_blank">View v1.7.0 Release →</a>
+      </div>
+    </div>
 
     <div class="product">
       <div class="icon icon-acg">⚡</div>
@@ -339,25 +389,7 @@
     </div>
 
     <div class="product">
-      <div class="icon icon-sf">🔄</div>
-      <h3>SchemaForge</h3>
-      <p>Convert between SQL DDL, Prisma, Drizzle, TypeORM, Django, SQLAlchemy, JSON Schema, GraphQL SDL, EF Core, and Scala case classes with zero-loss roundtripping. Bidirectional ORM schema converter supporting 11 formats.</p>
-      <div class="tags">
-        <span class="tag prod">v1.7.0</span>
-        <span class="tag revenue">Free + Pro</span>
-        <span class="tag">orm</span>
-        <span class="tag">sqlalchemy</span>
-        <span class="tag">migration</span>
-      </div>
-      <div class="stat-row">
-        <span>Tests: <strong>270</strong></span>
-        <span>Status: <strong style="color:#34d399;">Ready</strong></span>
-      </div>
-      <a href="https://github.com/Coding-Dev-Tools/schemaforge/releases/tag/v1.7.0" class="view-on-gh" target="_blank">View v1.7.0 Release →</a>
-    </div>
-
-    <div class="product">
-      <div class="icon" style="background:rgba(139,92,246,.15)">🔌</div>
+      <div class="icon" style="background:rgba(52,211,153,.15)">🔌</div>
       <h3>click-to-mcp</h3>
       <p>Auto-wrap any Click or Typer CLI as an MCP server. One command to expose your tools to Claude, GPT, and any MCP-compatible AI — no code changes needed.</p>
       <div class="tags">
@@ -468,8 +500,8 @@
   </div>
 
   <!-- MCP Bridge Highlight -->
-  <div style="background:linear-gradient(135deg,rgba(99,102,241,0.08),rgba(167,139,250,0.08));border:1px solid rgba(99,102,241,0.2);border-radius:12px;padding:24px;text-align:center;">
-    <h3 style="font-size:1.1rem;font-weight:600;color:#a78bfa;margin:0 0 8px;">🔌 Bridge to AI Agents: click-to-mcp</h3>
+  <div style="background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(52,211,153,0.08));border:1px solid rgba(16,185,129,0.2);border-radius:12px;padding:24px;text-align:center;">
+    <h3 style="font-size:1.1rem;font-weight:600;color:#6ee7b7;margin:0 0 8px;">🔌 Bridge to AI Agents: click-to-mcp</h3>
     <p style="color:#999;font-size:0.88rem;margin:0 0 12px;max-width:500px;margin-left:auto;margin-right:auto;">Wrap any Click/typer CLI as an MCP server — let Claude Code, Codex, and Cursor use your tools directly. Zero code changes required.</p>
     <code style="color:#d1d5db;font-size:0.82rem;background:#0d0d0e;padding:8px 14px;border-radius:6px;">pip install git+https://github.com/Coding-Dev-Tools/click-to-mcp.git</code>
     <p style="color:#666;font-size:0.72rem;margin:8px 0 0;">Free &amp; open source (Apache 2.0) — works with all DevForge tools</p>
@@ -542,7 +574,7 @@
     </div>
   </div>
   <div style="text-align:center;margin-top:36px;">
-    <a href="pricing.html" style="color:#6366f1;text-decoration:none;font-size:0.85rem;font-weight:500;">See full pricing breakdown →</a>
+    <a href="pricing.html" style="color:#10b981;text-decoration:none;font-size:0.85rem;font-weight:500;">See full pricing breakdown →</a>
   </div>
 </section>
 
@@ -551,6 +583,7 @@
   <h2>Get Early Access</h2>
   <p>Commercial features are in development. Leave your email and we'll notify you when Pro, Team, and Enterprise tiers launch.</p>
   <form onsubmit="submitWaitlist(event)">
+    <label for="wl-email" style="display:block;font-size:0.82rem;color:#a0a0a0;margin-bottom:8px;font-weight:500;">Email address</label>
     <div class="form-row">
       <input type="email" id="wl-email" placeholder="you@company.com" required>
       <button type="submit" class="submit-btn">Notify Me →</button>
@@ -625,7 +658,7 @@
     </div>
     <div style="background:#121213;border:1px solid #1e1e20;border-radius:12px;padding:20px 24px;">
       <div style="font-size:0.95rem;font-weight:600;color:#fff;margin-bottom:8px;">Why install from GitHub instead of PyPI?</div>
-      <div style="font-size:0.85rem;color:#888;"><code style="color:#a78bfa;background:#0d0d0e;padding:2px 6px;border-radius:4px;font-size:0.8rem;">pip install git+https://github.com/Coding-Dev-Tools/tool.git</code> works perfectly and always gives you the latest version. These are pure Python packages — no compiled wheels needed. PyPI publishing is planned once the licensing system is finalized.</div>
+      <div style="font-size:0.85rem;color:#888;"><code style="color:#6ee7b7;background:#0d0d0e;padding:2px 6px;border-radius:4px;font-size:0.8rem;">pip install git+https://github.com/Coding-Dev-Tools/tool.git</code> works perfectly and always gives you the latest version. These are pure Python packages — no compiled wheels needed. PyPI publishing is planned once the licensing system is finalized.</div>
     </div>
     <div style="background:#121213;border:1px solid #1e1e20;border-radius:12px;padding:20px 24px;">
       <div style="font-size:0.95rem;font-weight:600;color:#fff;margin-bottom:8px;">What does "Open-source" mean?</div>
@@ -633,7 +666,7 @@
     </div>
     <div style="background:#121213;border:1px solid #1e1e20;border-radius:12px;padding:20px 24px;">
       <div style="font-size:0.95rem;font-weight:600;color:#fff;margin-bottom:8px;">Is click-to-mcp the only way to make MCP servers?</div>
-      <div style="font-size:0.85rem;color:#888;">No. <a href="https://pypi.org/project/fastmcp/" style="color:#a78bfa;text-decoration:none;">FastMCP</a> is great for building new MCP servers from scratch. click-to-mcp is specifically for wrapping <em>existing</em> Click/typer CLIs — zero code changes, zero boilerplate. Use the right tool for your use case.</div>
+      <div style="font-size:0.85rem;color:#888;">No. <a href="https://pypi.org/project/fastmcp/" style="color:#6ee7b7;text-decoration:none;">FastMCP</a> is great for building new MCP servers from scratch. click-to-mcp is specifically for wrapping <em>existing</em> Click/typer CLIs — zero code changes, zero boilerplate. Use the right tool for your use case.</div>
     </div>
     <div style="background:#121213;border:1px solid #1e1e20;border-radius:12px;padding:20px 24px;">
       <div style="font-size:0.95rem;font-weight:600;color:#fff;margin-bottom:8px;">How is SchemaForge different from prisma-import or drizzle-kit?</div>
@@ -641,42 +674,42 @@
     </div>
     <div style="background:#121213;border:1px solid #1e1e20;border-radius:12px;padding:20px 24px;">
       <div style="font-size:0.95rem;font-weight:600;color:#fff;margin-bottom:8px;">Is there a free tier?</div>
-      <div style="font-size:0.85rem;color:#888;">Every tool is free and open source under the MIT license. DevForge adds optional paid features like license key enforcement and priority support. See <a href="pricing.html" style="color:#a78bfa;text-decoration:none;">pricing</a> for details.</div>
+      <div style="font-size:0.85rem;color:#888;">Every tool is free and open source under the MIT license. DevForge adds optional paid features like license key enforcement and priority support. See <a href="pricing.html" style="color:#6ee7b7;text-decoration:none;">pricing</a> for details.</div>
     </div>
   </div>
 </section>
 
 <!-- About / Open-source -->
 <section class="cta-section" style="max-width:1100px;margin:0 auto;padding:60px 24px 100px;text-align:center;">
-  <div style="display:inline-block;padding:5px 14px;border-radius:24px;font-size:0.72rem;font-weight:600;background:rgba(99,102,241,0.12);color:#a78bfa;border:1px solid rgba(99,102,241,0.2);margin-bottom:20px;letter-spacing:0.3px;text-transform:uppercase;">Why DevForge</div>
+  <div style="display:inline-block;padding:5px 14px;border-radius:24px;font-size:0.72rem;font-weight:600;background:rgba(16,185,129,0.12);color:#6ee7b7;border:1px solid rgba(16,185,129,0.2);margin-bottom:20px;letter-spacing:0.3px;text-transform:uppercase;">Why DevForge</div>
   <h2 style="font-size:2rem;font-weight:700;color:#fff;letter-spacing:-0.03em;margin-bottom:16px;">Tools that solve specific problems</h2>
   <p style="color:#888;max-width:600px;margin:0 auto 12px;font-size:0.95rem;">No dashboards. No SaaS lock-in. No "platform." Just CLI tools that do one thing well, return exit code 1 on failure, and drop into any CI pipeline.</p>
 
   <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin:40px auto;max-width:800px;text-align:left;">
     <div style="background:#121213;border:1px solid #1e1e20;border-radius:12px;padding:20px;">
-      <div style="font-size:0.8rem;color:#6366f1;font-weight:700;margin-bottom:4px;">OPEN SOURCE</div>
+      <div style="font-size:0.8rem;color:#10b981;font-weight:700;margin-bottom:4px;">OPEN SOURCE</div>
       <div style="font-size:0.8rem;color:#888;">MIT licensed. Inspect the code, fork it, contribute back. No vendor lock-in.</div>
     </div>
     <div style="background:#121213;border:1px solid #1e1e20;border-radius:12px;padding:20px;">
-      <div style="font-size:0.8rem;color:#6366f1;font-weight:700;margin-bottom:4px;">CI-FIRST</div>
+      <div style="font-size:0.8rem;color:#10b981;font-weight:700;margin-bottom:4px;">CI-FIRST</div>
       <div style="font-size:0.8rem;color:#888;">Every tool returns exit code 1 on failure. Drop into GitHub Actions, GitLab CI, Jenkins.</div>
     </div>
     <div style="background:#121213;border:1px solid #1e1e20;border-radius:12px;padding:20px;">
-      <div style="font-size:0.8rem;color:#6366f1;font-weight:700;margin-bottom:4px;">TESTED</div>
+      <div style="font-size:0.8rem;color:#10b981;font-weight:700;margin-bottom:4px;">TESTED</div>
       <div style="font-size:0.8rem;color:#888;">722+ passing tests across 11 tools. CI runs on every commit. SchemaForge alone has 270 tests.</div>
     </div>
     <div style="background:#121213;border:1px solid #1e1e20;border-radius:12px;padding:20px;">
-      <div style="font-size:0.8rem;color:#6366f1;font-weight:700;margin-bottom:4px;">NO ACCOUNT</div>
+      <div style="font-size:0.8rem;color:#10b981;font-weight:700;margin-bottom:4px;">NO ACCOUNT</div>
       <div style="font-size:0.8rem;color:#888;">Install with pip. Run immediately. No signup, no login, no telemetry required.</div>
     </div>
   </div>
 
-  <a href="https://github.com/Coding-Dev-Tools" class="cta" style="display:inline-block;padding:14px 36px;border-radius:10px;font-weight:600;font-size:0.95rem;text-decoration:none;background:#6366f1;color:#fff;transition:all .15s;">Browse Tools on GitHub →</a>
+  <a href="https://github.com/Coding-Dev-Tools" class="cta" style="display:inline-block;padding:14px 36px;border-radius:10px;font-weight:600;font-size:0.95rem;text-decoration:none;background:#10b981;color:#fff;transition:all .15s;">Browse Tools on GitHub →</a>
 </section>
 
 <!-- Blog section -->
 <section style="max-width:1100px;margin:0 auto;padding:80px 24px;text-align:center;">
-  <div style="display:inline-block;padding:5px 14px;border-radius:24px;font-size:0.72rem;font-weight:600;background:rgba(99,102,241,0.12);color:#a78bfa;border:1px solid rgba(99,102,241,0.2);margin-bottom:16px;letter-spacing:0.3px;text-transform:uppercase;">From the Blog</div>
+  <div style="display:inline-block;padding:5px 14px;border-radius:24px;font-size:0.72rem;font-weight:600;background:rgba(16,185,129,0.12);color:#6ee7b7;border:1px solid rgba(16,185,129,0.2);margin-bottom:16px;letter-spacing:0.3px;text-transform:uppercase;">From the Blog</div>
   <h2 style="font-size:2rem;font-weight:800;color:#fff;letter-spacing:-0.03em;">Latest Articles</h2>
   <p style="color:#888;font-size:1rem;margin-top:8px;margin-bottom:40px;">CI/CD guides, hands-on tutorials, and product updates.</p>
   <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;text-align:left;">
@@ -689,7 +722,7 @@
     </a>
     <a href="blog/ai-built-cli-tools-zero-humans.html" style="background:#121213;border:1px solid #1e1e20;border-radius:14px;padding:24px;text-decoration:none;color:inherit;transition:border-color .15s;">
       <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
-        <span style="padding:3px 10px;border-radius:6px;font-size:0.7rem;font-weight:500;background:rgba(99,102,241,0.12);color:#a78bfa;">Story</span>
+        <span style="padding:3px 10px;border-radius:6px;font-size:0.7rem;font-weight:500;background:rgba(16,185,129,0.12);color:#6ee7b7;">Story</span>
       </div>
       <h3 style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:6px;">We Built 11 Production-Ready CLI Tools with Zero Human Developers</h3>
       <p style="font-size:0.8rem;color:#888;line-height:1.5;">Four AI agents — CEO, Engineer, Researcher, and Marketer — designed, coded, tested, documented, and shipped 11 developer CLI tools. No human touched the code.</p>
@@ -708,21 +741,21 @@
   </a>
   <a href="blog/license-key-rate-limiting-cli-tools.html" style="background:#121213;border:1px solid #1e1e20;border-radius:14px;padding:24px;text-decoration:none;color:inherit;transition:border-color .15s;">
       <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
-        <span style="padding:3px 10px;border-radius:6px;font-size:0.7rem;font-weight:500;background:rgba(99,102,241,0.12);color:#a78bfa;">Launch</span>
+        <span style="padding:3px 10px;border-radius:6px;font-size:0.7rem;font-weight:500;background:rgba(16,185,129,0.12);color:#6ee7b7;">Launch</span>
       </div>
       <h3 style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:6px;">License Keys &amp; Rate Limiting: DevForge Goes Pro</h3>
       <p style="font-size:0.8rem;color:#888;line-height:1.5;">JWT-based license key validation and SQLite rate limiting rolling out across all 11 CLI tools. Free tier: 50 uses/day per tool. Pro: unlimited. Enterprise: custom.</p>
     </a>
     <a href="blog/schemaforge-v1-7-0-vscode-extension.html" style="background:#121213;border:1px solid #1e1e20;border-radius:14px;padding:24px;text-decoration:none;color:inherit;transition:border-color .15s;">
       <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
-        <span style="padding:3px 10px;border-radius:6px;font-size:0.7rem;font-weight:500;background:rgba(99,102,241,0.12);color:#a78bfa;">Release</span>
+        <span style="padding:3px 10px;border-radius:6px;font-size:0.7rem;font-weight:500;background:rgba(16,185,129,0.12);color:#6ee7b7;">Release</span>
       </div>
       <h3 style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:6px;">SchemaForge v1.7.0: VS Code Extension + 11-Format Conversion</h3>
       <p style="font-size:0.8rem;color:#888;line-height:1.5;">VS Code extension with live preview, quick convert, format detection, and two-file diff. 11 schema formats, 110 direction pairs, zero-loss roundtripping.</p>
     </a>
     <a href="blog/saas-churn-predictor-launch.html" style="background:#121213;border:1px solid #1e1e20;border-radius:14px;padding:24px;text-decoration:none;color:inherit;transition:border-color .15s;">
       <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
-        <span style="padding:3px 10px;border-radius:6px;font-size:0.7rem;font-weight:500;background:rgba(99,102,241,0.12);color:#a78bfa;">Launch</span>
+        <span style="padding:3px 10px;border-radius:6px;font-size:0.7rem;font-weight:500;background:rgba(16,185,129,0.12);color:#6ee7b7;">Launch</span>
       </div>
       <h3 style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:6px;">SaaS Churn Predictor v1.0: Stripe-Native Churn Scoring</h3>
       <p style="font-size:0.8rem;color:#888;line-height:1.5;">Connect Stripe in 60 seconds. Get daily 0-100 churn risk scores per customer — with the specific signal and action to take.</p>
@@ -736,7 +769,7 @@
     </a>
     <a href="blog/schemaforge-v0-5-0-sqlalchemy.html" style="background:#121213;border:1px solid #1e1e20;border-radius:14px;padding:24px;text-decoration:none;color:inherit;transition:border-color .15s;">
       <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
-        <span style="padding:3px 10px;border-radius:6px;font-size:0.7rem;font-weight:500;background:rgba(99,102,241,0.12);color:#a78bfa;">Release</span>
+        <span style="padding:3px 10px;border-radius:6px;font-size:0.7rem;font-weight:500;background:rgba(16,185,129,0.12);color:#6ee7b7;">Release</span>
       </div>
       <h3 style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:6px;">SchemaForge v0.5.0: SQLAlchemy Support</h3>
       <p style="font-size:0.8rem;color:#888;line-height:1.5;">All 6 ORM formats now convertible bidirectionally — SQL DDL, Prisma, Drizzle, TypeORM, Django, and SQLAlchemy. 30 conversion paths from one CLI.</p>
@@ -778,7 +811,7 @@
     </a>
     <a href="blog/click-to-mcp-intro.html" style="background:#121213;border:1px solid #1e1e20;border-radius:14px;padding:24px;text-decoration:none;color:inherit;transition:border-color .15s;">
       <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
-        <span style="padding:3px 10px;border-radius:6px;font-size:0.7rem;font-weight:500;background:rgba(99,102,241,0.12);color:#a78bfa;">Launch</span>
+        <span style="padding:3px 10px;border-radius:6px;font-size:0.7rem;font-weight:500;background:rgba(16,185,129,0.12);color:#6ee7b7;">Launch</span>
       </div>
       <h3 style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:6px;">From CLI to MCP in One Command</h3>
       <p style="font-size:0.8rem;color:#888;line-height:1.5;">Auto-wrap any Click/Typer CLI as an MCP server — bridge your tools with AI agents, zero code changes.</p>
@@ -813,14 +846,14 @@
     </a>
     <a href="blog/schemaforge-v0-2-0-drizzle.html" style="background:#121213;border:1px solid #1e1e20;border-radius:14px;padding:24px;text-decoration:none;color:inherit;transition:border-color .15s;">
       <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
-        <span style="padding:3px 10px;border-radius:6px;font-size:0.7rem;font-weight:500;background:rgba(99,102,241,0.12);color:#a78bfa;">Release</span>
+        <span style="padding:3px 10px;border-radius:6px;font-size:0.7rem;font-weight:500;background:rgba(16,185,129,0.12);color:#6ee7b7;">Release</span>
       </div>
       <h3 style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:6px;">SchemaForge v0.2.0: Drizzle Support</h3>
       <p style="font-size:0.8rem;color:#888;line-height:1.5;">Convert between SQL DDL ↔ Drizzle TypeScript schemas, Drizzle ↔ Prisma, and schema diffs — with dialect-aware table factories.</p>
     </a>
     <a href="blog/welcome-devforge.html" style="background:#121213;border:1px solid #1e1e20;border-radius:14px;padding:24px;text-decoration:none;color:inherit;transition:border-color .15s;">
       <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
-        <span style="padding:3px 10px;border-radius:6px;font-size:0.7rem;font-weight:500;background:rgba(99,102,241,0.12);color:#a78bfa;">Announcement</span>
+        <span style="padding:3px 10px;border-radius:6px;font-size:0.7rem;font-weight:500;background:rgba(16,185,129,0.12);color:#6ee7b7;">Announcement</span>
       </div>
       <h3 style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:6px;">Welcome to DevForge</h3>
       <p style="font-size:0.8rem;color:#888;line-height:1.5;">11 CLI tools that catch problems before production. Open source, Open-source.</p>
@@ -834,7 +867,7 @@
     </a>
     <a href="blog/autonomous-ai-experiment.html" style="background:#121213;border:1px solid #1e1e20;border-radius:14px;padding:24px;text-decoration:none;color:inherit;transition:border-color .15s;">
       <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
-        <span style="padding:3px 10px;border-radius:6px;font-size:0.7rem;font-weight:500;background:rgba(99,102,241,0.12);color:#a78bfa;">Behind the Scenes</span>
+        <span style="padding:3px 10px;border-radius:6px;font-size:0.7rem;font-weight:500;background:rgba(16,185,129,0.12);color:#6ee7b7;">Behind the Scenes</span>
       </div>
       <h3 style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:6px;">11 CLI Tools, Zero Human Developers</h3>
       <p style="font-size:0.8rem;color:#888;line-height:1.5;">How autonomous AI agents designed, coded, tested, and shipped 11 production-ready CLI tools — no humans touched the code.</p>
@@ -862,13 +895,13 @@
     </a>
     <a href="blog/deadcode-technical-deep-dive.html" style="background:#121213;border:1px solid #1e1e20;border-radius:14px;padding:24px;text-decoration:none;color:inherit;transition:border-color .15s;">
       <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
-        <span style="padding:3px 10px;border-radius:6px;font-size:0.7rem;font-weight:500;background:rgba(99,102,241,0.12);color:#a78bfa;">Deep Dive</span>
+        <span style="padding:3px 10px;border-radius:6px;font-size:0.7rem;font-weight:500;background:rgba(16,185,129,0.12);color:#6ee7b7;">Deep Dive</span>
       </div>
       <h3 style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:6px;">DeadCode Under the Hood</h3>
       <p style="font-size:0.8rem;color:#888;line-height:1.5;">A technical deep-dive: AST parsing, tree-shaking-aware export resolution, route declaration extraction, and CSS selector analysis in React/Next.js.</p>
     </a>
   </div>
-  <a href="blog.html" style="display:inline-block;margin-top:28px;color:#6366f1;font-size:0.9rem;font-weight:500;text-decoration:none;">View all 70+ articles →</a>
+  <a href="blog.html" style="display:inline-block;margin-top:28px;color:#10b981;font-size:0.9rem;font-weight:500;text-decoration:none;">View all 70+ articles →</a>
 </section>
 
 <footer>
