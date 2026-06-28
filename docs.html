@@ -24,13 +24,16 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism-tomorrow.min.css" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* Focus rings */
+    a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px dashed #10b981; outline-offset: 3px; border-radius: 2px; }
+
     body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0b; color: #e1e1e3; line-height: 1.6; }
 
     /* Navigation */
     nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(10,10,11,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid #1e1e20; }
     nav .inner { max-width: 1100px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
     nav .logo { font-weight: 700; font-size: 1.15rem; color: #fff; letter-spacing: -0.02em; }
-    nav .logo span { color: #6366f1; }
+    nav .logo span { color: #10b981; }
     nav .links a { color: #888; text-decoration: none; font-size: 0.85rem; margin-left: 28px; transition: color .15s; }
     nav .links a:hover { color: #fff; }
     nav .links a.active { color: #fff; }
@@ -38,14 +41,14 @@
     /* Hero */
     .hero { max-width: 1100px; margin: 0 auto; padding: 140px 24px 60px; text-align: center; }
     .hero h1 { font-size: 3rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.04em; color: #fff; }
-    .hero h1 span { background: linear-gradient(135deg, #6366f1, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero h1 span { background: linear-gradient(135deg, #10b981, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .hero p { font-size: 1.05rem; color: #888; max-width: 650px; margin: 16px auto 0; }
-    .hero .badge { display: inline-block; padding: 6px 16px; border-radius: 32px; font-size: 0.75rem; font-weight: 600; background: rgba(99,102,241,0.12); color: #a78bfa; border: 1px solid rgba(99,102,241,0.2); margin-bottom: 20px; letter-spacing: 0.3px; text-transform: uppercase; }
+    .hero .badge { display: inline-block; padding: 6px 16px; border-radius: 32px; font-size: 0.75rem; font-weight: 600; background: rgba(16,185,129,0.12); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.2); margin-bottom: 20px; letter-spacing: 0.3px; text-transform: uppercase; }
 
     /* Quick Jump */
     .quick-jump { max-width: 1100px; margin: 0 auto; padding: 0 24px 40px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
     .quick-jump a { padding: 8px 18px; border-radius: 8px; font-size: 0.82rem; font-weight: 500; text-decoration: none; background: #121213; color: #888; border: 1px solid #1e1e20; transition: all .15s; }
-    .quick-jump a:hover { border-color: #6366f1; color: #fff; }
+    .quick-jump a:hover { border-color: #10b981; color: #fff; }
 
     /* Content */
     .content { max-width: 850px; margin: 0 auto; padding: 0 24px 80px; }
@@ -56,10 +59,10 @@
     .tool-section h2 .icon { width: 32px; height: 32px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; font-size: 1rem; }
     .tool-section .subtitle { font-size: 0.85rem; color: #888; margin-bottom: 16px; }
     .tool-section .desc { font-size: 0.88rem; color: #999; line-height: 1.65; margin-bottom: 20px; }
-    .tool-section .gh-link { display: inline-block; font-size: 0.78rem; color: #6366f1; text-decoration: none; font-weight: 500; margin-bottom: 18px; }
-    .tool-section .gh-link:hover { color: #a78bfa; text-decoration: underline; }
+    .tool-section .gh-link { display: inline-block; font-size: 0.78rem; color: #10b981; text-decoration: none; font-weight: 500; margin-bottom: 18px; }
+    .tool-section .gh-link:hover { color: #6ee7b7; text-decoration: underline; }
 
-    .icon-acg { background: rgba(99,102,241,0.15); }
+    .icon-acg { background: rgba(16,185,129,0.15); }
     .icon-j2s { background: rgba(16,185,129,0.15); }
     .icon-dd { background: rgba(245,158,11,0.15); }
     .icon-cd { background: rgba(239,68,68,0.15); }
@@ -67,15 +70,15 @@
     .icon-ag { background: rgba(6,182,212,0.15); }
     .icon-ev { background: rgba(34,197,94,0.15); }
     .icon-sf { background: rgba(251,146,60,0.15); }
-    .icon-rh { background: rgba(139,92,246,0.15); }
+    .icon-rh { background: rgba(52,211,153,0.15); }
 
     /* Install Block */
     .install-block { background: #0a0a0b; border: 1px solid #1e1e20; border-radius: 10px; padding: 14px 18px; margin-bottom: 18px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
-    .install-block code { font-family: 'Fira Code', 'JetBrains Mono', monospace; font-size: 0.82rem; color: #a78bfa; }
+    .install-block code { font-family: 'Fira Code', 'JetBrains Mono', monospace; font-size: 0.82rem; color: #6ee7b7; }
     .install-block .note { font-size: 0.75rem; color: #666; }
 
     /* Notice banner */
-    .notice-banner { max-width: 780px; margin: 0 auto 24px; padding: 12px 20px; background: rgba(99,102,241,0.06); border: 1px solid rgba(99,102,241,0.15); border-radius: 10px; font-size: 0.82rem; color: #a78bfa; }
+    .notice-banner { max-width: 780px; margin: 0 auto 24px; padding: 12px 20px; background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.15); border-radius: 10px; font-size: 0.82rem; color: #6ee7b7; }
     .notice-banner code { color: #34d399; background: rgba(16,185,129,0.1); padding: 1px 6px; border-radius: 4px; font-size: 0.8rem; }
     .notice-banner strong { color: #c4b5fd; }
 
@@ -87,13 +90,13 @@
     /* Feature Lists */
     .features { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 16px; }
     .features li { font-size: 0.82rem; color: #aaa; padding: 4px 0; display: flex; align-items: center; gap: 8px; }
-    .features li::before { content: '✓'; color: #6366f1; font-weight: 700; }
+    .features li::before { content: '✓'; color: #10b981; font-weight: 700; }
     .features li.single-col { grid-column: 1 / -1; }
 
     /* Insight box */
-    .insight { background: rgba(99,102,241,0.06); border: 1px solid rgba(99,102,241,0.15); border-radius: 10px; padding: 16px 20px; margin-bottom: 18px; }
+    .insight { background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.15); border-radius: 10px; padding: 16px 20px; margin-bottom: 18px; }
     .insight p { font-size: 0.82rem; color: #999; line-height: 1.6; }
-    .insight strong { color: #a78bfa; }
+    .insight strong { color: #6ee7b7; }
 
     /* Workflow example */
     .workflow { background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.15); border-radius: 10px; padding: 16px 20px; margin-bottom: 18px; }
@@ -240,7 +243,7 @@ json2sql convert data.json --dialect sqlite</code></pre>
     <div class="insight">
       <p><strong>Why you need it:</strong> Writing SQL seed data by hand is error-prone and tedious. json2sql turns hours of manual INSERT statement construction into a one-liner — especially useful for ETL pipelines, database seeding, and test data generation.</p>
     </div>
-    <a href="blog/json-to-sql-one-command.html" style="display:inline-block;margin-top:12px;color:#a78bfa;font-size:0.85rem;font-weight:500;text-decoration:none;">📖 Read the json2sql tutorial →</a>
+    <a href="blog/json-to-sql-one-command.html" style="display:inline-block;margin-top:12px;color:#6ee7b7;font-size:0.85rem;font-weight:500;text-decoration:none;">📖 Read the json2sql tutorial →</a>
   </div>
 
   <!-- ==================== DEPLOYDIFF ==================== -->
@@ -276,7 +279,7 @@ json2sql convert data.json --dialect sqlite</code></pre>
     <div class="insight">
       <p><strong>Why you need it:</strong> Every infrastructure change carries risk — wrong config, unexpected cost, unreachable state. DeployDiff gives you a clear preview <em>before</em> your IaC tool applies it, with rollback commands pre-generated so recovery isn't panic-mode.</p>
     </div>
-    <a href="blog/preview-infra-cost-before-deploy.html" style="display:inline-block;margin-top:12px;color:#a78bfa;font-size:0.85rem;font-weight:500;text-decoration:none;">📖 Read the DeployDiff tutorial →</a>
+    <a href="blog/preview-infra-cost-before-deploy.html" style="display:inline-block;margin-top:12px;color:#6ee7b7;font-size:0.85rem;font-weight:500;text-decoration:none;">📖 Read the DeployDiff tutorial →</a>
   </div>
 
   <!-- ==================== CONFIGDRIFT ==================== -->
@@ -312,7 +315,7 @@ json2sql convert data.json --dialect sqlite</code></pre>
     <div class="insight">
       <p><strong>Why you need it:</strong> Config drift is the silent killer of deployments — a missing key in prod that exists in staging, a deprecated value that's still in dev. ConfigDrift automates the comparison so you catch it in CI, not in an incident post-mortem.</p>
     </div>
-    <a href="blog/catch-config-drift-before-production.html" style="display:inline-block;margin-top:12px;color:#a78bfa;font-size:0.85rem;font-weight:500;text-decoration:none;">📖 Read the ConfigDrift tutorial →</a>
+    <a href="blog/catch-config-drift-before-production.html" style="display:inline-block;margin-top:12px;color:#6ee7b7;font-size:0.85rem;font-weight:500;text-decoration:none;">📖 Read the ConfigDrift tutorial →</a>
   </div>
 
   <div class="tool-section" id="apighost">
@@ -344,7 +347,7 @@ apighost replay my-cassette</code></pre>
     <div class="insight">
       <p><strong>Why you need it:</strong> Frontend teams shouldn't wait for backend APIs. APIGhost spins up a working mock from your OpenAPI spec instantly — with realistic data, error scenarios, and record/replay for integration tests. Ship UI against a stable mock, swap in the real API when ready.</p>
     </div>
-    <a href="blog/api-mock-server-from-openapi-spec.html" style="display:inline-block;margin-top:12px;color:#a78bfa;font-size:0.85rem;font-weight:500;text-decoration:none;">📖 Read the APIGhost tutorial →</a>
+    <a href="blog/api-mock-server-from-openapi-spec.html" style="display:inline-block;margin-top:12px;color:#6ee7b7;font-size:0.85rem;font-weight:500;text-decoration:none;">📖 Read the APIGhost tutorial →</a>
   </div>
 
   <div class="tool-section" id="apiauth">
@@ -379,7 +382,7 @@ apiauth rotate &lt;key-id&gt;</code></pre>
     <div class="insight">
       <p><strong>Why you need it:</strong> API keys in .env files are a security incident waiting to happen. APIAuth gives you a proper keystore — encrypted, auditable, rotatable — with one-command CI/CD export. Stop copying secrets into config files and start managing them like infrastructure.</p>
     </div>
-    <a href="blog/api-key-management-from-terminal.html" style="display:inline-block;margin-top:12px;color:#a78bfa;font-size:0.85rem;font-weight:500;text-decoration:none;">📖 Read the APIAuth tutorial →</a>
+    <a href="blog/api-key-management-from-terminal.html" style="display:inline-block;margin-top:12px;color:#6ee7b7;font-size:0.85rem;font-weight:500;text-decoration:none;">📖 Read the APIAuth tutorial →</a>
   </div>
 
   <div class="tool-section" id="envault">
@@ -413,7 +416,7 @@ envault rotate JWT_SECRET # 256-bit base64 secret</code></pre>
     <div class="insight">
       <p><strong>Why you need it:</strong> .env drift is how staging works but prod doesn't — a missing variable, a different value, a stale secret. Envault catches the diff, syncs safely, and rotates secrets with one command. Connect it to your secret store and stop managing .env files by hand.</p>
     </div>
-    <a href="blog/sync-env-variables-across-environments.html" style="display:inline-block;margin-top:12px;color:#a78bfa;font-size:0.85rem;font-weight:500;text-decoration:none;">📖 Read the Envault tutorial →</a>
+    <a href="blog/sync-env-variables-across-environments.html" style="display:inline-block;margin-top:12px;color:#6ee7b7;font-size:0.85rem;font-weight:500;text-decoration:none;">📖 Read the Envault tutorial →</a>
   </div>
 
   <div class="tool-section" id="schemaforge">
@@ -445,13 +448,13 @@ envault rotate JWT_SECRET # 256-bit base64 secret</code></pre>
     <div class="insight">
       <p><strong>Why you need it:</strong> Every ORM migration is a one-way street — Prisma introspects SQL but can't export back, Drizzle users manually rewrite schemas when switching. SchemaForge is the only tool that goes both ways across 11 formats. Stop rewriting schemas by hand and start converting them.</p>
     </div>
-    <a href="blog/schemaforge-v1-7-0-vscode-extension.html" style="display:inline-block;margin-top:12px;color:#a78bfa;font-size:0.85rem;font-weight:500;text-decoration:none;">📖 Read the v1.7.0 release (VS Code + 11 formats) →</a>
+    <a href="blog/schemaforge-v1-7-0-vscode-extension.html" style="display:inline-block;margin-top:12px;color:#6ee7b7;font-size:0.85rem;font-weight:500;text-decoration:none;">📖 Read the v1.7.0 release (VS Code + 11 formats) →</a>
     <a href="blog/schemaforge-v0-5-0-sqlalchemy.html" style="display:inline-block;margin-top:12px;margin-left:16px;color:#888;font-size:0.82rem;text-decoration:none;">v0.5.0: SQLAlchemy →</a>
   </div>
 
   <!-- ==================== CLICK-TO-MCP ==================== -->
   <div class="tool-section" id="click-to-mcp">
-    <h2><span class="icon" style="background:rgba(139,92,246,.15)">🔌</span> click-to-mcp</h2>
+    <h2><span class="icon" style="background:rgba(52,211,153,.15)">🔌</span> click-to-mcp</h2>
     <div class="subtitle">v0.2.1 — Auto-wrap Click/Typer CLIs as MCP servers</div>
     <p class="desc">Turn any Click or Typer CLI into an MCP server with a single command. Expose your tools to Claude, GPT, Cursor, and any MCP-compatible AI — no code changes needed. Auto-discovers commands, generates tool schemas, and handles stdio/SSE transport.</p>
     <a href="https://github.com/Coding-Dev-Tools/click-to-mcp" class="gh-link" target="_blank">View on GitHub →</a>
@@ -584,7 +587,7 @@ jobs:
       - run: configdrift check dev.yaml prod.yaml --output json</code></pre>
 
     <div class="insight">
-      <p><strong>Pro tip:</strong> Use the meta-package in CI so your pipeline automatically gets all new tools as they're released. Pin the major version for production stability: <code style="color:#a78bfa;">pip install git+https://github.com/Coding-Dev-Tools/devforge.git@v0.1</code></p>
+      <p><strong>Pro tip:</strong> Use the meta-package in CI so your pipeline automatically gets all new tools as they're released. Pin the major version for production stability: <code style="color:#6ee7b7;">pip install git+https://github.com/Coding-Dev-Tools/devforge.git@v0.1</code></p>
     </div>
   </div>
 
@@ -621,7 +624,7 @@ pip install git+https://github.com/Coding-Dev-Tools/datamorph.git # Data format 
 
   <!-- ==================== LICENSE ==================== -->
   <div class="tool-section" id="license">
-    <h2><span class="icon" style="width:40px;height:40px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:rgba(99,102,241,0.15);margin-bottom:14px;">🔑</span> License Key Setup</h2>
+    <h2><span class="icon" style="width:40px;height:40px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:rgba(16,185,129,0.15);margin-bottom:14px;">🔑</span> License Key Setup</h2>
     <p class="desc">Each tool checks a license key on startup to determine your tier. Free tier works out of the box (50 uses/day per tool). Set a license key to unlock unlimited Pro access.</p>
 
     <div class="install-block">
@@ -638,13 +641,13 @@ pip install git+https://github.com/Coding-Dev-Tools/datamorph.git # Data format 
     </ul>
 
     <div class="insight">
-      <p><strong>Get a license key:</strong> Free keys available on the <a href="pricing.html" style="color:#a78bfa;">pricing page</a> — no credit card needed. Set the <code>DEVFORGE_LICENSE_KEY</code> environment variable for automated CI/CD deployments.</p>
+      <p><strong>Get a license key:</strong> Free keys available on the <a href="pricing.html" style="color:#6ee7b7;">pricing page</a> — no credit card needed. Set the <code>DEVFORGE_LICENSE_KEY</code> environment variable for automated CI/CD deployments.</p>
     </div>
-    <a href="pricing.html" style="display:inline-block;margin-top:12px;color:#a78bfa;font-size:0.85rem;font-weight:500;text-decoration:none;">📖 View pricing & get your key →</a>
+    <a href="pricing.html" style="display:inline-block;margin-top:12px;color:#6ee7b7;font-size:0.85rem;font-weight:500;text-decoration:none;">📖 View pricing & get your key →</a>
   </div>
 
   <p style="text-align:center;margin-top:40px;font-size:0.85rem;color:#555;">
-    Something missing? <a href="https://github.com/Coding-Dev-Tools/devforge/issues/new" style="color:#6366f1;text-decoration:none;">Open an issue</a> or <a href="mailto:support@devforge" style="color:#6366f1;text-decoration:none;">email us</a>.
+    Something missing? <a href="https://github.com/Coding-Dev-Tools/devforge/issues/new" style="color:#10b981;text-decoration:none;">Open an issue</a> or <a href="mailto:support@devforge" style="color:#10b981;text-decoration:none;">email us</a>.
   </p>
 
 </div>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>DevForge - Checkup Report</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<style>
+		body { font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+		.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+		.report-section { border: 1px solid #222226; background: #0a0a0b; position: relative; }
+		.corner-box { position: absolute; width: 20px; height: 20px; border: 1px solid #222226; background: #000; }
+		.vital-healthy { background: rgba(52,211,153,0.1); color: #34d399; }
+		.vital-watch { background: rgba(251,191,36,0.1); color: #fbbf24; }
+		.vital-critical { background: rgba(239,68,68,0.1); color: #ef4444; }
+	</style>
+</head>
+<body class="bg-black text-[#fafafa]">
+	<main class="mx-auto w-full max-w-6xl px-5 py-8 md:px-10 md:py-12">
+		<header class="report-section mb-8 p-6 md:p-8">
+			<div class="corner-box left-0 top-0 -translate-x-1/2 -translate-y-1/2"></div>
+			<div class="corner-box right-0 top-0 translate-x-1/2 -translate-y-1/2"></div>
+			<div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+				<div>
+					<div class="mono mb-2 text-xs tracking-widest text-[#666]">// CHECKUP</div>
+					<h1 class="text-4xl font-bold tracking-tight md:text-6xl">DevForge</h1>
+				</div>
+				<div class="mono text-left text-xs text-[#666] md:text-right">
+					<div>COMMANDCODE REPORT</div>
+					<div class="text-[#444]">2026-06-28</div>
+				</div>
+			</div>
+		</header>
+
+		<section class="report-section mb-8 p-6 md:p-8">
+			<div class="corner-box left-0 top-0 -translate-x-1/2 -translate-y-1/2"></div>
+			<div class="corner-box right-0 top-0 translate-x-1/2 -translate-y-1/2"></div>
+			<div class="grid gap-8 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+				<div>
+					<div class="mono mb-2 text-xs tracking-widest text-[#666]">// OVERALL</div>
+					<div class="text-6xl font-bold tracking-tight md:text-7xl">35</div>
+					<div class="mt-1 text-lg text-[#666]">/ 60</div>
+					<div class="mt-4 inline-flex border border-[#fbbf24]/30 bg-[#fbbf24]/10 px-3 py-1 text-sm text-[#fbbf24]">WATCH</div>
+				</div>
+				<div>
+					<div class="mono mb-3 text-xs tracking-widest text-[#666]">// TL;DR</div>
+					<p class="text-sm leading-6 text-[#a0a0a0]">Shippable but generic. Readability and speed are healthy. Intentionality is critical — the design reads as assembled from safe domain defaults. No focus rings, 10 cramped nav links, placeholder-only form label.</p>
+					<p class="mt-4 text-sm leading-6 text-[#fbbf24]">Recolor and relayout before the next marketing push. Add focus rings and form labels for accessibility.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="report-section mb-8 p-6 md:p-8">
+			<div class="mono mb-6 text-xs tracking-widest text-[#666]">// VITAL SIGNS</div>
+			<div class="overflow-x-auto">
+				<table class="w-full min-w-[720px] border-collapse text-sm">
+					<thead>
+						<tr class="border-b border-[#222226] text-left mono text-xs text-[#666]">
+							<th class="py-3 pr-4 font-normal">#</th>
+							<th class="py-3 pr-4 font-normal">VITAL</th>
+							<th class="py-3 pr-4 font-normal">STATUS</th>
+							<th class="py-3 pr-4 font-normal">SCORE</th>
+							<th class="py-3 font-normal">FINDING</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="border-b border-[#1a1a1e]">
+							<td class="py-4 pr-4 text-[#555]">1</td>
+							<td class="py-4 pr-4 text-[#fafafa]">Intentionality</td>
+							<td class="py-4 pr-4"><span class="vital-critical inline-block px-2 py-0.5 text-xs">Critical</span></td>
+							<td class="py-4 pr-4 text-[#ef4444]">0/10</td>
+							<td class="py-4 text-[#a0a0a0]">Every visual choice is the domain default — dark + indigo + Inter + centered</td>
+						</tr>
+						<tr class="border-b border-[#1a1a1e]">
+							<td class="py-4 pr-4 text-[#555]">2</td>
+							<td class="py-4 pr-4 text-[#fafafa]">Readability</td>
+							<td class="py-4 pr-4"><span class="vital-healthy inline-block px-2 py-0.5 text-xs">Healthy</span></td>
+							<td class="py-4 pr-4 text-[#34d399]">10/10</td>
+							<td class="py-4 text-[#a0a0a0]">4.5:1 contrast minimum, comfortable body size, generous line-height</td>
+						</tr>
+						<tr class="border-b border-[#1a1a1e]">
+							<td class="py-4 pr-4 text-[#555]">3</td>
+							<td class="py-4 pr-4 text-[#fafafa]">Usability</td>
+							<td class="py-4 pr-4"><span class="vital-watch inline-block px-2 py-0.5 text-xs">Watch</span></td>
+							<td class="py-4 pr-4 text-[#fbbf24]">5/10</td>
+							<td class="py-4 text-[#a0a0a0]">CTAs clear but 10 nav links overload. No search. No tool filtering.</td>
+						</tr>
+						<tr class="border-b border-[#1a1a1e]">
+							<td class="py-4 pr-4 text-[#555]">4</td>
+							<td class="py-4 pr-4 text-[#fafafa]">Responsiveness</td>
+							<td class="py-4 pr-4"><span class="vital-watch inline-block px-2 py-0.5 text-xs">Watch</span></td>
+							<td class="py-4 pr-4 text-[#fbbf24]">5/10</td>
+							<td class="py-4 text-[#a0a0a0]">One breakpoint at 640px. Nav crams 10 links. No 320px tuning.</td>
+						</tr>
+						<tr class="border-b border-[#1a1a1e]">
+							<td class="py-4 pr-4 text-[#555]">5</td>
+							<td class="py-4 pr-4 text-[#fafafa]">Speed</td>
+							<td class="py-4 pr-4"><span class="vital-healthy inline-block px-2 py-0.5 text-xs">Healthy</span></td>
+							<td class="py-4 pr-4 text-[#34d399]">10/10</td>
+							<td class="py-4 text-[#a0a0a0]">Pure HTML/CSS, one font load, zero framework, instant paint</td>
+						</tr>
+						<tr class="border-b border-[#1a1a1e]">
+							<td class="py-4 pr-4 text-[#555]">6</td>
+							<td class="py-4 pr-4 text-[#fafafa]">Accessibility</td>
+							<td class="py-4 pr-4"><span class="vital-watch inline-block px-2 py-0.5 text-xs">Watch</span></td>
+							<td class="py-4 pr-4 text-[#fbbf24]">5/10</td>
+							<td class="py-4 text-[#a0a0a0]">Semantic HTML present. Missing: focus rings, skip link, form labels</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<section class="report-section mb-8 p-6 md:p-8">
+			<div class="mono mb-6 text-xs tracking-widest text-[#666]">// SIGNALS</div>
+			<div class="grid gap-6 md:grid-cols-2">
+				<div>
+					<div class="mb-3 text-xl font-semibold">Positive</div>
+					<ul class="space-y-3 text-sm text-[#a0a0a0]">
+						<li><span class="mono mr-2 text-[#34d399]">PASS</span>Pure HTML/CSS — zero framework bloat, instant loads</li>
+						<li><span class="mono mr-2 text-[#34d399]">PASS</span>Semantic landmarks: nav, section, footer used correctly</li>
+						<li><span class="mono mr-2 text-[#34d399]">PASS</span>Dark mode is the default, not an afterthought</li>
+						<li><span class="mono mr-2 text-[#34d399]">PASS</span>Consistent visual language across 9+ pages</li>
+					</ul>
+				</div>
+				<div>
+					<div class="mb-3 text-xl font-semibold">Risk</div>
+					<ul class="space-y-3 text-sm text-[#a0a0a0]">
+						<li><span class="mono mr-2 text-[#ef4444]">FAIL</span>No visible focus ring style — blind keyboard nav</li>
+						<li><span class="mono mr-2 text-[#ef4444]">FAIL</span>Domain default identity — indigo + dark + Inter + centered</li>
+						<li><span class="mono mr-2 text-[#fbbf24]">WATCH</span>10 nav links with no priority or hamburger</li>
+						<li><span class="mono mr-2 text-[#fbbf24]">WATCH</span>Placeholder as only form label</li>
+						<li><span class="mono mr-2 text-[#fbbf24]">WATCH</span>Single responsive breakpoint at 640px</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<section class="report-section mb-8 p-6 md:p-8">
+			<div class="mono mb-6 text-xs tracking-widest text-[#666]">// PRIORITY ISSUES</div>
+			<div class="space-y-5">
+				<article class="border border-[#2a1d22] bg-[#110b0d] p-5">
+					<div class="mono mb-2 text-xs text-[#f43f5e]">P0 — Intentionality</div>
+					<h2 class="mb-2 text-lg font-semibold">Domain Default Visual Identity</h2>
+					<p class="mb-4 text-sm leading-6 text-[#a0a0a0]">The indigo-on-dark Inter aesthetic is the median generated developer tool landing page. No project-specific lane has been chosen.</p>
+					<div class="border-l border-[#fbbf24] pl-4 text-sm leading-6 text-[#fbbf24]">FIX: /design recolor — break the indigo default, cut accent usage to interaction points only.</div>
+				</article>
+				<article class="border border-[#2a1d22] bg-[#110b0d] p-5">
+					<div class="mono mb-2 text-xs text-[#f97316]">P1 — Accessibility</div>
+					<h2 class="mb-2 text-lg font-semibold">Missing Focus States and Form Labels</h2>
+					<p class="mb-4 text-sm leading-6 text-[#a0a0a0]">No custom focus ring style. Email waitlist input has no visible label — only placeholder text. No skip-to-content link. Keyboard users navigate blind.</p>
+					<div class="border-l border-[#fbbf24] pl-4 text-sm leading-6 text-[#fbbf24]">FIX: /design interaction — add 2px focus rings, visible form labels, skip link.</div>
+				</article>
+				<article class="border border-[#2a1d22] bg-[#110b0d] p-5">
+					<div class="mono mb-2 text-xs text-[#f97316]">P1 — Responsiveness</div>
+					<h2 class="mb-2 text-lg font-semibold">Mobile Nav Overload</h2>
+					<p class="mb-4 text-sm leading-6 text-[#a0a0a0]">10 nav links at 640px with no hamburger menu, no priority ordering, no collapse strategy. The nav becomes unreadable.</p>
+					<div class="border-l border-[#fbbf24] pl-4 text-sm leading-6 text-[#fbbf24]">FIX: /design responsive — add hamburger menu, reduce visible links to key 4-5 on mobile.</div>
+				</article>
+			</div>
+		</section>
+
+		<footer class="mono py-8 text-center text-xs tracking-widest text-[#444]">
+			Generated with CommandCode - 2026-06-28
+		</footer>
+	</main>
+</body>
+</html>

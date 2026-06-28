@@ -35,6 +35,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* Focus rings */
+    a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px dashed #10b981; outline-offset: 3px; border-radius: 2px; }
+
     body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0b; color: #e1e1e3; line-height: 1.6; min-height: 100vh; }
 
     /* Navigation */
@@ -42,7 +45,7 @@
     nav .inner { max-width: 1100px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
     nav .logo { font-weight: 700; font-size: 1.15rem; }
     nav .logo a { color: #fff; text-decoration: none; letter-spacing: -0.02em; }
-    nav .logo a span { color: #6366f1; }
+    nav .logo a span { color: #10b981; }
     nav .links a { color: #888; text-decoration: none; font-size: 0.85rem; margin-left: 28px; transition: color .15s; }
     nav .links a:hover { color: #fff; }
     nav .links a.active { color: #fff; }
@@ -50,7 +53,7 @@
     /* Hero */
     .hero { max-width: 800px; margin: 0 auto; padding: 140px 24px 60px; }
     .hero h1 { font-size: 2.6rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.04em; color: #fff; margin-bottom: 20px; }
-    .hero h1 span { background: linear-gradient(135deg, #6366f1, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero h1 span { background: linear-gradient(135deg, #10b981, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .hero p { font-size: 1.1rem; color: #888; line-height: 1.7; }
 
     /* Sections */
@@ -65,7 +68,7 @@
     .value-card .icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 16px; }
     .value-card h3 { font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: 8px; }
     .value-card p { font-size: 0.85rem; color: #888; line-height: 1.6; }
-    .icon-purple { background: rgba(99,102,241,0.15); }
+    .icon-purple { background: rgba(16,185,129,0.15); }
     .icon-green { background: rgba(16,185,129,0.15); }
     .icon-orange { background: rgba(245,158,11,0.15); }
     .icon-blue { background: rgba(59,130,246,0.15); }
@@ -73,7 +76,7 @@
     /* Timeline */
     .timeline { max-width: 800px; margin: 0 auto; padding: 0 24px 60px; }
     .timeline-item { display: flex; gap: 24px; margin-bottom: 32px; }
-    .timeline-dot { flex-shrink: 0; width: 12px; height: 12px; border-radius: 50%; background: #6366f1; margin-top: 6px; }
+    .timeline-dot { flex-shrink: 0; width: 12px; height: 12px; border-radius: 50%; background: #10b981; margin-top: 6px; }
     .timeline-dot.dim { background: #2a2a2d; }
     .timeline-content h4 { font-size: 0.95rem; font-weight: 600; color: #fff; margin-bottom: 4px; }
     .timeline-content p { font-size: 0.85rem; color: #888; line-height: 1.6; }
@@ -86,7 +89,7 @@
     .agent { background: #121213; border: 1px solid #1e1e20; border-radius: 12px; padding: 20px; }
     .agent .role { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
     .agent .role.ceo { color: #f59e0b; }
-    .agent .role.engineer { color: #6366f1; }
+    .agent .role.engineer { color: #10b981; }
     .agent .role.researcher { color: #10b981; }
     .agent .role.marketer { color: #ec4899; }
     .agent .name { font-size: 1rem; font-weight: 600; color: #fff; margin-bottom: 6px; }
@@ -96,8 +99,8 @@
     .cta-section { text-align: center; padding: 80px 24px; border-top: 1px solid #1e1e20; }
     .cta-section h2 { font-size: 1.8rem; font-weight: 700; color: #fff; margin-bottom: 12px; }
     .cta-section p { color: #888; font-size: 1rem; margin-bottom: 28px; }
-    .cta-btn { display: inline-block; padding: 12px 28px; border-radius: 10px; font-weight: 600; font-size: 0.9rem; text-decoration: none; background: #6366f1; color: #fff; transition: all .15s; }
-    .cta-btn:hover { background: #5558e6; transform: translateY(-1px); }
+    .cta-btn { display: inline-block; padding: 12px 28px; border-radius: 10px; font-weight: 600; font-size: 0.9rem; text-decoration: none; background: #10b981; color: #fff; transition: all .15s; }
+    .cta-btn:hover { background: #059669; transform: translateY(-1px); }
 
     /* Footer */
     footer { max-width: 1100px; margin: 0 auto; padding: 40px 24px; border-top: 1px solid #1e1e20; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
@@ -244,15 +247,15 @@
   <h2>Learn with Tutorials</h2>
   <p>Every tool has a dedicated tutorial with sample workflows, CI/CD integration, and real-world use cases. <strong>70+ articles</strong> covering all 11 tools.</p>
   <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:20px;">
-    <a href="blog/api-key-management-from-terminal.html" style="background:#121213;border:1px solid #1e1e20;border-radius:10px;padding:14px 18px;text-decoration:none;color:#ccc;font-size:0.85rem;transition:border-color .15s;">🔑 API Key Management <span style="color:#6366f1;">→</span></a>
-    <a href="blog/sync-env-variables-across-environments.html" style="background:#121213;border:1px solid #1e1e20;border-radius:10px;padding:14px 18px;text-decoration:none;color:#ccc;font-size:0.85rem;transition:border-color .15s;">🛡️ Sync .env Files <span style="color:#6366f1;">→</span></a>
-    <a href="blog/api-mock-server-from-openapi-spec.html" style="background:#121213;border:1px solid #1e1e20;border-radius:10px;padding:14px 18px;text-decoration:none;color:#ccc;font-size:0.85rem;transition:border-color .15s;">👻 Mock API from OpenAPI <span style="color:#6366f1;">→</span></a>
-    <a href="blog/preview-infra-cost-before-deploy.html" style="background:#121213;border:1px solid #1e1e20;border-radius:10px;padding:14px 18px;text-decoration:none;color:#ccc;font-size:0.85rem;transition:border-color .15s;">☁️ Preview Infra Cost <span style="color:#6366f1;">→</span></a>
-    <a href="blog/json-to-sql-one-command.html" style="background:#121213;border:1px solid #1e1e20;border-radius:10px;padding:14px 18px;text-decoration:none;color:#ccc;font-size:0.85rem;transition:border-color .15s;">↻ JSON to SQL <span style="color:#6366f1;">→</span></a>
-    <a href="blog/catch-config-drift-before-production.html" style="background:#121213;border:1px solid #1e1e20;border-radius:10px;padding:14px 18px;text-decoration:none;color:#ccc;font-size:0.85rem;transition:border-color .15s;">⌘ Catch Config Drift <span style="color:#6366f1;">→</span></a>
-    <a href="blog/ai-built-cli-tools-zero-humans.html" style="background:#121213;border:1px solid #1e1e20;border-radius:10px;padding:14px 18px;text-decoration:none;color:#ccc;font-size:0.85rem;transition:border-color .15s;">🤖 Zero Human Developers Story <span style="color:#6366f1;">→</span></a>
+    <a href="blog/api-key-management-from-terminal.html" style="background:#121213;border:1px solid #1e1e20;border-radius:10px;padding:14px 18px;text-decoration:none;color:#ccc;font-size:0.85rem;transition:border-color .15s;">🔑 API Key Management <span style="color:#10b981;">→</span></a>
+    <a href="blog/sync-env-variables-across-environments.html" style="background:#121213;border:1px solid #1e1e20;border-radius:10px;padding:14px 18px;text-decoration:none;color:#ccc;font-size:0.85rem;transition:border-color .15s;">🛡️ Sync .env Files <span style="color:#10b981;">→</span></a>
+    <a href="blog/api-mock-server-from-openapi-spec.html" style="background:#121213;border:1px solid #1e1e20;border-radius:10px;padding:14px 18px;text-decoration:none;color:#ccc;font-size:0.85rem;transition:border-color .15s;">👻 Mock API from OpenAPI <span style="color:#10b981;">→</span></a>
+    <a href="blog/preview-infra-cost-before-deploy.html" style="background:#121213;border:1px solid #1e1e20;border-radius:10px;padding:14px 18px;text-decoration:none;color:#ccc;font-size:0.85rem;transition:border-color .15s;">☁️ Preview Infra Cost <span style="color:#10b981;">→</span></a>
+    <a href="blog/json-to-sql-one-command.html" style="background:#121213;border:1px solid #1e1e20;border-radius:10px;padding:14px 18px;text-decoration:none;color:#ccc;font-size:0.85rem;transition:border-color .15s;">↻ JSON to SQL <span style="color:#10b981;">→</span></a>
+    <a href="blog/catch-config-drift-before-production.html" style="background:#121213;border:1px solid #1e1e20;border-radius:10px;padding:14px 18px;text-decoration:none;color:#ccc;font-size:0.85rem;transition:border-color .15s;">⌘ Catch Config Drift <span style="color:#10b981;">→</span></a>
+    <a href="blog/ai-built-cli-tools-zero-humans.html" style="background:#121213;border:1px solid #1e1e20;border-radius:10px;padding:14px 18px;text-decoration:none;color:#ccc;font-size:0.85rem;transition:border-color .15s;">🤖 Zero Human Developers Story <span style="color:#10b981;">→</span></a>
   </div>
-  <p style="margin-top:20px;"><a href="blog.html" style="color:#a78bfa;font-weight:500;">View all 70+ articles →</a></p>
+  <p style="margin-top:20px;"><a href="blog.html" style="color:#6ee7b7;font-weight:500;">View all 70+ articles →</a></p>
 </div>
 
 <!-- CTA -->

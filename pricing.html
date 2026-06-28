@@ -38,13 +38,16 @@
   </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* Focus rings */
+    a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px dashed #10b981; outline-offset: 3px; border-radius: 2px; }
+
     body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0b; color: #e1e1e3; line-height: 1.6; min-height: 100vh; }
 
     /* Navigation */
     nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(10,10,11,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid #1e1e20; }
     nav .inner { max-width: 1100px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
     nav .logo { font-weight: 700; font-size: 1.15rem; color: #fff; letter-spacing: -0.02em; }
-    nav .logo span { color: #6366f1; }
+    nav .logo span { color: #10b981; }
     nav .links a { color: #888; text-decoration: none; font-size: 0.85rem; margin-left: 28px; transition: color .15s; }
     nav .links a:hover { color: #fff; }
     nav .links a.active { color: #fff; }
@@ -52,15 +55,15 @@
     /* Hero */
     .hero { max-width: 1100px; margin: 0 auto; padding: 140px 24px 60px; text-align: center; }
     .hero h1 { font-size: 3rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.04em; color: #fff; }
-    .hero h1 span { background: linear-gradient(135deg, #6366f1, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero h1 span { background: linear-gradient(135deg, #10b981, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .hero p { font-size: 1.05rem; color: #888; max-width: 600px; margin: 16px auto 0; }
-    .hero .badge { display: inline-block; padding: 6px 16px; border-radius: 32px; font-size: 0.75rem; font-weight: 600; background: rgba(99,102,241,0.12); color: #a78bfa; border: 1px solid rgba(99,102,241,0.2); margin-bottom: 20px; letter-spacing: 0.3px; text-transform: uppercase; }
+    .hero .badge { display: inline-block; padding: 6px 16px; border-radius: 32px; font-size: 0.75rem; font-weight: 600; background: rgba(16,185,129,0.12); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.2); margin-bottom: 20px; letter-spacing: 0.3px; text-transform: uppercase; }
 
     /* Tab Switcher */
     .tabs { display: flex; justify-content: center; gap: 4px; margin: 48px auto 0; background: #121213; border: 1px solid #1e1e20; border-radius: 12px; padding: 4px; width: fit-content; }
     .tab-btn { padding: 10px 28px; border: none; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600; cursor: pointer; background: transparent; color: #888; transition: all .15s; }
     .tab-btn:hover { color: #ccc; }
-    .tab-btn.active { background: #6366f1; color: #fff; }
+    .tab-btn.active { background: #10b981; color: #fff; }
 
     /* Pricing Sections */
     .pricing-section { display: none; max-width: 1100px; margin: 0 auto; padding: 40px 24px; }
@@ -80,15 +83,15 @@
     .tool-card li { font-size: 0.78rem; color: #aaa; padding: 5px 0; display: flex; align-items: center; gap: 8px; }
     .tool-card li::before { content: '✓'; color: #34d399; font-weight: 700; }
     .tool-card .btn { display: block; text-align: center; padding: 10px; border-radius: 10px; font-weight: 600; font-size: 0.85rem; text-decoration: none; transition: all .15s; background: #1a1a1c; color: #ccc; border: 1px solid #2a2a2d; }
-    .tool-card .btn:hover { border-color: #6366f1; color: #fff; }
-    .tool-card .btn.primary { background: #6366f1; color: #fff; border-color: #6366f1; }
-    .tool-card .btn.primary:hover { background: #5558e6; }
+    .tool-card .btn:hover { border-color: #10b981; color: #fff; }
+    .tool-card .btn.primary { background: #10b981; color: #fff; border-color: #10b981; }
+    .tool-card .btn.primary:hover { background: #059669; }
 
-    .icon-acg { background: rgba(99,102,241,0.15); }
+    .icon-acg { background: rgba(16,185,129,0.15); }
     .icon-j2s { background: rgba(16,185,129,0.15); }
     .icon-dd { background: rgba(245,158,11,0.15); }
     .icon-cd { background: rgba(239,68,68,0.15); }
-    .icon-aa { background: rgba(168,85,247,0.15); }
+    .icon-aa { background: rgba(110,231,183,0.15); }
     .icon-ag { background: rgba(6,182,212,0.15); }
     .icon-ev { background: rgba(34,197,94,0.15); }
     .icon-sf { background: rgba(251,146,60,0.15); }
@@ -97,8 +100,8 @@
     .suite-hero { text-align: center; margin-bottom: 48px; }
     .suite-hero h2 { font-size: 1.8rem; font-weight: 700; color: #fff; letter-spacing: -0.03em; }
     .suite-hero p { color: #888; max-width: 500px; margin: 10px auto 0; font-size: 0.9rem; }
-    .suite-card { max-width: 500px; margin: 0 auto; background: #121213; border: 1px solid #6366f1; border-radius: 14px; padding: 36px; text-align: center; position: relative; }
-    .suite-card.featured::before { content: 'Best Value'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); padding: 4px 20px; border-radius: 24px; background: #6366f1; color: #fff; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.3px; text-transform: uppercase; }
+    .suite-card { max-width: 500px; margin: 0 auto; background: #121213; border: 1px solid #10b981; border-radius: 14px; padding: 36px; text-align: center; position: relative; }
+    .suite-card.featured::before { content: 'Best Value'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); padding: 4px 20px; border-radius: 24px; background: #10b981; color: #fff; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.3px; text-transform: uppercase; }
     .suite-card .name { font-size: 1.1rem; font-weight: 600; color: #fff; }
     .suite-card .price { font-size: 3rem; font-weight: 800; color: #fff; margin: 16px 0 4px; letter-spacing: -0.03em; }
     .suite-card .price span { font-size: 1rem; font-weight: 400; color: #666; }
@@ -108,9 +111,9 @@
     .suite-card ul { list-style: none; display: inline-block; text-align: left; }
     .suite-card li { font-size: 0.82rem; color: #aaa; padding: 6px 0; display: flex; align-items: center; gap: 10px; }
     .suite-card li::before { content: '✓'; color: #34d399; font-weight: 700; }
-    .suite-card .btn { display: inline-block; padding: 14px 48px; border-radius: 10px; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: all .15s; background: #6366f1; color: #fff; margin-top: 24px; }
-    .suite-card .btn:hover { background: #5558e6; transform: translateY(-1px); }
-    .suite-card .compare-link { display: block; margin-top: 16px; font-size: 0.8rem; color: #6366f1; text-decoration: none; }
+    .suite-card .btn { display: inline-block; padding: 14px 48px; border-radius: 10px; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: all .15s; background: #10b981; color: #fff; margin-top: 24px; }
+    .suite-card .btn:hover { background: #059669; transform: translateY(-1px); }
+    .suite-card .compare-link { display: block; margin-top: 16px; font-size: 0.8rem; color: #10b981; text-decoration: none; }
     .suite-card .compare-link:hover { text-decoration: underline; }
 
     /* Waitlist section */
@@ -119,10 +122,10 @@
     .waitlist p { color: #888; max-width: 480px; margin: 12px auto 28px; font-size: 0.95rem; }
     .waitlist .form-row { display: flex; gap: 10px; max-width: 460px; margin: 0 auto; }
     .waitlist input[type="email"] { flex: 1; padding: 14px 18px; border-radius: 10px; border: 1px solid #2a2a2d; background: #121213; color: #e1e1e3; font-family: 'Inter', sans-serif; font-size: 0.9rem; outline: none; transition: border-color .15s; }
-    .waitlist input[type="email"]:focus { border-color: #6366f1; }
+    .waitlist input[type="email"]:focus { border-color: #10b981; }
     .waitlist input[type="email"]::placeholder { color: #555; }
-    .waitlist .submit-btn { padding: 14px 28px; border-radius: 10px; border: none; background: #6366f1; color: #fff; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: background .15s, transform .15s; white-space: nowrap; }
-    .waitlist .submit-btn:hover { background: #5558e6; transform: translateY(-1px); }
+    .waitlist .submit-btn { padding: 14px 28px; border-radius: 10px; border: none; background: #10b981; color: #fff; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: background .15s, transform .15s; white-space: nowrap; }
+    .waitlist .submit-btn:hover { background: #059669; transform: translateY(-1px); }
     .waitlist .form-msg { margin-top: 12px; font-size: 0.82rem; color: #34d399; display: none; }
 
     /* Comparison Table */
@@ -139,7 +142,7 @@
     .comparison td:first-child { text-align: left; }
     .comparison td.yes { color: #34d399; }
     .comparison td.no { color: #444; }
-    .comparison .highlight { background: rgba(99,102,241,0.05); }
+    .comparison .highlight { background: rgba(16,185,129,0.05); }
     .comparison .row-label { display: flex; align-items: center; gap: 8px; }
     .comparison .row-label .icon { width: 28px; height: 28px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85rem; flex-shrink: 0; }
 
@@ -296,7 +299,7 @@
         <td>Custom</td>
       </tr>
       <tr>
-        <td><span class="row-label"><span class="icon" style="background:rgba(99,102,241,0.12);">⚡</span> API Contract Guardian</span></td>
+        <td><span class="row-label"><span class="icon" style="background:rgba(16,185,129,0.12);">⚡</span> API Contract Guardian</span></td>
         <td class="yes">✓</td>
         <td class="yes">✓</td>
         <td class="yes">✓</td>
@@ -324,7 +327,7 @@
         <td class="yes">✓</td>
       </tr>
       <tr>
-        <td><span class="row-label"><span class="icon" style="background:rgba(168,85,247,0.12);">🔑</span> APIAuth</span></td>
+        <td><span class="row-label"><span class="icon" style="background:rgba(110,231,183,0.12);">🔑</span> APIAuth</span></td>
         <td class="yes">✓</td>
         <td class="yes">✓</td>
         <td class="yes">✓</td>
@@ -352,7 +355,7 @@
         <td class="yes">✓</td>
       </tr>
       <tr>
- <td><span class="row-label"><span class="icon" style="background:rgba(139,92,246,0.15);">🔌</span> click-to-mcp</span></td>
+ <td><span class="row-label"><span class="icon" style="background:rgba(52,211,153,0.15);">🔌</span> click-to-mcp</span></td>
  <td class="yes">✓</td>
  <td class="yes">✓</td>
  <td class="yes">✓</td>
@@ -492,7 +495,7 @@
   <h2 style="font-size:1.5rem;font-weight:700;color:#fff;letter-spacing:-0.03em;">Ready to build with confidence?</h2>
   <p style="color:#888;max-width:500px;margin:12px auto 28px;font-size:0.9rem;">Start with the free tier — no credit card, no account, no strings. Upgrade when your team needs CI/CD and team features.</p>
   <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
-    <a href="https://github.com/Coding-Dev-Tools" class="cta" style="display:inline-block;padding:14px 36px;border-radius:10px;font-weight:600;font-size:0.95rem;text-decoration:none;background:#6366f1;color:#fff;transition:all .15s;">Browse Tools on GitHub →</a>
+    <a href="https://github.com/Coding-Dev-Tools" class="cta" style="display:inline-block;padding:14px 36px;border-radius:10px;font-weight:600;font-size:0.95rem;text-decoration:none;background:#10b981;color:#fff;transition:all .15s;">Browse Tools on GitHub →</a>
     <a href="#waitlist" style="display:inline-block;padding:14px 36px;border-radius:10px;font-weight:600;font-size:0.95rem;text-decoration:none;background:#1a1a1c;color:#ccc;border:1px solid #2a2a2d;transition:all .15s;">Join Waitlist →</a>
   </div>
 </section>
@@ -541,7 +544,7 @@
 
   <div class="faq-item">
     <h3>Do you offer student or open-source discounts?</h3>
-    <p>The free tier covers all open-source and student use cases. When Pro launches, active open-source maintainers will get free Pro access — email us at <a href="mailto:oss@devforge" style="color:#6366f1;text-decoration:none;">oss@devforge</a>.</p>
+    <p>The free tier covers all open-source and student use cases. When Pro launches, active open-source maintainers will get free Pro access — email us at <a href="mailto:oss@devforge" style="color:#10b981;text-decoration:none;">oss@devforge</a>.</p>
   </div>
 </section>
 

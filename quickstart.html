@@ -42,13 +42,16 @@
   </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* Focus rings */
+    a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px dashed #10b981; outline-offset: 3px; border-radius: 2px; }
+
     body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0b; color: #e1e1e3; line-height: 1.6; min-height: 100vh; }
 
     /* Navigation */
     nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(10,10,11,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid #1e1e20; }
     nav .inner { max-width: 1100px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
     nav .logo { font-weight: 700; font-size: 1.15rem; color: #fff; letter-spacing: -0.02em; }
-    nav .logo span { color: #6366f1; }
+    nav .logo span { color: #10b981; }
     nav .links a { color: #888; text-decoration: none; font-size: 0.85rem; margin-left: 28px; transition: color .15s; }
     nav .links a:hover { color: #fff; }
     nav .links a.active { color: #fff; }
@@ -56,14 +59,14 @@
     /* Hero */
     .hero { max-width: 1100px; margin: 0 auto; padding: 140px 24px 48px; text-align: center; }
     .hero h1 { font-size: 2.6rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.04em; color: #fff; }
-    .hero h1 span { background: linear-gradient(135deg, #6366f1, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero h1 span { background: linear-gradient(135deg, #10b981, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .hero p { font-size: 1.05rem; color: #888; max-width: 550px; margin: 16px auto 0; }
-    .hero .timer { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; padding: 6px 16px; background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.25); border-radius: 20px; font-size: 0.8rem; color: #a78bfa; font-weight: 600; }
+    .hero .timer { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; padding: 6px 16px; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25); border-radius: 20px; font-size: 0.8rem; color: #6ee7b7; font-weight: 600; }
 
     /* Steps */
     .steps { max-width: 780px; margin: 0 auto; padding: 0 24px 100px; }
     .step { margin-bottom: 56px; position: relative; }
-    .step-number { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 10px; background: #6366f1; color: #fff; font-weight: 700; font-size: 0.95rem; margin-bottom: 16px; }
+    .step-number { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 10px; background: #10b981; color: #fff; font-weight: 700; font-size: 0.95rem; margin-bottom: 16px; }
     .step h2 { font-size: 1.4rem; font-weight: 700; color: #fff; margin-bottom: 8px; letter-spacing: -0.02em; }
     .step p { font-size: 0.9rem; color: #aaa; margin-bottom: 16px; max-width: 600px; }
 
@@ -74,7 +77,7 @@
     .code-block code { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.82rem; color: #c4c4cc; line-height: 1.6; }
     .code-block .comment { color: #555; }
     .code-block .cmd { color: #34d399; }
-    .code-block .flag { color: #6366f1; }
+    .code-block .flag { color: #10b981; }
     .code-block .string { color: #f59e0b; }
 
     .output-block { background: #0d0d0e; border: 1px solid #1a1a1d; border-radius: 10px; padding: 16px; margin-bottom: 16px; }
@@ -84,20 +87,20 @@
     .output-block .fail { color: #ef4444; }
     .output-block .warn { color: #f59e0b; }
 
-    .callout { background: rgba(99,102,241,0.06); border: 1px solid rgba(99,102,241,0.15); border-radius: 10px; padding: 16px 20px; margin-bottom: 16px; }
-    .callout p { font-size: 0.82rem; color: #a78bfa; margin: 0; }
+    .callout { background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.15); border-radius: 10px; padding: 16px 20px; margin-bottom: 16px; }
+    .callout p { font-size: 0.82rem; color: #6ee7b7; margin: 0; }
     .callout p strong { color: #c4b5fd; }
 
     /* Tool picker */
     .tool-picker { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
     .tool-picker a { display: flex; align-items: center; gap: 8px; padding: 10px 18px; background: #121213; border: 1px solid #1e1e20; border-radius: 10px; color: #aaa; text-decoration: none; font-size: 0.82rem; font-weight: 500; transition: all .15s; }
-    .tool-picker a:hover { border-color: #6366f1; color: #fff; }
+    .tool-picker a:hover { border-color: #10b981; color: #fff; }
     .tool-picker a .icon { font-size: 1rem; }
 
     /* Next links */
     .next-steps { background: #121213; border: 1px solid #1e1e20; border-radius: 14px; padding: 32px; margin-top: 32px; }
     .next-steps h3 { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 16px; }
-    .next-steps a { display: block; padding: 12px 0; border-bottom: 1px solid #1a1a1d; color: #a78bfa; text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color .15s; }
+    .next-steps a { display: block; padding: 12px 0; border-bottom: 1px solid #1a1a1d; color: #6ee7b7; text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color .15s; }
     .next-steps a:last-child { border-bottom: none; }
     .next-steps a:hover { color: #fff; }
     .next-steps a .arrow { margin-left: 6px; transition: transform .15s; }
@@ -267,7 +270,7 @@
     </div>
 
     <div class="callout">
-      <p><strong>Free tier works in CI.</strong> All tools run locally and in CI on the free tier. Rate limits only apply to heavy batch operations. See <a href="pricing.html" style="color:#a78bfa;">pricing</a> for details.</p>
+      <p><strong>Free tier works in CI.</strong> All tools run locally and in CI on the free tier. Rate limits only apply to heavy batch operations. See <a href="pricing.html" style="color:#6ee7b7;">pricing</a> for details.</p>
     </div>
   </div>
 

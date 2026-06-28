@@ -23,13 +23,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* Focus rings */
+    a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px dashed #10b981; outline-offset: 3px; border-radius: 2px; }
+
     body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0b; color: #e1e1e3; line-height: 1.6; min-height: 100vh; }
 
     /* Navigation */
     nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(10,10,11,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid #1e1e20; }
     nav .inner { max-width: 1100px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
     nav .logo { font-weight: 700; font-size: 1.15rem; color: #fff; letter-spacing: -0.02em; }
-    nav .logo span { color: #6366f1; }
+    nav .logo span { color: #10b981; }
     nav .links a { color: #888; text-decoration: none; font-size: 0.85rem; margin-left: 28px; transition: color .15s; }
     nav .links a:hover { color: #fff; }
     nav .links a.active { color: #fff; }
@@ -37,7 +40,7 @@
     /* Hero */
     .hero { max-width: 1100px; margin: 0 auto; padding: 140px 24px 48px; text-align: center; }
     .hero h1 { font-size: 2.6rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.04em; color: #fff; }
-    .hero h1 span { background: linear-gradient(135deg, #6366f1, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero h1 span { background: linear-gradient(135deg, #10b981, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .hero p { font-size: 1rem; color: #888; max-width: 550px; margin: 16px auto 0; }
 
     /* Release timeline */
@@ -45,7 +48,7 @@
     .release-group { margin-bottom: 48px; }
     .release-group h2 { font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 4px; letter-spacing: -0.02em; }
     .release-group .tool-icon { display: inline-block; margin-right: 8px; }
-    .release-group .gh-link { font-size: 0.8rem; color: #6366f1; text-decoration: none; font-weight: 500; }
+    .release-group .gh-link { font-size: 0.8rem; color: #10b981; text-decoration: none; font-weight: 500; }
     .release-group .gh-link:hover { text-decoration: underline; }
     .release-group .subtitle { color: #888; font-size: 0.82rem; margin-bottom: 24px; }
 
@@ -56,7 +59,7 @@
     .release-version .badge { font-size: 0.65rem; padding: 2px 10px; border-radius: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; }
     .release-version .badge.added { background: rgba(16,185,129,0.12); color: #34d399; }
     .release-version .badge.fixed { background: rgba(245,158,11,0.12); color: #f59e0b; }
-    .release-version .badge.changed { background: rgba(99,102,241,0.12); color: #a78bfa; }
+    .release-version .badge.changed { background: rgba(16,185,129,0.12); color: #6ee7b7; }
     .release-version ul { list-style: none; }
     .release-version li { font-size: 0.82rem; color: #aaa; padding: 5px 0; display: flex; align-items: flex-start; gap: 8px; }
     .release-version li::before { content: '▸'; color: #555; font-weight: 700; flex-shrink: 0; }

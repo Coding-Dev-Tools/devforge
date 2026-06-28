@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>DevForge - Smell Report</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<style>
+		body { font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+		.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+		.report-section { border: 1px solid #222226; background: #0a0a0b; position: relative; }
+		.corner-box { position: absolute; width: 20px; height: 20px; border: 1px solid #222226; background: #000; }
+	</style>
+</head>
+<body class="bg-black text-[#fafafa]">
+	<main class="mx-auto w-full max-w-6xl px-5 py-8 md:px-10 md:py-12">
+		<header class="report-section mb-8 p-6 md:p-8">
+			<div class="corner-box left-0 top-0 -translate-x-1/2 -translate-y-1/2"></div>
+			<div class="corner-box right-0 top-0 translate-x-1/2 -translate-y-1/2"></div>
+			<div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+				<div>
+					<div class="mono mb-2 text-xs tracking-widest text-[#666]">// SMELL</div>
+					<h1 class="text-4xl font-bold tracking-tight md:text-6xl">DevForge</h1>
+				</div>
+				<div class="mono text-left text-xs text-[#666] md:text-right">
+					<div>COMMANDCODE REPORT</div>
+					<div class="text-[#444]">2026-06-28</div>
+				</div>
+			</div>
+		</header>
+
+		<section class="report-section mb-8 p-6 md:p-8">
+			<div class="corner-box left-0 top-0 -translate-x-1/2 -translate-y-1/2"></div>
+			<div class="corner-box right-0 top-0 translate-x-1/2 -translate-y-1/2"></div>
+			<div class="grid gap-8 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+				<div>
+					<div class="mono mb-2 text-xs tracking-widest text-[#666]">// OVERALL</div>
+					<div class="text-6xl font-bold tracking-tight md:text-7xl">4</div>
+					<div class="mt-1 text-lg text-[#666]">/ 10</div>
+					<div class="mt-4 inline-flex border border-[#ef4444]/30 bg-[#ef4444]/10 px-3 py-1 text-sm text-[#ef4444]">STRONG</div>
+				</div>
+				<div>
+					<div class="mono mb-3 text-xs tracking-widest text-[#666]">// TL;DR</div>
+					<p class="text-sm leading-6 text-[#a0a0a0]">6 AI-tells detected. The site is competent but reads as the median dark-themed developer tool landing page. Color, type, composition, and proof elements are all domain defaults.</p>
+					<p class="mt-4 text-sm leading-6 text-[#fbbf24]">Break the domain default: recolor the indigo accent, give product cards hierarchy, replace stat monuments with proof.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="report-section mb-8 p-6 md:p-8">
+			<div class="mono mb-6 text-xs tracking-widest text-[#666]">// HEURISTIC SCORES</div>
+			<div class="overflow-x-auto">
+				<table class="w-full min-w-[720px] border-collapse text-sm">
+					<thead>
+						<tr class="border-b border-[#222226] text-left mono text-xs text-[#666]">
+							<th class="py-3 pr-4 font-normal">#</th>
+							<th class="py-3 pr-4 font-normal">ODOR</th>
+							<th class="py-3 pr-4 font-normal">SCORE</th>
+							<th class="py-3 font-normal">FINDING</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="border-b border-[#1a1a1e]">
+							<td class="py-4 pr-4 text-[#555]">1</td>
+							<td class="py-4 pr-4 text-[#fafafa]">Tech Gradient</td>
+							<td class="py-4 pr-4 text-[#ef4444]">FAIL</td>
+							<td class="py-4 text-[#a0a0a0]">Indigo-to-purple gradient on hero heading text</td>
+						</tr>
+						<tr class="border-b border-[#1a1a1e]">
+							<td class="py-4 pr-4 text-[#555]">2</td>
+							<td class="py-4 pr-4 text-[#fafafa]">Generic Tech Hue</td>
+							<td class="py-4 pr-4 text-[#ef4444]">FAIL</td>
+							<td class="py-4 text-[#a0a0a0]">#6366f1 indigo as accent — the default tech identity color</td>
+						</tr>
+						<tr class="border-b border-[#1a1a1e]">
+							<td class="py-4 pr-4 text-[#555]">3</td>
+							<td class="py-4 pr-4 text-[#fafafa]">Feature Tile Grid</td>
+							<td class="py-4 pr-4 text-[#ef4444]">FAIL</td>
+							<td class="py-4 text-[#a0a0a0]">11 equal product cards, no hierarchy or priority</td>
+						</tr>
+						<tr class="border-b border-[#1a1a1e]">
+							<td class="py-4 pr-4 text-[#555]">4</td>
+							<td class="py-4 pr-4 text-[#fafafa]">Accent Rail</td>
+							<td class="py-4 pr-4 text-[#34d399]">PASS</td>
+							<td class="py-4 text-[#a0a0a0]">Cards use clean flat borders, no decorative rails</td>
+						</tr>
+						<tr class="border-b border-[#1a1a1e]">
+							<td class="py-4 pr-4 text-[#555]">5</td>
+							<td class="py-4 pr-4 text-[#fafafa]">Unearned Blur</td>
+							<td class="py-4 pr-4 text-[#34d399]">PASS</td>
+							<td class="py-4 text-[#a0a0a0]">Nav backdro-blur is functional, not decorative</td>
+						</tr>
+						<tr class="border-b border-[#1a1a1e]">
+							<td class="py-4 pr-4 text-[#555]">6</td>
+							<td class="py-4 pr-4 text-[#fafafa]">Stat Monument</td>
+							<td class="py-4 pr-4 text-[#ef4444]">FAIL</td>
+							<td class="py-4 text-[#a0a0a0]">5 number clusters with no context, proof, or story</td>
+						</tr>
+						<tr class="border-b border-[#1a1a1e]">
+							<td class="py-4 pr-4 text-[#555]">7</td>
+							<td class="py-4 pr-4 text-[#fafafa]">Icon Topper</td>
+							<td class="py-4 pr-4 text-[#fbbf24]">FAINT</td>
+							<td class="py-4 text-[#a0a0a0]">Emoji icons serve tool identification but follow template pattern</td>
+						</tr>
+						<tr class="border-b border-[#1a1a1e]">
+							<td class="py-4 pr-4 text-[#555]">8</td>
+							<td class="py-4 pr-4 text-[#fafafa]">Bounce Everywhere</td>
+							<td class="py-4 pr-4 text-[#34d399]">PASS</td>
+							<td class="py-4 text-[#a0a0a0]">Subtle 1-2px hover lifts, no elastic or bounce</td>
+						</tr>
+						<tr class="border-b border-[#1a1a1e]">
+							<td class="py-4 pr-4 text-[#555]">9</td>
+							<td class="py-4 pr-4 text-[#fafafa]">Default Type</td>
+							<td class="py-4 pr-4 text-[#fbbf24]">FAINT</td>
+							<td class="py-4 text-[#a0a0a0]">Inter is documented as intentional but is the domain default</td>
+						</tr>
+						<tr class="border-b border-[#1a1a1e]">
+							<td class="py-4 pr-4 text-[#555]">10</td>
+							<td class="py-4 pr-4 text-[#fafafa]">Center Stack</td>
+							<td class="py-4 pr-4 text-[#ef4444]">FAIL</td>
+							<td class="py-4 text-[#a0a0a0]">Hero, stats, CTAs, FAQ all center-aligned by default</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<section class="report-section mb-8 p-6 md:p-8">
+			<div class="mono mb-6 text-xs tracking-widest text-[#666]">// DOMAIN DEFAULT TRAP</div>
+			<div class="grid gap-6 md:grid-cols-2">
+				<div>
+					<div class="mb-3 text-xl font-semibold">IDENTIFIED</div>
+					<ul class="space-y-3 text-sm text-[#a0a0a0]">
+						<li><span class="mono mr-2 text-[#ef4444]">TRAP</span>Developer tool → dark theme → indigo accent → Inter → centered hero → gradient text</li>
+						<li><span class="mono mr-2 text-[#34d399]">NOTE</span>Brief bans "SaaS-y gradients" but indigo-purple is the same reflex in dark</li>
+					</ul>
+				</div>
+				<div>
+					<div class="mono mb-3 text-xs tracking-widest text-[#666]">// NEXT MODES</div>
+					<div class="flex flex-wrap gap-2">
+						<span class="border border-[#333] px-3 py-1 text-sm text-[#a0a0a0]">/design recolor</span>
+						<span class="border border-[#333] px-3 py-1 text-sm text-[#a0a0a0]">/design relayout</span>
+						<span class="border border-[#333] px-3 py-1 text-sm text-[#a0a0a0]">/design voice</span>
+						<span class="border border-[#333] px-3 py-1 text-sm text-[#a0a0a0]">/design typeset</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="report-section mb-8 p-6 md:p-8">
+			<div class="mono mb-6 text-xs tracking-widest text-[#666]">// WHAT'S WORKING</div>
+			<div class="grid gap-4 md:grid-cols-3">
+				<article class="border border-[#1f1f24] p-4">
+					<h2 class="mb-2 text-sm font-semibold">No Unearned Blur</h2>
+					<p class="text-sm leading-6 text-[#a0a0a0]">Nav glass is functional for fixed positioning, not decorative frosting.</p>
+				</article>
+				<article class="border border-[#1f1f24] p-4">
+					<h2 class="mb-2 text-sm font-semibold">No Bounce Everywhere</h2>
+					<p class="text-sm leading-6 text-[#a0a0a0]">Motion is restrained to subtle lifts. No elastic overshoot.</p>
+				</article>
+				<article class="border border-[#1f1f24] p-4">
+					<h2 class="mb-2 text-sm font-semibold">Clean Borders</h2>
+					<p class="text-sm leading-6 text-[#a0a0a0]">Cards use flat 1px borders, no accent rails pretending to structure content.</p>
+				</article>
+			</div>
+		</section>
+
+		<section class="report-section mb-8 p-6 md:p-8">
+			<div class="mono mb-6 text-xs tracking-widest text-[#666]">// PRIORITY ISSUES</div>
+			<div class="space-y-5">
+				<article class="border border-[#2a1d22] bg-[#110b0d] p-5">
+					<div class="mono mb-2 text-xs text-[#f43f5e]">P0</div>
+					<h2 class="mb-2 text-lg font-semibold">Domain Default Trap</h2>
+					<p class="mb-4 text-sm leading-6 text-[#a0a0a0]">Visual identity predictable from industry alone: dark dev tool → indigo → Inter → centered. No project-specific lane.</p>
+					<div class="border-l border-[#fbbf24] pl-4 text-sm leading-6 text-[#fbbf24]">FIX: Recolor with a non-domain-default palette. Cut accent to meaning-bearing surfaces only.</div>
+				</article>
+				<article class="border border-[#2a1d22] bg-[#110b0d] p-5">
+					<div class="mono mb-2 text-xs text-[#f97316]">P1</div>
+					<h2 class="mb-2 text-lg font-semibold">Feature Tile Grid</h2>
+					<p class="mb-4 text-sm leading-6 text-[#a0a0a0]">11 equal product cards. SchemaForge (v1.7.0, 270 tests, VS Code) gets same treatment as unreleased tools. No editorial judgment.</p>
+					<div class="border-l border-[#fbbf24] pl-4 text-sm leading-6 text-[#fbbf24]">FIX: Give SchemaForge visual priority. Vary card hierarchy. Lead with the strongest tools.</div>
+				</article>
+				<article class="border border-[#2a1d22] bg-[#110b0d] p-5">
+					<div class="mono mb-2 text-xs text-[#fbbf24]">P2</div>
+					<h2 class="mb-2 text-lg font-semibold">Stat Monument</h2>
+					<p class="mb-4 text-sm leading-6 text-[#a0a0a0]">"722+ Tests" and "11 CLI Tools" fill space where a product story belongs. Numbers alone prove nothing.</p>
+					<div class="border-l border-[#fbbf24] pl-4 text-sm leading-6 text-[#fbbf24]">FIX: Replace stat clusters with case language — a before/after, a specific outcome, or capability shown in action.</div>
+				</article>
+				<article class="border border-[#2a1d22] bg-[#110b0d] p-5">
+					<div class="mono mb-2 text-xs text-[#fbbf24]">P3</div>
+					<h2 class="mb-2 text-lg font-semibold">Center Stack</h2>
+					<p class="mb-4 text-sm leading-6 text-[#a0a0a0]">Landing page defaults to center-aligned everywhere. The alternatives page proves left-aligned structured layouts are possible.</p>
+					<div class="border-l border-[#fbbf24] pl-4 text-sm leading-6 text-[#fbbf24]">FIX: Choose a composition based on work pattern (Decide), not centered-by-default.</div>
+				</article>
+			</div>
+		</section>
+
+		<footer class="mono py-8 text-center text-xs tracking-widest text-[#444]">
+			Generated with CommandCode - 2026-06-28
+		</footer>
+	</main>
+</body>
+</html>
