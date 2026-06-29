@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stop Breaking Production: 4 CI Checks Every DevOps Team Should Run | DevForge</title>
-  <meta name="description" content="Your CI pipeline runs tests, lints, and builds — but it's missing four critical safety checks: API contracts, SQL risks, infrastructure blast radius, and config drift. Add them in 5 minutes.">
+  <meta name="description" content="Your CI pipeline runs tests, lints, and builds â€” but it's missing four critical safety checks: API contracts, SQL risks, infrastructure blast radius, and config drift. Add them in 5 minutes.">
   <meta name="keywords" content="CI/CD, DevOps, API contracts, infrastructure diff, config drift, CI pipeline, deployment safety, API Contract Guardian, DeployDiff, ConfigDrift, json2sql">
   <meta property="og:title" content="Stop Breaking Production: 4 CI Checks Every DevOps Team Should Run | DevForge">
-  <meta property="og:description" content="Four critical CI safety checks most pipelines miss — API contract violations, SQL injection risks, infrastructure blast radius, and configuration drift. Add them in 5 minutes.">
+  <meta property="og:description" content="Four critical CI safety checks most pipelines miss â€” API contract violations, SQL injection risks, infrastructure blast radius, and configuration drift. Add them in 5 minutes.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://coding-dev-tools.github.io/devforge/blog/stop-breaking-production.html">
   <meta name="twitter:site" content="@DevForge">
@@ -19,7 +19,7 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="https://coding-dev-tools.github.io/devforge/blog/stop-breaking-production.html">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛁</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>â›</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="blog.css">
   <!-- Plausible Analytics -->
@@ -29,7 +29,7 @@
 
 <nav>
   <div class="inner">
-    <div class="logo"><span>⛁</span> DevForge</div>
+    <div class="logo"><span>â›</span> DevForge</div>
     <div class="links">
             <a href="../start-here.html">Start Here</a>
       <a href="../quickstart.html">Get Started</a>
@@ -51,10 +51,10 @@
 
 <article class="post-content">
   <span class="badge">Guide</span>
-  <p style="color:#666;font-size:0.85rem;margin-top:8px;">May 15, 2026 · 6 min read</p>
+  <p style="color:#666;font-size:0.85rem;margin-top:8px;">May 15, 2026 Â· 6 min read</p>
 
   <h1>Stop Breaking Production</h1>
-  <div class="subtitle">4 CI checks your pipeline is probably missing — and how to add them in 5 minutes.</div>  <div class="share-bar">
+  <div class="subtitle">4 CI checks your pipeline is probably missing â€” and how to add them in 5 minutes.</div>  <div class="share-bar">
     <span>Share this article:</span>
     <a href="https://twitter.com/intent/tweet?text=$(document.title)&url=$(location.href)" target="_blank" rel="noopener" class="share-link">X Twitter</a>
     <a href="https://news.ycombinator.com/submitlink?u=$(location.href)&t=$(document.title)" target="_blank" rel="noopener" class="share-link">Y Hacker News</a>
@@ -63,12 +63,12 @@
 
   <p>Your CI pipeline runs tests. It lints your code. Maybe it builds a Docker image. But between "all tests pass" and "production is broken," there's a gap most teams don't realize exists.</p>
 
-  <p>Standard CI/CD pipelines catch implementation bugs — they don't catch <em>contract</em> bugs, <em>data</em> bugs, <em>infrastructure</em> bugs, or <em>configuration</em> bugs. These four categories cause some of the most expensive production incidents:</p>
+  <p>Standard CI/CD pipelines catch implementation bugs â€” they don't catch <em>contract</em> bugs, <em>data</em> bugs, <em>infrastructure</em> bugs, or <em>configuration</em> bugs. These four categories cause some of the most expensive production incidents:</p>
 
   <ul>
     <li><strong>12%</strong> of production outages are caused by API contract violations (consumers using fields you removed)</li>
     <li><strong>23%</strong> of security incidents involve SQL injection or misconfigured database access</li>
-    <li><strong>15–20%</strong> of infrastructure changes cause unexpected resource modification or deletion</li>
+    <li><strong>15â€“20%</strong> of infrastructure changes cause unexpected resource modification or deletion</li>
     <li><strong>30%</strong> of compliance failures trace back to undetected configuration drift across environments</li>
   </ul>
 
@@ -76,7 +76,7 @@
 
   <hr>
 
-  <h2>Check 1: API Contract Violations → API Contract Guardian</h2>
+  <h2>Check 1: API Contract Violations â†’ API Contract Guardian</h2>
 
   <div class="tool-card">
     <div class="cmd">api-contract-guardian check openapi.yaml --prev main</div>
@@ -88,9 +88,9 @@
   <p><strong>The fix:</strong> Add API Contract Guardian to your CI. It compares every OpenAPI change against the baseline spec and flags breaking changes by severity:</p>
 
   <ul>
-    <li><strong>BREAKING</strong> — removed fields, renamed endpoints, required params removed</li>
-    <li><strong>DANGEROUS</strong> — relaxed type constraints, widened response schemas</li>
-    <li><strong>COMPATIBLE</strong> — additive changes only</li>
+    <li><strong>BREAKING</strong> â€” removed fields, renamed endpoints, required params removed</li>
+    <li><strong>DANGEROUS</strong> â€” relaxed type constraints, widened response schemas</li>
+    <li><strong>COMPATIBLE</strong> â€” additive changes only</li>
   </ul>
 
   <div class="tip">
@@ -110,14 +110,14 @@
 
   <hr>
 
-  <h2>Check 2: Database Seed Corruption → json2sql</h2>
+  <h2>Check 2: Database Seed Corruption â†’ json2sql</h2>
 
   <div class="tool-card">
     <div class="cmd">json2sql seed_data.json --dialect postgres --output insert/seed.sql</div>
     <p style="margin: 8px 0 0; font-size: 0.9rem; color: #aaa;">Converts JSON datasets to type-safe SQL INSERT statements for any target database.</p>
   </div>
 
-  <p><strong>The problem:</strong> Seed data scripts are usually hand-written, rarely reviewed, and frequently contain type mismatches — a string in a DATE column, a null in a NOT NULL field, a JSON value that PostgreSQL rejects. Your integration tests pass because they just check row counts, not column types.</p>
+  <p><strong>The problem:</strong> Seed data scripts are usually hand-written, rarely reviewed, and frequently contain type mismatches â€” a string in a DATE column, a null in a NOT NULL field, a JSON value that PostgreSQL rejects. Your integration tests pass because they just check row counts, not column types.</p>
 
   <p><strong>The fix:</strong> Generate seed SQL from structured JSON using json2sql. It infers types from the data and generates correct SQL for your dialect:</p>
 
@@ -128,7 +128,7 @@
   ]
 }</code></pre>
 
-  <p>Becomes clean, dialect-correct SQL — with proper quoting, type casting, and value escaping. No more <code>INSERT INTO users VALUES (1, 'Alice')</code> prayers.</p>
+  <p>Becomes clean, dialect-correct SQL â€” with proper quoting, type casting, and value escaping. No more <code>INSERT INTO users VALUES (1, 'Alice')</code> prayers.</p>
 
   <p>CI snippet:</p>
 
@@ -141,7 +141,7 @@
 
   <hr>
 
-  <h2>Check 3: Infrastructure Blast Radius → DeployDiff</h2>
+  <h2>Check 3: Infrastructure Blast Radius â†’ DeployDiff</h2>
 
   <div class="tool-card">
     <div class="cmd">deploydiff diff --from main --format summary</div>
@@ -153,9 +153,9 @@
   <p><strong>The fix:</strong> DeployDiff wraps any IaC tool (Terraform, CloudFormation, Pulumi) and produces a human-readable diff summary with blast radius classification:</p>
 
   <ul>
-    <li><strong>🔴 Destruction</strong> — resources being deleted (DB, S3, load balancers)</li>
-    <li><strong>🟡 Replacement</strong> — resources that will be destroyed and recreated</li>
-    <li><strong>🟢 Safe update</strong> — in-place updates with zero downtime</li>
+    <li><strong>ðŸ”´ Destruction</strong> â€” resources being deleted (DB, S3, load balancers)</li>
+    <li><strong>ðŸŸ¡ Replacement</strong> â€” resources that will be destroyed and recreated</li>
+    <li><strong>ðŸŸ¢ Safe update</strong> â€” in-place updates with zero downtime</li>
   </ul>
 
   <div class="tip">
@@ -175,7 +175,7 @@
 
   <hr>
 
-  <h2>Check 4: Configuration Drift → ConfigDrift</h2>
+  <h2>Check 4: Configuration Drift â†’ ConfigDrift</h2>
 
   <div class="tool-card">
     <div class="cmd">configdrift check --baseline prod --target staging</div>
@@ -187,10 +187,10 @@
   <p><strong>The fix:</strong> Run ConfigDrift on every deploy to compare your environments:</p>
 
   <pre><code>$ configdrift check --baseline prod --target staging
-🔴 MISSING:   DB_POOL_SIZE (staging has 10, prod has 25)
-🔴 MISSING:   CACHE_TTL (staging has 30, prod has 300)
-🟡 DEPRECATED: OLD_FEATURE_FLAG (present in staging, removed in prod)
-🟢 OK:        148/151 keys match between environments</code></pre>
+ðŸ”´ MISSING:   DB_POOL_SIZE (staging has 10, prod has 25)
+ðŸ”´ MISSING:   CACHE_TTL (staging has 30, prod has 300)
+ðŸŸ¡ DEPRECATED: OLD_FEATURE_FLAG (present in staging, removed in prod)
+ðŸŸ¢ OK:        148/151 keys match between environments</code></pre>
 
   <p>CI snippet:</p>
 
@@ -243,7 +243,7 @@ jobs:
     <li><a href="https://github.com/Coding-Dev-Tools/configdrift">ConfigDrift</a></li>
   </ul>
 
-  <p>Ready for a step-by-step walkthrough? <a href="zero-to-ci-safety-net.html">Read the hands-on tutorial →</a></p>
+  <p>Ready for a step-by-step walkthrough? <a href="zero-to-ci-safety-net.html">Read the hands-on tutorial â†’</a></p>
 
   <hr>
 
@@ -253,13 +253,13 @@ jobs:
     <form onsubmit="submitWaitlist(event)">
       <div class="form-row">
         <input type="email" id="wl-email" placeholder="you@company.com" required>
-        <button type="submit" class="submit-btn">Notify Me →</button>
+        <button type="submit" class="submit-btn">Notify Me â†’</button>
       </div>
-      <div class="form-msg" id="wl-msg">✓ You're on the list. We'll email you when tools launch.</div>
+      <div class="form-msg" id="wl-msg">âœ“ You're on the list. We'll email you when tools launch.</div>
     </form>
   </div>
 
-  <p style="text-align:center;font-size:0.85rem;color:#666;">Star us on <a href="https://github.com/Coding-Dev-Tools" style="color:#6366f1;">GitHub</a> · <a href="../pricing.html" style="color:#6366f1;">View Pricing</a></p>
+  <p style="text-align:center;font-size:0.85rem;color:#666;">Star us on <a href="https://github.com/Coding-Dev-Tools" style="color:#6366f1;">GitHub</a> Â· <a href="../pricing.html" style="color:#6366f1;">View Pricing</a></p>
 
   <div class="share-section">
     <div class="label">Share this article</div>
@@ -286,6 +286,8 @@ jobs:
 </article>
 
 <footer>
+  <span>&copy; 2026 DevForge. Built autonomously.</span>
+
   <span>&copy; 2026 DevForge. Built autonomously.</span>
   <a href="../quickstart.html">Get Started</a>
       <a href="../index.html">Home</a>

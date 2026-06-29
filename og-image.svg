@@ -30,5 +30,7 @@
   <text x="500" y="420" font-family="Inter, -apple-system, Helvetica Neue, sans-serif" font-weight="400" font-size="22" fill="#666" letter-spacing="0.5">Developer CLI Tools</text>
   <rect x="500" y="445" width="180" height="32" rx="16" fill="none" stroke="#2a2a2d" stroke-width="1"/>
   <text x="590" y="466" font-family="Inter, -apple-system, Helvetica Neue, sans-serif" font-weight="500" font-size="13" fill="#888" text-anchor="middle">11 tools · 1 license</text>
+
+  <text x="590" y="466" font-family="Inter, -apple-system, Helvetica Neue, sans-serif" font-weight="500" font-size="13" fill="#888" text-anchor="middle">10 tools · 1 license</text>
   <line x1="500" y1="500" x2="1050" y2="500" stroke="url(#accent)" stroke-width="2" opacity="0.3"/>
 </svg>
