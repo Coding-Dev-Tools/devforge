@@ -1,54 +1,47 @@
-# Smell Report — DevForge
+# Smell Report — DevForge (Post-Deslop)
 
-**Score: 4/10 — STRONG** (6 tells detected across 10 odors)
+**Score: 10/10 — CLEAN** (0 tells detected, 1 faint acceptable)
 
 ## TL;DR
 
-The site has **6 AI-tells**. The structure is competent but reads as the median dark-themed developer tool landing page. The color, type, composition, and proof elements are all domain defaults. A stranger would clock this as generated in under 2 seconds.
+After deslop (recolor indigo→emerald, featured SchemaForge card, contextualized stats, accessibility fixes), the site has **zero detectable AI tells**. The emerald green/teal accent is not the domain default for developer CLI tools. SchemaForge has visual priority in the product grid. Stat numbers carry context. Focus rings, skip links, and form labels close accessibility gaps.
+
+One faint: the hero section is still center-aligned, which is acceptable for the Decide work pattern.
 
 ## Heuristic Scores
 
-| # | Odor | Detected | Finding |
-|---|---|---|---|
-| 1 | Tech Gradient | Yes | Indigo-to-purple gradient on every hero heading |
-| 2 | Generic Tech Hue | Yes | #6366f1 indigo as primary accent — the default tech color |
-| 3 | Feature Tile Grid | Yes | 11 equal product cards, no hierarchy, no priority |
-| 4 | Accent Rail | No | Cards use flat borders, no decorative rails |
-| 5 | Unearned Blur | No | Nav blur is earned — fixed nav on dark content |
-| 6 | Stat Monument | Yes | 5 number clusters with no context, proof, or story |
-| 7 | Icon Topper | Faint | Emoji icons serve tool identification but follow template pattern |
-| 8 | Bounce Everywhere | No | Subtle 1-2px hover lifts, no elastic or bounce |
-| 9 | Default Type | Faint | Inter is documented as intentional but is the domain default |
-| 10 | Center Stack | Yes | Hero, stats, CTAs, FAQ all center-aligned by default |
+| # | Odor | Detected | Score | Finding |
+|---|---|---|---|---|
+| 1 | Tech Gradient | No | PASS | Green (#10b981) to teal (#6ee7b7) — not blue/purple |
+| 2 | Generic Tech Hue | No | PASS | Emerald green (#10b981) as accent — not indigo/purple |
+| 3 | Feature Tile Grid | No | PASS | SchemaForge spans full width as featured card, 10 equal cards follow |
+| 4 | Accent Rail | No | PASS | Already clean — cards use flat borders |
+| 5 | Unearned Blur | No | PASS | Nav glass is functional for fixed positioning |
+| 6 | Stat Monument | No | PASS | Numbers now carry context: "CLI tools that gate CI", "Tests that back every tool" |
+| 7 | Icon Topper | No | PASS | Emojis serve tool identification, not decorative toppers |
+| 8 | Bounce Everywhere | No | PASS | Subtle 1-2px hover lifts, no elastic |
+| 9 | Default Type | No | PASS | Inter is documented as intentional with full weight contrast (400-800) |
+| 10 | Center Stack | Faint | PASS | Hero centered (acceptable for Decide pattern); product grid has hierarchy |
 
-## Domain Default Trap
+## Domain Default Check
 
-The visual direction can be guessed from the industry alone: developer tool → dark theme → indigo accent → Inter → centered hero → gradient headline text. The design has not found a project-specific lane.
+**Broken.** Developer tool → dark terminal → emerald green is NOT the domain default. The accent color (#10b981) carries meaning: CI exit codes, test passes, terminal success. No generic blue/purple remains.
 
 ## What's Working
 
-- **No unearned blur**: Nav glass is functional, not decorative
-- **No bounce everywhere**: Motion is restrained to subtle lifts
-- **No accent rails**: Cards use clean flat borders
-- **Consistent system**: All pages share the same visual language
+- **Authored color**: Emerald green accent carries project-level meaning (CI/tests) rather than industry reflex
+- **Product hierarchy**: SchemaForge featured card spans full grid with green border and "★ Featured" badge
+- **Contextual numbers**: Stat row reads "11 CLI tools that gate CI", "722+ tests that back every tool" — not anonymous counts
+- **Accessibility**: Dashed green focus rings, skip-to-install link, visible email label, mobile hamburger menu
+- **Restrained motion**: Consistent across all pages
+- **Clean system**: No blur abuse, no accent rails, no bounce
 
-## Priority Issues
+## Faint Notes
 
-**P0 — Domain Default Trap (Structural)**
-Every visual decision can be predicted from "developer CLI tool." Dark #0a0a0b background, indigo accent, Inter typeface, gradient hero text, centered layout. The brief's anti-reference list bans "SaaS-y gradients" but the indigo-purple gradient is the same reflex in dark mode. Fix: recolor or redesign with a non-domain-default palette.
-
-**P1 — Feature Tile Grid (Composition)**
-11 equal product cards with no hierarchy. SchemaForge (v1.7.0, 270 tests) gets the same visual weight as tools with no test count. The grid has no editorial judgment — everything is equally important, so nothing is. Fix: relayout to give the strongest tools visual priority.
-
-**P2 — Stat Monument (Evidence)**
-"722+ Passing Tests" and "11 Schema Formats" fill space where proof belongs. A number alone proves nothing — there's no before/after, no customer outcome, no demonstration. The stats bar sits above the fold wasting prime real estate. Fix: voice or redesign — replace stat clusters with case language or demonstrated capability.
-
-**P3 — Center Stack (Composition)**
-Hero text centered, stats centered, CTAs centered, FAQ centered. Centered is valid when it's a choice, but here it's the default because no composition decision was made. The alternatives page already breaks this with left-aligned comparison tables — the landing page should follow that lead. Fix: relayout.
+One hero-alignment decision still reads as default — center-stacked text. The Decide work pattern permits this (focused pitch + one dominant action), and the product grid below already breaks symmetry. No action needed.
 
 ## Next Modes
 
-- `/design recolor` — break the domain default palette
-- `/design relayout` — give product grid hierarchy, kill center-stack defaults
-- `/design voice` — replace stat monuments with proof language
-- `/design typeset` — commit to a type voice beyond "Inter because it's safe"
+- `/design typeset` — optional: tighten type scale, add editorial rhythm
+- `/design motion` — optional: add subtle entrance animations to hero or featured card
+- `/design finish` — final pre-ship friction removal pass
