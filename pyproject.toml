@@ -4,10 +4,23 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "devforge-tools"
-license = "MIT"
+license = {text = "MIT"}
 version = "0.1.0"
 description = "DevForge CLI tool suite — landing page & blog validation tools"
+authors = [{name = "DevForge"}]
+keywords = ["devforge", "cli", "landing-page", "blog", "validation"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
 requires-python = ">=3.10"
+
+[project.urls]
+Repository = "https://github.com/Coding-Dev-Tools/devforge"
 
 [tool.ruff]
 line-length = 100
