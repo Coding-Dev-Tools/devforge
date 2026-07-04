@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <base href="/devforge/">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>API Contract Guardian: Git-Branch-Aware OpenAPI Diffing for Every PR | DevForge</title>
+ <meta name="description" content="Stop manually reviewing OpenAPI spec changes. API Contract Guardian diffs specs between git branches — detect breaking changes, generate migration guides, and gate PRs automatically. Works with feature branches, release tags, and monorepo paths.">
+ <meta name="keywords" content="API Contract Guardian, OpenAPI, git diff, breaking changes, CI gating, PR review, API versioning, migration guide, developer tools, CLI, contract testing">
+ <meta property="og:title" content="API Contract Guardian: Git-Branch-Aware OpenAPI Diffing for Every PR">
+ <meta property="og:description" content="Diff OpenAPI specs between git branches automatically. Detect breaking changes, generate migration guides, and gate PRs — all from your CLI.">
+ <meta property="og:type" content="article">
+ <meta property="og:url" content="https://coding-dev-tools.github.io/devforge/blog/apicontractguardian-git-branch-openapi-diff-pr-review.html">
+ <meta name="twitter:site" content="@DevForge">
+ <meta name="twitter:card" content="summary_large_image">
+ <meta name="twitter:title" content="API Contract Guardian: Git-Branch-Aware OpenAPI Diffing for Every PR">
+ <meta name="twitter:description" content="Diff OpenAPI specs between git branches automatically. Detect breaking changes, generate migration guides, and gate PRs.">
+ <meta name="twitter:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
+ <meta property="og:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
+ <meta property="og:image:width" content="1200">
+ <meta property="og:image:height" content="630">
+ <link rel="canonical" href="https://coding-dev-tools.github.io/devforge/blog/apicontractguardian-git-branch-openapi-diff-pr-review.html">
+ <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚒</text></svg>">
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="blog.css">
+ <!-- Plausible Analytics -->
+ <script defer data-domain="devforge" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+
+<nav>
+ <div class="inner">
+ <div class="logo"><span>⚒</span> DevForge</div>
+ <div class="links">
+ <a href="../quickstart.html">Get Started</a>
+ <a href="../start-here.html">Start Here</a>
+ <a href="../index.html">Home</a>
+ <a href="../docs.html">Docs</a>
+ <a href="../pricing.html">Pricing</a>
+ <a href="../alternatives.html">Alternatives</a>
+ <a href="../blog.html">Blog</a>
+ <a href="../releases.html">Releases</a>
+ <a href="../about.html">About</a>
+ <a href="https://github.com/Coding-Dev-Tools" target="_blank">GitHub</a>
+ </div>
+ </div>
+</nav>
+
+<div class="blog-nav">
+ <a href="apicontractguardian-generate-api-migration-guides.html">&larr; Auto-Generate API Migration Guides</a>
+ <a href="../blog.html">All Posts</a>
+</div>
+
+<section class="post-content">
+
+<div class="badge" style="margin-bottom:16px">Workflow Tutorial</div>
+<h1>API Contract Guardian: Git-Branch-Aware OpenAPI Diffing for Every PR</h1>
+<p class="subtitle">Stop manually reviewing OpenAPI spec changes. Diff specs between git branches, detect breaking changes in every PR, and generate migration guides automatically — with the change-severity taxonomy that code review misses.</p>
+
+<p>Here's how API changes usually break production: someone on a feature branch renames a field, removes an endpoint, or changes a type. The change looks fine in code review — the code compiles, the tests pass, and the PR gets merged. Three days later, a downstream service starts returning 500s because it's still sending the old field name.</p>
+
+<p>Code review catches logic bugs. It does <strong>not</strong> reliably catch contract violations — there are too many paths, too many consumers, and the reviewer doesn't know every client that depends on every field.</p>
+
+<p>API Contract Guardian solves this by diffing your OpenAPI specs between git branches and classifying every change by severity: <strong>breaking</strong>, <strong>dangerous</strong>, <strong>non-breaking</strong>, or <strong>informational</strong>.</p>
+
+<hr>
+
+<h2>The Workflow: PR-Level API Change Detection</h2>
+
+<p>The pattern is simple but powerful:</p>
+
+<ol>
+ <li><strong>Before merge</strong>: Diff the OpenAPI spec on the feature branch against main</li>
+ <li><strong>If breaking changes found</strong>: Block the merge (or require explicit approval)</li>
+ <li><strong>If migration needed</strong>: Auto-generate the migration guide</li>
+ <li><strong>After merge</strong>: The migration guide is already written and ready to share</li>
+</ol>
+
+<p>Let's set this up step by step.</p>
+
+<h2>Step 1: Local Branch Diffing</h2>
+
+<p>Before you even push, check your branch against main locally:</p>
+
+<pre><code># Check out your feature branch
+git checkout feature/add-user-phone
+
+# Diff your spec against main — API Contract Guardian loads both from git
+api-contract-guardian check main:openapi.yaml feature/add-user-phone:openapi.yaml</code></pre>
+
+<p>Or compare two files directly if you have them checked out:</p>
+
+<pre><code># Compare the spec on your branch with the one on main
+git show main:openapi.yaml > /tmp/spec-old.yaml
+api-contract-guardian check /tmp/spec-old.yaml openapi.yaml</code></pre>
+
+<p>Output shows every detected change, classified by severity:</p>
+
+<pre><code>┌─────────── Change Summary ───────────┐
+│ Severity     Count                     │
+│ Breaking     2                         │
+│ Dangerous    1                         │
+│ Non-breaking 3                         │
+│ Info         1                         │
+└───────────────────────────────────────┘
+
+Breaking Changes:
+ - property_became_required at components.schemas.User.phone: Property 'phone' in schema 'User' became required
+ - property_removed at components.schemas.User.properties.nickname: Property 'nickname' removed from schema 'User'
+
+Dangerous Changes:
+ - operation_deprecated at paths./users/{id}.get: GET /users/{id} is now deprecated
+
+Non-Breaking Changes:
+ + path_added at paths./users/search: Path '/users/search' was added
+ + property_added at components.schemas.User.properties.phone: Property 'phone' added to schema 'User'
+ + schema_added at components.schemas.UserSearch: Schema 'UserSearch' was added</code></pre>
+
+<div class="tip">
+<strong>Run this before you push</strong>: Catching a breaking change locally saves the entire round-trip of PR creation, review, rejection, fix, and re-review. Thirty seconds of local checking saves thirty minutes of review cycles.
+</div>
+
+<h2>Step 2: CI Gate on Every Pull Request</h2>
+
+<p>The real power is running the check automatically in CI. Here's how to set it up:</p>
+
+<h3>GitHub Actions</h3>
+
+<pre><code>name: API Contract Check
+
+on:
+  pull_request:
+    paths:
+      - 'openapi.yaml'
+      - 'openapi.yml'
+      - 'specs/**'
+
+jobs:
+  api-contract-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for branch diffing
+
+      - name: Install API Contract Guardian
+        run: pip install api-contract-guardian
+
+      - name: Extract base spec from target branch
+        run: |
+          git checkout ${{ github.base_ref }}
+          cp openapi.yaml /tmp/spec-base.yaml
+          git checkout ${{ github.head_ref }}
+
+      - name: Check for breaking changes
+        run: |
+          api-contract-guardian check /tmp/spec-base.yaml openapi.yaml \
+            --fail-on-breaking --format json --output contract-check.json
+
+      - name: Upload contract check results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-contract-check
+          path: contract-check.json
+
+      - name: Generate migration guide if needed
+        if: failure()
+        run: |
+          api-contract-guardian migrate /tmp/spec-base.yaml openapi.yaml \
+            --output MIGRATION.md
+          echo "::warning::Breaking API changes detected. See MIGRATION.md for required consumer updates."
+
+      - name: Comment migration guide on PR
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const migration = fs.readFileSync('MIGRATION.md', 'utf8');
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: '## ⚠️ Breaking API Changes Detected\n\n' + migration
+            });</code></pre>
+
+<h3>GitLab CI</h3>
+
+<pre><code>api-contract-check:
+  image: python:3.12
+  rules:
+    - if: $CI_MERGE_REQUEST_IID
+      changes:
+        - openapi.yaml
+        - specs/**/*
+  script:
+    - pip install api-contract-guardian
+    - |
+      git fetch origin $CI_MERGE_REQUEST_TARGET_BRANCH_NAME
+      git show origin/$CI_MERGE_REQUEST_TARGET_BRANCH_NAME:openapi.yaml > /tmp/spec-base.yaml
+      api-contract-guardian check /tmp/spec-base.yaml openapi.yaml \
+        --fail-on-breaking --format json --output contract-check.json
+    - |
+      if [ $? -ne 0 ]; then
+        api-contract-guardian migrate /tmp/spec-base.yaml openapi.yaml --output MIGRATION.md
+        echo "Breaking changes detected. See MIGRATION.md:"
+        cat MIGRATION.md
+      fi
+  artifacts:
+    when: always
+    paths:
+      - contract-check.json
+      - MIGRATION.md</code></pre>
+
+<h2>Step 3: The Four-Level Severity Taxonomy</h2>
+
+<p>API Contract Guardian doesn't just say "something changed." It classifies every change into four severity levels that map directly to actions:</p>
+
+<table>
+ <tr><th>Severity</th><th>Meaning</th><th>Action</th><th>Examples</th></tr>
+ <tr><td><strong>Breaking</strong></td><td>Existing clients will break</td><td>Block merge, require migration plan</td><td>Removed endpoint, removed property, changed type, required-property added</td></tr>
+ <tr><td><strong>Dangerous</strong></td><td>May break clients depending on usage</td><td>Flag for review, don't auto-block</td><td>Deprecated operation, format change, server removed</td></tr>
+ <tr><td><strong>Non-breaking</strong></td><td>Safe — clients continue working</td><td>Allow merge</td><td>Added endpoint, added property, added schema, optional param added</td></tr>
+ <tr><td><strong>Info</strong></td><td>Metadata changes, no contract impact</td><td>Noise — informational only</td><td>API version bumped, title changed, server added</td></tr>
+</table>
+
+<h3>What Gets Detected</h3>
+
+<p>The diff engine checks six categories of changes:</p>
+
+<ul>
+ <li><strong>Paths & Operations</strong> — removed endpoints, removed methods, new required parameters</li>
+ <li><strong>Schemas & Components</strong> — removed properties, type changes, required-property additions, enum narrowing</li>
+ <li><strong>Security Schemes</strong> — removed or changed authentication methods</li>
+ <li><strong>Global Security</strong> — added or removed top-level security requirements</li>
+ <li><strong>Servers</strong> — server URL changes</li>
+ <li><strong>Info Metadata</strong> — title or version changes</li>
+</ul>
+
+<h2>Step 4: Fine-Grained CI Gating</h2>
+
+<p>Not every team wants to block on every breaking change. API Contract Guardian gives you control:</p>
+
+<pre><code># Strict: block on any breaking change (default)
+api-contract-guardian check spec-old.yaml spec-new.yaml --fail-on-breaking
+
+# Strict: also block on dangerous changes
+api-contract-guardian check spec-old.yaml spec-new.yaml \
+  --fail-on-breaking --fail-on-dangerous
+
+# Budget: allow up to 2 breaking changes (e.g., during a v2 migration)
+api-contract-guardian check spec-old.yaml spec-new.yaml \
+  --max-breaking 2
+
+# Allow dangerous changes but cap at 3
+api-contract-guardian check spec-old.yaml spec-new.yaml \
+  --fail-on-breaking --max-dangerous 3</code></pre>
+
+<div class="tip">
+<strong>Migration-friendly gating</strong>: During major version bumps, use <code>--max-breaking N</code> to allow a controlled number of breaking changes while still catching accidental ones beyond the budget.
+</div>
+
+<h2>Step 5: Auto-Generated Migration Guides</h2>
+
+<p>When the CI gate fails, the next question is always: "What do consumers need to change?" API Contract Guardian answers this automatically:</p>
+
+<pre><code># Generate a migration guide from the diff
+api-contract-guardian migrate spec-v1.yaml spec-v2.yaml --output MIGRATION.md</code></pre>
+
+<p>The generated migration guide includes:</p>
+
+<ul>
+ <li><strong>Summary</strong> — total breaking, dangerous, and non-breaking changes</li>
+ <li><strong>Breaking changes with action items</strong> — what was removed/changed and what consumers must update</li>
+ <li><strong>Deprecated endpoints</strong> — warning that certain operations will be removed</li>
+ <li><strong>New features</strong> — endpoints and properties added that consumers can adopt</li>
+</ul>
+
+<p>You can also generate migration guides in JSON or YAML for integration with documentation systems:</p>
+
+<pre><code># JSON migration guide for doc tooling
+api-contract-guardian migrate spec-v1.yaml spec-v2.yaml --format json --output migration.json
+
+# YAML for CI artifact storage
+api-contract-guardian migrate spec-v1.yaml spec-v2.yaml --format yaml --output migration.yaml</code></pre>
+
+<h2>Step 6: Monorepo Support — Diffs Within a Repo</h2>
+
+<p>If your API specs live alongside your code (as they should), you can diff them from any two branches, tags, or commits:</p>
+
+<pre><code># Compare current branch spec against the last release tag
+git show v2.3.0:services/api/openapi.yaml > /tmp/spec-release.yaml
+api-contract-guardian check /tmp/spec-release.yaml services/api/openapi.yaml
+
+# Compare against a specific commit
+git show abc1234:openapi.yaml > /tmp/spec-old.yaml
+api-contract-guardian check /tmp/spec-old.yaml openapi.yaml
+
+# In a monorepo with multiple services
+for service in services/*/; do
+  if [ -f "$service/openapi.yaml" ]; then
+    echo "Checking $service..."
+    git show main:"$service/openapi.yaml" > /tmp/spec-base.yaml
+    api-contract-guardian check /tmp/spec-base.yaml "$service/openapi.yaml" \
+      --format json --output "$service/contract-check.json"
+  fi
+done</code></pre>
+
+<h2>Step 7: Pre-Commit Hook for Local Enforcement</h2>
+
+<p>Catch breaking changes before they even reach CI — add a pre-commit hook:</p>
+
+<pre><code># .git/hooks/pre-commit (or via husky/lint-staged)
+#!/bin/bash
+
+# Only run if OpenAPI spec has changed
+if git diff --cached --name-only | grep -q "openapi.yaml"; then
+  echo "OpenAPI spec changed — running contract check..."
+  git show HEAD:openapi.yaml > /tmp/spec-head.yaml
+  if ! api-contract-guardian check /tmp/spec-head.yaml openapi.yaml --fail-on-breaking; then
+    echo ""
+    echo "❌ Breaking API changes detected. Run this for details:"
+    echo "   api-contract-guardian migrate /tmp/spec-head.yaml openapi.yaml"
+    exit 1
+  fi
+  echo "✅ No breaking API changes detected."
+fi</code></pre>
+
+<h2>Putting It Together: The Complete PR Workflow</h2>
+
+<pre><code>┌──────────────────────────────────────────────────┐
+│ Developer workflow                                │
+│                                                   │
+│  1. Create feature branch                        │
+│  2. Modify openapi.yaml                           │
+│  3. Run: api-contract-guardian check              │     ← Local check (30s)
+│  4. If breaking: generate migration guide         │     ← Fix or document
+│  5. Push & open PR                                │
+│  6. CI runs: api-contract-guardian check           │     ← Automated gate
+│  7. If gate fails: migration guide posted to PR   │     ← Auto-comment
+│  8. Team reviews changes + migration guide        │     ← Informed review
+│  9. Approve or request changes                    │
+│ 10. Merge with confidence                         │
+└──────────────────────────────────────────────────┘</code></pre>
+
+<h2>Why This Beats Manual Spec Review</h2>
+
+<table>
+ <tr><th>Manual spec review</th><th>API Contract Guardian</th></tr>
+ <tr><td>Reviewer must memorize all consumer dependencies</td><td>Every change classified by severity automatically</td></tr>
+ <tr><td>Breaking changes can slip through on large diffs</td><td>No change is missed — every path, schema, and security scheme is checked</td></tr>
+ <tr><td>Migration guides written manually (often skipped)</td><td>Auto-generated with actionable steps</td></tr>
+ <tr><td>Different reviewers apply different standards</td><td>Consistent severity taxonomy on every PR</td></tr>
+ <tr><td>Monorepo: specs across services hard to compare</td><td>Branch-aware diffing from any ref</td></tr>
+</table>
+
+<h2>Getting Started</h2>
+
+<div class="cta-box">
+ <h3>Guard your API contracts on every PR</h3>
+ <p>Stop relying on reviewers to catch breaking API changes manually. Automate the check, gate the merge, generate the migration guide.</p>
+ <pre style="text-align:left;margin:12px 0;background:#0a0a0b;border-color:#2a2a2d;"><code>pip install api-contract-guardian
+api-contract-guardian check main:openapi.yaml HEAD:openapi.yaml</code></pre>
+ <a href="https://github.com/Coding-Dev-Tools/api-contract-guardian">View on GitHub →</a>
+</div>
+
+<p style="color:#666;font-size:0.82rem;text-align:center;margin-top:32px;">
+ <em>API Contract Guardian is part of the <a href="https://coding-dev-tools.github.io/devforge/">DevForge</a> developer tool ecosystem — 11 CLI tools built by autonomous AI for autonomous developers.</em>
+</p>
+
+</section>
+
+<footer>
+ <span>&copy; 2026 DevForge. Built autonomously.</span>
+ <a href="../index.html">Home</a>
+ <a href="../pricing.html">Pricing</a>
+ <a href="https://github.com/Coding-Dev-Tools">GitHub</a>
+</footer>
+
+</body>
+</html>
