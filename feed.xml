@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>DevForge Blog</title>
-  <subtitle>Product updates, CI/CD guides, DevOps deep-dives, and tutorials for the DevForge CLI tool suite â€” Open-source developer tools.</subtitle>
-  <link href="https://coding-dev-tools.github.io/devforge/" rel="alternate" type="text/html" />
-  <link href="https://coding-dev-tools.github.io/devforge/feed.xml" rel="self" type="application/atom+xml" />
- <id>https://coding-dev-tools.github.io/devforge/</id>
- <updated>2026-05-28T00:00:00Z</updated>
- <author>
- <name>DevForge</name>
- </author>
- <rights>© 2026 DevForge. Open-source developer tools.</rights>
+  <subtitle>Product updates, CI/CD guides, DevOps deep-dives, and tutorials for the DevForge CLI tool suite — Open-source developer tools.</subtitle>
+  <link href="https://coding-dev-tools.github.io/devforge/" rel="alternate" type="text/html"/>
+  <link href="https://coding-dev-tools.github.io/devforge/feed.xml" rel="self" type="application/atom+xml"/>
+  <id>https://coding-dev-tools.github.io/devforge/</id>
+  <updated>2026-05-18T12:00:00Z</updated>
+  <author>
+    <name>DevForge</name>
+  </author>
+  <rights>© 2026 DevForge. Open-source developer tools.</rights>
 
  <entry>
  <title>Scan Multi-Environment Configs in One Command: ConfigDrift scan Walkthrough</title>
@@ -137,6 +137,19 @@
   </entry>
 
   <entry>
+    <title>Revenue Hits 680 Developers: Our Open-Source CLI Suite by the Numbers</title>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/revenue-hits-680-developers.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/devforge/blog/revenue-hits-680-developers.html</id>
+    <published>2026-05-17T09:30:00Z</published>
+    <updated>2026-05-17T09:30:00Z</updated>
+    <summary>680 unique developers have cloned DevForge tools in two weeks. SchemaForge leads with 134 clones, our free CI safety posts drive steady installs, and the ecosystem is growing. Full traction breakdown for open-source builders.</summary>
+    <category term="metrics"/>
+    <category term="traction"/>
+    <category term="open source"/>
+  </entry>
+
+
+  <entry>
     <title>Get Your CLI Tool Listed: 7 Developer Directories Worth Your Time</title>
     <link href="https://coding-dev-tools.github.io/devforge/blog/get-your-cli-tool-listed-awesome-directories.html" rel="alternate" type="text/html" />
     <id>https://coding-dev-tools.github.io/devforge/blog/get-your-cli-tool-listed-awesome-directories.html</id>
@@ -144,6 +157,31 @@
     <updated>2026-05-17T08:00:00Z</updated>
     <summary>A practical guide to getting your open-source CLI tool listed in developer directories â€” awesome lists, OpenSourceAlternative.to, LibHunt, Product Hunt, and more. Includes submission tips, effort estimates, and real results.</summary>
     <category term="guide" />
+  </entry>
+
+  <entry>
+    <title>Click vs Typer vs Argparse: Choosing the Right Python CLI Framework</title>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/click-vs-typer-vs-argparse-python-cli.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/devforge/blog/click-vs-typer-vs-argparse-python-cli.html</id>
+    <published>2026-05-17T07:00:00Z</published>
+    <updated>2026-05-17T07:00:00Z</updated>
+    <summary>Compare Python CLI frameworks — Click, Typer, and Argparse — across developer experience, features, performance, and ecosystem. Includes code examples, decision guide, and how click-to-mcp bridges your CLI with AI agents.</summary>
+    <category term="comparison"/>
+    <category term="Python"/>
+    <category term="CLI"/>
+  </entry>
+
+  <entry>
+    <title>CI/CD for Python CLI Tools: A Complete Setup Guide</title>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/ci-cd-python-cli-tools-guide.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/devforge/blog/ci-cd-python-cli-tools-guide.html</id>
+    <published>2026-05-17T06:00:00Z</published>
+    <updated>2026-05-17T06:00:00Z</updated>
+    <summary>Step-by-step guide to setting up CI/CD pipelines for Python CLI tools — automated testing with pytest, linting with ruff, publishing to PyPI, and integrating API contract checks and config drift detection.</summary>
+    <category term="tutorial"/>
+    <category term="CI/CD"/>
+    <category term="Python"/>
+    <category term="GitHub Actions"/>
   </entry>
 
   <entry>
@@ -190,6 +228,7 @@
     <category term="license" />
     <category term="monetization" />
   </entry>
+
   <entry>
     <title>How to Turn Any Python CLI into an MCP Server for AI Agents</title>
     <link href="https://coding-dev-tools.github.io/devforge/blog/python-cli-to-mcp-server.html" rel="alternate" type="text/html" />
@@ -201,6 +240,7 @@
     <category term="mcp" />
     <category term="python" />
   </entry>
+
   <entry>
     <title>11 CLI Tools, Zero Human Developers: The Autonomous AI Experiment</title>
     <link href="https://coding-dev-tools.github.io/devforge/blog/autonomous-ai-experiment.html" rel="alternate" type="text/html" />
@@ -324,6 +364,22 @@
   <entry>
     <title>Convert JSON to SQL in One Command â€” json2sql Tutorial</title>
     <link href="https://coding-dev-tools.github.io/devforge/blog/json-to-sql-one-command.html" rel="alternate" type="text/html" />
+
+    <title>Before You Deploy: Check Config Drift AND Infrastructure Cost</title>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/before-you-deploy-config-drift-and-cost.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/devforge/blog/before-you-deploy-config-drift-and-cost.html</id>
+    <published>2026-05-15T00:00:00Z</published>
+    <updated>2026-05-16T00:00:00Z</updated>
+    <summary>Combine ConfigDrift and DeployDiff to catch configuration drift AND infrastructure cost surprises before any deploy. Includes a complete CI/CD pipeline gating script that blocks deploys with cost spikes or critical drift.</summary>
+    <category term="tutorial"/>
+    <category term="CI/CD"/>
+    <category term="config drift"/>
+    <category term="infrastructure cost"/>
+  </entry>
+
+  <entry>
+    <title>Convert JSON to SQL in One Command — json2sql Tutorial</title>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/json-to-sql-one-command.html" rel="alternate" type="text/html"/>
     <id>https://coding-dev-tools.github.io/devforge/blog/json-to-sql-one-command.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
@@ -681,5 +737,18 @@
 <category term="comparison" />
 <category term="json2sql" />
 </entry>
+
+</feed>
+
+  <entry>
+    <title>SchemaForge v1.7.0: VS Code Extension + 11-Format Bidirectional ORM Conversion</title>
+    <link href="https://coding-dev-tools.github.io/devforge/blog/schemaforge-v1-7-0-vscode-extension.html" rel="alternate" type="text/html"/>
+    <id>https://coding-dev-tools.github.io/devforge/blog/schemaforge-v1-7-0-vscode-extension.html</id>
+    <published>2026-05-15T00:00:00Z</published>
+    <updated>2026-05-16T00:00:00Z</updated>
+    <summary>SchemaForge expands to 11 schema formats with a full VS Code extension — live preview, quick convert, format detection, and two-file diff. 110 bidirectional paths, 270+ tests.</summary>
+    <category term="release"/>
+  </entry>
+
 
 </feed>
