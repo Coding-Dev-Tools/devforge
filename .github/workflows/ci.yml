@@ -2,23 +2,6 @@ name: CI
 
 on:
   push:
-<<<<<<< HEAD
-    branches: [main, master]
-  pull_request:
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - run: python -m pip install -e . ruff pytest
-      - run: python -m ruff check .
-      - run: python -m pytest
-=======
     branches: [main]
   pull_request:
     branches: [main]
@@ -81,4 +64,3 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
->>>>>>> a2fed4c641955d6cc6efdde0e15b0298f26242fc
