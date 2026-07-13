@@ -154,10 +154,10 @@
   <p>Install any tool in seconds and see it in action. Every CLI command below is a real, working example Ã¢â‚¬â€ copy, paste, and run.</p>
   <div style="margin-top:20px;padding:12px 20px;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:8px;max-width:600px;margin-left:auto;margin-right:auto;">
     <p style="color:#10b981;font-weight:600;font-size:0.8rem;margin:0 0 4px;">Ã¢Å“â€¦ Available now via GitHub</p>
-    <code style="color:#d1d5db;font-size:0.78rem;">pip install git+https://github.com/Coding-Dev-Tools/devforge.git</code>
+    <code style="color:#d1d5db;font-size:0.78rem;">pip install git+https://github.com/Coding-Dev-Tools/apiauth.git</code>
 
     <p style="color:#10b981;font-weight:600;font-size:0.8rem;margin:0 0 4px;">Ã¢Å“â€œ Available now via GitHub</p>
-    <code style="color:#d1d5db;font-size:0.78rem;">pip install git+https://github.com/Coding-Dev-Tools/devforge.git</code>
+    <code style="color:#d1d5db;font-size:0.78rem;">pip install git+https://github.com/Coding-Dev-Tools/apiauth.git</code>
   </div>
 </section>
 
@@ -577,7 +577,7 @@ envault rotate JWT_SECRET # 256-bit base64 secret</code></pre>
     <a href="https://github.com/Coding-Dev-Tools/apighost" class="gh-link" target="_blank">View on GitHub Ã¢â€ â€™</a>
 
     <div class="install-block">
-      <code>pip install apighost</code>
+      <code>pip install git+https://github.com/Coding-Dev-Tools/apighost.git</code>
       <span class="note">Requires Python 3.9+</span>
     </div>
 
@@ -608,7 +608,7 @@ apighost replay my-cassette</code></pre>
     <a href="https://github.com/Coding-Dev-Tools/apiauth" class="gh-link" target="_blank">View on GitHub Ã¢â€ â€™</a>
 
     <div class="install-block">
-      <code>pip install apiauth</code>
+      <code>pip install git+https://github.com/Coding-Dev-Tools/apiauth.git</code>
       <span class="note">Requires Python 3.9+</span>
     </div>
 
@@ -642,7 +642,7 @@ apiauth rotate &lt;key-id&gt;</code></pre>
     <a href="https://github.com/Coding-Dev-Tools/envault" class="gh-link" target="_blank">View on GitHub Ã¢â€ â€™</a>
 
     <div class="install-block">
-      <code>pip install envault</code>
+      <code>pip install git+https://github.com/Coding-Dev-Tools/envault.git</code>
       <span class="note">Requires Python 3.10+</span>
     </div>
 
@@ -675,7 +675,7 @@ envault rotate JWT_SECRET         # Ã¢â€ â€™ 256-bit base64 secret</c
     <a href="https://github.com/Coding-Dev-Tools/schemaforge" class="gh-link" target="_blank">View on GitHub Ã¢â€ â€™</a>
 
     <div class="install-block">
-      <code>pip install schemaforge</code>
+      <code>pip install git+https://github.com/Coding-Dev-Tools/schemaforge.git</code>
       <span class="note">Requires Python 3.9+</span>
     </div>
 
@@ -706,7 +706,7 @@ envault rotate JWT_SECRET         # Ã¢â€ â€™ 256-bit base64 secret</c
     <a href="https://github.com/Coding-Dev-Tools/click-to-mcp" class="gh-link" target="_blank">View on GitHub Ã¢â€ â€™</a>
 
     <div class="install-block">
-      <code>pip install click-to-mcp</code>
+      <code>pip install git+https://github.com/Coding-Dev-Tools/click-to-mcp.git</code>
       <span class="note">Requires Python 3.9+</span>
     </div>
 
@@ -737,7 +737,7 @@ envault rotate JWT_SECRET         # Ã¢â€ â€™ 256-bit base64 secret</c
     <a href="https://github.com/Coding-Dev-Tools/deadcode" class="gh-link" target="_blank">View on GitHub Ã¢â€ â€™</a>
 
     <div class="install-block">
-      <code>pip install deadcode</code>
+      <code>pip install git+https://github.com/Coding-Dev-Tools/deadcode.git</code>
       <span class="note">Requires Python 3.9+ & Node.js 18+</span>
     </div>
 
@@ -768,7 +768,7 @@ envault rotate JWT_SECRET         # Ã¢â€ â€™ 256-bit base64 secret</c
     <a href="https://github.com/Coding-Dev-Tools/devforge" class="gh-link" target="_blank">View on GitHub ?</a>
 
     <div class="install-block">
-<code>pip install git+https://github.com/Coding-Dev-Tools/devforge.git</code>
+<code>pip install git+https://github.com/Coding-Dev-Tools/apiauth.git</code>
       <span class="note">Installs all 11 tools as dependencies</span>
 
     <h2><span class="icon icon-rh">Ã¢â€ºÂ</span> DevForge Suite</h2>
@@ -796,7 +796,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: pip install git+https://github.com/Coding-Dev-Tools/devforge.git
+      - run: pip install git+https://github.com/Coding-Dev-Tools/apiauth.git
 
       # 1. API Contract Guardian Ã¢â‚¬â€ detect breaking schema changes
       - run: api-contract-guardian check --base origin/main --head HEAD openapi.yaml
@@ -811,7 +811,7 @@ jobs:
       - run: configdrift check dev.yaml prod.yaml --output json</code></pre>
 
     <div class="insight">
-      <p><strong>Pro tip:</strong> Use the meta-package in CI so your pipeline automatically gets all new tools as they're released. Pin the major version for production stability: <code style="color:#a78bfa;">pip install git+https://github.com/Coding-Dev-Tools/devforge.git@v0.1</code></p>
+      <p><strong>Pro tip:</strong> Use the meta-package in CI so your pipeline automatically gets all new tools as they're released. Pin the major version for production stability: <code style="color:#a78bfa;">pip install git+https://github.com/Coding-Dev-Tools/apiauth.git@v0.1</code></p>
     </div>
   </div>
 
@@ -824,13 +824,13 @@ jobs:
 
     <p style="font-size:0.82rem;color:#888;font-weight:600;margin-bottom:8px;">Per-tool install for minimal dependencies</p>
     <pre><code class="language-bash"># Install only what you need
-pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git  # API contract checks
-pip install git+https://github.com/Coding-Dev-Tools/deploydiff.git             # Infra change previews
-pip install git+https://github.com/Coding-Dev-Tools/json2sql.git              # SQL validation
-pip install git+https://github.com/Coding-Dev-Tools/configdrift.git           # Config drift detection
-pip install git+https://github.com/Coding-Dev-Tools/apighost.git             # OpenAPI mock server
-pip install git+https://github.com/Coding-Dev-Tools/apiauth.git              # API key &amp; JWT management
-pip install git+https://github.com/Coding-Dev-Tools/envault.git               # .env syncing &amp; secret rotation
+pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git # API contract checks
+pip install git+https://github.com/Coding-Dev-Tools/deploydiff.git # Infra change previews
+pip install git+https://github.com/Coding-Dev-Tools/json2sql.git # SQL validation
+pip install git+https://github.com/Coding-Dev-Tools/configdrift.git # Config drift detection
+pip install git+https://github.com/Coding-Dev-Tools/apighost.git # OpenAPI mock server
+pip install git+https://github.com/Coding-Dev-Tools/apiauth.git # API key &amp; JWT management
+pip install git+https://github.com/Coding-Dev-Tools/envault.git # .env syncing &amp; secret rotation
 pip install git+https://github.com/Coding-Dev-Tools/schemaforge.git # ORM schema converter
 pip install git+https://github.com/Coding-Dev-Tools/click-to-mcp.git # MCP server wrapper
 pip install git+https://github.com/Coding-Dev-Tools/deadcode.git # Dead code detector
@@ -840,14 +840,14 @@ pip install git+https://github.com/Coding-Dev-Tools/datamorph.git # Data format 
 
     <p style="font-size:0.82rem;color:#888;font-weight:600;margin-bottom:8px;">Per-tool install for minimal dependencies</p>
     <pre><code class="language-bash"># Install only what you need
-pip install api-contract-guardian  # API contract checks
-pip install deploydiff             # Infra change previews
-pip install json2sql              # SQL validation
-pip install configdrift           # Config drift detection
-pip install apighost             # OpenAPI mock server
-pip install apiauth              # API key &amp; JWT management
-pip install envault               # .env syncing &amp; secret rotation
-pip install schemaforge          # ORM schema converter</code></pre>
+pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git # API contract checks
+pip install git+https://github.com/Coding-Dev-Tools/deploydiff.git # Infra change previews
+pip install git+https://github.com/Coding-Dev-Tools/json2sql.git # SQL validation
+pip install git+https://github.com/Coding-Dev-Tools/configdrift.git # Config drift detection
+pip install git+https://github.com/Coding-Dev-Tools/apighost.git # OpenAPI mock server
+pip install git+https://github.com/Coding-Dev-Tools/apiauth.git # API key &amp; JWT management
+pip install git+https://github.com/Coding-Dev-Tools/envault.git # .env syncing &amp; secret rotation
+pip install git+https://github.com/Coding-Dev-Tools/schemaforge.git # ORM schema converter</code></pre>
 
 <p style="font-size:0.82rem;color:#888;font-weight:600;margin-bottom:8px;">Exit codes (all tools)</p>
 <pre><code class="language-text">0 Ã¢â‚¬â€ Success (no issues found)

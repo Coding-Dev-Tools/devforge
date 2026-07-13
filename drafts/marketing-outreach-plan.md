@@ -67,7 +67,7 @@ Key features:
 - Custom .schemaforge editor in VS Code
 - Streaming for large schemas
 
-Install: pip install schemaforge
+Install: pip install git+https://github.com/Coding-Dev-Tools/schemaforge.git
 VS Code: Search "SchemaForge" in extensions
 
 v1.7.0 adds the VS Code companion, custom editor, and format detection.
@@ -87,7 +87,7 @@ With the MCP (Model Context Protocol) ecosystem exploding (66M+ FastMCP download
 
 click-to-mcp takes any Click or typer CLI and generates a fully compliant MCP server — one command:
 
-    pip install click-to-mcp
+    pip install git+https://github.com/Coding-Dev-Tools/click-to-mcp.git
     click-to-mcp convert your_cli_app
 
 Now your CLI tools can be called by Claude, GPT, or any MCP-compatible agent.
@@ -106,7 +106,7 @@ Title: Built a tool to convert between Prisma, Drizzle, TypeORM, SQL, and 7 more
 
 Tired of manually rewriting schema definitions when switching between projects or ORMs. Built SchemaForge — bidirectional converter between 11 schema formats (110 direction pairs).
 
-    pip install schemaforge
+    pip install git+https://github.com/Coding-Dev-Tools/schemaforge.git
     schemaforge convert input.prisma --to drizzle
 
 Also has a VS Code extension with live preview and format detection.
@@ -122,7 +122,7 @@ Title: CLI tool to detect breaking API changes before they hit production
 
 api-contract-guardian monitors OpenAPI schema diffs between git branches, detects breaking changes, and can block CI pipelines on contract violations.
 
-    pip install api-contract-guardian
+    pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git
     api-contract-guardian check main..feature
 
 It also generates migration guides for the breaking changes it finds. Useful for teams with microservices where API contract violations cause production incidents.
@@ -138,7 +138,7 @@ Title: Open-source tools to expose your Python CLIs as MCP servers
 
 The MCP ecosystem needs more tool servers. I built click-to-mcp to auto-wrap any Click/typer CLI as a compliant MCP server:
 
-    pip install click-to-mcp
+    pip install git+https://github.com/Coding-Dev-Tools/click-to-mcp.git
     click-to-mcp convert your_cli
 
 This lets any MCP-compatible client (Claude Desktop, Continue, etc.) call your CLI tools directly.
@@ -167,7 +167,7 @@ That's where click-to-mcp comes in.
 click-to-mcp auto-wraps any Click or typer CLI as a fully compliant MCP server. One command, zero code changes.
 
 ## Quick start
-    pip install click-to-mcp
+    pip install git+https://github.com/Coding-Dev-Tools/click-to-mcp.git
     click-to-mcp convert my_cli_app
     click-to-mcp serve  # Starts the MCP server
 
@@ -199,7 +199,7 @@ Every developer who switches projects has faced this: your last project used Pri
 Bidirectional conversion between 11 schema formats — SQL DDL, Prisma, Drizzle, TypeORM, Django, SQLAlchemy, Alembic, JSON Schema, GraphQL SDL, EF Core, and Scala case classes. 110 direction pairs, all zero-loss.
 
 ## Quick start
-    pip install schemaforge
+    pip install git+https://github.com/Coding-Dev-Tools/schemaforge.git
     schemaforge convert schema.prisma --to drizzle
 
 ## VS Code Extension

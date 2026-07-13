@@ -128,7 +128,7 @@
 
   <p>ConfigDrift is a Python CLI — install it in seconds:</p>
 
-  <div class="cmd-block">$ pip install configdrift</div>
+  <div class="cmd-block">$ pip install git+https://github.com/Coding-Dev-Tools/configdrift.git</div>
 
   <p>Or install directly from GitHub:</p>
 
@@ -317,7 +317,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install ConfigDrift
-        run: pip install configdrift
+        run: pip install git+https://github.com/Coding-Dev-Tools/configdrift.git
 
       - name: Check for config drift
         run: |

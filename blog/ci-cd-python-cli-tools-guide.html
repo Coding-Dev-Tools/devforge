@@ -83,7 +83,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-      - run: pip install -e ".[dev]"
+      - run: pip install -e".[dev]"
       - run: ruff check .
       - run: pytest --cov --cov-report=term-missing</code></pre>
 
@@ -146,7 +146,7 @@ def test_error_exit_code():
 
 <pre><code>      - name: Check API contracts
         run: |
-          pip install api-contract-guardian
+          pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git
           acg diff --base main --head HEAD --spec-path openapi.yaml</code></pre>
 
 <p>This prevents the "works on my machine" problem when your CLI depends on external APIs that evolve independently.</p>
@@ -157,7 +157,7 @@ def test_error_exit_code():
 
 <pre><code>      - name: Check config drift
         run: |
-          pip install configdrift
+          pip install git+https://github.com/Coding-Dev-Tools/configdrift.git
           configdrift diff tests/fixtures/config-v1.yaml tests/fixtures/config-v2.yaml</code></pre>
 
 <h2>Step 6: Automated PyPI Publishing</h2>

@@ -144,7 +144,7 @@ jobs:
           fetch-depth: 0  # Full history for branch diffing
 
       - name: Install API Contract Guardian
-        run: pip install api-contract-guardian
+        run: pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git
 
       - name: Extract base spec from target branch
         run: |
@@ -195,7 +195,7 @@ jobs:
         - openapi.yaml
         - specs/**/*
   script:
-    - pip install api-contract-guardian
+    - pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git
     - |
       git fetch origin $CI_MERGE_REQUEST_TARGET_BRANCH_NAME
       git show origin/$CI_MERGE_REQUEST_TARGET_BRANCH_NAME:openapi.yaml > /tmp/spec-base.yaml
@@ -360,7 +360,7 @@ fi</code></pre>
 <div class="cta-box">
  <h3>Guard your API contracts on every PR</h3>
  <p>Stop relying on reviewers to catch breaking API changes manually. Automate the check, gate the merge, generate the migration guide.</p>
- <pre style="text-align:left;margin:12px 0;background:#0a0a0b;border-color:#2a2a2d;"><code>pip install api-contract-guardian
+ <pre style="text-align:left;margin:12px 0;background:#0a0a0b;border-color:#2a2a2d;"><code>pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git
 api-contract-guardian check main:openapi.yaml HEAD:openapi.yaml</code></pre>
  <a href="https://github.com/Coding-Dev-Tools/api-contract-guardian">View on GitHub →</a>
 </div>

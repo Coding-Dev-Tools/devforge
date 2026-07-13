@@ -266,7 +266,7 @@
 
 <p>We built <a href="https://github.com/Coding-Dev-Tools/click-to-mcp">click-to-mcp</a> to solve a specific problem: making existing Python CLIs available as MCP servers without rewriting them. It wraps any Click or Typer CLI and exposes it via the Model Context Protocol.</p>
 
-<pre><code>pip install click-to-mcp
+<pre><code>pip install git+https://github.com/Coding-Dev-Tools/click-to-mcp.git
 click-to-mcp wrap my_cli_app</code></pre>
 
 <p>The submission process taught us a lot. Our first awesome-mcp-servers PR was rejected for format issues (missing emoji, wrong name). mcp.so accepted us quickly after a GitHub issue. Glama required a browser session we couldn't automate. And several directories we considered (pulse.mcp, mcp-gpt.com) turned out to be dead or unmaintained.</p>

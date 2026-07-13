@@ -169,7 +169,7 @@ envault.rotate(42, "production")  # ❌ mypy error</code></pre>
 
  <p>Install any DevForge tool and run mypy on your code:</p>
 
- <pre><code>$ pip install envault
+ <pre><code>$ pip install git+https://github.com/Coding-Dev-Tools/envault.git
 $ mypy your_script.py
 # Any import of envault now resolves to typed signatures</code></pre>
 
@@ -187,7 +187,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install mypy envault apiauth
+      - run: pip install mypy git+https://github.com/Coding-Dev-Tools/envault.git git+https://github.com/Coding-Dev-Tools/apiauth.git
       - run: mypy --strict src/</code></pre>
 
  <p>With <code>py.typed</code> markers, mypy checks your usage of DevForge imports against the actual signatures &mdash; not against <code>Any</code>. If you pass a <code>str</code> where <code>dict</code> is expected, the CI fails.</p>
@@ -263,7 +263,7 @@ result = rotate_secret("DATABASE_URL", env="staging")
 
  <h2>Try It Now</h2>
 
- <pre><code>$ pip install envault apiauth click-to-mcp
+ <pre><code>$ pip install git+https://github.com/Coding-Dev-Tools/envault.git git+https://github.com/Coding-Dev-Tools/apiauth.git git+https://github.com/Coding-Dev-Tools/click-to-mcp.git
 $ mypy --strict your_project/</code></pre>
 
  <p>

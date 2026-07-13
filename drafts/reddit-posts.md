@@ -11,7 +11,7 @@ Hey r/Python,
 Tired of rewriting Django models to SQLAlchemy? Or Prisma schemas to Drizzle? I built SchemaForge — a CLI that converts between 11 schema formats with zero-loss roundtripping.
 
 ```bash
-pip install schemaforge
+pip install git+https://github.com/Coding-Dev-Tools/schemaforge.git
 
 # Django → SQLAlchemy
 schemaforge convert models.py --from django --to sqlalchemy
@@ -51,7 +51,7 @@ Hey r/cli,
 Built a tool that auto-wraps Python CLIs as MCP (Model Context Protocol) servers. Zero code changes needed.
 
 ```bash
-pip install click-to-mcp
+pip install git+https://github.com/Coding-Dev-Tools/click-to-mcp.git
 click-to-mcp convert my-cli-tool
 ```
 
@@ -86,7 +86,7 @@ Built a CLI that detects dead code in React and Next.js projects:
 - Orphaned CSS classes (styles with no matching elements)
 
 ```bash
-pip install deadcode
+pip install git+https://github.com/Coding-Dev-Tools/deadcode.git
 deadcode scan ./src
 ```
 
@@ -114,28 +114,28 @@ Sharing 4 CLI tools we built for CI/CD workflows:
 
 **1. API Contract Guardian** — catch breaking OpenAPI changes in CI
 ```bash
-pip install api-contract-guardian
+pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git
 api-contract-guardian diff old.yaml new.yaml --check-breaking
 ```
 Add to GitHub Actions: breaks the build if a PR introduces breaking API changes.
 
 **2. DeployDiff** — preview infra cost before deploying
 ```bash
-pip install deploydiff
+pip install git+https://github.com/Coding-Dev-Tools/deploydiff.git
 deploydiff preview terraform/ --provider aws
 ```
 Shows estimated monthly cost changes and blast radius before you apply.
 
 **3. ConfigDrift** — detect config drift between environments
 ```bash
-pip install configdrift
+pip install git+https://github.com/Coding-Dev-Tools/configdrift.git
 configdrift diff dev/ staging/ prod/ --format yaml
 ```
 Catches when staging and prod configs diverge silently.
 
 **4. Envault** — sync and rotate .env files
 ```bash
-pip install envault
+pip install git+https://github.com/Coding-Dev-Tools/envault.git
 envault sync .env.production --from .env.staging
 ```
 Diff, sync, and rotate env variables across environments.

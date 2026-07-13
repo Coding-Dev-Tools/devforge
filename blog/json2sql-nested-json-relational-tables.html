@@ -373,7 +373,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install json2sql
-        run: pip install json2sql-cli
+        run: pip install git+https://github.com/Coding-Dev-Tools/json2sql.git
 
       - name: Generate SQL from fixtures
         run: |
@@ -452,7 +452,7 @@ cat data.json | jq '.records' | json2sql convert --flatten --dialect mysql --tab
 <h2>Install and Try It Now</h2>
 
 <pre><code># Install
-pip install json2sql-cli
+pip install git+https://github.com/Coding-Dev-Tools/json2sql.git
 
 # Basic flat conversion
 json2sql convert data.json

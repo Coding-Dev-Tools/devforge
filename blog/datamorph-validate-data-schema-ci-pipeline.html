@@ -170,7 +170,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install DataMorph
-        run: pip install datamorph-cli
+        run: pip install git+https://github.com/Coding-Dev-Tools/datamorph.git
 
       - name: Validate all CSV files against schemas
         run: |
@@ -211,7 +211,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install DataMorph
-        run: pip install datamorph-cli
+        run: pip install git+https://github.com/Coding-Dev-Tools/datamorph.git
 
       - name: Download latest data files
         run: |
@@ -441,7 +441,7 @@ datamorph batch data/ output/ --format parquet --validate</code></pre>
 <h2>Install DataMorph</h2>
 
 <pre><code># pip
-pip install datamorph-cli
+pip install git+https://github.com/Coding-Dev-Tools/datamorph.git
 
 # Homebrew (macOS / Linux)
 brew tap Coding-Dev-Tools/tap

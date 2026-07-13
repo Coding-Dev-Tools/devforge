@@ -88,7 +88,7 @@ click-to-mcp serve your-cli</code></pre>
 <h2><span class="num">2.</span> DeadCode</h2>
 <p><span class="tag tag-code">Code Quality</span> <span class="tag tag-devops">CI</span></p>
 <p><strong>Find and remove dead code.</strong> Scans JavaScript/TypeScript/React projects for unused exports, components, and modules. Integrates into CI pipelines so dead code never reaches production.</p>
-<pre><code>pip install deadcode-cli
+<pre><code>pip install git+https://github.com/Coding-Dev-Tools/deadcode.git
 deadcode scan ./src</code></pre>
 <p>↳ <a href="https://github.com/Coding-Dev-Tools/deadcode">GitHub</a> &middot; <a href="deadcode-technical-deep-dive.html">Read more</a></p>
 </div>
@@ -98,7 +98,7 @@ deadcode scan ./src</code></pre>
 <h2><span class="num">3.</span> JSON2SQL</h2>
 <p><span class="tag tag-data">Data</span></p>
 <p><strong>Query JSON files with SQL.</strong> No database needed. Pipe a JSON file into json2sql and run SQL SELECT/WHERE/GROUP BY against it. Perfect for log analysis, API response exploration, and data pipeline debugging.</p>
-<pre><code>pip install json2sql-cli
+<pre><code>pip install git+https://github.com/Coding-Dev-Tools/json2sql.git
 cat data.json | json2sql "SELECT count(*) GROUP BY status"</code></pre>
 <p>↳ <a href="https://github.com/Coding-Dev-Tools/json2sql">GitHub</a> &middot; <a href="json-to-sql-one-command.html">Read more</a></p>
 </div>
@@ -108,7 +108,7 @@ cat data.json | json2sql "SELECT count(*) GROUP BY status"</code></pre>
 <h2><span class="num">4.</span> Envault</h2>
 <p><span class="tag tag-sec">Security</span> <span class="tag tag-devops">DevOps</span></p>
 <p><strong>Secure environment variable manager.</strong> Encrypt, share, and rotate secrets across environments. Works with .env files, CI/CD systems, and container orchestration. Built-in audit logging.</p>
-<pre><code>pip install envault-secrets
+<pre><code>pip install git+https://github.com/Coding-Dev-Tools/envault.git
 envault init && envault set API_KEY=sk-xxx</code></pre>
 <p>↳ <a href="https://github.com/Coding-Dev-Tools/envault">GitHub</a> &middot; <a href="envault-secret-rotation-guide.html">Read more</a></p>
 </div>
@@ -118,7 +118,7 @@ envault init && envault set API_KEY=sk-xxx</code></pre>
 <h2><span class="num">5.</span> SchemaForge</h2>
 <p><span class="tag tag-data">Data</span></p>
 <p><strong>Database schema migrations, simplified.</strong> Define your schema in Python, TypeScript, or YAML. SchemaForge generates migrations for PostgreSQL, MySQL, SQLite, and more. Supports SQLAlchemy, Drizzle ORM, and raw SQL output.</p>
-<pre><code>pip install schemaforge-cli
+<pre><code>pip install git+https://github.com/Coding-Dev-Tools/schemaforge.git
 schemaforge init && schemaforge migrate</code></pre>
 <p>↳ <a href="https://github.com/Coding-Dev-Tools/schemaforge">GitHub</a> &middot; <a href="schemaforge-v0-2-0-drizzle.html">Read more</a></p>
 </div>
@@ -128,7 +128,7 @@ schemaforge init && schemaforge migrate</code></pre>
 <h2><span class="num">6.</span> APIGhost</h2>
 <p><span class="tag tag-api">API</span> <span class="tag tag-mcp">MCP</span></p>
 <p><strong>Mock API server from OpenAPI specs.</strong> Generate a fully functional mock server from any OpenAPI 3.x specification. Supports realistic responses, validation, and delay simulation. Handy for frontend development and testing.</p>
-<pre><code>pip install apighost
+<pre><code>pip install git+https://github.com/Coding-Dev-Tools/apighost.git
 apighost serve openapi.yaml --port 4000</code></pre>
 <p>↳ <a href="https://github.com/Coding-Dev-Tools/apighost">GitHub</a> &middot; <a href="api-mock-server-from-openapi-spec.html">Read more</a></p>
 </div>
@@ -138,7 +138,7 @@ apighost serve openapi.yaml --port 4000</code></pre>
 <h2><span class="num">7.</span> ConfigDrift</h2>
 <p><span class="tag tag-devops">DevOps</span> <span class="tag tag-sec">Security</span></p>
 <p><strong>Catch configuration drift before it breaks things.</strong> Monitor config files, environment variables, and Kubernetes ConfigMaps for unexpected changes. Set baselines and get alerts when drift is detected.</p>
-<pre><code>pip install configdrift
+<pre><code>pip install git+https://github.com/Coding-Dev-Tools/configdrift.git
 configdrift baseline && configdrift check</code></pre>
 <p>↳ <a href="https://github.com/Coding-Dev-Tools/configdrift">GitHub</a> &middot; <a href="catch-config-drift-before-production.html">Read more</a></p>
 </div>
@@ -148,7 +148,7 @@ configdrift baseline && configdrift check</code></pre>
 <h2><span class="num">8.</span> DeployDiff</h2>
 <p><span class="tag tag-devops">DevOps</span></p>
 <p><strong>Preview infrastructure changes before deploying.</strong> Diff your Kubernetes manifests, Terraform plans, and Docker Compose files against the current state. Catch breaking changes before they hit production.</p>
-<pre><code>pip install deploydiff
+<pre><code>pip install git+https://github.com/Coding-Dev-Tools/deploydiff.git
 deploydiff diff --before deploy.yaml --after deploy-v2.yaml</code></pre>
 <p>↳ <a href="https://github.com/Coding-Dev-Tools/deploydiff">GitHub</a> &middot; <a href="preview-infra-cost-before-deploy.html">Read more</a></p>
 </div>
@@ -158,7 +158,7 @@ deploydiff diff --before deploy.yaml --after deploy-v2.yaml</code></pre>
 <h2><span class="num">9.</span> DataMorph</h2>
 <p><span class="tag tag-data">Data</span></p>
 <p><strong>Batch data transformation in your terminal.</strong> Convert between JSON, CSV, YAML, XML, and Parquet. Filter, map, join, and aggregate datasets without writing scripts. Pipes compose naturally with jq, sed, and awk.</p>
-<pre><code>pip install datamorph-cli
+<pre><code>pip install git+https://github.com/Coding-Dev-Tools/datamorph.git
 datamorph convert input.csv --to json | jq '.[0]'</code></pre>
 <p>↳ <a href="https://github.com/Coding-Dev-Tools/datamorph">GitHub</a> &middot; <a href="datamorph-batch-data-conversion.html">Read more</a></p>
 </div>
@@ -168,7 +168,7 @@ datamorph convert input.csv --to json | jq '.[0]'</code></pre>
 <h2><span class="num">10.</span> API Contract Guardian</h2>
 <p><span class="tag tag-api">API</span> <span class="tag tag-devops">CI</span></p>
 <p><strong>Breaking change detection for OpenAPI specs.</strong> Drop this into your CI pipeline and it catches every breaking API change — removed endpoints, changed response schemas, modified request bodies. Generates human-readable diffs.</p>
-<pre><code>pip install api-contract-guardian
+<pre><code>pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git
 api-contract-guardian check --before spec-v1.yaml --after spec-v2.yaml</code></pre>
 <p>↳ <a href="https://github.com/Coding-Dev-Tools/api-contract-guardian">GitHub</a> &middot; <a href="catch-breaking-api-changes-in-ci.html">Read more</a></p>
 </div>
