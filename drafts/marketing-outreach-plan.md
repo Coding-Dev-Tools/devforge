@@ -22,7 +22,7 @@
 ### Pre-Launch (T-7 days)
 - [ ] Create maker profile on Product Hunt
 - [ ] Prepare assets: logo (256x256), gallery images (1270x760), tagline
-- [ ] Record 60-sec demo video: `pip install click-to-mcp` → `click-to-mcp convert mycli` → instant MCP server
+- [ ] Record 60-sec demo video: `pip install git+https://github.com/Coding-Dev-Tools/click-to-mcp.git` → `click-to-mcp convert mycli` → instant MCP server
 - [ ] Write maker comment with technical deep-dive
 - [ ] Line up 5-10 hunter/upvoter supporters (indie dev communities)
 

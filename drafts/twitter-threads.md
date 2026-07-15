@@ -14,7 +14,7 @@ I built a tool that makes it realize its true potential.
 **Tweet 2**
 Meet click-to-mcp — it auto-wraps any Python CLI as an MCP server.
 
-`pip install click-to-mcp`
+`pip install git+https://github.com/Coding-Dev-Tools/click-to-mcp.git`
 `click-to-mcp serve your-cli`
 
 That's it. Your CLI is now available to Claude Code, Cursor, and any MCP client.
@@ -270,7 +270,7 @@ Full guide covers:
 **Tweet 6**
 The best part? click-to-mcp works with ANY Click/Typer CLI. No modifications needed. No boilerplate. 
 
-`pip install click-to-mcp`
+`pip install git+https://github.com/Coding-Dev-Tools/click-to-mcp.git`
 `click-to-mcp serve your-cli`
 
 Your CLI is now an MCP server. Zero code changes.

@@ -20,7 +20,7 @@
   <circle cx="130" cy="105" r="8" fill="#ffbd2e"/>
   <circle cx="155" cy="105" r="8" fill="#28c840"/>
   <!-- Terminal lines -->
-  <text x="105" y="145" font-family="Consolas, monospace" font-size="16" fill="#34d399">$ pip install click-to-mcp</text>
+  <text x="105" y="145" font-family="Consolas, monospace" font-size="16" fill="#34d399">$ pip install git+https://github.com/Coding-Dev-Tools/click-to-mcp.git</text>
   <text x="105" y="175" font-family="Consolas, monospace" font-size="16" fill="#e1e1e3">Installing...</text>
   <text x="105" y="205" font-family="Consolas, monospace" font-size="16" fill="#34d399">$ click-to-mcp discover</text>
   <text x="105" y="235" font-family="Consolas, monospace" font-size="16" fill="#e1e1e3">Found 12 Click CLIs in your environment</text>
