@@ -59,13 +59,13 @@ I built SchemaForge because every time I switched projects, I spent hours manual
 SchemaForge is a CLI + VS Code extension that does bidirectional conversion between 11 schema formats:
 - SQL DDL, Prisma, Drizzle, TypeORM, Django, SQLAlchemy, Alembic migrations, JSON Schema, GraphQL SDL, EF Core (C#), Scala case classes
 
-That's 110 direction pairs, all with zero-loss roundtripping (preserves constraints, indexes, relations, defaults).
+That's 100 supported conversion directions. The shared representation preserves tables, columns, types, defaults, indexes, unique constraints, and enums — foreign-key constraints and ORM relationship fields require manual review after migration.
 
 Key features:
-- 270 tests covering edge cases across all format pairs
 - VS Code extension with live preview (Ctrl+Alt+S), format detection (Ctrl+Alt+D), and two-file diff
 - Custom .schemaforge editor in VS Code
 - Streaming for large schemas
+- MCP server for AI-tool integration
 
 Install: pip install git+https://github.com/Coding-Dev-Tools/schemaforge.git
 VS Code: Search "SchemaForge" in extensions
@@ -104,7 +104,7 @@ Would love feedback — what CLIs would you wrap?
 ```
 Title: Built a tool to convert between Prisma, Drizzle, TypeORM, SQL, and 7 more ORM formats
 
-Tired of manually rewriting schema definitions when switching between projects or ORMs. Built SchemaForge — bidirectional converter between 11 schema formats (110 direction pairs).
+Tired of manually rewriting schema definitions when switching between projects or ORMs. Built SchemaForge — bidirectional converter between 11 schema formats (100 supported conversion directions). Shared representation preserves tables, columns, types, defaults, indexes, unique constraints, and enums; foreign-key constraints and ORM relationship fields require manual review after migration.
 
     pip install git+https://github.com/Coding-Dev-Tools/schemaforge.git
     schemaforge convert input.prisma --to drizzle
@@ -196,7 +196,7 @@ Now Claude can directly invoke AWS commands through MCP.
 Every developer who switches projects has faced this: your last project used Prisma, this one uses Drizzle, and the schema definitions are completely incompatible. Manual conversion takes hours and loses constraints.
 
 ## SchemaForge solves this
-Bidirectional conversion between 11 schema formats — SQL DDL, Prisma, Drizzle, TypeORM, Django, SQLAlchemy, Alembic, JSON Schema, GraphQL SDL, EF Core, and Scala case classes. 110 direction pairs, all zero-loss.
+Bidirectional conversion between 11 schema formats — SQL DDL, Prisma, Drizzle, TypeORM, Django, SQLAlchemy, Alembic, JSON Schema, GraphQL SDL, EF Core, and Scala case classes. 100 supported conversion directions. The shared representation preserves tables, columns, types, defaults, indexes, unique constraints, and enums; foreign-key constraints and ORM relationship fields require manual review after migration.
 
 ## Quick start
     pip install git+https://github.com/Coding-Dev-Tools/schemaforge.git
@@ -205,8 +205,8 @@ Bidirectional conversion between 11 schema formats — SQL DDL, Prisma, Drizzle,
 ## VS Code Extension
 Live preview, quick convert (Ctrl+Alt+S), format detection (Ctrl+Alt+D), and two-file diff — all inside VS Code.
 
-## 270 tests
-Every format pair is tested with real-world schemas covering constraints, indexes, relations, and defaults.
+## Tests and coverage
+Every format pair is tested with real-world schemas covering constraints, indexes, defaults, and edge cases.
 
 ## Try it
 - GitHub: https://github.com/Coding-Dev-Tools/schemaforge

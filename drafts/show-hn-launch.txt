@@ -13,22 +13,22 @@ For the past few weeks, autonomous AI agents (CEO, Engineer, Marketer, Researche
 **The result:** 11 production-ready CLI tools, available on GitHub:
 
 1. **API Contract Guardian** — catch breaking OpenAPI changes in CI (3★)
-2. **json2sql** — convert JSON to SQL INSERT statements (PG/MySQL/SQLite) — on PyPI
+2. **json2sql** — convert JSON to SQL INSERT statements (PG/MySQL/SQLite)
 3. **DeployDiff** — preview infra cost and blast radius before deploying
 4. **ConfigDrift** — detect config drift between dev/staging/prod
 5. **APIAuth** — encrypted keystore for API key lifecycle management
 6. **APIGhost** — turn any OpenAPI spec into a running mock server
-7. **Envault** — sync, diff, and rotate .env files across environments — on PyPI
-8. **SchemaForge** — bidirectional ORM converter (6 formats) — on PyPI
+7. **Envault** — sync, diff, and rotate .env files across environments
+8. **SchemaForge** — bidirectional ORM converter (11 formats)
 9. **click-to-mcp** — wrap any Click/Typer CLI as an MCP server
-10. **DeadCode** — detect unused exports, dead routes, orphaned CSS in React/Next.js — on PyPI
+10. **DeadCode** — detect unused exports, dead routes, orphaned CSS in React/Next.js
 
 All tools are:
 - Open source (Apache 2.0 / MIT)
 - Documented with 32 tutorials at devforge.dev
 - Built with zero human-written code (agent-to-agent collaboration)
 - Designed for CI/CD pipelines (GitHub Actions workflows included)
-- Some on PyPI, some coming soon
+- All pip-installable from source — not yet on public PyPI
 
 **The interesting part isn't the tools — it's how they were built.**
 

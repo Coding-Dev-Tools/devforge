@@ -1,7 +1,7 @@
 # Show HN: SchemaForge — Bidirectional ORM Converter (11 formats, VS Code extension)
 
 ## Title Options
-- Show HN: SchemaForge – Convert between SQL, Prisma, Drizzle, TypeORM, Django, SQLAlchemy, GraphQL, and JSON Schema (11 formats, 110 direction pairs)
+- Show HN: SchemaForge – Convert between SQL, Prisma, Drizzle, TypeORM, Django, SQLAlchemy, GraphQL, and JSON Schema (11 formats, 100 conversion directions)
 - Show HN: I got tired of rewriting ORM schemas, so I built a converter for 11 formats
 - Show HN: SchemaForge – The only bidirectional ORM schema converter with a VS Code extension
 
@@ -11,9 +11,9 @@
 
 I've been converting ORM schemas between formats for years. Every time we evaluate a new ORM, rewrite the schema. Every time we add a language to the monorepo, rewrite the schema. Every migration from Prisma to Drizzle, or Django to SQLAlchemy — manual rewrite.
 
-So I built SchemaForge: a CLI that converts between 11 schema formats with zero-loss roundtripping.
+So I built SchemaForge: a CLI that converts between 11 schema formats. The shared representation preserves tables, columns, types, defaults, indexes, unique constraints, and enums faithfully; foreign-key constraints and ORM relationship fields require manual review after migration.
 
-**Supported formats (11, 110 direction pairs):**
+**Supported formats (11, bidirectional):**
 1. SQL DDL (CREATE TABLE)
 2. Prisma schema (.prisma)
 3. Drizzle ORM (TypeScript)

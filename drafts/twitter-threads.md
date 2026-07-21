@@ -77,7 +77,7 @@ DeadCode scans your codebase and reports:
 TypeScript, JSX, TSX — all supported.
 
 **Tweet 3**
-`pip install deadcode`
+`pip install git+https://github.com/Coding-Dev-Tools/deadcode.git`
 `deadcode scan ./src`
 
 Output is actionable — tells you exactly what to remove and which files to edit.

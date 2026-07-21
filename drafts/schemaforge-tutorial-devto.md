@@ -1,6 +1,6 @@
 # SchemaForge: The Only Schema Converter You'll Ever Need
 
-> Bidirectional schema conversion between 11 formats with zero-loss roundtripping — SQL, Prisma, Drizzle, TypeORM, Django, and more.
+> Bidirectional schema conversion between 11 formats — SQL, Prisma, Drizzle, TypeORM, Django, and more, with faithful shared-representation roundtripping.
 
 ---
 
@@ -20,7 +20,7 @@ SchemaForge solves this.
 
 ## What SchemaForge Does
 
-SchemaForge is a CLI tool (and VS Code extension) that converts between 11 schema formats **bidirectionally** with **zero-loss roundtripping**.
+SchemaForge is a CLI tool (and VS Code extension) that converts between 11 schema formats **bidirectionally**. The shared representation preserves tables, columns, types, defaults, indexes, unique constraints, and enums accurately; foreign-key constraints and ORM relationships require manual review after migration.
 
 ```bash
 # Convert Prisma to SQL

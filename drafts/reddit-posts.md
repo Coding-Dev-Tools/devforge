@@ -8,7 +8,7 @@
 
 Hey r/Python,
 
-Tired of rewriting Django models to SQLAlchemy? Or Prisma schemas to Drizzle? I built SchemaForge — a CLI that converts between 11 schema formats with zero-loss roundtripping.
+Tired of rewriting Django models to SQLAlchemy? Or Prisma schemas to Drizzle? I built SchemaForge — a CLI that converts between 11 schema formats. The shared representation preserves tables, columns, types, defaults, indexes, unique constraints, and enums; foreign-key constraints and ORM relationship fields require manual review after migration.
 
 ```bash
 pip install git+https://github.com/Coding-Dev-Tools/schemaforge.git
@@ -23,9 +23,11 @@ schemaforge convert schema.sql --from sql-ddl --to prisma
 schemaforge convert models.py --from sqlalchemy --to drizzle
 ```
 
-Supported formats: SQL DDL, Prisma, Drizzle, TypeORM, Django, SQLAlchemy, GraphQL SDL, JSON Schema, OpenAPI 3.0, Protobuf, Avro — that's 110 direction pairs.
+Supported formats: SQL DDL, Prisma, Drizzle, TypeORM, Django, SQLAlchemy, GraphQL SDL, JSON Schema, OpenAPI 3.0, Protobuf, Avro — that's 55 direction pairs (bidirectional) with 11 formats.
 
-It preserves relationships, indexes, defaults, and constraints. 270+ tests passing.
+It preserves tables, columns, types, defaults, indexes, unique constraints, and enums across conversions.
+
+It preserves tables, columns, types, defaults, indexes, unique constraints, and enums. 270+ tests passing.
 
 There's also a VS Code extension (v1.7.0) with live preview, quick convert (Ctrl+Alt+S), and format detection.
 

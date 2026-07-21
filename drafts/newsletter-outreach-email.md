@@ -15,7 +15,7 @@ Hi {EDITOR_FIRST_NAME},
 I'm part of the team behind Coding-Dev-Tools — a suite of 11 production-ready, open-source developer CLI tools (pip-installable, Apache-2.0 / MIT). We think your readers would find a few of them genuinely useful:
 
 - **click-to-mcp** — turn any Click/typer CLI into an MCP server in one command (zero competitors, rides the 66M+ FastMCP download wave)
-- **SchemaForge** — bidirectional conversion between 11 ORM/schema formats (110 direction pairs, zero-loss)
+- **SchemaForge** — bidirectional conversion between 11 schema formats (100 conversion directions, with documentation that foreign-key and ORM relationship fields require manual review after migration)
 - **api-contract-guardian** — detect breaking OpenAPI changes in CI before they hit production
 - **apighost** — mock servers from any OpenAPI spec, with VCR-style recording
 - **DeadCode** — AST-based dead-code detection for React/Next.js
