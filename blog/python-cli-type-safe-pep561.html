@@ -169,7 +169,7 @@ envault.rotate(42, "production")  # ❌ mypy error</code></pre>
 
  <p>Install any DevForge tool and run mypy on your code:</p>
 
- <pre><code>$ pip install envault
+ <pre><code>$ pip install git+https://github.com/Coding-Dev-Tools/envault.git
 $ mypy your_script.py
 # Any import of envault now resolves to typed signatures</code></pre>
 
@@ -263,7 +263,9 @@ result = rotate_secret("DATABASE_URL", env="staging")
 
  <h2>Try It Now</h2>
 
- <pre><code>$ pip install envault apiauth click-to-mcp
+ <pre><code>$ pip install git+https://github.com/Coding-Dev-Tools/envault.git
+$ pip install git+https://github.com/Coding-Dev-Tools/apiauth.git
+$ pip install git+https://github.com/Coding-Dev-Tools/click-to-mcp.git
 $ mypy --strict your_project/</code></pre>
 
  <p>

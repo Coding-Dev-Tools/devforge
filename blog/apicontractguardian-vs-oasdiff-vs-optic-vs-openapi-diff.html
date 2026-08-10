@@ -199,7 +199,7 @@
 <h3>Core workflow</h3>
 
 <pre><code># Install
-pip install api-contract-guardian
+pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git
 
 # Compare two spec files
 api-contract-guardian check spec-v1.yaml spec-v2.yaml
@@ -521,7 +521,7 @@ api-contract-guardian migrate spec-v1.yaml spec-v2.yaml --format json --output m
 <pre><code># GitHub Actions
 - name: Check API contract
   run: |
-    pip install api-contract-guardian
+    pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git
     api-contract-guardian check \
       --base origin/main \
       --head HEAD \
@@ -531,7 +531,7 @@ api-contract-guardian migrate spec-v1.yaml spec-v2.yaml --format json --output m
 # GitLab CI
 check-api-contract:
   script:
-    - pip install api-contract-guardian
+    - pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git
     - api-contract-guardian check --base $CI_MERGE_REQUEST_TARGET_BRANCH_NAME --head HEAD</code></pre>
 
 <h3>oasdiff</h3>
@@ -668,7 +668,7 @@ check-api-contract:
 <h2>Install API Contract Guardian</h2>
 
 <pre><code># pip
-pip install api-contract-guardian
+pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git
 
 # Check your API for breaking changes
 api-contract-guardian check spec-v1.yaml spec-v2.yaml

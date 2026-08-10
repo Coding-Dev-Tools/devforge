@@ -95,7 +95,7 @@
 
 <h3>Step 1: Install API Contract Guardian</h3>
 
-<pre><code>pip install api-contract-guardian</code></pre>
+<pre><code>pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git</code></pre>
 
 <h3>Step 2: Compare Two Spec Files</h3>
 
@@ -195,7 +195,7 @@ jobs:
           fetch-depth: 0  # Need full history for branch diffing
 
       - name: Install API Contract Guardian
-        run: pip install api-contract-guardian
+        run: pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git
 
       - name: Check for breaking changes
         run: |
@@ -242,7 +242,7 @@ api-contract-check:
     - changes:
         - openapi.yaml
   script:
-    - pip install api-contract-guardian
+    - pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git
     - |
       # Get the target branch spec
       git checkout origin/$CI_MERGE_REQUEST_TARGET_BRANCH_NAME -- openapi.yaml
@@ -417,7 +417,7 @@ api-contract-guardian migrate openapi-main.yaml openapi.yaml --format markdown
 
 <h2>Install API Contract Guardian</h2>
 
-<pre><code>pip install api-contract-guardian
+<pre><code>pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git
 
 # Check your first spec pair
 api-contract-guardian check openapi-old.yaml openapi-new.yaml

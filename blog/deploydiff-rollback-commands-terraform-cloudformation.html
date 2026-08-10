@@ -252,7 +252,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install DeployDiff
-        run: pip install deploydiff
+        run: pip install git+https://github.com/Coding-Dev-Tools/deploydiff.git
 
       - name: Terraform Plan
         working-directory: infra
@@ -382,7 +382,7 @@ deploydiff mcp</code></pre>
 <h2>Install DeployDiff</h2>
 
 <pre><code># pip
-pip install deploydiff
+pip install git+https://github.com/Coding-Dev-Tools/deploydiff.git
 
 # Homebrew (macOS / Linux)
 brew tap Coding-Dev-Tools/tap

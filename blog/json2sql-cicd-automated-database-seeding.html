@@ -135,7 +135,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install json2sql
-        run: pip install json2sql-cli
+        run: pip install git+https://github.com/Coding-Dev-Tools/json2sql.git-cli
 
       - name: Seed database from JSON fixtures
         run: |
@@ -159,7 +159,7 @@ jobs:
     POSTGRES_USER: test
     POSTGRES_PASSWORD: test
   script:
-    - pip install json2sql-cli pytest
+    - pip install git+https://github.com/Coding-Dev-Tools/json2sql.git-cli pytest
     - |
       for fixture in tests/fixtures/*.json; do
         table=$(basename "$fixture" .json)
@@ -287,7 +287,7 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
       - uses: actions/checkout@v4
-      - run: pip install json2sql-cli
+      - run: pip install git+https://github.com/Coding-Dev-Tools/json2sql.git-cli
       - run: |
           for f in tests/fixtures/*.json; do
             json2sql convert "$f" --flatten --dialect postgres --table "$(basename "$f" .json)" \
@@ -305,7 +305,7 @@ jobs:
         options: --health-cmd "mysqladmin ping" --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
       - uses: actions/checkout@v4
-      - run: pip install json2sql-cli
+      - run: pip install git+https://github.com/Coding-Dev-Tools/json2sql.git-cli
       - run: |
           for f in tests/fixtures/*.json; do
             json2sql convert "$f" --flatten --dialect mysql --table "$(basename "$f" .json)" \
@@ -317,7 +317,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: pip install json2sql-cli
+      - run: pip install git+https://github.com/Coding-Dev-Tools/json2sql.git-cli
       - run: |
           for f in tests/fixtures/*.json; do
             json2sql convert "$f" --flatten --dialect sqlite --table "$(basename "$f" .json)" \
@@ -342,7 +342,7 @@ jobs:
 <div class="cta-box">
  <h3>Automate your database seeding today</h3>
  <p>No more stale .sql files. No more hand-written INSERT statements. Just JSON fixtures and one command.</p>
- <pre style="text-align:left;margin:12px 0;background:#0a0a0b;border-color:#2a2a2d;"><code>pip install json2sql-cli
+ <pre style="text-align:left;margin:12px 0;background:#0a0a0b;border-color:#2a2a2d;"><code>pip install git+https://github.com/Coding-Dev-Tools/json2sql.git-cli
 json2sql convert fixtures/users.json --flatten --dialect postgres | psql $DATABASE_URL</code></pre>
  <a href="https://github.com/Coding-Dev-Tools/json2sql">View on GitHub →</a>
 </div>

@@ -134,7 +134,7 @@
 
   <p>API Contract Guardian is a Python CLI &mdash; install it in seconds:</p>
 
-  <div class="cmd-block">$ pip install api-contract-guardian</div>
+  <div class="cmd-block">$ pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git</div>
 
   <p>Or install directly from GitHub:</p>
 
@@ -412,7 +412,7 @@ jobs:
           fetch-depth: 2
 
       - name: Install API Contract Guardian
-        run: pip install api-contract-guardian
+        run: pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git
 
       - name: Diff OpenAPI specs
         run: |
