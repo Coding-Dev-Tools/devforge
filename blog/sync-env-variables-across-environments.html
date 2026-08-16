@@ -237,7 +237,7 @@ $ envault sync dev prod --strategy target_wins
 $ envault sync dev prod --allow-delete
 
 # Skip specific keys during sync
-$ envault sync dev prod --skip LOG_LEVEL --skip CACHE_TTL</code></pre>
+$ envault sync dev prod --skip LOG_LEVEL --skip CACHE_TTL</div>
 
   <div class="tip">
     <strong>💡 Pro tip:</strong> Use <code>--strategy target_wins</code> when syncing to production — you don't want to accidentally overwrite prod credentials with dev values. Use the default <code>source_wins</code> when promoting staging → prod after QA sign-off.
@@ -279,7 +279,7 @@ $ envault rotate JWT_SECRET --dry-run --show
 $ envault rotate WEBHOOK_SECRET --length 64
 
 # Rotate every secret in an environment
-$ envault rotate-all --env prod</code></pre>
+$ envault rotate-all --env prod</div>
 
   <div class="warning">
     <strong>⚠️ Rotation safety:</strong> <code>--dry-run --show</code> lets you preview the new value before it's applied. Always rotate secrets during maintenance windows and verify downstream services after.
@@ -299,7 +299,7 @@ $ envault store list --prefix /production/
 $ envault store get DB_PASSWORD --store my-vault
 
 # Set a secret
-$ envault store set DB_PASSWORD new_value --store my-vault</code></pre>
+$ envault store set DB_PASSWORD new_value --store my-vault</div>
 
   <p>Supported stores: <strong>AWS SSM Parameter Store</strong>, <strong>HashiCorp Vault</strong>, <strong>Doppler</strong>, and <strong>1Password</strong>. Configure store connections in your <code>.envault.yml</code> file.</p>
 

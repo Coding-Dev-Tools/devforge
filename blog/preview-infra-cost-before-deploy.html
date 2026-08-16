@@ -103,7 +103,7 @@
   <div class="diagram">
     ┌──────────────┐    ┌────────────┐    ┌──────────────────┐
     │ terraform    │    │ DeployDiff │    │ CI Gate          │
-    │ plan -out=   │──→│  preview   │──→│ ✅ Cost < $200   │
+    │ plan -out=   │──→│  preview   │──→│ ✅ Cost &lt; $200 │
     │ plan.tfplan  │    │  cost      │    │ ✅ No destroys   │
     └──────────────┘    │  rollback  │    │ ✅ Rollback mem  │
                        └────────────┘    └──────────────────┘
@@ -221,7 +221,7 @@ resource "aws_iam_role" "app_role" {
 ║ aws_iam_role.app_role          $0.00     $0.00   $0.00  ║
 ║ ──────────────────────────────────────────────────────── ║
 ║ Total                           $0.00    $17.52  +$17.52 ║
-╚══════════════════════════════════════════════════════════╝</block></pre></p>
+╚══════════════════════════════════════════════════════════╝</code></pre>
 
   <p>Now suppose a teammate changes the DB instance class and generates a new plan:</p>
 
