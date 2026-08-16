@@ -19,7 +19,7 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="https://coding-dev-tools.github.io/devforge/docs.html">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D'http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>âš'</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Ctext%20y%3D%27.9em%27%20font-size%3D%2790%27%3E%C3%A2%C5%A1%27%3C%2Ftext%3E%3C%2Fsvg%3E">
 
   <meta name="twitter:title" content="DevForge — Documentation">
   <meta name="twitter:description" content="Quickstart guides and installation for all 10 developer CLI tools.">
@@ -27,7 +27,7 @@
   <meta property="og:image" content="https://coding-dev-tools.github.io/devforge.dev/og-image.svg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D'http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛁</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Ctext%20y%3D%27.9em%27%20font-size%3D%2790%27%3E%E2%9B%81%3C%2Ftext%3E%3C%2Fsvg%3E">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism-tomorrow.min.css" rel="stylesheet">
   <style>
@@ -548,196 +548,6 @@ envault rotate JWT_SECRET # 256-bit base64 secret</code></pre>
 
     <div class="install-block">
 <code>pip install git+https://github.com/Coding-Dev-Tools/deadcode.git</code>
-      <span class="note">Requires Python 3.9+ & Node.js 18+</span>
-    </div>
-
-    <ul class="features">
-      <li>Unused export detection across entire project</li>
-      <li>Dead route identification (React Router, Next.js)</li>
-      <li>Orphaned CSS class scanning</li>
-      <li>Unreferenced component detection</li>
-      <li>Dry-run removal preview — never delete something you need</li>
-    </ul>
-
-    <p style="font-size:0.82rem;color:#888;font-weight:600;margin-bottom:8px;">Scan current project</p>
-    <pre><code class="language-bash">deadcode scan</code></pre>
-
-    <p style="font-size:0.82rem;color:#888;font-weight:600;margin-bottom:8px;">Preview what can be removed</p>
-    <pre><code class="language-bash">deadcode remove --dry-run</code></pre>
-
-    <div class="insight">
-      <p><strong>Why you need it:</strong> ESLint catches unused variables but misses structural decay — orphaned exports bloat bundles, stale routes confuse teammates, orphaned CSS silently accumulates. DeadCode uses the TypeScript compiler API for whole-project analysis that linters can't match. Scan, preview, then clean with confidence.</p>
-    </div>
-  </div>
-
-  <div class="tool-section" id="apighost">
-    <h2><span class="icon icon-ag">👻</span> APIGhost</h2>
-    <div class="subtitle">v0.1.0 — OpenAPI mock server with VCR recording</div>
-    <p class="desc">Turn any OpenAPI 3.0/3.1 spec into a running mock API server with realistic fake data, scenario-based response overrides, and VCR-style cassette recording/replay. Perfect for frontend teams, integration testing, and contract-first development.</p>
-    <a href="https://github.com/Coding-Dev-Tools/apighost" class="gh-link" target="_blank">View on GitHub →</a>
-
-    <div class="install-block">
-      <code>pip install git+https://github.com/Coding-Dev-Tools/apighost.git</code>
-      <span class="note">Requires Python 3.9+</span>
-    </div>
-
-    <ul class="features">
-      <li>OpenAPI 3.0/3.1 spec → mock server in one command</li>
-      <li>Realistic fake data generation from schemas</li>
-      <li>Scenario-based response overrides (success, error, timeout)</li>
-      <li>VCR cassette record &amp; replay for deterministic tests</li>
-      <li>Remote spec support (URLs, not just local files)</li>
-    </ul>
-
-    <p style="font-size:0.82rem;color:#888;font-weight:600;margin-bottom:8px;">Start a mock server from a spec</p>
-    <pre><code class="language-bash">apighost serve petstore.yaml</code></pre>
-
-    <p style="font-size:0.82rem;color:#888;font-weight:600;margin-bottom:8px;">Record real interactions &amp; replay deterministically</p>
-    <pre><code class="language-bash">apighost record petstore.yaml --output my-cassette
-apighost replay my-cassette</code></pre>
-
-    <div class="insight">
-      <p><strong>Why you need it:</strong> Frontend teams shouldn't wait for backend APIs. APIGhost spins up a working mock from your OpenAPI spec instantly — with realistic data, error scenarios, and record/replay for integration tests. Ship UI against a stable mock, swap in the real API when ready.</p>
-    </div>
-  </div>
-
-  <div class="tool-section" id="apiauth">
-    <h2><span class="icon icon-aa">🔑</span> APIAuth</h2>
-    <div class="subtitle">v0.1.0 — API key &amp; JWT lifecycle management</div>
-    <p class="desc">Generate, import, verify, rotate, and revoke API keys and JWTs from the terminal. Encrypted local keystore with AES-256-GCM, CI/CD export formats, and audit trail for compliance. No more secrets scattered in .env files.</p>
-    <a href="https://github.com/Coding-Dev-Tools/apiauth" class="gh-link" target="_blank">View on GitHub →</a>
-
-    <div class="install-block">
-      <code>pip install git+https://github.com/Coding-Dev-Tools/apiauth.git</code>
-      <span class="note">Requires Python 3.9+</span>
-    </div>
-
-    <ul class="features">
-      <li>Generate API keys &amp; JWTs with expiry &amp; custom claims</li>
-      <li>Encrypted keystore (AES-256-GCM, master key in ~/.apiauth/)</li>
-      <li>Verify keys against stored hashes — no plaintext stored</li>
-      <li>Safe rotation — previous values hashed out</li>
-      <li>Instant revocation for compromised keys</li>
-      <li>Export as env, dotenv, JSON, or GitHub Actions format</li>
-      <li>Audit trail: expired, expiring, revoked key detection</li>
-    </ul>
-
-    <p style="font-size:0.82rem;color:#888;font-weight:600;margin-bottom:8px;">Generate and manage keys</p>
-    <pre><code class="language-bash">apiauth generate api-key --name "Gateway Key" --service api-gateway --expiry-days 90
-apiauth list --service api-gateway
-apiauth rotate &lt;key-id&gt;</code></pre>
-
-    <p style="font-size:0.82rem;color:#888;font-weight:600;margin-bottom:8px;">Export for CI/CD pipelines</p>
-    <pre><code class="language-bash">apiauth export --format github-actions --service api-gateway</code></pre>
-
-    <div class="insight">
-      <p><strong>Why you need it:</strong> API keys in .env files are a security incident waiting to happen. APIAuth gives you a proper keystore — encrypted, auditable, rotatable — with one-command CI/CD export. Stop copying secrets into config files and start managing them like infrastructure.</p>
-    </div>
-  </div>
-
-  <div class="tool-section" id="envault">
-    <h2><span class="icon icon-ev">🛡</span> Envault</h2>
-    <div class="subtitle">v0.1.0 — Environment variable syncing, diffing &amp; secret rotation</div>
-    <p class="desc">Compare .env files across environments, sync variables with conflict resolution, and rotate secrets with auto-generated cryptographically secure values. Integrates with AWS SSM, HashiCorp Vault, Doppler, and 1Password — one tool for all your secret stores.</p>
-    <a href="https://github.com/Coding-Dev-Tools/envault" class="gh-link" target="_blank">View on GitHub →</a>
-
-    <div class="install-block">
-      <code>pip install git+https://github.com/Coding-Dev-Tools/envault.git</code>
-      <span class="note">Requires Python 3.10+</span>
-    </div>
-
-    <ul class="features">
-      <li>Diff .env files across dev, staging, prod</li>
-      <li>Sync with conflict resolution strategies (source wins, target wins)</li>
-      <li>Smart secret rotation (DB passwords, API keys, JWT secrets, webhook keys)</li>
-      <li>AWS SSM, Vault, Doppler, 1Password integrations</li>
-      <li>Audit trail for all operations</li>
-      <li>Dry-run mode for safe previews</li>
-    </ul>
-
-    <p style="font-size:0.82rem;color:#888;font-weight:600;margin-bottom:8px;">Diff environments</p>
-    <pre><code class="language-bash">envault diff dev prod</code></pre>
-
-    <p style="font-size:0.82rem;color:#888;font-weight:600;margin-bottom:8px;">Rotate a secret (smart type inference)</p>
-    <pre><code class="language-bash">envault rotate DB_PASSWORD        # → database-safe password
-envault rotate API_KEY            # → prefixed API key
-envault rotate JWT_SECRET         # → 256-bit base64 secret</code></pre>
-
-    <div class="insight">
-      <p><strong>Why you need it:</strong> .env drift is how staging works but prod doesn't — a missing variable, a different value, a stale secret. Envault catches the diff, syncs safely, and rotates secrets with one command. Connect it to your secret store and stop managing .env files by hand.</p>
-    </div>
-  </div>
-
-  <div class="tool-section" id="schemaforge">
-    <h2><span class="icon icon-sf">âš—</span> SchemaForge</h2>
-    <div class="subtitle">v0.1.0 — Bidirectional ORM schema converter</div>
-    <p class="desc">Convert between SQL DDL, Prisma, Drizzle, TypeORM, and Django models with zero-loss roundtripping. The only tool that does bidirectional, lossless conversion between 5+ ORM formats — no more manual rewrites when switching ORMs.</p>
-    <a href="https://github.com/Coding-Dev-Tools/schemaforge" class="gh-link" target="_blank">View on GitHub →</a>
-
-    <div class="install-block">
-      <code>pip install git+https://github.com/Coding-Dev-Tools/schemaforge.git</code>
-      <span class="note">Requires Python 3.9+</span>
-    </div>
-
-    <ul class="features">
-      <li>SQL DDL ↔ Prisma ↔ Drizzle ↔ TypeORM ↔ Django</li>
-      <li>Zero-loss roundtripping — convert back and forth without data loss</li>
-      <li>Schema diff between any two formats</li>
-      <li>Batch directory conversion</li>
-      <li>Custom type mappings for edge cases</li>
-    </ul>
-
-    <p style="font-size:0.82rem;color:#888;font-weight:600;margin-bottom:8px;">Convert Prisma → Drizzle</p>
-    <pre><code class="language-bash">schemaforge convert --from prisma --to drizzle --input schema.prisma</code></pre>
-
-    <p style="font-size:0.82rem;color:#888;font-weight:600;margin-bottom:8px;">Diff two schemas</p>
-    <pre><code class="language-bash">schemaforge diff schema.prisma schema.drizzle.ts</code></pre>
-
-    <div class="insight">
-      <p><strong>Why you need it:</strong> Every ORM migration is a one-way street — Prisma introspects SQL but can't export back, Drizzle users manually rewrite schemas when switching. SchemaForge is the only tool that goes both ways across 5 ORM formats. Stop rewriting schemas by hand and start converting them.</p>
-</div>
-  </div>
-
-  <!-- ==================== CLICK-TO-MCP ==================== -->
-  <div class="tool-section" id="click-to-mcp">
-    <h2><span class="icon" style="background:rgba(139,92,246,.15)">🔌</span> click-to-mcp</h2>
-    <div class="subtitle">v0.2.1 — Auto-wrap Click/Typer CLIs as MCP servers</div>
-    <p class="desc">Turn any Click or Typer CLI into an MCP server with a single command. Expose your tools to Claude, GPT, Cursor, and any MCP-compatible AI — no code changes needed. Auto-discovers commands, generates tool schemas, and handles stdio/SSE transport.</p>
-    <a href="https://github.com/Coding-Dev-Tools/click-to-mcp" class="gh-link" target="_blank">View on GitHub →</a>
-
-    <div class="install-block">
-      <code>pip install click-to-mcp</code>
-      <span class="note">Requires Python 3.9+</span>
-    </div>
-
-    <ul class="features">
-      <li>Auto-discovery of Click/Typer commands and options</li>
-      <li>One-command MCP server generation</li>
-      <li>Stdio & SSE transport support</li>
-      <li>Multi-server orchestration</li>
-      <li>Zero code changes to existing CLIs</li>
-    </ul>
-
-    <p style="font-size:0.82rem;color:#888;font-weight:600;margin-bottom:8px;">Wrap a CLI as MCP server</p>
-    <pre><code class="language-bash">click-to-mcp wrap mycli --transport stdio</code></pre>
-
-    <p style="font-size:0.82rem;color:#888;font-weight:600;margin-bottom:8px;">Auto-discover Click apps</p>
-    <pre><code class="language-bash">click-to-mcp discover --dir ./src</code></pre>
-
-    <div class="insight">
-      <p><strong>Why you need it:</strong> MCP is the standard for AI-tool integration, but wrapping CLIs as MCP servers is manual boilerplate. click-to-mcp eliminates that — point it at any Click/Typer app and get a fully compatible MCP server in seconds. The only tool that does Click→MCP conversion (mcp2cli does the reverse).</p>
-    </div>
-  </div>
-
-  <!-- ==================== DEADCODE ==================== -->
-  <div class="tool-section" id="deadcode">
-    <h2><span class="icon" style="background:rgba(239,68,68,.15)">🧹</span> DeadCode</h2>
-    <div class="subtitle">v0.1.0 — Unused export & dead route detector for TypeScript/React</div>
-    <p class="desc">Detect and remove unused exports, dead routes, orphaned CSS, and unreferenced components in TypeScript/React/Next.js projects. Uses the full TypeScript compiler API for accurate analysis — ESLint catches unused variables but misses the structural decay that bloats bundles.</p>
-    <a href="https://github.com/Coding-Dev-Tools/deadcode" class="gh-link" target="_blank">View on GitHub →</a>
-
-    <div class="install-block">
-      <code>pip install deadcode</code>
       <span class="note">Requires Python 3.9+ & Node.js 18+</span>
     </div>
 
