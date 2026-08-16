@@ -109,7 +109,7 @@
     <li><strong>Parse</strong> — Each format has a dedicated parser (regex-based for Drizzle, full grammar for SQL) that extracts tables, columns, types, constraints, and enums into a unified IR</li>
     <li><strong>IR</strong> — An intermediate representation of the schema, lossless with respect to all supported formats</li>
     <li><strong>Generate</strong> — Each output format has a generator that renders the IR as idiomatic code</li>
-  </ol>
+  </ul>
 
   <p>This architecture ensures that converting A → B → A is an identity (roundtrip), even across complex transformations.</p>
 

@@ -153,7 +153,7 @@ export { Modal } from './Modal';
   <li>Checks if <code>Button</code> is imported from the barrel file anywhere</li>
   <li>If it <em>is</em> imported from the barrel, marks it as "used via barrel re-export"</li>
   <li>If it's <em>not</em> imported from anywhere, marks the re-export itself as dead</li>
-</ol>
+</ul>
 
 <h3>Wildcard Re-export Handling</h3>
 <p><code>export * from './utils'</code> re-exports everything from <code>utils.ts</code>. DeadCode resolves the wildcard to the actual exports, then checks if any consumer imports specific symbols. If <em>none</em> of the wildcard-re-exported symbols are used downstream, the entire wildcard is flagged.</p>
@@ -229,7 +229,7 @@ export { Modal } from './Modal';
   <li><strong>Incremental parsing</strong> — Files are parsed once and cached. Only changed files are re-parsed on subsequent runs.</li>
   <li><strong>Lazy reference resolution</strong> — The reference graph is built on-demand. If file A imports from file B, only B's exports are loaded, not B's entire reference chain.</li>
   <li><strong>Parallel parsing</strong> — All files are parsed in parallel using a thread pool. For a 500-file project, parsing takes ~2 seconds.</li>
-</ol>
+</ul>
 
 <p>Benchmark: A 1,200-file Next.js project with 35,000 exports completes full analysis in <strong>6.8 seconds</strong> on a MacBook M3.</p>
 

@@ -180,7 +180,7 @@ apiauth verify ak_a1b2c3d4e5f6... --json-output
  <li>It compares the hash against every stored key entry.</li>
  <li>If a match is found, it checks the <code>revoked</code> flag and the <code>expires_at</code> timestamp.</li>
  <li>It returns the status: valid, revoked, expired, or not found.</li>
-</ol>
+</ul>
 
 <div class="callout green">
  <p><strong>Zero plaintext storage.</strong> The keystore never stores the raw key value. Verification is always hash-based — the same pattern password systems have used for decades, now applied to API keys.</p>
@@ -349,7 +349,7 @@ while IFS='=' read -r name value; do
   else
     echo "  ✗ $name import failed (status: $STATUS)"
   fi
-done < legacy_keys.env</code></pre>
+done &lt; legacy_keys.env</code></pre>
 </div>
 
 <h2>The Verify vs. Lookup Decision</h2>

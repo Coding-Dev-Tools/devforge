@@ -274,7 +274,7 @@ jobs:
         run: |
           deploydiff rollback --tf plan.json > rollback.sh
           chmod +x rollback.sh
-          echo "ROLLBACK_COMMANDS<<EOF" >> "$GITHUB_ENV"
+          echo "ROLLBACK_COMMANDS&lt;&lt;EOF" >> "$GITHUB_ENV"
           cat rollback.sh >> "$GITHUB_ENV"
           echo "EOF" >> "$GITHUB_ENV"
 

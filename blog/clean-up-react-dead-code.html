@@ -91,7 +91,7 @@
     <li>Interpreting the output (what's real vs. false positives)</li>
     <li>Removing the dead code safely</li>
     <li>Setting up DeadCode in CI to prevent backsliding</li>
-  </ol>
+  </ul>
 
   <hr>
 
@@ -214,7 +214,7 @@ Estimated savings realized: 327 LOC, 44 KB bundle size</code></div>
   <pre><code><span class="cmd">deadcode scan -p</span> . <span class="flag">--exclude</span> node_modules,.next <span class="flag">--json</span> > deadcode-results.json
 
 <span class="comment"># Then process with jq or a script to generate delete commands</span>
-<span class="cmd">cat deadcode-results.json | jq -r '.[] | select(.severity=="high") | .file' | xargs rm</code></pre>
+<span class="cmd">cat deadcode-results.json | jq -r '.[] | select(.severity=="high") | .file' | xargs rm</span></code></pre>
 
   <div class="tip">
     <strong>Tip:</strong> The <code>--allow-list</code> flag lets you suppress findings you've consciously decided to keep (e.g., a publicly exported utility you plan to deprecate over two releases). Run with <code>--generate-allow-list</code> to create an initial baseline, then review and trim it.

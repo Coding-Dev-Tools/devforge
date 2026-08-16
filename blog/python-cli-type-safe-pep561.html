@@ -251,7 +251,7 @@ result = rotate_secret("DATABASE_URL", env="staging")
   <li>It forces you to fix every mypy error you expose &mdash; and those compound</li>
   <li>It adds <code>package-data</code> config to <code>pyproject.toml</code> to include the marker in wheels</li>
   <li>It requires running mypy in CI, which catches errors in your own code too</li>
- </ol>
+ </ul>
 
  <p>
   We did it anyway because DevForge tools aren't just CLIs you run &mdash; they're libraries you import. If you automate with our packages in your scripts, types are the difference between "works on my machine" and "my CI caught this before merge."

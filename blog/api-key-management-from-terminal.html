@@ -232,14 +232,14 @@ BILLING_API_KEY=ak_live_v2_pL5kK2jH7gF4dS1...wE9xRtZ</code></pre>
 
   <p>Other export formats:</p>
 
-  <div class="cmd-block"># Export as dotenv file
+  <div class="cmd-block"><pre><code># Export as dotenv file
 $ apiauth export --format dotenv --output .env.prod
 
 # Export as JSON for deployment tools
 $ apiauth export --format json
 
 # Export as shell exports for Docker
-$ apiauth export --format shell</code></pre>
+$ apiauth export --format shell</code></pre></div>
 
   <p>For GitHub Actions, add a step to your workflow:</p>
 
@@ -295,7 +295,7 @@ Recommendations:
     <li>Ran <code>apiauth generate api-key --service api-gateway</code> — a new key was created</li>
     <li>Ran <code>apiauth export --format github-actions</code> — the new key was exported to update CI secrets</li>
     <li>Verified with <code>apiauth list</code> that the revoked key still appears in the audit trail for compliance</li>
-  </ol>
+  </ul>
   <p>
     Total time: under 60 seconds. No frantic Slack messages, no searching through .env files, no wondering if the key was rotated everywhere.
   </p>

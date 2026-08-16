@@ -79,7 +79,7 @@
 
 <p>The fix is simple: keep your data in JSON and generate SQL at seed time:</p>
 
-<pre><code># Instead of: psql test_db < seeds/users.sql
+<pre><code># Instead of: psql test_db &lt; seeds/users.sql
 # Do this:       json2sql convert fixtures/users.json --dialect postgres | psql test_db</code></pre>
 
 <p>Every CI run regenerates the SQL from the current JSON fixtures. No drift, no stale INSERT statements, no manual maintenance.</p>
@@ -247,7 +247,7 @@ done > seed.sql
 # Validate the generated SQL before applying
 json2sql convert fixtures/users.json --dialect postgres --table users > seed.sql
 cat seed.sql  # review
-psql $DATABASE_URL < seed.sql</code></pre>
+psql $DATABASE_URL &lt; seed.sql</code></pre>
 
 <h2>Step 6: Multi-Dialect Testing</h2>
 
@@ -323,7 +323,7 @@ jobs:
             json2sql convert "$f" --flatten --dialect sqlite --table "$(basename "$f" .json)" \
               >> seed.sql
           done
-          sqlite3 test.db < seed.sql
+          sqlite3 test.db &lt; seed.sql
       - run: pytest tests/ -v -k sqlite</code></pre>
 
 <h2>Why This Beats Committed Seed SQL</h2>

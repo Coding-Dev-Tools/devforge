@@ -182,7 +182,7 @@ INSERT INTO users (id, name, email, active) VALUES
 
   <p>SQLite dialect:</p>
 
-  <div class="cmd-block">$ json2sql convert users.json --dialect sqlite -o seed.sql && sqlite3 test.db < seed.sql</div>
+  <div class="cmd-block">$ json2sql convert users.json --dialect sqlite -o seed.sql && sqlite3 test.db &lt; seed.sql</div>
 
   <p>Available dialects: <code>postgres</code>, <code>mysql</code>, <code>sqlite</code>.</p>
 
@@ -290,7 +290,7 @@ jobs:
         run: |
           json2sql convert tests/fixtures/orders.json \
             --dialect sqlite -o seed.sql
-          sqlite3 test.db < seed.sql
+          sqlite3 test.db &lt; seed.sql
 
       - name: Run tests
         run: pytest --db=test.db</code></pre>
