@@ -20,7 +20,7 @@
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="https://coding-dev-tools.github.io/devforge/blog/sync-env-variables-across-environments.html">
   <meta name="author" content="DevForge">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛁</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Ctext%20y%3D%27.9em%27%20font-size%3D%2790%27%3E%E2%9B%81%3C%2Ftext%3E%3C%2Fsvg%3E">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script type="application/ld+json">
   {
@@ -108,7 +108,7 @@
 
   <h2>1. Install Envault</h2>
 
-  <div class="cmd-block">$ pip install envault</div>
+  <div class="cmd-block">$ pip install git+https://github.com/Coding-Dev-Tools/envault.git</div>
 
   <p>Or from GitHub:</p>
 
@@ -237,7 +237,7 @@ $ envault sync dev prod --strategy target_wins
 $ envault sync dev prod --allow-delete
 
 # Skip specific keys during sync
-$ envault sync dev prod --skip LOG_LEVEL --skip CACHE_TTL</code></pre>
+$ envault sync dev prod --skip LOG_LEVEL --skip CACHE_TTL</div>
 
   <div class="tip">
     <strong>💡 Pro tip:</strong> Use <code>--strategy target_wins</code> when syncing to production — you don't want to accidentally overwrite prod credentials with dev values. Use the default <code>source_wins</code> when promoting staging → prod after QA sign-off.
@@ -279,7 +279,7 @@ $ envault rotate JWT_SECRET --dry-run --show
 $ envault rotate WEBHOOK_SECRET --length 64
 
 # Rotate every secret in an environment
-$ envault rotate-all --env prod</code></pre>
+$ envault rotate-all --env prod</div>
 
   <div class="warning">
     <strong>⚠️ Rotation safety:</strong> <code>--dry-run --show</code> lets you preview the new value before it's applied. Always rotate secrets during maintenance windows and verify downstream services after.
@@ -299,7 +299,7 @@ $ envault store list --prefix /production/
 $ envault store get DB_PASSWORD --store my-vault
 
 # Set a secret
-$ envault store set DB_PASSWORD new_value --store my-vault</code></pre>
+$ envault store set DB_PASSWORD new_value --store my-vault</div>
 
   <p>Supported stores: <strong>AWS SSM Parameter Store</strong>, <strong>HashiCorp Vault</strong>, <strong>Doppler</strong>, and <strong>1Password</strong>. Configure store connections in your <code>.envault.yml</code> file.</p>
 
@@ -323,7 +323,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install Envault
-        run: pip install envault
+        run: pip install git+https://github.com/Coding-Dev-Tools/envault.git
 
       - name: Check for drift
         run: |

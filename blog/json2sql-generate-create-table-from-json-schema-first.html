@@ -124,7 +124,7 @@
 <h3>Step 1: Install json2sql</h3>
 
 <pre><code># pip
-pip install json2sql
+pip install git+https://github.com/Coding-Dev-Tools/json2sql.git
 
 # Homebrew (macOS / Linux)
 brew tap Coding-Dev-Tools/tap
@@ -318,7 +318,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install json2sql
-        run: pip install json2sql
+        run: pip install git+https://github.com/Coding-Dev-Tools/json2sql.git
 
       - name: Fetch current API schema
         run: |
@@ -450,7 +450,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install json2sql
-        run: pip install json2sql
+        run: pip install git+https://github.com/Coding-Dev-Tools/json2sql.git
 
       - name: Generate DDL for changed schemas
         run: |
@@ -489,7 +489,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install json2sql
-        run: pip install json2sql
+        run: pip install git+https://github.com/Coding-Dev-Tools/json2sql.git
 
       - name: Generate migration for each schema
         run: |
@@ -531,7 +531,7 @@ jobs:
 <h2>Install json2sql</h2>
 
 <pre><code># pip
-pip install json2sql
+pip install git+https://github.com/Coding-Dev-Tools/json2sql.git
 
 # Homebrew (macOS / Linux)
 brew tap Coding-Dev-Tools/tap

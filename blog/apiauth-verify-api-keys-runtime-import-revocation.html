@@ -103,7 +103,15 @@
 <h3>Step 1: Generate a Key</h3>
 
 <pre><code># Install APIAuth
-pip install apiauth
+# Install APIAuth (not on public PyPI)
+# Option 1: From source
+pip install git+https://github.com/Coding-Dev-Tools/apiauth.git
+
+# Option 2: Homebrew (macOS/Linux)
+brew tap Coding-Dev-Tools/tap &amp;&amp; brew install apiauth
+
+# Option 3: Scoop (Windows)
+scoop bucket add Coding-Dev-Tools https://github.com/Coding-Dev-Tools/scoop-bucket &amp;&amp; scoop install apiauth
 
 # Generate an API key
 apiauth generate api-key \
@@ -297,7 +305,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: pip install apiauth
+      - run: pip install git+https://github.com/Coding-Dev-Tools/apiauth.git
 
       # Audit the keystore — exit 1 if any expired keys
       - name: Check for expired/revoked keys
@@ -341,7 +349,7 @@ while IFS='=' read -r name value; do
   else
     echo "  ✗ $name import failed (status: $STATUS)"
   fi
-done < legacy_keys.env</code></pre>
+done &lt; legacy_keys.env</code></pre>
 </div>
 
 <h2>The Verify vs. Lookup Decision</h2>
@@ -545,7 +553,15 @@ apiauth audit --exit-on-expired
 <h2>Install APIAuth</h2>
 
 <pre><code># pip
-pip install apiauth
+# Install APIAuth (not on public PyPI)
+# Option 1: From source
+pip install git+https://github.com/Coding-Dev-Tools/apiauth.git
+
+# Option 2: Homebrew (macOS/Linux)
+brew tap Coding-Dev-Tools/tap &amp;&amp; brew install apiauth
+
+# Option 3: Scoop (Windows)
+scoop bucket add Coding-Dev-Tools https://github.com/Coding-Dev-Tools/scoop-bucket &amp;&amp; scoop install apiauth
 
 # Generate your first key
 apiauth generate api-key --name "My First Key" --service "test"

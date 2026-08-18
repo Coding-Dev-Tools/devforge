@@ -209,7 +209,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install APIAuth
-        run: pip install apiauth
+        run: pip install git+https://github.com/Coding-Dev-Tools/apiauth.git
 
       - name: Rotate the key
         id: rotate
@@ -381,7 +381,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install APIAuth
-        run: pip install apiauth
+        run: pip install git+https://github.com/Coding-Dev-Tools/apiauth.git
 
       - name: Run audit
         env:
@@ -462,7 +462,15 @@ jobs:
 <h2>Install and Start Rotating</h2>
 
 <pre><code># pip
-pip install apiauth
+# Install APIAuth (not on public PyPI)
+# Option 1: From source
+pip install git+https://github.com/Coding-Dev-Tools/apiauth.git
+
+# Option 2: Homebrew (macOS/Linux)
+brew tap Coding-Dev-Tools/tap &amp;&amp; brew install apiauth
+
+# Option 3: Scoop (Windows)
+scoop bucket add Coding-Dev-Tools https://github.com/Coding-Dev-Tools/scoop-bucket &amp;&amp; scoop install apiauth
 
 # Homebrew (macOS / Linux)
 brew tap Coding-Dev-Tools/tap

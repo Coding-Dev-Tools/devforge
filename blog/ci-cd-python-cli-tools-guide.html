@@ -19,7 +19,7 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="https://coding-dev-tools.github.io/devforge/blog/ci-cd-python-cli-tools-guide.html">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛁</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Ctext%20y%3D%27.9em%27%20font-size%3D%2790%27%3E%E2%9B%81%3C%2Ftext%3E%3C%2Fsvg%3E">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="blog.css">
   <!-- Plausible Analytics -->
@@ -146,7 +146,7 @@ def test_error_exit_code():
 
 <pre><code>      - name: Check API contracts
         run: |
-          pip install api-contract-guardian
+          pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git
           acg diff --base main --head HEAD --spec-path openapi.yaml</code></pre>
 
 <p>This prevents the "works on my machine" problem when your CLI depends on external APIs that evolve independently.</p>
@@ -157,7 +157,7 @@ def test_error_exit_code():
 
 <pre><code>      - name: Check config drift
         run: |
-          pip install configdrift
+          pip install git+https://github.com/Coding-Dev-Tools/configdrift.git
           configdrift diff tests/fixtures/config-v1.yaml tests/fixtures/config-v2.yaml</code></pre>
 
 <h2>Step 6: Automated PyPI Publishing</h2>
@@ -241,7 +241,7 @@ jobs:
   <li><input type="checkbox" disabled> Add <a href="https://github.com/Coding-Dev-Tools/configdrift">config drift detection</a> if your CLI uses config files</li>
   <li><input type="checkbox" disabled> Set up automated PyPI publishing on release tags</li>
   <li><input type="checkbox" disabled> Add version bump automation with conventional commits</li>
-</ol>
+</ul>
 
 <p>The key insight: <strong>invest in CI early</strong>. Every minute spent on pipeline setup saves hours of debugging "works on my machine" issues later. Our 11-tool suite runs 4,000+ CI checks per week — and we haven't had a single undetected regression since launch.</p>
 

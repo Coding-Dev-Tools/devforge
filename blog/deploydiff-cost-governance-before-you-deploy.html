@@ -162,7 +162,7 @@ jobs:
           terraform show -json tfplan > plan.json
       - name: Check cost impact
         run: |
-          pip install deploydiff
+          pip install git+https://github.com/Coding-Dev-Tools/deploydiff.git
           deploydiff cost --tf infra/plan.json \
             --max-monthly-increase 500 \
             --format json > cost_report.json
@@ -191,7 +191,7 @@ terraform:plan:prod:
 cost-gate:prod:
   stage: cost-gate
   script:
-    - pip install deploydiff
+    - pip install git+https://github.com/Coding-Dev-Tools/deploydiff.git
     - deploydiff cost --tf plan.json
         --max-monthly-increase 200
         --fail-on-threshold
@@ -200,7 +200,7 @@ cost-gate:prod:
 cost-gate:staging:
   stage: cost-gate
   script:
-    - pip install deploydiff
+    - pip install git+https://github.com/Coding-Dev-Tools/deploydiff.git
     - deploydiff cost --tf plan.json
         --max-monthly-increase 50
         --fail-on-threshold
