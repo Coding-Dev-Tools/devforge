@@ -221,7 +221,7 @@ api-contract-guardian check spec-v1.yaml spec-v2.yaml --format json</code></pre>
  <li><strong>Migration guide generation.</strong> When you bump your API from v1 to v2, consumers need to know what changed and how to adapt. API Contract Guardian auto-generates markdown migration guides from the spec diff — breaking changes, action items, and per-change severity. No other tool in this comparison does this.</li>
  <li><strong>CI-first design.</strong> The <code>check</code> command exits with a non-zero code when breaking changes are detected. It integrates with GitHub Actions, GitLab CI, and any CI system in one line. Git branch comparison is built-in, not an afterthought.</li>
  <li><strong>Per-change severity.</strong> Not every breaking change is equally severe. Removing an endpoint is critical; adding a required property to an optional schema is a warning. API Contract Guardian lets you configure severity per change category, so your CI pipeline can distinguish "block the merge" from "warn and allow."</li>
-</ul>
+</ol>
 
 <h3>Breaking changes detected</h3>
 
