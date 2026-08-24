@@ -444,11 +444,35 @@
  <changefreq>monthly</changefreq>
  <priority>0.6</priority>
  </url>
- <url>
- <loc>https://coding-dev-tools.github.io/devforge/blog/traction-hits-680-developers.html</loc>
- <lastmod>2026-05-17</lastmod>
- <changefreq>monthly</changefreq>
- <priority>0.6</priority>
- </url>
+  <url>
+    <loc>https://coding-dev-tools.github.io/devforge/blog/click-to-mcp-three-distribution-channels.html</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://coding-dev-tools.github.io/devforge/blog/click-to-mcp-three-transport-modes.html</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://coding-dev-tools.github.io/devforge/blog/configdrift-scan-multi-environment-configs-one-command.html</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://coding-dev-tools.github.io/devforge/blog/deploydiff-cost-governance-before-you-deploy.html</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://coding-dev-tools.github.io/devforge/blog/saas-churn-predictor-launch.html</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>
 
