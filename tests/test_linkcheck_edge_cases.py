@@ -16,7 +16,7 @@ from pathlib import Path
 _SCRIPT_DIR = Path(__file__).resolve().parent.parent / ".hermes"
 sys.path.insert(0, str(_SCRIPT_DIR))
 
-from linkcheck import check_links, main
+from linkcheck import check_links, main  # noqa: E402
 
 
 class TestCheckLinksEdgeCases:
