@@ -474,5 +474,29 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+<url>
+  <loc>https://coding-dev-tools.github.io/devforge/blog/apicontractguardian-git-branch-openapi-diff-pr-review.html</loc>
+  <lastmod>2026-08-26</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>https://coding-dev-tools.github.io/devforge/blog/deadcode-remove-dead-code-nextjs-app-router.html</loc>
+  <lastmod>2026-08-26</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>https://coding-dev-tools.github.io/devforge/blog/json2sql-cicd-automated-database-seeding.html</loc>
+  <lastmod>2026-08-26</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>https://coding-dev-tools.github.io/devforge/blog/schemaforge-convert-prisma-to-drizzle-migration-guide.html</loc>
+  <lastmod>2026-08-26</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.6</priority>
+</url>
 </urlset>
 

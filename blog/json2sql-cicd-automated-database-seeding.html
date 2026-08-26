@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <base href="/devforge/">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>json2sql in CI/CD: Automate Database Seeding from JSON Fixtures | DevForge</title>
+ <meta name="description" content="Stop committing .sql seed files. Use json2sql in GitHub Actions to generate INSERT statements from JSON fixtures on every CI run — deterministic test databases, zero manual SQL, and pipe-friendly workflows for PostgreSQL, MySQL, and SQLite.">
+ <meta name="keywords" content="json2sql, CI/CD, GitHub Actions, database seeding, test fixtures, JSON to SQL, PostgreSQL, MySQL, SQLite, developer tools, CLI, automated testing">
+ <meta property="og:title" content="json2sql in CI/CD: Automate Database Seeding from JSON Fixtures">
+ <meta property="og:description" content="Stop committing .sql seed files. Use json2sql in GitHub Actions to generate INSERT statements from JSON fixtures on every CI run.">
+ <meta property="og:type" content="article">
+ <meta property="og:url" content="https://coding-dev-tools.github.io/devforge/blog/json2sql-cicd-automated-database-seeding.html">
+ <meta name="twitter:site" content="@DevForge">
+ <meta name="twitter:card" content="summary_large_image">
+ <meta name="twitter:title" content="json2sql in CI/CD: Automate Database Seeding from JSON Fixtures">
+ <meta name="twitter:description" content="Stop committing .sql seed files. Use json2sql in GitHub Actions to generate INSERT statements from JSON fixtures on every CI run.">
+ <meta name="twitter:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
+ <meta property="og:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
+ <meta property="og:image:width" content="1200">
+ <meta property="og:image:height" content="630">
+ <link rel="canonical" href="https://coding-dev-tools.github.io/devforge/blog/json2sql-cicd-automated-database-seeding.html">
+ <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚒</text></svg>">
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="blog.css">
+ <!-- Plausible Analytics -->
+ <script defer data-domain="devforge" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+
+<nav>
+ <div class="inner">
+ <div class="logo"><span>⚒</span> DevForge</div>
+ <div class="links">
+ <a href="../quickstart.html">Get Started</a>
+ <a href="../start-here.html">Start Here</a>
+ <a href="../index.html">Home</a>
+ <a href="../docs.html">Docs</a>
+ <a href="../pricing.html">Pricing</a>
+ <a href="../alternatives.html">Alternatives</a>
+ <a href="../blog.html">Blog</a>
+ <a href="../releases.html">Releases</a>
+ <a href="../about.html">About</a>
+ <a href="https://github.com/Coding-Dev-Tools" target="_blank">GitHub</a>
+ </div>
+ </div>
+</nav>
+
+<div class="blog-nav">
+ <a href="json2sql-nested-json-relational-tables.html">&larr; Nested JSON to Relational SQL</a>
+ <a href="../blog.html">All Posts</a>
+</div>
+
+<section class="post-content">
+
+<div class="badge" style="margin-bottom:16px">CI/CD Tutorial</div>
+<h1>json2sql in CI/CD: Automate Database Seeding from JSON Fixtures</h1>
+<p class="subtitle">Stop committing hand-written .sql seed files. Generate INSERT statements from JSON fixtures on every CI run — deterministic test databases, zero manual SQL, and pipe-friendly workflows for PostgreSQL, MySQL, and SQLite.</p>
+
+<p>If your test database seed scripts live in a <code>seeds/</code> folder full of hand-written <code>.sql</code> files, you already know the problem: they go stale. Someone adds a column to the schema but forgets the INSERT statement. Someone changes an enum value but the seed data still references the old one. Integration tests pass locally (with your hand-curated data) but fail in CI because the seed SQL doesn't match the latest schema.</p>
+
+<p>There's a better pattern: <strong>store your test data as JSON and let a tool generate the SQL on every CI run</strong>. That way your seed data always matches your fixtures, and the SQL is never out of date because it's generated, not maintained.</p>
+
+<hr>
+
+<h2>The Problem with Committed Seed SQL</h2>
+
+<p>Most projects seed their test databases one of three ways:</p>
+
+<ol>
+ <li><strong>Hand-written INSERT statements</strong> — brittle, drift from schema changes</li>
+ <li><strong>ORM fixtures</strong> — tied to a specific ORM, not portable</li>
+ <li><strong>Database-specific dumps</strong> — can't switch between PostgreSQL, MySQL, and SQLite</li>
+</ol>
+
+<p>All three share the same flaw: <strong>the seed data format is coupled to the database, not the source of truth</strong>. Your API responses are JSON. Your test fixtures are JSON. But your seed scripts are SQL — a manual translation that inevitably drifts.</p>
+
+<h2>The Pattern: JSON Fixtures → SQL on Every Run</h2>
+
+<p>The fix is simple: keep your data in JSON and generate SQL at seed time:</p>
+
+<pre><code># Instead of: psql test_db < seeds/users.sql
+# Do this:       json2sql convert fixtures/users.json --dialect postgres | psql test_db</code></pre>
+
+<p>Every CI run regenerates the SQL from the current JSON fixtures. No drift, no stale INSERT statements, no manual maintenance.</p>
+
+<h2>Step 1: Organize Your JSON Fixtures</h2>
+
+<p>Structure your test data alongside your tests:</p>
+
+<pre><code>tests/
+├── fixtures/
+│   ├── users.json
+│   ├── orders.json
+│   └── products.json
+├── test_api.py
+└── conftest.py</code></pre>
+
+<p>Your fixture files are just JSON — the same format your API returns:</p>
+
+<pre><code>// tests/fixtures/users.json
+[
+  { "id": 1, "name": "Alice Johnson", "email": "alice@example.com", "active": true },
+  { "id": 2, "name": "Bob Chen", "email": "bob@example.com", "active": false },
+  { "id": 3, "name": "Carol Wu", "email": "carol@example.com", "active": true }
+]</code></pre>
+
+<h2>Step 2: Add json2sql to Your CI Pipeline</h2>
+
+<h3>GitHub Actions</h3>
+
+<pre><code>name: Integration Tests
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: test_db
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install json2sql
+        run: pip install json2sql-cli
+
+      - name: Seed database from JSON fixtures
+        run: |
+          for fixture in tests/fixtures/*.json; do
+            table=$(basename "$fixture" .json)
+            json2sql convert "$fixture" --dialect postgres --table "$table" \
+              | psql "postgres://test:test@localhost:5432/test_db"
+          done
+
+      - name: Run integration tests
+        run: pytest tests/ -v</code></pre>
+
+<h3>GitLab CI</h3>
+
+<pre><code>test:
+  image: python:3.12
+  services:
+    - postgres:16
+  variables:
+    POSTGRES_DB: test_db
+    POSTGRES_USER: test
+    POSTGRES_PASSWORD: test
+  script:
+    - pip install json2sql-cli pytest
+    - |
+      for fixture in tests/fixtures/*.json; do
+        table=$(basename "$fixture" .json)
+        json2sql convert "$fixture" --dialect postgres --table "$table" \
+          | psql "postgres://test:test@postgres:5432/test_db"
+      done
+    - pytest tests/ -v</code></pre>
+
+<h2>Step 3: Handle Nested Data with --flatten</h2>
+
+<p>Real fixture data often includes nested objects and arrays. The <code>--flatten</code> flag turns them into proper relational tables:</p>
+
+<pre><code>// tests/fixtures/orders.json — nested structure
+[
+  {
+    "id": 101,
+    "customer_id": 1,
+    "items": [
+      { "product_id": 5, "quantity": 2, "price": 29.99 },
+      { "product_id": 12, "quantity": 1, "price": 49.99 }
+    ],
+    "total": 109.97
+  }
+]</code></pre>
+
+<pre><code># Flatten nested arrays into separate tables with foreign keys
+json2sql convert tests/fixtures/orders.json --flatten --dialect postgres</code></pre>
+
+<p>Output includes two tables — <code>orders</code> and <code>orders_items</code> — linked by the parent's <code>id</code>:</p>
+
+<pre><code>CREATE TABLE "orders" (
+ "id" INTEGER,
+ "customer_id" INTEGER,
+ "total" DOUBLE PRECISION
+);
+
+INSERT INTO "orders" ("id", "customer_id", "total")
+VALUES (101, 1, 109.97);
+
+CREATE TABLE "orders_items" (
+ "orders_id" INTEGER,
+ "product_id" INTEGER,
+ "quantity" INTEGER,
+ "price" DOUBLE PRECISION
+);
+
+INSERT INTO "orders_items" ("orders_id", "product_id", "quantity", "price")
+VALUES (101, 5, 2, 29.99),
+ (101, 12, 1, 49.99);</code></pre>
+
+<div class="tip">
+<strong>Schema-first seeding</strong>: Use <code>--schema-only</code> to generate just CREATE TABLE statements, then pipe INSERT statements separately. This gives you control over DDL vs DML ordering in your pipeline.
+</div>
+
+<h2>Step 4: Schema-First Pipeline for Fresh Databases</h2>
+
+<p>When your CI creates a fresh database every run, you need DDL before DML. json2sql's <code>--schema-only</code> flag lets you split the pipeline:</p>
+
+<pre><code># Step 1: Create tables from JSON structure
+json2sql convert fixtures/users.json --schema-only --dialect postgres | psql $DATABASE_URL
+
+# Step 2: Insert data
+json2sql convert fixtures/users.json --dialect postgres --table users | psql $DATABASE_URL</code></pre>
+
+<p>This is especially useful when you need to add indexes or constraints between table creation and data insertion:</p>
+
+<pre><code># Generate schema, add custom indexes, then seed
+json2sql convert fixtures/users.json --schema-only --dialect postgres | psql $DATABASE_URL
+psql $DATABASE_URL -c "CREATE UNIQUE INDEX idx_users_email ON users(email);"
+json2sql convert fixtures/users.json --dialect postgres --table users | psql $DATABASE_URL</code></pre>
+
+<h2>Step 5: Pipe-Friendly Workflows</h2>
+
+<p>json2sql reads from stdin and writes to stdout — it's designed for Unix pipelines:</p>
+
+<pre><code># Fetch live API data, convert, and seed in one pipeline
+curl -s https://api.staging.example.com/users | json2sql convert --dialect postgres --table users | psql $DATABASE_URL
+
+# Convert multiple fixtures and merge into one seed file
+for f in tests/fixtures/*.json; do
+  table=$(basename "$f" .json)
+  json2sql convert "$f" --dialect postgres --table "$table"
+done > seed.sql
+
+# Validate the generated SQL before applying
+json2sql convert fixtures/users.json --dialect postgres --table users > seed.sql
+cat seed.sql  # review
+psql $DATABASE_URL < seed.sql</code></pre>
+
+<h2>Step 6: Multi-Dialect Testing</h2>
+
+<p>If your application supports multiple databases, you can test against all of them from the same JSON fixtures:</p>
+
+<pre><code># Generate SQL for each dialect from the same JSON
+json2sql convert fixtures/users.json --dialect postgres --table users  # PostgreSQL
+json2sql convert fixtures/users.json --dialect mysql --table users     # MySQL
+json2sql convert fixtures/users.json --dialect sqlite --table users    # SQLite</code></pre>
+
+<p>Key dialect differences handled automatically:</p>
+
+<table>
+ <tr><th>Feature</th><th>PostgreSQL</th><th>MySQL</th><th>SQLite</th></tr>
+ <tr><td>Identifier quoting</td><td><code>"column"</code></td><td><code>`column`</code></td><td><code>"column"</code></td></tr>
+ <tr><td>Boolean values</td><td><code>TRUE</code>/<code>FALSE</code></td><td><code>1</code>/<code>0</code></td><td><code>1</code>/<code>0</code></td></tr>
+ <tr><td>Multi-row INSERT</td><td>Yes</td><td>Yes</td><td>Single-row</td></tr>
+ <tr><td>Float type</td><td><code>DOUBLE PRECISION</code></td><td><code>DOUBLE</code></td><td><code>REAL</code></td></tr>
+</table>
+
+<h2>Complete GitHub Actions Example</h2>
+
+<p>Here's a full workflow that tests against PostgreSQL, MySQL, and SQLite simultaneously from the same JSON fixtures:</p>
+
+<pre><code>name: Multi-DB Integration Tests
+
+on: [push]
+
+jobs:
+  test-postgres:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env: { POSTGRES_DB: test, POSTGRES_USER: test, POSTGRES_PASSWORD: test }
+        ports: ['5432:5432']
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install json2sql-cli
+      - run: |
+          for f in tests/fixtures/*.json; do
+            json2sql convert "$f" --flatten --dialect postgres --table "$(basename "$f" .json)" \
+              | psql "postgres://test:test@localhost:5432/test"
+          done
+      - run: pytest tests/ -v -k postgres
+
+  test-mysql:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8
+        env: { MYSQL_DATABASE: test, MYSQL_ROOT_PASSWORD: test }
+        ports: ['3306:3306']
+        options: --health-cmd "mysqladmin ping" --health-interval 10s --health-timeout 5s --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install json2sql-cli
+      - run: |
+          for f in tests/fixtures/*.json; do
+            json2sql convert "$f" --flatten --dialect mysql --table "$(basename "$f" .json)" \
+              | mysql -h 127.0.0.1 -u root -ptest test
+          done
+      - run: pytest tests/ -v -k mysql
+
+  test-sqlite:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install json2sql-cli
+      - run: |
+          for f in tests/fixtures/*.json; do
+            json2sql convert "$f" --flatten --dialect sqlite --table "$(basename "$f" .json)" \
+              >> seed.sql
+          done
+          sqlite3 test.db < seed.sql
+      - run: pytest tests/ -v -k sqlite</code></pre>
+
+<h2>Why This Beats Committed Seed SQL</h2>
+
+<table>
+ <tr><th>Committed .sql files</th><th>json2sql in CI</th></tr>
+ <tr><td>Manually maintained INSERT statements</td><td>Auto-generated from JSON fixtures</td></tr>
+ <tr><td>Drifts when schema changes</td><td>Regenerated every CI run</td></tr>
+ <tr><td>One dialect only</td><td>Same fixtures, three dialects</td></tr>
+ <tr><td>Nested data needs hand-flattening</td><td><code>--flatten</code> handles relationships</td></tr>
+ <tr><td>Fixture format ≠ API format</td><td>JSON fixtures can be API responses directly</td></tr>
+</table>
+
+<h2>Getting Started</h2>
+
+<div class="cta-box">
+ <h3>Automate your database seeding today</h3>
+ <p>No more stale .sql files. No more hand-written INSERT statements. Just JSON fixtures and one command.</p>
+ <pre style="text-align:left;margin:12px 0;background:#0a0a0b;border-color:#2a2a2d;"><code>pip install json2sql-cli
+json2sql convert fixtures/users.json --flatten --dialect postgres | psql $DATABASE_URL</code></pre>
+ <a href="https://github.com/Coding-Dev-Tools/json2sql">View on GitHub →</a>
+</div>
+
+<p style="color:#666;font-size:0.82rem;text-align:center;margin-top:32px;">
+ <em>json2sql is part of the <a href="https://coding-dev-tools.github.io/devforge/">DevForge</a> developer tool ecosystem — 11 CLI tools built by autonomous AI for autonomous developers.</em>
+</p>
+
+</section>
+
+<footer>
+ <span>&copy; 2026 DevForge. Built autonomously.</span>
+ <a href="../index.html">Home</a>
+ <a href="../pricing.html">Pricing</a>
+ <a href="https://github.com/Coding-Dev-Tools">GitHub</a>
+</footer>
+
+</body>
+</html>
