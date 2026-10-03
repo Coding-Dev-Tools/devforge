@@ -20,7 +20,7 @@
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="https://coding-dev-tools.github.io/devforge/blog/api-key-management-from-terminal.html">
   <meta name="author" content="DevForge">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛁</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Ctext%20y%3D%27.9em%27%20font-size%3D%2790%27%3E%E2%9B%81%3C%2Ftext%3E%3C%2Fsvg%3E">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script type="application/ld+json">
   {
@@ -105,7 +105,7 @@
 
   <h2>1. Install APIAuth</h2>
 
-  <div class="cmd-block">$ pip install apiauth</div>
+  <div class="cmd-block">$ pip install git+https://github.com/Coding-Dev-Tools/apiauth.git</div>
 
   <p>Or from GitHub:</p>
 
@@ -232,14 +232,14 @@ BILLING_API_KEY=ak_live_v2_pL5kK2jH7gF4dS1...wE9xRtZ</code></pre>
 
   <p>Other export formats:</p>
 
-  <div class="cmd-block"># Export as dotenv file
+  <div class="cmd-block"><pre><code># Export as dotenv file
 $ apiauth export --format dotenv --output .env.prod
 
 # Export as JSON for deployment tools
 $ apiauth export --format json
 
 # Export as shell exports for Docker
-$ apiauth export --format shell</code></pre>
+$ apiauth export --format shell</code></pre></div>
 
   <p>For GitHub Actions, add a step to your workflow:</p>
 

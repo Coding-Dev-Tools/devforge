@@ -485,7 +485,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: pip install configdrift
+      - run: pip install git+https://github.com/Coding-Dev-Tools/configdrift.git
 
       # Gate: block deploy if breaking config drift
       - name: Config drift check

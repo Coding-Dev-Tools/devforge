@@ -140,7 +140,7 @@
 <h3>Core workflow</h3>
 
 <pre><code># Install
-pip install json2sql-cli
+pip install git+https://github.com/Coding-Dev-Tools/json2sql.git-cli
 
 # Basic conversion -- JSON to SQL INSERTs
 json2sql convert data.json
@@ -168,7 +168,7 @@ json2sql convert data.json -o seed.sql
 
 # CI/CD: seed a test database
 json2sql convert fixtures.json --dialect sqlite -o seed.sql
-sqlite3 test.db < seed.sql</code></pre>
+sqlite3 test.db &lt; seed.sql</code></pre>
 
 <h3>What json2sql gets right</h3>
 
@@ -633,7 +633,7 @@ airbyte-cli sync ...</code></pre>
 <h2>Install json2sql</h2>
 
 <pre><code># Install via pip
-pip install json2sql-cli
+pip install git+https://github.com/Coding-Dev-Tools/json2sql.git-cli
 
 # Or via Homebrew (macOS/Linux)
 brew tap Coding-Dev-Tools/tap

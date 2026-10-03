@@ -112,7 +112,7 @@
 <h3>Step 1: Install DeployDiff</h3>
 
 <pre><code># pip
-pip install deploydiff
+pip install git+https://github.com/Coding-Dev-Tools/deploydiff.git
 
 # Homebrew (macOS / Linux)
 brew tap Coding-Dev-Tools/tap
@@ -278,7 +278,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install DeployDiff
-        run: pip install deploydiff
+        run: pip install git+https://github.com/Coding-Dev-Tools/deploydiff.git
 
       - name: Terraform Init & Plan
         working-directory: terraform
@@ -317,7 +317,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install DeployDiff
-        run: pip install deploydiff
+        run: pip install git+https://github.com/Coding-Dev-Tools/deploydiff.git
 
       - name: Terraform Plan
         working-directory: terraform
@@ -367,7 +367,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install DeployDiff
-        run: pip install deploydiff
+        run: pip install git+https://github.com/Coding-Dev-Tools/deploydiff.git
 
       - name: Terraform Plan (refresh-only)
         working-directory: terraform
@@ -550,7 +550,7 @@ deploydiff rollback --tf plan.json</code></pre>
 <h2>Install DeployDiff</h2>
 
 <pre><code># pip
-pip install deploydiff
+pip install git+https://github.com/Coding-Dev-Tools/deploydiff.git
 
 # Homebrew (macOS / Linux)
 brew tap Coding-Dev-Tools/tap
