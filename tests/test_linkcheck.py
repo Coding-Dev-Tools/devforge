@@ -167,6 +167,24 @@ def test_resolve_link_double_slash():
     assert result == "blog/page.html"
 
 
+def test_resolve_link_absolute_path():
+    """Absolute path /about.html strips leading slash."""
+    result = resolve_link("/about.html", "blog")
+    assert result == "about.html"
+
+
+def test_resolve_link_up_with_intermediate_segments():
+    """../foo/../bar.html correctly cancels the intermediate segment."""
+    result = resolve_link("../foo/../bar.html", "blog/2024")
+    assert result == "blog/bar.html"
+
+
+def test_resolve_link_up_capped_at_root():
+    """../../ from a shallow dir is capped at site root."""
+    result = resolve_link("../../page.html", "blog")
+    assert result == "page.html"
+
+
 # ---- CLI argument parsing ----
 
 
