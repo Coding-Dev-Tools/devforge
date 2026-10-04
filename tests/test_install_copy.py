@@ -85,6 +85,10 @@ def test_full_suite_command_installs_each_tool_repository(page):
     text = (ROOT / page).read_text(encoding="utf-8-sig")
     assert "pip install git+https://github.com/Coding-Dev-Tools/devforge.git" not in text
     assert "pip install devforge-tools" not in text
+    # All eleven upstream package manifests currently require Python >=3.10.
+    assert "Python 3.10+" in text
+    assert "Python 3.9+" not in text
+    assert not re.search(r"DeadCode.{0,40}(?:requires|needs) Node\.js", text)
 
 
 def test_ci_example_installs_the_four_commands_it_runs():
