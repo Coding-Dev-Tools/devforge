@@ -328,7 +328,7 @@ jobs:
 
       - name: Compare with baseline
         run: |
-          if ! diff -q schemas/baseline_schema.sql /tmp/current_schema.sql > /dev/null 2>&1; then
+          if ! diff -q schemas/baseline_schema.sql /tmp/current_schema.sql > /dev/null 2&gt;&amp;1; then
             echo "::warning::API schema has changed!"
             diff schemas/baseline_schema.sql /tmp/current_schema.sql
             # Create an issue or notify

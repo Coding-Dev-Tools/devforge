@@ -20,14 +20,15 @@
   <circle cx="130" cy="105" r="8" fill="#ffbd2e"/>
   <circle cx="155" cy="105" r="8" fill="#28c840"/>
   <!-- Terminal lines -->
-  <text x="105" y="145" font-family="Consolas, monospace" font-size="16" fill="#34d399">$ pip install git+https://github.com/Coding-Dev-Tools/click-to-mcp.git</text>
-  <text x="105" y="175" font-family="Consolas, monospace" font-size="16" fill="#e1e1e3">Installing...</text>
-  <text x="105" y="205" font-family="Consolas, monospace" font-size="16" fill="#34d399">$ click-to-mcp discover</text>
-  <text x="105" y="235" font-family="Consolas, monospace" font-size="16" fill="#e1e1e3">Found 12 Click CLIs in your environment</text>
-  <text x="105" y="265" font-family="Consolas, monospace" font-size="16" fill="#34d399">$ click-to-mcp serve api-contract-guardian</text>
-  <text x="105" y="295" font-family="Consolas, monospace" font-size="16" fill="#a78bfa">MCP server running on stdio...</text>
-  <text x="105" y="325" font-family="Consolas, monospace" font-size="16" fill="#6366f1">► Connected to Claude Desktop</text>
-  <text x="105" y="355" font-family="Consolas, monospace" font-size="16" fill="#34d399">Ready to accept MCP requests ✓</text>
+  <text x="105" y="145" font-family="Consolas, monospace" font-size="16" fill="#34d399">$ pip install \</text>
+  <text x="125" y="168" font-family="Consolas, monospace" font-size="14" fill="#34d399">git+https://github.com/Coding-Dev-Tools/click-to-mcp.git</text>
+  <text x="105" y="195" font-family="Consolas, monospace" font-size="16" fill="#e1e1e3">Installing...</text>
+  <text x="105" y="225" font-family="Consolas, monospace" font-size="16" fill="#34d399">$ click-to-mcp discover</text>
+  <text x="105" y="255" font-family="Consolas, monospace" font-size="16" fill="#e1e1e3">Found 12 Click CLIs in your environment</text>
+  <text x="105" y="285" font-family="Consolas, monospace" font-size="16" fill="#34d399">$ click-to-mcp serve api-contract-guardian</text>
+  <text x="105" y="315" font-family="Consolas, monospace" font-size="16" fill="#a78bfa">MCP server running on stdio...</text>
+  <text x="105" y="345" font-family="Consolas, monospace" font-size="16" fill="#6366f1">► Connected to Claude Desktop</text>
+  <text x="105" y="375" font-family="Consolas, monospace" font-size="16" fill="#34d399">Ready to accept MCP requests ✓</text>
 
   <!-- MCP icon -->
   <rect x="680" y="100" width="440" height="120" rx="60" fill="none" stroke="url(#accent)" stroke-width="3"/>

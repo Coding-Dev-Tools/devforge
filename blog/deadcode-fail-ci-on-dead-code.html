@@ -350,7 +350,7 @@ jobs:
           echo "count=$TOTAL" >> $GITHUB_OUTPUT
 
       - name: Auto-tighten threshold
-        if: steps.scan.outputs.count < steps.threshold.outputs.threshold - 10
+        if: steps.scan.outputs.count &lt; steps.threshold.outputs.threshold - 10
         run: |
           NEW=$(( steps.scan.outputs.count + 5 ))
           echo "Dead code at ${{ steps.scan.outputs.count }}, tightening threshold to $NEW"

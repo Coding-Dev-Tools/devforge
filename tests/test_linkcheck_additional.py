@@ -11,7 +11,7 @@ from pathlib import Path
 _SCRIPT_DIR = Path(__file__).resolve().parent.parent / ".hermes"
 sys.path.insert(0, str(_SCRIPT_DIR))
 
-from linkcheck import build_actual_pages
+from linkcheck import build_actual_pages  # noqa: E402
 
 
 class TestBuildActualPages:
