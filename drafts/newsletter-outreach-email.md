@@ -1,27 +1,27 @@
 # Newsletter Outreach Email — DevForge / Coding-Dev-Tools
 
 **Source task:** Monthly calendar Week 4, Tue — "Outreach to dev tool newsletters (Console.dev, TLDR, Python Weekly)"
-**Status:** DRAFT — ready to send, requires human to dispatch from a real sender address.
+**Status:** UNSENT DRAFT - awaiting editorial review and a verified sender address.
 **Goal:** Earn a feature / mention in high-traffic dev newsletters to drive awareness + GitHub stars for the 11 CLI tools.
 
 ---
 
 ## Template (master)
 
-**Subject:** [Coding-Dev-Tools] 11 open-source dev CLI tools built by AI agents — worth a feature?
+**Subject:** [Coding-Dev-Tools] 11 open-source dev CLI tools developed with AI agents - worth a feature?
 
 Hi {EDITOR_FIRST_NAME},
 
-I'm part of the team behind Coding-Dev-Tools — a suite of 11 production-ready, open-source developer CLI tools (pip-installable, Apache-2.0 / MIT). We think your readers would find a few of them genuinely useful:
+I'm part of the team behind Coding-Dev-Tools - a suite of 11 open-source developer CLI tools, installable from GitHub with pip. We think your readers would find a few of them useful:
 
-- **click-to-mcp** — turn any Click/typer CLI into an MCP server in one command (zero competitors, rides the 66M+ FastMCP download wave)
-- **SchemaForge** — bidirectional conversion between 11 ORM/schema formats (110 direction pairs, zero-loss)
+- **click-to-mcp** - wrap Click/typer CLI commands as MCP tools in one command
+- **SchemaForge** - conversion across 11 ORM/schema formats; Alembic is an export target only
 - **api-contract-guardian** — detect breaking OpenAPI changes in CI before they hit production
-- **apighost** — mock servers from any OpenAPI spec, with VCR-style recording
-- **DeadCode** — AST-based dead-code detection for React/Next.js
+- **apighost** - mock servers from OpenAPI specs, with VCR-style recording and replay
+- **DeadCode** - regex-based detection of unused exports, routes, CSS and components in React/Next.js projects, with a dry-run removal preview
 - **Envault / ConfigDrift / DeployDiff / json2sql / DataMorph / APIAuth** — secrets, drift, cost-preview, data conversion, API-key rotation
 
-What makes the story interesting: the entire suite was built by a small team of coordinating AI agents (CEO / Engineer / Researcher / Marketer) with near-zero human-written code — a concrete case study on agent-driven dev-tool production.
+The suite combines practical developer tooling with an agent-assisted development workflow. We can share an implementation walkthrough and examples showing where coordinating AI agents contributed.
 
 If you'd like, I can write a short, reader-first piece (tutorial or roundup) tailored to your format, or just hand you a test drive. Happy to send assets, demos, or a custom angle.
 
@@ -34,7 +34,7 @@ Thanks for the great newsletter,
 
 ## Variant A — Console.dev
 
-**Subject:** We shipped 11 open-source dev CLI tools with AI agents — want to feature one?
+**Subject:** 11 open-source dev CLI tools developed with AI agents - want to feature one?
 
 Hi {EDITOR},
 
@@ -42,10 +42,10 @@ Console.dev readers live for "tools that save dev time." Our suite is exactly th
 
 - **click-to-mcp** — any Click/typer CLI → MCP server, one command
 - **api-contract-guardian** — breaking-change detection in CI
-- **DeadCode** — kill unused exports in React/Next.js
-- **apighost** — OpenAPI → mock server in 60s
+- **DeadCode** - detect unused exports in React/Next.js, with a dry-run removal preview
+- **apighost** - OpenAPI mock servers with recording and replay
 
-Open source, pip-installable, documented. We'd love a spot in your newsletter or a guest tutorial. Happy to provide a demo and a custom angle.
+Open source, installable from GitHub with pip, documented. We'd love a spot in your newsletter or a guest tutorial. Happy to provide a demo and a custom angle.
 
 — {NAME}, Coding-Dev-Tools · https://coding-dev-tools.github.io/devforge/
 
@@ -53,17 +53,17 @@ Open source, pip-installable, documented. We'd love a spot in your newsletter or
 
 ## Variant B — TLDR (Tech, Leadership, Design, Revenue)
 
-**Subject:** [TLDR] 11 OSS dev CLI tools, agent-built, pip-installable
+**Subject:** [TLDR] 11 OSS dev CLI tools, agent-assisted, installable from GitHub
 
 Hi {EDITOR},
 
-Quick one for TLDR's dev audience: we maintain **Coding-Dev-Tools**, 11 open-source CLI tools for developers — all pip-installable and MIT/Apache-2.0:
+Quick one for TLDR's dev audience: we maintain **Coding-Dev-Tools**, 11 open-source CLI tools for developers, installable from GitHub with pip:
 
 - click-to-mcp, SchemaForge, api-contract-guardian, apighost, DeadCode, Envault, ConfigDrift, DeployDiff, json2sql, DataMorph, APIAuth
 
-Notable: **click-to-mcp** bridges Python CLIs into the MCP ecosystem (a wide-open niche), and **api-contract-guardian** gates CI on breaking API changes. The whole suite was produced by coordinating AI agents.
+Notable: **click-to-mcp** bridges Python CLIs into the MCP ecosystem, and **api-contract-guardian** gates CI on breaking API changes. The development workflow includes coordinating AI agents.
 
-Open to a mention or a sponsored/community slot. Assets + demos on request.
+Open to a mention or a community feature. Assets + demos on request.
 
 — {NAME} · https://github.com/Coding-Dev-Tools
 
@@ -82,13 +82,22 @@ Python Weekly readers love practical, install-and-use tooling. We maintain 11 OS
 - **APIAuth** — encrypted API-key / JWT rotation from the terminal
 - **json2sql**, **DataMorph**, **Envault**, **DeployDiff**, **ConfigDrift**, **apighost**, **api-contract-guardian**, **DeadCode**
 
-All pip-installable, documented, tested. We'd appreciate a community link or a short feature. Happy to contribute a tutorial.
+Installable from GitHub with pip, documented, tested. We'd appreciate a community link or a short feature. Happy to contribute a tutorial.
 
 — {NAME} · https://coding-dev-tools.github.io/devforge/
 
 ---
 
+## Editorial references (keep outside the email)
+
+- [DeadCode features](https://github.com/Coding-Dev-Tools/deadcode#features): regex-based scanner; removal has a dry-run preview.
+- [SchemaForge supported formats](https://github.com/Coding-Dev-Tools/schemaforge#supported-formats): 11 formats, with Alembic generation only; no universal lossless-roundtrip claim.
+- [click-to-mcp](https://github.com/Coding-Dev-Tools/click-to-mcp#how-it-works): Click/typer command introspection and MCP tools.
+- [APIGhost](https://github.com/Coding-Dev-Tools/apighost#features): OpenAPI mock servers with recording/replay.
+- [APIAuth](https://github.com/Coding-Dev-Tools/apiauth#features): encrypted local API-key and JWT lifecycle management.
+
 ## Send checklist (human action)
+- [ ] Review product claims against the current repository READMEs; check each tool's runtime requirements before recommending installation
 - [ ] Pick primary target(s): Console.dev, TLDR, Python Weekly (+ Hacker News digest, DevOps Weekly, Pycoder's Weekly as bonus)
 - [ ] Fill {EDITOR_FIRST_NAME} / {NAME} / sender address
 - [ ] Verify links resolve (https://coding-dev-tools.github.io/devforge/, github org)

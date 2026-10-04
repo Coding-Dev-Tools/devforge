@@ -429,12 +429,12 @@ apiauth rotate &lt;key-id&gt;</code></pre>
     </ul>
 
     <p style="font-size:0.82rem;color:#888;font-weight:600;margin-bottom:8px;">Diff environments</p>
-    <pre><code class="language-bash">envault diff dev prod</code></pre>
+    <pre><code class="language-bash">rh-envault diff dev prod</code></pre>
 
     <p style="font-size:0.82rem;color:#888;font-weight:600;margin-bottom:8px;">Rotate a secret (smart type inference)</p>
-<pre><code class="language-bash">envault rotate DB_PASSWORD # database-safe password
-envault rotate API_KEY # prefixed API key
-envault rotate JWT_SECRET # 256-bit base64 secret</code></pre>
+<pre><code class="language-bash">rh-envault rotate DB_PASSWORD # database-safe password
+rh-envault rotate API_KEY # prefixed API key
+rh-envault rotate JWT_SECRET # 256-bit base64 secret</code></pre>
 
     <div class="insight">
       <p><strong>Why you need it:</strong> .env drift is how staging works but prod doesn't — a missing variable, a different value, a stale secret. Envault catches the diff, syncs safely, and rotates secrets with one command. Connect it to your secret store and stop managing .env files by hand.</p>

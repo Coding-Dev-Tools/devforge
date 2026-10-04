@@ -95,8 +95,13 @@ def test_ci_example_installs_the_four_commands_it_runs():
 
 def test_envault_cta_preserves_the_executable_after_install():
     text = (ROOT / "blog/envault-serve-http-api-secrets.html").read_text(encoding="utf-8")
-    assert "envault.git &middot; envault serve --port 8080" in text
+    assert "envault.git &middot; rh-envault serve --port 8080 --api-key" in text
     assert "envault.git serve" not in text
+    # The published HTTP handler accepts X-API-Key for --api-key. The article
+    # must not promise a token derived automatically from the encryption key.
+    assert "X-API-Key:" in text
+    assert "SHA-256" not in text
+    assert "Authorization: Bearer" not in text
 
 
 def test_click_to_mcp_does_not_claim_git_install_is_on_pypi():
