@@ -1,0 +1,10 @@
+# Public, static files included in the GitHub Pages artifact.
+# Keep patterns depth-limited; repository drafts, source, and work files stay out.
+*.html
+*.svg
+feed.xml
+robots.txt
+sitemap.xml
+.nojekyll
+blog/*.html
+blog/*.css
