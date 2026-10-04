@@ -25,7 +25,7 @@ What makes the story interesting: the entire suite was built by a small team of 
 
 If you'd like, I can write a short, reader-first piece (tutorial or roundup) tailored to your format, or just hand you a test drive. Happy to send assets, demos, or a custom angle.
 
-Site: https://devforge.dev  ·  Org: https://github.com/Coding-Dev-Tools
+Site: https://coding-dev-tools.github.io/devforge/  ·  Org: https://github.com/Coding-Dev-Tools
 
 Thanks for the great newsletter,
 {NAME} — Coding-Dev-Tools
@@ -47,7 +47,7 @@ Console.dev readers live for "tools that save dev time." Our suite is exactly th
 
 Open source, pip-installable, documented. We'd love a spot in your newsletter or a guest tutorial. Happy to provide a demo and a custom angle.
 
-— {NAME}, Coding-Dev-Tools · https://devforge.dev
+— {NAME}, Coding-Dev-Tools · https://coding-dev-tools.github.io/devforge/
 
 ---
 
@@ -84,13 +84,13 @@ Python Weekly readers love practical, install-and-use tooling. We maintain 11 OS
 
 All pip-installable, documented, tested. We'd appreciate a community link or a short feature. Happy to contribute a tutorial.
 
-— {NAME} · https://devforge.dev
+— {NAME} · https://coding-dev-tools.github.io/devforge/
 
 ---
 
 ## Send checklist (human action)
 - [ ] Pick primary target(s): Console.dev, TLDR, Python Weekly (+ Hacker News digest, DevOps Weekly, Pycoder's Weekly as bonus)
 - [ ] Fill {EDITOR_FIRST_NAME} / {NAME} / sender address
-- [ ] Verify links resolve (devforge.dev, github org)
+- [ ] Verify links resolve (https://coding-dev-tools.github.io/devforge/, github org)
 - [ ] Send from a real domain (not no-reply) to maximize reply rate
 - [ ] Track opens/replies; follow up once after 5–7 days
