@@ -61,7 +61,9 @@ def code_blocks(filename):
 def test_full_suite_command_installs_each_tool_repository(page):
     commands = []
     for block in code_blocks(page):
-        commands.extend(block.replace("\\\n", " ").splitlines())
+        # A literal newline must terminate the command. Bash continuations cannot
+        # be pasted into the Windows shells advertised by these pages.
+        commands.extend(block.splitlines())
     for command in commands:
         if command.strip().startswith("pip install "):
             arguments = shlex.split(command)
