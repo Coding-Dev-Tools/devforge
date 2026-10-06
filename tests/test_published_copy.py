@@ -5,6 +5,8 @@ SchemaForge b6eecadd288589f073ae2ca59018455f9814bbf4:
   src/schemaforge/cli.py (_FORMATS), README.md (Supported Formats/Limitations)
 DeadCode 272bfa8dd83b91aebeca96304404e7b64871c753:
   src/deadcode/scanner.py (regex patterns and four finding categories)
+The Next.js article's "Dead Code" topic spelling refers to that same product:
+its metadata says DeadCode CLI and its installation links the owned repository.
 """
 
 import re
@@ -18,8 +20,13 @@ import warnings
 
 ROOT = Path(__file__).resolve().parents[1]
 BRANDS = re.compile(r"SchemaForge|DeadCode", re.I)
+TOPIC_BRANDS = re.compile(r"SchemaForge|Dead\s*Code", re.I)
 COMPETITORS = re.compile(r"\b(?:knip|ts-prune|ESLint)\b", re.I)
 OTHER_PRODUCTS = re.compile(r"DataMorph|APIAuth|APIGhost|Envault|ConfigDrift|DeployDiff|json2sql|click-to-mcp|API Contract Guardian", re.I)
+
+
+def canonical_brand(match):
+    return re.sub(r"\s+", "", match.group()).lower()
 
 
 def product_scope(node):
@@ -33,25 +40,28 @@ def product_scope(node):
             index = next((i for i, cell in enumerate(cells) if cell is node), -1)
             if 0 <= index < len(headers):
                 label = headers[index].get_text(" ", strip=True)
-                match = BRANDS.search(label)
+                match = TOPIC_BRANDS.search(label)
                 if match:
-                    return match.group().lower()
+                    return canonical_brand(match)
                 if COMPETITORS.search(label):
                     return None
     text = node.get("content", "") if node.name == "meta" else node.get_text(" ", strip=True)
-    match = BRANDS.search(text)
+    # "dead code" in ordinary competitor prose is a generic term. Accept its
+    # spaced product spelling in titles, headings and table column labels.
+    matcher = TOPIC_BRANDS if node.name in {"title", "h1", "h2", "h3", "h4"} else BRANDS
+    match = matcher.search(text)
     if match:
-        return match.group().lower()
+        return canonical_brand(match)
     for heading in node.find_all_previous(["h1", "h2", "h3", "h4"]):
         label = heading.get_text(" ", strip=True)
-        match = BRANDS.search(label)
+        match = TOPIC_BRANDS.search(label)
         if match:
-            return match.group().lower()
+            return canonical_brand(match)
         if COMPETITORS.search(label) or OTHER_PRODUCTS.search(label) or re.match(r"Tool [2-9]:", label):
             return None
     title = node.find_previous("title")
-    match = BRANDS.search(title.get_text() if title else "")
-    return match.group().lower() if match else None
+    match = TOPIC_BRANDS.search(title.get_text() if title else "")
+    return canonical_brand(match) if match else None
 
 
 def copy_issues(text):
@@ -110,6 +120,9 @@ def test_all_published_copy_matches_pinned_implementation(published_artifact):
     ('<h2>SchemaForge</h2><p>Define your schema in Python, TypeScript or YAML.</p>', "schema-unsupported-format"),
     ('<h3>DeadCode</h3><p>Full TypeScript compiler API.</p>', "deadcode-implementation"),
     ('<title>DeadCode</title><meta name="description" content="AST parsing">', "deadcode-implementation"),
+    ('<title>Remove Dead Code in Next.js</title><h2>The Four Categories of Dead Code</h2><p>Each category uses AST-aware scanning.</p>', "deadcode-implementation"),
+    ('<title>Dead Code</title><meta name="description" content="Full TypeScript compiler API.">', "deadcode-implementation"),
+    ('<table><tr><th>Feature</th><th>Dead Code</th><th>knip</th></tr><tr><td>Scanner</td><td>AST-aware scanning</td><td>Compiler API</td></tr></table>', "deadcode-implementation"),
 ])
 def test_known_omissions_are_detected_without_filename_gates(html, kind):
     assert kind in {issue[0] for issue in copy_issues(html)}
@@ -119,4 +132,12 @@ def test_accurate_competitor_and_conditional_claims_are_preserved():
     html = '<h2>DeadCode vs knip</h2><table><tr><th>Feature</th><th>DeadCode</th><th>knip</th></tr><tr><td>Scanner</td><td>Regex-based</td><td>TypeScript compiler API</td></tr></table>'
     html += '<h2>SchemaForge</h2><p>If the roundtrip produces the same schema, the conversion is lossless.</p>'
     html += '<h2>DataMorph</h2><p>Convert between CSV, JSON, Avro and Protobuf.</p>'
+    assert not copy_issues(html)
+
+
+def test_spaced_product_alias_does_not_reassign_competitor_or_other_product_copy():
+    html = '<h1>Dead Code vs knip vs ts-prune</h1><h2>ts-prune</h2><p>ts-prune uses the compiler API to find dead code.</p>'
+    html += '<h2>knip</h2><p>AST scanning finds dead code.</p>'
+    html += '<table><tr><th>Feature</th><th>Dead Code</th><th>knip</th></tr><tr><td>Scanner</td><td>Regex-based scanning</td><td>TypeScript compiler API</td></tr></table>'
+    html += '<h2>APIAuth</h2><p>An AST parser is an example of unrelated product copy.</p>'
     assert not copy_issues(html)

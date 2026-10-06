@@ -56,6 +56,7 @@ def code_blocks(filename):
         "docs.html",
         "quickstart.html",
         "blog/autonomous-ai-experiment.html",
+        "blog/10-open-source-cli-tools-ai-development.html",
     ],
 )
 def test_full_suite_command_installs_each_tool_repository(page):

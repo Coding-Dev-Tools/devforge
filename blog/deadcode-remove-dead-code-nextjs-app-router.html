@@ -138,7 +138,7 @@
     </tr>
   </table>
 
-  <p>Each category uses AST-aware scanning to avoid false positives. A function that's exported and used in another file won't be flagged. A CSS class that appears in a template literal <code>className={`card-${variant}`}</code> won't be marked as orphaned.</p>
+  <p>These categories use regex-based scanning of imports, exports, routes, CSS classes and component definitions. Dynamically assembled class names and other computed references can be missed. Review findings and use a dry-run removal preview before changing files.</p>
 
   <h2 id="install-scan">Install and Scan Your Project</h2>
 

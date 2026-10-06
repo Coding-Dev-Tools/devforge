@@ -104,3 +104,26 @@ def test_rendered_deadcode_quickstart_scans_a_dummy_project(tmp_path):
     result = subprocess.run(args, cwd=tmp_path, capture_output=True, text=True)
     assert result.returncode == 0, result.stdout + result.stderr
     assert "No such option" not in result.stderr
+
+
+@pytest.mark.skipif(os.environ.get("DEVFORGE_UPSTREAM_SMOKE") != "1", reason="run in the CLI Example Smoke job")
+@pytest.mark.parametrize("repository,executable", [
+    ("json2sql", "json2sql"), ("envault", "rh-envault"), ("deadcode", "deadcode"),
+])
+def test_roundup_commands_after_install_work_with_dummy_data(tmp_path, repository, executable):
+    import shlex
+
+    (tmp_path / "data.json").write_text(json.dumps([{"id": 1, "name": "dummy"}]))
+    (tmp_path / "src").mkdir()
+    (tmp_path / "src/index.ts").write_text("export const unusedDummy = 1;\n")
+    block = next(block for block in code_blocks("blog/10-open-source-cli-tools-ai-development.html")
+                 if f"/{repository}.git\n" in block)
+    line = next(line for line in block.splitlines() if line.startswith(executable + " "))
+    result = subprocess.run(shlex.split(line), cwd=tmp_path, capture_output=True, text=True, timeout=60)
+    assert result.returncode == 0, result.stdout + result.stderr
+    if repository == "json2sql":
+        assert "INSERT INTO" in result.stdout and "dummy" in result.stdout
+    elif repository == "envault":
+        assert (tmp_path / ".envault.yml").is_file()
+    else:
+        assert "1 files scanned" in result.stdout

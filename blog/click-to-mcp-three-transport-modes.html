@@ -171,7 +171,7 @@ click-to-mcp config api-contract-guardian --copy</code></pre>
  <p>Some MCP clients need an HTTP endpoint — web-based tools, remote agents, or setups where the server runs on a different machine. <strong>HTTP+SSE</strong> (Server-Sent Events) was the first HTTP transport in the MCP spec. The client sends requests via <code>POST /message</code> and receives streaming responses via an <code>SSE</code> connection on <code>GET /sse</code>.</p>
 
  <pre><code># Install with HTTP support
-pip install "click-to-mcp[http]"
+pip install "click-to-mcp[http] @ git+https://github.com/Coding-Dev-Tools/click-to-mcp.git"
 
 # Serve over HTTP+SSE (default port 8000)
 click-to-mcp serve-http api-contract-guardian
@@ -218,7 +218,7 @@ click-to-mcp config api-contract-guardian --client cursor --transport http</code
  <p>Streamable HTTP is the newest MCP transport. Instead of maintaining a persistent SSE connection alongside the POST endpoint, it uses a <strong>single <code>POST /message</code> endpoint</strong> for everything. The server responds with the full JSON-RPC result in the HTTP response body — no SSE stream needed. Batch requests (arrays of JSON-RPC messages) are also supported.</p>
 
  <pre><code># Install with HTTP support (same extra as HTTP+SSE)
-pip install "click-to-mcp[http]"
+pip install "click-to-mcp[http] @ git+https://github.com/Coding-Dev-Tools/click-to-mcp.git"
 
 # Serve over Streamable HTTP (default port 8001 — different from HTTP+SSE)
 click-to-mcp serve-http-streamable api-contract-guardian

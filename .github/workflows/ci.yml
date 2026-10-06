@@ -67,16 +67,22 @@ jobs:
           python-version: '3.12'
       - name: Install the documented CLI tools
         run: >-
-          pip install pytest pyyaml
+          pip install pytest pyyaml beautifulsoup4
           git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git
           git+https://github.com/Coding-Dev-Tools/json2sql.git
           git+https://github.com/Coding-Dev-Tools/deploydiff.git
           git+https://github.com/Coding-Dev-Tools/configdrift.git
           git+https://github.com/Coding-Dev-Tools/deadcode.git
+          git+https://github.com/Coding-Dev-Tools/apiauth.git
+          git+https://github.com/Coding-Dev-Tools/apighost.git
+          git+https://github.com/Coding-Dev-Tools/envault.git
+          git+https://github.com/Coding-Dev-Tools/schemaforge.git
+          "datamorph-cli[parquet,avro,protobuf] @ git+https://github.com/Coding-Dev-Tools/datamorph.git"
+          "click-to-mcp[http] @ git+https://github.com/Coding-Dev-Tools/click-to-mcp.git"
       - name: Exercise rendered CI examples with dummy data
         env:
           DEVFORGE_UPSTREAM_SMOKE: '1'
-        run: python -m pytest tests/test_ci_examples.py -q
+        run: python -m pytest tests/test_ci_examples.py tests/test_published_installs.py -q
 
   deploy:
     name: Deploy to GitHub Pages
