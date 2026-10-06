@@ -131,7 +131,7 @@
     <div class="links">
       <a href="start-here.html">Start Here</a>
       <a href="quickstart.html">Get Started</a>
-      <a href="#products">Products</a>
+      <a href="index.html#products">Products</a>
       <a href="docs.html" style="font-weight:700">Docs</a>
 
       <a href="quickstart.html">Get Started</a>
@@ -153,11 +153,9 @@
   <h1>Quickstart &amp; <span>Usage Guide</span></h1>
   <p>Install any tool in seconds and see it in action. Every CLI command below is a real, working example — copy, paste, and run.</p>
   <div style="margin-top:20px;padding:12px 20px;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:8px;max-width:600px;margin-left:auto;margin-right:auto;">
-    <p style="color:#10b981;font-weight:600;font-size:0.8rem;margin:0 0 4px;">✅ Available now via GitHub</p>
-    <code style="color:#d1d5db;font-size:0.78rem;">pip install git+https://github.com/Coding-Dev-Tools/devforge.git</code>
+    <p style="color:#10b981;font-weight:600;font-size:0.8rem;margin:0 0 4px;">✅ API Contract Guardian via GitHub</p>
+    <code style="color:#d1d5db;font-size:0.78rem;">pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git</code>
 
-    <p style="color:#10b981;font-weight:600;font-size:0.8rem;margin:0 0 4px;">✓ Available now via GitHub</p>
-    <code style="color:#d1d5db;font-size:0.78rem;">pip install git+https://github.com/Coding-Dev-Tools/devforge.git</code>
   </div>
 </section>
 
@@ -207,7 +205,7 @@
 
     <div class="install-block">
 <code>pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git</code>
-      <span class="note">Requires Python 3.9+</span>
+      <span class="note">Requires Python 3.10+</span>
     </div>
 
     <ul class="features">
@@ -223,7 +221,9 @@
     <pre><code class="language-bash">api-contract-guardian check spec-v1.yaml spec-v2.yaml</code></pre>
 
     <p style="font-size:0.82rem;color:#888;font-weight:600;margin-bottom:8px;">Compare git branches</p>
-    <pre><code class="language-bash">api-contract-guardian check --base main --head feature-api-v2 openapi.yaml</code></pre>
+    <pre><code class="language-bash">baseline="$(mktemp -d)/openapi-base.yaml"
+git show main:openapi.yaml &gt; "$baseline"
+api-contract-guardian check "$baseline" openapi.yaml</code></pre>
 
     <p style="font-size:0.82rem;color:#888;font-weight:600;margin-bottom:8px;">Generate migration guide</p>
     <pre><code class="language-bash">api-contract-guardian migrate spec-v1.yaml spec-v2.yaml --output MIGRATION.md</code></pre>
@@ -242,7 +242,7 @@
 
     <div class="install-block">
 <code>pip install git+https://github.com/Coding-Dev-Tools/json2sql.git</code>
-      <span class="note">Requires Python 3.9+</span>
+      <span class="note">Requires Python 3.10+</span>
     </div>
 
     <ul class="features">
@@ -280,7 +280,7 @@ json2sql convert data.json --dialect sqlite</code></pre>
 
     <div class="install-block">
 <code>pip install git+https://github.com/Coding-Dev-Tools/deploydiff.git</code>
-      <span class="note">Requires Python 3.9+</span>
+      <span class="note">Requires Python 3.10+</span>
     </div>
 
     <ul class="features">
@@ -316,7 +316,7 @@ json2sql convert data.json --dialect sqlite</code></pre>
 
     <div class="install-block">
 <code>pip install git+https://github.com/Coding-Dev-Tools/configdrift.git</code>
-      <span class="note">Requires Python 3.9+</span>
+      <span class="note">Requires Python 3.10+</span>
     </div>
 
     <ul class="features">
@@ -351,7 +351,7 @@ json2sql convert data.json --dialect sqlite</code></pre>
 
     <div class="install-block">
 <code>pip install git+https://github.com/Coding-Dev-Tools/apighost.git</code>
-      <span class="note">Requires Python 3.9+</span>
+      <span class="note">Requires Python 3.10+</span>
     </div>
 
     <ul class="features">
@@ -383,7 +383,7 @@ apighost replay my-cassette</code></pre>
 
     <div class="install-block">
 <code>pip install git+https://github.com/Coding-Dev-Tools/apiauth.git</code>
-      <span class="note">Requires Python 3.9+</span>
+      <span class="note">Requires Python 3.10+</span>
     </div>
 
     <ul class="features">
@@ -431,12 +431,12 @@ apiauth rotate &lt;key-id&gt;</code></pre>
     </ul>
 
     <p style="font-size:0.82rem;color:#888;font-weight:600;margin-bottom:8px;">Diff environments</p>
-    <pre><code class="language-bash">envault diff dev prod</code></pre>
+    <pre><code class="language-bash">rh-envault diff dev prod</code></pre>
 
     <p style="font-size:0.82rem;color:#888;font-weight:600;margin-bottom:8px;">Rotate a secret (smart type inference)</p>
-<pre><code class="language-bash">envault rotate DB_PASSWORD # database-safe password
-envault rotate API_KEY # prefixed API key
-envault rotate JWT_SECRET # 256-bit base64 secret</code></pre>
+<pre><code class="language-bash">rh-envault rotate DB_PASSWORD # database-safe password
+rh-envault rotate API_KEY # prefixed API key
+rh-envault rotate JWT_SECRET # 256-bit base64 secret</code></pre>
 
     <div class="insight">
       <p><strong>Why you need it:</strong> .env drift is how staging works but prod doesn't — a missing variable, a different value, a stale secret. Envault catches the diff, syncs safely, and rotates secrets with one command. Connect it to your secret store and stop managing .env files by hand.</p>
@@ -447,18 +447,19 @@ envault rotate JWT_SECRET # 256-bit base64 secret</code></pre>
   <div class="tool-section" id="schemaforge">
     <h2><span class="icon icon-sf">🔄</span> SchemaForge</h2>
     <div class="subtitle">v1.7.0 — Bidirectional ORM schema converter (11 formats) + VS Code extension</div>
-    <p class="desc">Convert between SQL DDL, Prisma, Drizzle, TypeORM, Django, SQLAlchemy, GraphQL SDL, JSON Schema, OpenAPI 3.0, Protobuf, and Avro with zero-loss roundtripping. 110 bidirectional conversion paths. Now with a full VS Code extension for live preview, quick convert, and format detection.</p>
+    <p class="desc">Convert between SQL DDL, Prisma, Drizzle, TypeORM, Django, SQLAlchemy, GraphQL SDL, JSON Schema, EF Core, Scala, and Alembic with roundtrip verification of supported schema elements. 100 conversion directions (Alembic export only). Now with a full VS Code extension for live preview, quick convert, and format detection.</p>
     <a href="https://github.com/Coding-Dev-Tools/schemaforge" class="gh-link" target="_blank">View on GitHub →</a>
     <a href="https://github.com/Coding-Dev-Tools/vscode-schemaforge" class="gh-link" target="_blank" style="margin-left:16px;">VS Code Extension →</a>
 
     <div class="install-block">
 <code>pip install git+https://github.com/Coding-Dev-Tools/schemaforge.git</code>
-      <span class="note">Requires Python 3.9+</span>
+      <span class="note">Requires Python 3.10+</span>
     </div>
 
     <ul class="features">
-      <li>SQL DDL ↔ Prisma ↔ Drizzle ↔ TypeORM ↔ Django ↔ SQLAlchemy ↔ GraphQL SDL ↔ JSON Schema ↔ OpenAPI 3.0 ↔ Protobuf ↔ Avro</li>
-      <li>110 bidirectional conversion paths with zero-loss roundtripping</li>
+      <li>SQL DDL ↔ Prisma ↔ Drizzle ↔ TypeORM ↔ Django ↔ SQLAlchemy ↔ GraphQL SDL ↔ JSON Schema ↔ EF Core ↔ Scala; Alembic export only</li>
+      <li>100 conversion directions; Alembic is export only</li>
+      <li>Foreign keys and ORM relationships are not preserved; review every converted schema</li>
       <li>VS Code extension: live preview, quick convert (Ctrl+Alt+S), format detection (Ctrl+Alt+D), two-file diff</li>
       <li>Schema diff between any two formats</li>
       <li>Custom type mappings for edge cases</li>
@@ -486,7 +487,7 @@ envault rotate JWT_SECRET # 256-bit base64 secret</code></pre>
 
     <div class="install-block">
 <code>pip install git+https://github.com/Coding-Dev-Tools/click-to-mcp.git</code>
-      <span class="note">Requires Python 3.9+</span>
+      <span class="note">Requires Python 3.10+</span>
     </div>
 
     <ul class="features">
@@ -517,7 +518,7 @@ envault rotate JWT_SECRET # 256-bit base64 secret</code></pre>
 
     <div class="install-block">
 <code>pip install git+https://github.com/Coding-Dev-Tools/datamorph.git</code>
-      <span class="note">Requires Python 3.9+</span>
+      <span class="note">Requires Python 3.10+</span>
     </div>
 
     <ul class="features">
@@ -543,12 +544,12 @@ envault rotate JWT_SECRET # 256-bit base64 secret</code></pre>
   <div class="tool-section" id="deadcode">
     <h2><span class="icon" style="background:rgba(239,68,68,.15)">🧹</span> DeadCode</h2>
     <div class="subtitle">v0.1.0 — Unused export & dead route detector for TypeScript/React</div>
-    <p class="desc">Detect and remove unused exports, dead routes, orphaned CSS, and unreferenced components in TypeScript/React/Next.js projects. Uses the full TypeScript compiler API for accurate analysis — ESLint catches unused variables but misses the structural decay that bloats bundles.</p>
+    <p class="desc">Detect and remove unused exports, dead routes, orphaned CSS, and unreferenced components in TypeScript/React/Next.js projects. Uses regex-based scanning to identify potential unused exports, routes, CSS classes and components. Review findings before removal.</p>
     <a href="https://github.com/Coding-Dev-Tools/deadcode" class="gh-link" target="_blank">View on GitHub →</a>
 
     <div class="install-block">
 <code>pip install git+https://github.com/Coding-Dev-Tools/deadcode.git</code>
-      <span class="note">Requires Python 3.9+ & Node.js 18+</span>
+      <span class="note">Requires Python 3.10+</span>
     </div>
 
     <ul class="features">
@@ -566,7 +567,7 @@ envault rotate JWT_SECRET # 256-bit base64 secret</code></pre>
     <pre><code class="language-bash">deadcode remove --dry-run</code></pre>
 
     <div class="insight">
-      <p><strong>Why you need it:</strong> ESLint catches unused variables but misses structural decay — orphaned exports bloat bundles, stale routes confuse teammates, orphaned CSS silently accumulates. DeadCode uses the TypeScript compiler API for whole-project analysis that linters can't match. Scan, preview, then clean with confidence.</p>
+      <p><strong>Why you need it:</strong> ESLint catches unused variables but misses structural decay — orphaned exports bloat bundles, stale routes confuse teammates, orphaned CSS silently accumulates. DeadCode scans source patterns across the project and reports possible cleanup candidates. Scan, preview, then clean with confidence.</p>
     </div>
   </div>
 
@@ -577,19 +578,8 @@ envault rotate JWT_SECRET # 256-bit base64 secret</code></pre>
     <p class="desc">Install every tool in the DevForge ecosystem with a single command. Perfect for CI/CD pipelines, dev workstations, or teams that want the full safety net across API contracts, SQL, infrastructure, configs, API mocking, key management, env syncing, schema conversion, data format conversion, MCP wrapping, and dead code cleanup.</p>
     <a href="https://github.com/Coding-Dev-Tools/devforge" class="gh-link" target="_blank">View on GitHub ?</a>
 
-    <div class="install-block">
-<code>pip install git+https://github.com/Coding-Dev-Tools/devforge.git</code>
-      <span class="note">Installs all 11 tools as dependencies</span>
-
-    <h2><span class="icon icon-rh">⛁</span> DevForge Suite</h2>
-    <div class="subtitle">One install. All ten tools.</div>
-    <p class="desc">Install every tool in the DevForge ecosystem with a single command. Perfect for CI/CD pipelines, dev workstations, or teams that want the full safety net across API contracts, SQL, infrastructure, configs, API mocking, key management, env syncing, schema conversion, MCP wrapping, and dead code cleanup.</p>
-    <a href="https://github.com/Coding-Dev-Tools/devforge" class="gh-link" target="_blank">View on GitHub →</a>
-
-    <div class="install-block">
-      <code>pip install devforge-tools</code>
-      <span class="note">Installs all 10 tools as dependencies</span>
-    </div>
+    <pre><code class="language-bash">pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git git+https://github.com/Coding-Dev-Tools/json2sql.git git+https://github.com/Coding-Dev-Tools/deploydiff.git git+https://github.com/Coding-Dev-Tools/configdrift.git git+https://github.com/Coding-Dev-Tools/apiauth.git git+https://github.com/Coding-Dev-Tools/apighost.git git+https://github.com/Coding-Dev-Tools/envault.git git+https://github.com/Coding-Dev-Tools/schemaforge.git git+https://github.com/Coding-Dev-Tools/datamorph.git git+https://github.com/Coding-Dev-Tools/click-to-mcp.git git+https://github.com/Coding-Dev-Tools/deadcode.git</code></pre>
+    <p class="note">Installs all eleven tool repositories directly. Requires Git and Python 3.10+.</p>
 
     <div class="workflow">
       <p><strong>CI Pipeline Example</strong> — A single script runs all four checks in sequence. If any check fails, the pipeline stops and the developer gets a clear error message telling them exactly what broke and where.</p>
@@ -603,13 +593,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: pip install git+https://github.com/Coding-Dev-Tools/devforge.git
+      - run: >-
+          pip install
+          git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git
+          git+https://github.com/Coding-Dev-Tools/json2sql.git
+          git+https://github.com/Coding-Dev-Tools/deploydiff.git
+          git+https://github.com/Coding-Dev-Tools/configdrift.git
 
       # 1. API Contract Guardian — detect breaking schema changes
-      - run: api-contract-guardian check --base origin/main --head HEAD openapi.yaml
+      - env:
+          BASE_REF: ${{ github.base_ref }}
+        run: |
+          git fetch origin "$BASE_REF"
+          baseline="$(mktemp -d)/openapi-base.yaml"
+          git show "origin/$BASE_REF:openapi.yaml" > "$baseline"
+          api-contract-guardian check "$baseline" openapi.yaml
 
       # 2. json2sql — validate SQL output from seed data
       - run: json2sql convert --dialect postgres data/seed.json
@@ -621,7 +624,7 @@ jobs:
       - run: configdrift check dev.yaml prod.yaml --output json</code></pre>
 
     <div class="insight">
-      <p><strong>Pro tip:</strong> Use the meta-package in CI so your pipeline automatically gets all new tools as they're released. Pin the major version for production stability: <code style="color:#a78bfa;">pip install git+https://github.com/Coding-Dev-Tools/devforge.git@v0.1</code></p>
+      <p><strong>Pro tip:</strong> Install only the tools your CI pipeline uses. Pin each Git URL to a reviewed commit or release tag for reproducible builds.</p>
     </div>
   </div>
 
@@ -697,7 +700,6 @@ pip install git+https://github.com/Coding-Dev-Tools/schemaforge.git          # O
     Something missing? <a href="https://github.com/Coding-Dev-Tools/devforge/issues/new" style="color:#6366f1;text-decoration:none;">Open an issue</a> or <a href="mailto:support@devforge" style="color:#6366f1;text-decoration:none;">email us</a>.
   </p>
 
-</div>
 </div>
 
 <footer>

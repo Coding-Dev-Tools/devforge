@@ -66,9 +66,9 @@
 <pre><code>pip install git+https://github.com/Coding-Dev-Tools/datamorph.git</code></pre>
 
 <p>Optional format support (install what you need):</p>
-<pre><code>pip install "datamorph[parquet] @ git+https://..."   # Parquet + Avro support
-pip install "datamorph[protobuf] @ git+https://..."   # Protobuf support
-pip install "datamorph[all] @ git+https://..."        # Everything</code></pre>
+<pre><code>pip install "datamorph-cli[parquet] @ git+https://github.com/Coding-Dev-Tools/datamorph.git"   # Parquet support
+pip install "datamorph-cli[protobuf] @ git+https://github.com/Coding-Dev-Tools/datamorph.git"   # Protobuf support
+pip install "datamorph-cli[all] @ git+https://github.com/Coding-Dev-Tools/datamorph.git"        # Everything</code></pre>
 
 <h2>Supported Format Pairs</h2>
 
@@ -207,7 +207,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install DataMorph
-        run: pip install "datamorph[parquet] @ git+https://github.com/Coding-Dev-Tools/datamorph.git"
+        run: pip install "datamorph-cli[parquet] @ git+https://github.com/Coding-Dev-Tools/datamorph.git"
 
       - name: Convert CSV → Parquet for analytics
         run: |

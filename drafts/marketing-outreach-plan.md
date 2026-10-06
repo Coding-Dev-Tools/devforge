@@ -22,7 +22,7 @@
 ### Pre-Launch (T-7 days)
 - [ ] Create maker profile on Product Hunt
 - [ ] Prepare assets: logo (256x256), gallery images (1270x760), tagline
-- [ ] Record 60-sec demo video: `pip install click-to-mcp` → `click-to-mcp convert mycli` → instant MCP server
+- [ ] Record 60-sec demo video: `pip install git+https://github.com/Coding-Dev-Tools/click-to-mcp.git` → `click-to-mcp convert mycli` → instant MCP server
 - [ ] Write maker comment with technical deep-dive
 - [ ] Line up 5-10 hunter/upvoter supporters (indie dev communities)
 
@@ -87,7 +87,7 @@ With the MCP (Model Context Protocol) ecosystem exploding (66M+ FastMCP download
 
 click-to-mcp takes any Click or typer CLI and generates a fully compliant MCP server — one command:
 
-    pip install click-to-mcp
+    pip install git+https://github.com/Coding-Dev-Tools/click-to-mcp.git
     click-to-mcp convert your_cli_app
 
 Now your CLI tools can be called by Claude, GPT, or any MCP-compatible agent.
@@ -138,7 +138,7 @@ Title: Open-source tools to expose your Python CLIs as MCP servers
 
 The MCP ecosystem needs more tool servers. I built click-to-mcp to auto-wrap any Click/typer CLI as a compliant MCP server:
 
-    pip install click-to-mcp
+    pip install git+https://github.com/Coding-Dev-Tools/click-to-mcp.git
     click-to-mcp convert your_cli
 
 This lets any MCP-compatible client (Claude Desktop, Continue, etc.) call your CLI tools directly.
@@ -167,7 +167,7 @@ That's where click-to-mcp comes in.
 click-to-mcp auto-wraps any Click or typer CLI as a fully compliant MCP server. One command, zero code changes.
 
 ## Quick start
-    pip install click-to-mcp
+    pip install git+https://github.com/Coding-Dev-Tools/click-to-mcp.git
     click-to-mcp convert my_cli_app
     click-to-mcp serve  # Starts the MCP server
 

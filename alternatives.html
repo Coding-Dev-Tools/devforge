@@ -112,7 +112,7 @@
     <div class="links">
       <a href="start-here.html">Start Here</a>
       <a href="quickstart.html">Get Started</a>
-      <a href="#products">Products</a>
+      <a href="index.html#products">Products</a>
       <a href="docs.html">Docs</a>
       <a href="pricing.html">Pricing</a>
       <a href="alternatives.html" style="font-weight:700">Alternatives</a>
@@ -491,7 +491,7 @@
   <!-- ============================================ -->
   <div class="comparison" id="deadcode-vs-knip">
     <h2>DeadCode <span class="vs">vs</span> knip</h2>
-    <p class="subtitle">Dead code removal — TypeScript compiler API analysis vs AST-based export tracking.</p>
+    <p class="subtitle">Dead code detection — a regex-based scanner compared with TypeScript compiler analysis.</p>
 
     <table class="feat-table">
       <thead>
@@ -504,7 +504,7 @@
       <tbody>
         <tr>
           <td>Unused export detection</td>
-          <td class="yes">Yes — compiler API</td>
+          <td class="yes">Yes — regex-based scanning</td>
           <td class="yes">Yes — AST analysis</td>
         </tr>
         <tr>
@@ -620,7 +620,7 @@
         </tr>
         <tr>
           <td>PyPI package</td>
-          <td class="yes">Yes — pip install click-to-mcp</td>
+          <td class="no">Coming soon — install from GitHub today</td>
           <td class="yes">Yes — 66M+ downloads/mo</td>
           <td class="yes">Yes — 2K+ stars</td>
         </tr>
@@ -895,7 +895,7 @@
       <tbody>
         <tr>
           <td>Bidirectional conversion</td>
-          <td class="yes">Yes — any format to any format</td>
+          <td class="yes">Yes — Alembic is export only</td>
           <td class="no">No — SQL DDL — SQLAlchemy only</td>
         </tr>
         <tr>
@@ -905,11 +905,11 @@
         </tr>
         <tr>
           <td>SQL DDL roundtripping</td>
-          <td class="yes">Yes — lossless roundtrip</td>
+          <td class="yes">Yes — check supported schema elements</td>
           <td class="yes">Yes — one direction</td>
         </tr>
         <tr>
-          <td>Zero-loss roundtrip verification</td>
+          <td>Roundtrip verification</td>
           <td class="yes">Yes — built-in diff command</td>
           <td class="no">No</td>
         </tr>
@@ -948,7 +948,7 @@
 
     <div class="verdict">
       <div class="label">Verdict</div>
-      <p><strong>sqlacodegen</strong> is a mature, focused tool for generating SQLAlchemy models from SQL DDL — it does one thing well. <strong>SchemaForge</strong> is a multi-format bidirectional converter that spans Prisma, Drizzle, TypeORM, Django, and SQLAlchemy with lossless roundtrip verification. If you work across multiple ORMs, need bidirectional conversion, or migrate between frameworks, SchemaForge covers ground no single tool matches.</p>
+      <p><strong>sqlacodegen</strong> is a mature, focused tool for generating SQLAlchemy models from SQL DDL — it does one thing well. <strong>SchemaForge</strong> is a multi-format bidirectional converter that spans Prisma, Drizzle, TypeORM, Django, and SQLAlchemy with roundtrip verification. If you work across multiple ORMs, need bidirectional conversion, or migrate between frameworks, SchemaForge covers ground no single tool matches.</p>
     </div>
  <div class="cta-row">
  <a href="docs.html#schemaforge">Read SchemaForge Docs</a>

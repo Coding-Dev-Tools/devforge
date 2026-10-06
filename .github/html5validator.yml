@@ -1,0 +1,6 @@
+root: .
+blacklist: [ja]
+# html5validator 0.4.2 bundles a CSS validator predating this standard property.
+# Keep all HTML and other CSS errors blocking.
+ignore_re:
+  - 'CSS: "backdrop-filter": Property "backdrop-filter" doesn.t exist\.'

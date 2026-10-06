@@ -205,7 +205,7 @@
 <section class="hero">
   <div class="badge">Open Source · MIT Licensed · 722+ Tests</div>
   <h1>Ship APIs that don't break.<br>Catch config drift. <span>Convert schemas.</span></h1>
-  <p>Eleven CLI tools that solve real engineering problems: detect breaking OpenAPI changes in CI, convert between 11 ORM formats bidirectionally, diff infrastructure costs, sync secrets across environments, and remove dead code. Install with pip. No account needed.</p>
+  <p>Eleven CLI tools that solve real engineering problems: detect breaking OpenAPI changes in CI, convert between ORM/schema formats with Alembic export only, diff infrastructure costs, sync secrets across environments, and remove dead code. Install with pip. No account needed.</p>
   <div class="ctas">
     <a href="#install-section" class="cta primary">Install from GitHub →</a>
     <a href="start-here.html" class="cta secondary">Find Your Tool</a>
@@ -350,7 +350,7 @@
     <div class="product">
       <div class="icon icon-sf">🔄</div>
       <h3>SchemaForge</h3>
-      <p>Convert between SQL DDL, Prisma, Drizzle, TypeORM, Django, SQLAlchemy, JSON Schema, GraphQL SDL, EF Core, and Scala case classes with zero-loss roundtripping. Bidirectional ORM schema converter supporting 11 formats.</p>
+      <p>Convert between SQL DDL, Prisma, Drizzle, TypeORM, Django, SQLAlchemy, JSON Schema, GraphQL SDL, EF Core, and Scala case classes with roundtrip verification of supported schema elements. Eleven formats; Alembic is export only. Foreign keys and ORM relationships are not preserved.</p>
       <div class="tags">
         <span class="tag prod">v1.7.0</span>
         <span class="tag revenue">Free + Pro</span>
@@ -387,7 +387,7 @@
     <div class="product">
       <div class="icon" style="background:rgba(239,68,68,.15)">🧹</div>
       <h3>DeadCode</h3>
-      <p>Detect and remove unused exports, dead routes, orphaned CSS, and unreferenced components in TypeScript/React/Next.js projects. Full TypeScript compiler API analysis with dry-run preview.</p>
+      <p>Detect and remove unused exports, dead routes, orphaned CSS, and unreferenced components in TypeScript/React/Next.js projects. Regex-based whole-project scanning with dry-run preview.</p>
       <div class="tags">
         <span class="tag prod">v0.1.0</span>
         <span class="tag revenue">Free + Pro</span>
@@ -494,9 +494,10 @@
 
   <!-- Suite Install -->
   <div style="background:#121213;border:1px solid #1e1e20;border-radius:12px;padding:24px;margin-bottom:24px;text-align:center;">
-    <h3 style="font-size:1.1rem;font-weight:600;color:#fff;margin:0 0 8px;">Install All 10 Tools at Once</h3>
-    <div style="position:relative;display:inline-block;">
-      <code style="color:#d1d5db;font-size:0.85rem;background:#0d0d0e;padding:10px 16px;border-radius:6px;display:block;">pip install git+https://github.com/Coding-Dev-Tools/devforge.git</code>
+    <h3 style="font-size:1.1rem;font-weight:600;color:#fff;margin:0 0 8px;">Install All 11 Tools</h3>
+    <div style="position:relative;display:inline-block;max-width:100%;">
+      <pre style="color:#d1d5db;font-size:0.85rem;background:#0d0d0e;padding:10px 16px;border-radius:6px;overflow-x:auto;text-align:left;"><code>pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git git+https://github.com/Coding-Dev-Tools/json2sql.git git+https://github.com/Coding-Dev-Tools/deploydiff.git git+https://github.com/Coding-Dev-Tools/configdrift.git git+https://github.com/Coding-Dev-Tools/apiauth.git git+https://github.com/Coding-Dev-Tools/apighost.git git+https://github.com/Coding-Dev-Tools/envault.git git+https://github.com/Coding-Dev-Tools/schemaforge.git git+https://github.com/Coding-Dev-Tools/datamorph.git git+https://github.com/Coding-Dev-Tools/click-to-mcp.git git+https://github.com/Coding-Dev-Tools/deadcode.git</code></pre>
+      <p style="color:#888;font-size:0.8rem;">Installs the eleven tool repositories directly. Requires Git and Python 3.10+.</p>
     </div>
   </div>
 
@@ -655,7 +656,7 @@
       "name": "Why install from GitHub instead of PyPI?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "pip install git+https://github.com/Coding-Dev-Tools/tool.git works perfectly and always gives you the latest version. These are pure Python packages — no compiled wheels needed. PyPI publishing is planned once the licensing system is finalized."
+        "text": "pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git works perfectly and always gives you the latest version. These are pure Python packages — no compiled wheels needed. PyPI publishing is planned once the licensing system is finalized."
       }
     },
     {
@@ -679,7 +680,7 @@
       "name": "How is SchemaForge different from prisma-import or drizzle-kit?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Those tools are one-way and format-specific. Prisma introspects SQL but cannot export back. SchemaForge does bidirectional conversion across 11 formats — Prisma, Drizzle, SQL, Django, SQLAlchemy, GraphQL, JSON Schema, TypeORM, EF Core, Scala, and Alembic."
+        "text": "Those tools are one-way and format-specific. Prisma introspects SQL but cannot export back. SchemaForge does conversion across 11 formats (Alembic export only) — Prisma, Drizzle, SQL, Django, SQLAlchemy, GraphQL, JSON Schema, TypeORM, EF Core, Scala, and Alembic."
       }
     },
     {
@@ -702,7 +703,7 @@
     </div>
     <div style="background:#121213;border:1px solid #1e1e20;border-radius:12px;padding:20px 24px;">
       <div style="font-size:0.95rem;font-weight:600;color:#fff;margin-bottom:8px;">Why install from GitHub instead of PyPI?</div>
-      <div style="font-size:0.85rem;color:#888;"><code style="color:#a78bfa;background:#0d0d0e;padding:2px 6px;border-radius:4px;font-size:0.8rem;">pip install git+https://github.com/Coding-Dev-Tools/tool.git</code> works perfectly and always gives you the latest version. These are pure Python packages — no compiled wheels needed. PyPI publishing is planned once the licensing system is finalized.</div>
+      <div style="font-size:0.85rem;color:#888;"><code style="color:#a78bfa;background:#0d0d0e;padding:2px 6px;border-radius:4px;font-size:0.8rem;">pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git</code> works perfectly and always gives you the latest version. These are pure Python packages — no compiled wheels needed. PyPI publishing is planned once the licensing system is finalized.</div>
     </div>
     <div style="background:#121213;border:1px solid #1e1e20;border-radius:12px;padding:20px 24px;">
       <div style="font-size:0.95rem;font-weight:600;color:#fff;margin-bottom:8px;">What does "Open-source" mean?</div>
@@ -714,7 +715,7 @@
     </div>
     <div style="background:#121213;border:1px solid #1e1e20;border-radius:12px;padding:20px 24px;">
       <div style="font-size:0.95rem;font-weight:600;color:#fff;margin-bottom:8px;">How is SchemaForge different from prisma-import or drizzle-kit?</div>
-      <div style="font-size:0.85rem;color:#888;">Those tools are one-way and format-specific. Prisma introspects SQL but can't export back. SchemaForge does <em>bidirectional</em> conversion across 11 formats — Prisma ↔ Drizzle ↔ SQL ↔ Django ↔ SQLAlchemy ↔ GraphQL ↔ JSON Schema ↔ TypeORM ↔ EF Core ↔ Scala ↔ Alembic.</div>
+      <div style="font-size:0.85rem;color:#888;">Those tools are one-way and format-specific. Prisma introspects SQL but can't export back. SchemaForge does <em>bidirectional</em> conversion across 11 formats (Alembic export only) — Prisma ↔ Drizzle ↔ SQL ↔ Django ↔ SQLAlchemy ↔ GraphQL ↔ JSON Schema ↔ TypeORM ↔ EF Core ↔ Scala; Alembic export only.</div>
     </div>
     <div style="background:#121213;border:1px solid #1e1e20;border-radius:12px;padding:20px 24px;">
       <div style="font-size:0.95rem;font-weight:600;color:#fff;margin-bottom:8px;">Is there a free tier?</div>
@@ -795,7 +796,7 @@
         <span style="padding:3px 10px;border-radius:6px;font-size:0.7rem;font-weight:500;background:rgba(99,102,241,0.12);color:#a78bfa;">Release</span>
       </div>
       <h3 style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:6px;">SchemaForge v1.7.0: VS Code Extension + 11-Format Conversion</h3>
-      <p style="font-size:0.8rem;color:#888;line-height:1.5;">VS Code extension with live preview, quick convert, format detection, and two-file diff. 11 schema formats, 110 direction pairs, zero-loss roundtripping.</p>
+      <p style="font-size:0.8rem;color:#888;line-height:1.5;">VS Code extension with live preview, quick convert, format detection, and two-file diff. 11 schema formats, 100 direction pairs (Alembic export only), roundtrip verification of supported schema elements.</p>
     </a>
     <a href="blog/ai-built-cli-tools-zero-humans.html" style="background:#121213;border:1px solid #1e1e20;border-radius:14px;padding:24px;text-decoration:none;color:inherit;transition:border-color .15s;">
       <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
@@ -942,7 +943,7 @@
         <span style="padding:3px 10px;border-radius:6px;font-size:0.7rem;font-weight:500;background:rgba(99,102,241,0.12);color:#a78bfa;">Deep Dive</span>
       </div>
       <h3 style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:6px;">DeadCode Under the Hood</h3>
-      <p style="font-size:0.8rem;color:#888;line-height:1.5;">A technical deep-dive: AST parsing, tree-shaking-aware export resolution, route declaration extraction, and CSS selector analysis in React/Next.js.</p>
+      <p style="font-size:0.8rem;color:#888;line-height:1.5;">A technical deep-dive: regex-based export/import matching, conservative re-export handling, route heuristics, and CSS class scanning in React/Next.js.</p>
     </a>
   </div>
   <a href="blog.html" style="display:inline-block;margin-top:28px;color:#6366f1;font-size:0.9rem;font-weight:500;text-decoration:none;">View all 28 articles →</a>

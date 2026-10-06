@@ -574,7 +574,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: pip install rh-envault
+      - run: pip install git+https://github.com/Coding-Dev-Tools/envault.git
 
       # Check for drift — fail if prod is missing variables
       - name: Environment drift check

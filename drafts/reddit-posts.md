@@ -51,7 +51,7 @@ Hey r/cli,
 Built a tool that auto-wraps Python CLIs as MCP (Model Context Protocol) servers. Zero code changes needed.
 
 ```bash
-pip install click-to-mcp
+pip install git+https://github.com/Coding-Dev-Tools/click-to-mcp.git
 click-to-mcp convert my-cli-tool
 ```
 
@@ -86,7 +86,7 @@ Built a CLI that detects dead code in React and Next.js projects:
 - Orphaned CSS classes (styles with no matching elements)
 
 ```bash
-pip install deadcode
+pip install git+https://github.com/Coding-Dev-Tools/deadcode.git
 deadcode scan ./src
 ```
 

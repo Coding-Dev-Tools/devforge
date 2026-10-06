@@ -53,7 +53,7 @@ You have dozens of Python CLI tools. Your AI agent (Claude, GPT, etc.) can't use
 click-to-mcp automatically wraps any Click or Typer CLI as a Model Context Protocol (MCP) server. Zero code changes. One command.
 
 ```bash
-pip install click-to-mcp
+pip install git+https://github.com/Coding-Dev-Tools/click-to-mcp.git
 click-to-mcp convert my-cli-tool
 ```
 

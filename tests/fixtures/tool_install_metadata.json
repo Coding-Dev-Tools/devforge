@@ -1,0 +1,129 @@
+{
+  "api-contract-guardian": {
+    "commit": "1e8e8b1d9fa56d190568dafbd8311c48bd0eacfb",
+    "distribution": "api-contract-guardian",
+    "scripts": [
+      "api-contract-guardian"
+    ],
+    "extras": [
+      "dev",
+      "license"
+    ]
+  },
+  "json2sql": {
+    "commit": "bcf2e112532214ffdf960cf141f331d4c9be1866",
+    "distribution": "json2sql-cli",
+    "scripts": [
+      "json2sql"
+    ],
+    "extras": [
+      "dev",
+      "license"
+    ]
+  },
+  "deploydiff": {
+    "commit": "cfd02b7943b8d6fe81bea38346ec3760a854d168",
+    "distribution": "deploydiff",
+    "scripts": [
+      "deploydiff"
+    ],
+    "extras": [
+      "license",
+      "dev"
+    ]
+  },
+  "configdrift": {
+    "commit": "9a75ad07107403a622105fd03c6655317f7169a0",
+    "distribution": "configdrift",
+    "scripts": [
+      "configdrift"
+    ],
+    "extras": [
+      "dev",
+      "toml",
+      "license-check"
+    ]
+  },
+  "apiauth": {
+    "commit": "2d8f0f8ad4748bb5c81c9a1dcf00286c33041765",
+    "distribution": "apiauth",
+    "scripts": [
+      "apiauth"
+    ],
+    "extras": [
+      "dev"
+    ]
+  },
+  "apighost": {
+    "commit": "8a826a16c8f166b14be2691f5d83b04804e606e2",
+    "distribution": "apighost",
+    "scripts": [
+      "apighost"
+    ],
+    "extras": [
+      "dev"
+    ]
+  },
+  "envault": {
+    "commit": "f68571b592e028250ec06d184e4ab53603d38a0f",
+    "distribution": "rh-envault",
+    "scripts": [
+      "rh-envault"
+    ],
+    "extras": [
+      "vault",
+      "awsssm",
+      "doppler",
+      "onepassword",
+      "dev",
+      "all"
+    ]
+  },
+  "schemaforge": {
+    "commit": "b6eecadd288589f073ae2ca59018455f9814bbf4",
+    "distribution": "schemaforge-cli",
+    "scripts": [
+      "schemaforge"
+    ],
+    "extras": [
+      "dev",
+      "mcp"
+    ]
+  },
+  "datamorph": {
+    "commit": "036e7eb6b8a4a1317e761ff1366fb9e4a94014ba",
+    "distribution": "datamorph-cli",
+    "scripts": [
+      "datamorph"
+    ],
+    "extras": [
+      "dev",
+      "parquet",
+      "avro",
+      "protobuf",
+      "all"
+    ]
+  },
+  "click-to-mcp": {
+    "commit": "25cb33d833c028bec5c62a0505267d2b0386b293",
+    "distribution": "click-to-mcp",
+    "scripts": [
+      "click-to-mcp",
+      "click-to-mcp-demo"
+    ],
+    "extras": [
+      "http",
+      "dev"
+    ]
+  },
+  "deadcode": {
+    "commit": "272bfa8dd83b91aebeca96304404e7b64871c753",
+    "distribution": "deadcode-cli",
+    "scripts": [
+      "deadcode"
+    ],
+    "extras": [
+      "dev"
+    ]
+  }
+}

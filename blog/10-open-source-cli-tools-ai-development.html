@@ -64,7 +64,7 @@
     <li><a href="#deadcode">DeadCode — Dead Code Detection</a></li>
     <li><a href="#json2sql">JSON2SQL — Query JSON with SQL</a></li>
     <li><a href="#envault">Envault — Environment Variable Manager</a></li>
-    <li><a href="#schemaforge">SchemaForge — Database Schema Migrations</a></li>
+    <li><a href="#schemaforge">SchemaForge — ORM Schema Conversion</a></li>
     <li><a href="#apighost">APIGhost — Mock API Server from OpenAPI</a></li>
     <li><a href="#configdrift">ConfigDrift — Configuration Monitoring</a></li>
     <li><a href="#deploydiff">DeployDiff — Deployment Preview</a></li>
@@ -88,8 +88,8 @@ click-to-mcp serve your-cli</code></pre>
 <h2><span class="num">2.</span> DeadCode</h2>
 <p><span class="tag tag-code">Code Quality</span> <span class="tag tag-devops">CI</span></p>
 <p><strong>Find and remove dead code.</strong> Scans JavaScript/TypeScript/React projects for unused exports, components, and modules. Integrates into CI pipelines so dead code never reaches production.</p>
-<pre><code>pip install deadcode-cli
-deadcode scan ./src</code></pre>
+<pre><code>pip install git+https://github.com/Coding-Dev-Tools/deadcode.git
+deadcode --project ./src scan</code></pre>
 <p>↳ <a href="https://github.com/Coding-Dev-Tools/deadcode">GitHub</a> &middot; <a href="deadcode-technical-deep-dive.html">Read more</a></p>
 </div>
 
@@ -97,9 +97,9 @@ deadcode scan ./src</code></pre>
 <div class="tool-card" id="json2sql">
 <h2><span class="num">3.</span> JSON2SQL</h2>
 <p><span class="tag tag-data">Data</span></p>
-<p><strong>Query JSON files with SQL.</strong> No database needed. Pipe a JSON file into json2sql and run SQL SELECT/WHERE/GROUP BY against it. Perfect for log analysis, API response exploration, and data pipeline debugging.</p>
-<pre><code>pip install git+https://github.com/Coding-Dev-Tools/json2sql.git-cli
-cat data.json | json2sql "SELECT count(*) GROUP BY status"</code></pre>
+<p><strong>Convert JSON to SQL INSERT statements.</strong> Turn a JSON dataset into SQL for PostgreSQL, MySQL or SQLite. Use the output for data loading and seed fixtures.</p>
+<pre><code>pip install git+https://github.com/Coding-Dev-Tools/json2sql.git
+json2sql convert --dialect postgres data.json</code></pre>
 <p>↳ <a href="https://github.com/Coding-Dev-Tools/json2sql">GitHub</a> &middot; <a href="json-to-sql-one-command.html">Read more</a></p>
 </div>
 
@@ -108,8 +108,8 @@ cat data.json | json2sql "SELECT count(*) GROUP BY status"</code></pre>
 <h2><span class="num">4.</span> Envault</h2>
 <p><span class="tag tag-sec">Security</span> <span class="tag tag-devops">DevOps</span></p>
 <p><strong>Secure environment variable manager.</strong> Encrypt, share, and rotate secrets across environments. Works with .env files, CI/CD systems, and container orchestration. Built-in audit logging.</p>
-<pre><code>pip install git+https://github.com/Coding-Dev-Tools/envault.git-secrets
-envault init && envault set API_KEY=sk-xxx</code></pre>
+<pre><code>pip install git+https://github.com/Coding-Dev-Tools/envault.git
+rh-envault init demo-project --no-example</code></pre>
 <p>↳ <a href="https://github.com/Coding-Dev-Tools/envault">GitHub</a> &middot; <a href="envault-secret-rotation-guide.html">Read more</a></p>
 </div>
 
@@ -117,9 +117,9 @@ envault init && envault set API_KEY=sk-xxx</code></pre>
 <div class="tool-card" id="schemaforge">
 <h2><span class="num">5.</span> SchemaForge</h2>
 <p><span class="tag tag-data">Data</span></p>
-<p><strong>Database schema migrations, simplified.</strong> Define your schema in Python, TypeScript, or YAML. SchemaForge generates migrations for PostgreSQL, MySQL, SQLite, and more. Supports SQLAlchemy, Drizzle ORM, and raw SQL output.</p>
-<pre><code>pip install git+https://github.com/Coding-Dev-Tools/schemaforge.git-cli
-schemaforge init && schemaforge migrate</code></pre>
+<p><strong>ORM schema conversion.</strong> SchemaForge supports 11 formats, including SQL DDL, Prisma, Drizzle, TypeORM, Django, SQLAlchemy, JSON Schema, GraphQL SDL, EF Core, Scala and Alembic. Alembic is export only. Review converted schemas: foreign keys and ORM relationships are not preserved.</p>
+<pre><code>pip install git+https://github.com/Coding-Dev-Tools/schemaforge.git
+schemaforge convert --from sql --to prisma --input schema.sql</code></pre>
 <p>↳ <a href="https://github.com/Coding-Dev-Tools/schemaforge">GitHub</a> &middot; <a href="schemaforge-v0-2-0-drizzle.html">Read more</a></p>
 </div>
 
@@ -158,7 +158,7 @@ deploydiff diff --before deploy.yaml --after deploy-v2.yaml</code></pre>
 <h2><span class="num">9.</span> DataMorph</h2>
 <p><span class="tag tag-data">Data</span></p>
 <p><strong>Batch data transformation in your terminal.</strong> Convert between JSON, CSV, YAML, XML, and Parquet. Filter, map, join, and aggregate datasets without writing scripts. Pipes compose naturally with jq, sed, and awk.</p>
-<pre><code>pip install datamorph-cli
+<pre><code>pip install git+https://github.com/Coding-Dev-Tools/datamorph.git
 datamorph convert input.csv --to json | jq '.[0]'</code></pre>
 <p>↳ <a href="https://github.com/Coding-Dev-Tools/datamorph">GitHub</a> &middot; <a href="datamorph-batch-data-conversion.html">Read more</a></p>
 </div>
@@ -200,25 +200,15 @@ click-to-mcp serve deploydiff
 
 <h2>How to Install the Full Suite</h2>
 
-<p>You can install all 11 tools with a single script:</p>
+<p>Install all 11 repositories with Python 3.10+ and Git. This command stays on one line so it can be copied into Bash, PowerShell or Command Prompt:</p>
 
 <pre><code># Via pip
-pip install \
-  git+https://github.com/Coding-Dev-Tools/click-to-mcp.git \
-  deadcode-cli \
-  json2sql-cli \
-  envault-secrets \
-  schemaforge-cli \
-  apighost \
-  configdrift \
-  deploydiff \
-  datamorph-cli \
-  api-contract-guardian</code></pre>
+pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git git+https://github.com/Coding-Dev-Tools/json2sql.git git+https://github.com/Coding-Dev-Tools/deploydiff.git git+https://github.com/Coding-Dev-Tools/configdrift.git git+https://github.com/Coding-Dev-Tools/apiauth.git git+https://github.com/Coding-Dev-Tools/apighost.git git+https://github.com/Coding-Dev-Tools/envault.git git+https://github.com/Coding-Dev-Tools/schemaforge.git git+https://github.com/Coding-Dev-Tools/datamorph.git git+https://github.com/Coding-Dev-Tools/click-to-mcp.git git+https://github.com/Coding-Dev-Tools/deadcode.git</code></pre>
 
 <p>Or via Homebrew:</p>
 
-<pre><code>brew tap Coding-Dev-Tools/tap
-brew install click-to-mcp deadcode json2sql envault schemaforge apighost configdrift deploydiff datamorph api-contract-guardian</code></pre>
+<pre><code>brew tap Coding-Dev-Tools/homebrew-tap
+brew install click-to-mcp deadcode json2sql-cli envault schemaforge apighost configdrift deploydiff datamorph api-contract-guardian apiauth</code></pre>
 
 <blockquote>
   All tools are actively maintained. Found a bug? <a href="https://github.com/Coding-Dev-Tools">Open an issue on GitHub</a>.

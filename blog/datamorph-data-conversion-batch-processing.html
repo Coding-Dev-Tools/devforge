@@ -130,7 +130,7 @@ df.to_parquet('output.parquet')
   <p>DataMorph is built on a streaming architecture. Every format pair (CSV ? Parquet, JSON ? YAML, etc.) processes rows one at a time. This means you can convert files of any size on any machine � from a Raspberry Pi to a production CI runner.</p>
 
   <pre><code><span style="color:#34d399;"># Install once</span>
-pip install datamorph
+pip install git+https://github.com/Coding-Dev-Tools/datamorph.git
 
 <span style="color:#34d399;"># Convert anything to anything � streamed</span>
 datamorph convert sales_2025.csv sales_2025.parquet
@@ -246,7 +246,7 @@ datamorph convert ./athena-tables/monthly-summary.parquet \
   <p>Install DataMorph and start converting in under a minute:</p>
 
   <pre><code><span style="color:#34d399;"># Install</span>
-pip install datamorph
+pip install git+https://github.com/Coding-Dev-Tools/datamorph.git
 
 <span style="color:#34d399;"># Verify</span>
 datamorph --help

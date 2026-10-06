@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SchemaForge v1.7.0: VS Code Extension + 11-Format Bidirectional ORM Conversion</title>
-  <meta name="description" content="SchemaForge v1.7.0 launches with a VS Code extension, expanding to 11 schema formats (SQL DDL, Prisma, Drizzle, TypeORM, Django, SQLAlchemy, GraphQL SDL, JSON Schema, Protobuf, Avro, OpenAPI 3.0) — 110 bidirectional conversion paths with zero-loss roundtripping.">
-  <meta name="keywords" content="SchemaForge, VS Code extension, ORM converter, schema conversion, Prisma, Drizzle, SQLAlchemy, Django, TypeORM, GraphQL, Protobuf, Avro, SQL DDL, v1.7.0, developer tools, open source">
+  <meta name="description" content="SchemaForge v1.7.0 launches with a VS Code extension, expanding to 11 schema formats (SQL DDL, Prisma, Drizzle, TypeORM, Django, SQLAlchemy, GraphQL SDL, JSON Schema, EF Core, Scala, Alembic) — 100 conversion directions (Alembic export only) with roundtrip verification of supported schema elements.">
+  <meta name="keywords" content="SchemaForge, VS Code extension, ORM converter, schema conversion, Prisma, Drizzle, SQLAlchemy, Django, TypeORM, GraphQL, Alembic, EF Core, Scala, SQL DDL, v1.7.0, developer tools, open source">
   <meta property="og:title" content="SchemaForge v1.7.0: VS Code Extension + 11-Format Bidirectional Conversion">
-  <meta property="og:description" content="SchemaForge expands to 11 schema formats with a full VS Code extension — live preview, quick convert, format detection, and two-file diff. 110 bidirectional conversion paths, all zero-loss.">
+  <meta property="og:description" content="SchemaForge expands to 11 schema formats with a full VS Code extension — live preview, quick convert, format detection, and two-file diff. 100 conversion directions (Alembic export only), review conversion limitations.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://coding-dev-tools.github.io/devforge/blog/schemaforge-v1-7-0-vscode-extension.html">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="SchemaForge v1.7.0: VS Code Extension for 11-Format ORM Conversion">
-  <meta name="twitter:description" content="VS Code extension + 11 schema formats (SQL DDL, Prisma, Drizzle, Django, SQLAlchemy, TypeORM, GraphQL, JSON Schema, Protobuf, Avro, OpenAPI). All bidirectional.">
+  <meta name="twitter:description" content="VS Code extension + 11 schema formats (SQL DDL, Prisma, Drizzle, Django, SQLAlchemy, TypeORM, GraphQL, JSON Schema, EF Core, Scala, Alembic). Alembic is export only.">
   <meta name="twitter:site" content="@DevForge">
   <meta name="twitter:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
   <meta property="og:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
@@ -61,25 +61,25 @@
   <h1>SchemaForge v1.7.0: VS Code Extension + 11-Format Bidirectional ORM Conversion</h1>
 
   <div class="lead">
-    SchemaForge now supports 11 schema formats with 110 bidirectional conversion paths — and a full VS Code extension with live preview, quick convert (Ctrl+Alt+S), format detection (Ctrl+Alt+D), and two-file diff. All tested, all zero-loss.
+    SchemaForge now supports 11 schema formats with 100 conversion directions (Alembic export only) — and a full VS Code extension with live preview, quick convert (Ctrl+Alt+S), format detection (Ctrl+Alt+D), and two-file diff. All tested, review conversion limitations.
   </div>
 
   <h2>What's New in v1.7.0</h2>
 
   <p>
-    This is our biggest release. We've expanded from 6 to <strong>11 supported formats</strong>, shipped a complete <strong>VS Code extension</strong>, and crossed <strong>270 tests</strong> covering every conversion path.
+    This is our biggest release. We've expanded from 6 to <strong>11 supported formats</strong>, shipped a complete <strong>VS Code extension</strong>, and added roundtrip checks for supported schema elements.
   </p>
 
   <div class="feature-grid">
     <div class="feature-card">
       <div class="emoji">🧩</div>
       <h4>11 Formats</h4>
-      <p>SQL DDL, Prisma, Drizzle, TypeORM, Django, SQLAlchemy, GraphQL SDL, JSON Schema, OpenAPI 3.0, Protobuf, Avro</p>
+      <p>SQL DDL, Prisma, Drizzle, TypeORM, Django, SQLAlchemy, GraphQL SDL, JSON Schema, EF Core, Scala, Alembic</p>
     </div>
     <div class="feature-card">
       <div class="emoji">🔄</div>
-      <h4>110 Direction Pairs</h4>
-      <p>Every format converts to every other format. Prisma → Django? Done. SQL DDL → Drizzle? Done. Zero-loss roundtripping on all paths.</p>
+      <h4>100 Conversion Directions</h4>
+      <p>Alembic is export only; the other ten formats support import and export. Prisma → Django? Done. SQL DDL → Drizzle? Done. Check each output; foreign keys and ORM relationships are not preserved.</p>
     </div>
     <div class="feature-card">
       <div class="emoji">🎨</div>
@@ -88,8 +88,8 @@
     </div>
     <div class="feature-card">
       <div class="emoji">🧪</div>
-      <h4>270+ Tests</h4>
-      <p>Every format pair tested with real-world schemas covering constraints, indexes, relations, defaults, enums, and edge cases.</p>
+      <h4>Review Every Conversion</h4>
+      <p>Compare your converted schema with the original. Foreign keys and ORM relationships are not preserved by the current shared IR.</p>
     </div>
   </div>
 
@@ -142,19 +142,19 @@
       <td style="padding:10px 8px;color:#999;">JSON</td>
     </tr>
     <tr style="border-bottom:1px solid #1a1a1c;">
-      <td style="padding:10px 8px;"><strong>OpenAPI 3.0</strong></td>
-      <td style="padding:10px 8px;color:#999;">.yaml / .json</td>
-      <td style="padding:10px 8px;color:#999;">OpenAPI</td>
+      <td style="padding:10px 8px;"><strong>Alembic (export only)</strong></td>
+      <td style="padding:10px 8px;color:#999;">.py</td>
+      <td style="padding:10px 8px;color:#999;">Python</td>
     </tr>
     <tr style="border-bottom:1px solid #1a1a1c;">
-      <td style="padding:10px 8px;"><strong>Protobuf</strong></td>
-      <td style="padding:10px 8px;color:#999;">.proto</td>
-      <td style="padding:10px 8px;color:#999;">Protocol Buffers</td>
+      <td style="padding:10px 8px;"><strong>EF Core</strong></td>
+      <td style="padding:10px 8px;color:#999;">.cs</td>
+      <td style="padding:10px 8px;color:#999;">C#</td>
     </tr>
     <tr style="border-bottom:1px solid #1a1a1c;">
-      <td style="padding:10px 8px;"><strong>Avro</strong></td>
-      <td style="padding:10px 8px;color:#999;">.avsc</td>
-      <td style="padding:10px 8px;color:#999;">Apache Avro</td>
+      <td style="padding:10px 8px;"><strong>Scala</strong></td>
+      <td style="padding:10px 8px;color:#999;">.scala</td>
+      <td style="padding:10px 8px;color:#999;">Scala</td>
     </tr>
   </table>
 
@@ -186,21 +186,21 @@
   <pre><code>schemaforge convert schema.prisma --from prisma --to sqlalchemy</code></pre>
 
   <p>Convert SQL DDL to Drizzle TypeScript:</p>
-  <pre><code>schemaforge convert schema.sql --from sql-ddl --to drizzle</code></pre>
+  <pre><code>schemaforge convert schema.sql --from sql --to drizzle</code></pre>
 
   <p>Convert Django models to TypeORM:</p>
   <pre><code>schemaforge convert models.py --from django --to typeorm</code></pre>
 
-  <h2>270+ Tests, Zero-Loss Roundtripping</h2>
+  <h2>Roundtrip Verification and Current Limits</h2>
 
-  <p>Every format pair is tested with complex real-world schemas. We verify:</p>
+  <p>Review the converted output and compare a roundtrip before using it in a migration. Current capabilities and limitations include:</p>
 
   <ul>
-    <li><strong>Constraints</strong> — PRIMARY KEY, FOREIGN KEY, UNIQUE, NOT NULL, CHECK, DEFAULT preserved across all conversions</li>
-    <li><strong>Indexes</strong> — Single-column, composite, unique, partial, and full-text indexes</li>
-    <li><strong>Relations</strong> — One-to-one, one-to-many, many-to-many with junction tables</li>
+    <li><strong>Constraints</strong> — Supported primary keys, unique constraints, nullability, and defaults; inspect format-specific output</li>
+    <li><strong>Indexes</strong> — Supported index definitions; review format-specific output</li>
+    <li><strong>Relations</strong> — Foreign keys and ORM relationships are not modeled by the current IR and are dropped during conversion</li>
     <li><strong>Enums and custom types</strong> — Schema-specific type mappings</li>
-    <li><strong>Roundtrip fidelity</strong> — Convert A→B→A and verify the output produces the same schema</li>
+    <li><strong>Roundtrip fidelity</strong> — Convert A→B→A and inspect the diff; this is a check, not a guarantee of lossless conversion</li>
   </ul>
 
   <h2>Why SchemaForge?</h2>
