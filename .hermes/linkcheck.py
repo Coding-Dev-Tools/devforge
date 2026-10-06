@@ -24,15 +24,34 @@ class PageLinks(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.links = []
         self.anchors = set()
+        self.base_href = None
 
     def handle_starttag(self, tag, attrs):
         for name, value in attrs:
+            if tag == "base" and name == "href" and self.base_href is None:
+                # The first base with href wins, including an empty href.
+                self.base_href = value or ""
             if value is None:
                 continue
-            if name in {"href", "src"}:
+            # A base URL is a resolution directive, not a fetched resource.
+            if tag != "base" and name in {"href", "src"}:
                 self.links.append(value)
             if name == "id" or (tag == "a" and name == "name"):
                 self.anchors.add(value)
+
+
+def document_base_url(parser: PageLinks, document_url: str) -> str:
+    """Resolve the first HTML base href against the document's own URL."""
+    if parser.base_href is None:
+        return document_url
+    try:
+        base_url = urljoin(document_url, parser.base_href.strip(" \t\n\r\f"))
+        if urlsplit(base_url).scheme.lower() in {"data", "javascript"}:
+            return document_url
+        return base_url
+    except ValueError:
+        # Invalid bases fall back to the document URL, as in browsers.
+        return document_url
 
 
 def collect_html_files(root_dir: str) -> set[str]:
@@ -102,8 +121,9 @@ def check_links(root_dir: str, verbose: bool = False) -> int:
 
     site = urlsplit(SITE_URL)
     for source_rel, parser in sorted(pages.items()):
+        base_url = document_base_url(parser, SITE_URL + source_rel)
         for link in parser.links:
-            target = urlsplit(urljoin(SITE_URL + source_rel, link))
+            target = urlsplit(urljoin(base_url, link))
             # Other projects on the same host are external to this artifact.
             if target.scheme not in {"http", "https"} or target.netloc != site.netloc:
                 continue

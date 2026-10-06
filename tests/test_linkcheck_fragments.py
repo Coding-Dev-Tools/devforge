@@ -7,7 +7,7 @@ from pathlib import Path
 import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / ".hermes"))
-from linkcheck import check_links
+from linkcheck import PageLinks, SITE_URL, check_links, document_base_url
 
 
 @pytest.mark.parametrize("link", ["#missing", "target.html#missing", "target.html?q=1#missing"])
@@ -63,3 +63,61 @@ def test_github_compatibility_wrapper_reports_broken_links(tmp_path):
     result = subprocess.run([sys.executable, str(wrapper), str(tmp_path), "--exit-code"], capture_output=True)
     assert result.returncode == 1
     assert b"missing fragment" in result.stdout
+
+
+def test_root_base_changes_nested_stylesheet_resolution(tmp_path):
+    blog = tmp_path / "blog"
+    blog.mkdir()
+    (blog / "post.html").write_text('<base href="/devforge/"><link href="blog.css" rel="stylesheet">')
+    (blog / "blog.css").write_text("body {}")
+    # A browser requests /devforge/blog.css, not /devforge/blog/blog.css.
+    assert check_links(str(tmp_path)) == 1
+    (tmp_path / "blog.css").write_text("body {}")
+    assert check_links(str(tmp_path)) == 0
+
+
+def test_first_base_href_wins_and_is_not_a_resource_link(tmp_path):
+    (tmp_path / "blog").mkdir()
+    (tmp_path / "assets").mkdir()
+    (tmp_path / "blog/post.html").write_text(
+        '<base target="_blank"><base href="../assets/">'
+        '<base href="/devforge/missing/"><a href="target.html#ok">target</a>'
+    )
+    (tmp_path / "assets/target.html").write_text('<h1 id="ok">Heading</h1>')
+    # There is no assets/index.html. The base href itself does not fetch one.
+    assert check_links(str(tmp_path)) == 0
+
+
+def test_fragment_uses_base_target_instead_of_source_page(tmp_path):
+    (tmp_path / "blog").mkdir()
+    (tmp_path / "blog/post.html").write_text(
+        '<base href="../target.html"><h1 id="section">Source</h1><a href="#section">target</a>'
+    )
+    (tmp_path / "target.html").write_text("No target anchor")
+    assert check_links(str(tmp_path)) == 1
+    (tmp_path / "target.html").write_text('<h1 id="section">Target</h1>')
+    assert check_links(str(tmp_path)) == 0
+
+
+def test_external_base_makes_relative_urls_external(tmp_path):
+    (tmp_path / "index.html").write_text(
+        '<base href="https://example.com/assets/"><a href="missing.html">external</a>'
+        '<a href="https://coding-dev-tools.github.io/devforge/target.html#ok">local</a>'
+    )
+    (tmp_path / "target.html").write_text('<h1 id="ok">Target</h1>')
+    assert check_links(str(tmp_path)) == 0
+
+
+@pytest.mark.parametrize("href", ["", "data:text/html,example", "javascript:alert(1)", "http://[invalid"])
+def test_empty_or_disallowed_first_base_falls_back_without_using_second_base(href):
+    parser = PageLinks()
+    parser.feed(f'<base href="{href}"><base href="/devforge/ignored/">')
+    document_url = SITE_URL + "blog/post.html"
+    assert document_base_url(parser, document_url) == document_url
+
+
+def test_escaped_base_example_does_not_change_document_base():
+    parser = PageLinks()
+    parser.feed('<code>&lt;base href="/devforge/"&gt;</code>')
+    document_url = SITE_URL + "blog/post.html"
+    assert document_base_url(parser, document_url) == document_url
