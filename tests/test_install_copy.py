@@ -144,3 +144,20 @@ def test_schemaforge_public_copy_matches_supported_formats_and_limits():
         if page.name == "schemaforge-v1-7-0-vscode-extension.html":
             for unsupported in ["Protobuf", "Avro", "OpenAPI"]:
                 assert unsupported not in copy, page
+
+
+def test_deadcode_comparison_describes_the_regex_scanner():
+    text = (ROOT / "alternatives.html").read_text(encoding="utf-8")
+    comparison = text.split('id="deadcode-vs-knip"', 1)[1]
+    cell = re.search(r"<td>Unused export detection</td>\s*<td[^>]*>(.*?)</td>", comparison)
+    assert cell is not None
+    assert "regex-based scanning" in cell.group(1)
+    assert "compiler API" not in cell.group(1)
+
+
+def test_deadcode_quickstart_uses_the_top_level_project_option():
+    # The published console entry point is deadcode.cli:cli. Its --project
+    # option is declared on the Click group, not on the scan subcommand.
+    command = next(block for block in code_blocks("quickstart.html") if "deadcode " in block and "pip install" not in block)
+    line = next(line.strip() for line in command.splitlines() if line.strip().startswith("deadcode "))
+    assert shlex.split(line) == ["deadcode", "--project", "/path/to/ts-project", "scan"]

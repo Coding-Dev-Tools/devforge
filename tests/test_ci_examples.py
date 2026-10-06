@@ -80,3 +80,19 @@ def test_deploy_requires_all_validation_jobs():
     root = Path(__file__).resolve().parents[1]
     ci = yaml.safe_load((root / ".github/workflows/ci.yml").read_text())
     assert {"test", "linkcheck", "html-validate", "pages-artifact", "cli-example-smoke"} <= set(ci["jobs"]["deploy"]["needs"])
+
+
+@pytest.mark.skipif(os.environ.get("DEVFORGE_UPSTREAM_SMOKE") != "1", reason="run in the CLI Example Smoke job")
+def test_rendered_deadcode_quickstart_scans_a_dummy_project(tmp_path):
+    import shlex
+
+    assert shutil.which("deadcode"), "Smoke job must install DeadCode"
+    project = tmp_path / "typescript-project"
+    project.mkdir()
+    (project / "index.ts").write_text("export const unusedDummy = 1;\n")
+    block = next(block for block in code_blocks("quickstart.html") if "deadcode " in block and "pip install" not in block)
+    line = next(line.strip() for line in block.splitlines() if line.strip().startswith("deadcode "))
+    args = [str(project) if arg == "/path/to/ts-project" else arg for arg in shlex.split(line)]
+    result = subprocess.run(args, cwd=tmp_path, capture_output=True, text=True)
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert "No such option" not in result.stderr
