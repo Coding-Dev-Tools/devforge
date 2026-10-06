@@ -106,6 +106,8 @@ def test_envault_cta_preserves_the_executable_after_install():
     assert "X-API-Key:" in text
     assert "SHA-256" not in text
     assert "Authorization: Bearer" not in text
+    assert "Not cached between requests" not in text
+    assert "local .env store caches its plaintext" in text
 
 
 def test_click_to_mcp_does_not_claim_git_install_is_on_pypi():
@@ -118,3 +120,27 @@ def test_click_to_mcp_does_not_claim_git_install_is_on_pypi():
     article = (ROOT / "blog/click-to-mcp-intro.html").read_text(encoding="utf-8")
     assert "already on PyPI" not in article
     assert "coming soon; install from GitHub" in article
+
+
+def test_schemaforge_public_copy_matches_supported_formats_and_limits():
+    text = (ROOT / "docs.html").read_text(encoding="utf-8-sig")
+    section = text.split('id="schemaforge"', 1)[1].split('id="click-to-mcp"', 1)[0]
+    for format_name in ["EF Core", "Scala", "Alembic"]:
+        assert format_name in section
+    for unsupported in ["Protobuf", "Avro", "OpenAPI 3.0"]:
+        assert unsupported not in section
+    assert "100 conversion directions" in section
+    assert "Alembic is export only" in section
+    assert "Foreign keys and ORM relationships are not preserved" in section
+
+    pages = [ROOT / name for name in ["index.html", "docs.html", "alternatives.html", "pricing.html", "blog.html", "feed.xml"]]
+    pages.extend((ROOT / "blog").glob("schemaforge*.html"))
+    for page in pages:
+        copy = page.read_text(encoding="utf-8-sig")
+        assert not re.search(r"110 (?:bidirectional|direction|conversion)", copy, re.I), page
+        assert not re.search(r"zero[- ]loss", copy, re.I), page
+        # This article explicitly enumerates current supported formats, unlike
+        # comparison articles that may mention OpenAPI as a separate use case.
+        if page.name == "schemaforge-v1-7-0-vscode-extension.html":
+            for unsupported in ["Protobuf", "Avro", "OpenAPI"]:
+                assert unsupported not in copy, page

@@ -89,7 +89,7 @@
     <div class="links">
       <a href="start-here.html">Start Here</a>
       <a href="quickstart.html">Get Started</a>
-      <a href="#products">Products</a>
+      <a href="index.html#products">Products</a>
       <a href="docs.html">Docs</a>
       <a href="pricing.html">Pricing</a>
       <a href="alternatives.html">Alternatives</a>
@@ -143,7 +143,7 @@
  </div>
  <h2><a href="blog/schemaforge-vs-prisma-migrate-vs-alembic-vs-atlas.html">Schema Conversion Tools Compared: SchemaForge vs Prisma Migrate vs Alembic vs Atlas</a></h2>
  <div class="excerpt">
- Four schema conversion and migration tools compared â€” SchemaForge (bidirectional 11-format converter with 110 direction pairs), Prisma Migrate (schema-first Prisma migrations), Alembic (SQLAlchemy auto-generated migrations), and Atlas (declarative schema management with CI linting). Compare format coverage, bidirectional conversion, migration generation, JSON Schema/GraphQL output, CI/CD integration, and cost for each.
+ Four schema conversion and migration tools compared â€” SchemaForge (bidirectional 11-format converter with 100 direction pairs (Alembic export only)), Prisma Migrate (schema-first Prisma migrations), Alembic (SQLAlchemy auto-generated migrations), and Atlas (declarative schema management with CI linting). Compare format coverage, bidirectional conversion, migration generation, JSON Schema/GraphQL output, CI/CD integration, and cost for each.
  </div>
  <div class="tags">
  <span class="tag guide">Comparison</span>
@@ -1091,7 +1091,7 @@ Learn why streaming row-by-row conversion beats loading everything into memory. 
     </div>
     <h2><a href="blog/schemaforge-v1-7-0-vscode-extension.html">SchemaForge v1.7.0: VS Code Extension + 11-Format Bidirectional ORM Conversion</a></h2>
     <div class="excerpt">
-      SchemaForge expands to 11 schema formats (SQL DDL, Prisma, Drizzle, TypeORM, Django, SQLAlchemy, GraphQL SDL, JSON Schema, Protobuf, Avro, OpenAPI 3.0) with a full VS Code extension â€” live preview, quick convert (Ctrl+Alt+S), format detection (Ctrl+Alt+D), and two-file diff. 110 bidirectional conversion paths, 270+ tests, zero-loss roundtripping.
+      SchemaForge expands to 11 schema formats (SQL DDL, Prisma, Drizzle, TypeORM, Django, SQLAlchemy, GraphQL SDL, JSON Schema, EF Core, Scala, Alembic) with a full VS Code extension â€” live preview, quick convert (Ctrl+Alt+S), format detection (Ctrl+Alt+D), and two-file diff. 100 conversion directions (Alembic export only), roundtrip verification of supported schema elements.
     </div>
     <div class="tags">
       <span class="tag announce">Release</span>

@@ -350,7 +350,7 @@
     <div class="product">
       <div class="icon icon-sf">🔄</div>
       <h3>SchemaForge</h3>
-      <p>Convert between SQL DDL, Prisma, Drizzle, TypeORM, Django, SQLAlchemy, JSON Schema, GraphQL SDL, EF Core, and Scala case classes with zero-loss roundtripping. Bidirectional ORM schema converter supporting 11 formats.</p>
+      <p>Convert between SQL DDL, Prisma, Drizzle, TypeORM, Django, SQLAlchemy, JSON Schema, GraphQL SDL, EF Core, and Scala case classes with roundtrip verification of supported schema elements. Eleven formats; Alembic is export only. Foreign keys and ORM relationships are not preserved.</p>
       <div class="tags">
         <span class="tag prod">v1.7.0</span>
         <span class="tag revenue">Free + Pro</span>
@@ -680,7 +680,7 @@
       "name": "How is SchemaForge different from prisma-import or drizzle-kit?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Those tools are one-way and format-specific. Prisma introspects SQL but cannot export back. SchemaForge does bidirectional conversion across 11 formats — Prisma, Drizzle, SQL, Django, SQLAlchemy, GraphQL, JSON Schema, TypeORM, EF Core, Scala, and Alembic."
+        "text": "Those tools are one-way and format-specific. Prisma introspects SQL but cannot export back. SchemaForge does conversion across 11 formats (Alembic export only) — Prisma, Drizzle, SQL, Django, SQLAlchemy, GraphQL, JSON Schema, TypeORM, EF Core, Scala, and Alembic."
       }
     },
     {
@@ -715,7 +715,7 @@
     </div>
     <div style="background:#121213;border:1px solid #1e1e20;border-radius:12px;padding:20px 24px;">
       <div style="font-size:0.95rem;font-weight:600;color:#fff;margin-bottom:8px;">How is SchemaForge different from prisma-import or drizzle-kit?</div>
-      <div style="font-size:0.85rem;color:#888;">Those tools are one-way and format-specific. Prisma introspects SQL but can't export back. SchemaForge does <em>bidirectional</em> conversion across 11 formats — Prisma ↔ Drizzle ↔ SQL ↔ Django ↔ SQLAlchemy ↔ GraphQL ↔ JSON Schema ↔ TypeORM ↔ EF Core ↔ Scala ↔ Alembic.</div>
+      <div style="font-size:0.85rem;color:#888;">Those tools are one-way and format-specific. Prisma introspects SQL but can't export back. SchemaForge does <em>bidirectional</em> conversion across 11 formats (Alembic export only) — Prisma ↔ Drizzle ↔ SQL ↔ Django ↔ SQLAlchemy ↔ GraphQL ↔ JSON Schema ↔ TypeORM ↔ EF Core ↔ Scala; Alembic export only.</div>
     </div>
     <div style="background:#121213;border:1px solid #1e1e20;border-radius:12px;padding:20px 24px;">
       <div style="font-size:0.95rem;font-weight:600;color:#fff;margin-bottom:8px;">Is there a free tier?</div>
@@ -796,7 +796,7 @@
         <span style="padding:3px 10px;border-radius:6px;font-size:0.7rem;font-weight:500;background:rgba(99,102,241,0.12);color:#a78bfa;">Release</span>
       </div>
       <h3 style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:6px;">SchemaForge v1.7.0: VS Code Extension + 11-Format Conversion</h3>
-      <p style="font-size:0.8rem;color:#888;line-height:1.5;">VS Code extension with live preview, quick convert, format detection, and two-file diff. 11 schema formats, 110 direction pairs, zero-loss roundtripping.</p>
+      <p style="font-size:0.8rem;color:#888;line-height:1.5;">VS Code extension with live preview, quick convert, format detection, and two-file diff. 11 schema formats, 100 direction pairs (Alembic export only), roundtrip verification of supported schema elements.</p>
     </a>
     <a href="blog/ai-built-cli-tools-zero-humans.html" style="background:#121213;border:1px solid #1e1e20;border-radius:14px;padding:24px;text-decoration:none;color:inherit;transition:border-color .15s;">
       <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;">

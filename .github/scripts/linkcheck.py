@@ -10,7 +10,7 @@ import os
 import sys
 
 # Ensure .hermes is on the path
-_HERMES = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".hermes")
+_HERMES = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), ".hermes")
 sys.path.insert(0, _HERMES)
 
 from linkcheck import main  # noqa: E402

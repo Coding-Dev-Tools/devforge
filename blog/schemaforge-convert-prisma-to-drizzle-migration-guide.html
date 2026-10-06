@@ -167,7 +167,7 @@
 
   <ul>
     <li><strong>Bidirectional conversion</strong> — Prisma &rarr; Drizzle, Drizzle &rarr; Prisma, or any of the other 108 direction pairs</li>
-    <li><strong>Zero-loss roundtripping</strong> — <code>prisma &rarr; drizzle &rarr; prisma</code> produces the same schema you started with</li>
+    <li><strong>roundtrip verification of supported schema elements</strong> — <code>prisma &rarr; drizzle &rarr; prisma</code> lets you compare supported schema elements; foreign keys and ORM relationships are not preserved</li>
     <li><strong>Extensibility</strong> — adding a new format requires only a parser and a generator, no pairwise converters</li>
   </ul>
 
@@ -396,11 +396,11 @@ schemaforge convert --from drizzle --to alembic --input schema.drizzle.ts --outp
 # Or go directly from Prisma to Alembic
 schemaforge convert --from prisma --to alembic --input schema.prisma --output migrations/</code></pre>
 
-  <p>The generated migration includes <code>upgrade()</code> and <code>downgrade()</code> functions with the correct SQL operations for creating tables, indexes, enums, and foreign keys.</p>
+  <p>The generated migration includes <code>upgrade()</code> and <code>downgrade()</code> functions with the correct SQL operations for creating supported tables, indexes, and enums. Foreign-key constraints are not generated.</p>
 
   <h2 id="roundtrip">Roundtrip Verification</h2>
 
-  <p>SchemaForge's shared IR guarantees zero-loss roundtripping. Here's the proof path:</p>
+  <p>Use the shared IR to convert supported schema elements, then inspect the roundtrip for differences. Foreign keys and ORM relationships are not preserved. Here's a verification workflow:</p>
 
   <pre><code># Original Prisma schema
 schemaforge convert --from prisma --to sql --input schema.prisma --output schema-v1.sql
@@ -411,7 +411,7 @@ schemaforge convert --from sql --to prisma --input schema-v1.sql --output schema
 # They should be identical
 schemaforge diff schema.prisma schema-v2.prisma</code></pre>
 
-  <p>The <code>sql &rarr; prisma &rarr; sql</code> roundtrip works the same way. This isn't an accident — it's a design guarantee of the IR architecture. Every format maps to the same intermediate representation, and every generator produces deterministic output from that representation.</p>
+  <p>The <code>sql &rarr; prisma &rarr; sql</code> roundtrip works the same way. Verify your own input; unsupported relationships can be dropped. Every format maps to the same intermediate representation, and every generator produces deterministic output from that representation.</p>
 
   <h2 id="edge-cases">Handling Edge Cases</h2>
 
@@ -483,7 +483,7 @@ schemaforge diff schema.prisma schema-v2.prisma</code></pre>
 schemaforge convert --from prisma --to drizzle --input schema.prisma
 schemaforge diff schema.prisma schema-roundtrip.prisma  # Verify</code></pre>
 
-  <p>SchemaForge also converts to and from 9 other formats — SQL DDL, TypeORM, Django, SQLAlchemy, JSON Schema, GraphQL, EF Core (C#), and Scala case classes. See the <a href="schemaforge-vs-prisma-migrate-vs-alembic-vs-atlas.html">SchemaForge vs Prisma Migrate vs Alembic vs Atlas comparison</a> for a detailed breakdown.</p>
+  <p>SchemaForge also supports eight other import/export formats, plus Alembic generation — SQL DDL, TypeORM, Django, SQLAlchemy, JSON Schema, GraphQL, EF Core (C#), and Scala case classes. See the <a href="schemaforge-vs-prisma-migrate-vs-alembic-vs-atlas.html">SchemaForge vs Prisma Migrate vs Alembic vs Atlas comparison</a> for a detailed breakdown.</p>
 
   <p>For a live conversion experience in your editor, try the <a href="schemaforge-v1-7-0-vscode-extension.html">SchemaForge VS Code extension</a> — it shows real-time schema previews and one-click conversion.</p>
 

@@ -131,7 +131,7 @@
     <div class="links">
       <a href="start-here.html">Start Here</a>
       <a href="quickstart.html">Get Started</a>
-      <a href="#products">Products</a>
+      <a href="index.html#products">Products</a>
       <a href="docs.html" style="font-weight:700">Docs</a>
 
       <a href="quickstart.html">Get Started</a>
@@ -221,7 +221,9 @@
     <pre><code class="language-bash">api-contract-guardian check spec-v1.yaml spec-v2.yaml</code></pre>
 
     <p style="font-size:0.82rem;color:#888;font-weight:600;margin-bottom:8px;">Compare git branches</p>
-    <pre><code class="language-bash">api-contract-guardian check --base main --head feature-api-v2 openapi.yaml</code></pre>
+    <pre><code class="language-bash">baseline="$(mktemp -d)/openapi-base.yaml"
+git show main:openapi.yaml &gt; "$baseline"
+api-contract-guardian check "$baseline" openapi.yaml</code></pre>
 
     <p style="font-size:0.82rem;color:#888;font-weight:600;margin-bottom:8px;">Generate migration guide</p>
     <pre><code class="language-bash">api-contract-guardian migrate spec-v1.yaml spec-v2.yaml --output MIGRATION.md</code></pre>
@@ -445,7 +447,7 @@ rh-envault rotate JWT_SECRET # 256-bit base64 secret</code></pre>
   <div class="tool-section" id="schemaforge">
     <h2><span class="icon icon-sf">🔄</span> SchemaForge</h2>
     <div class="subtitle">v1.7.0 — Bidirectional ORM schema converter (11 formats) + VS Code extension</div>
-    <p class="desc">Convert between SQL DDL, Prisma, Drizzle, TypeORM, Django, SQLAlchemy, GraphQL SDL, JSON Schema, OpenAPI 3.0, Protobuf, and Avro with zero-loss roundtripping. 110 bidirectional conversion paths. Now with a full VS Code extension for live preview, quick convert, and format detection.</p>
+    <p class="desc">Convert between SQL DDL, Prisma, Drizzle, TypeORM, Django, SQLAlchemy, GraphQL SDL, JSON Schema, EF Core, Scala, and Alembic with roundtrip verification of supported schema elements. 100 conversion directions (Alembic export only). Now with a full VS Code extension for live preview, quick convert, and format detection.</p>
     <a href="https://github.com/Coding-Dev-Tools/schemaforge" class="gh-link" target="_blank">View on GitHub →</a>
     <a href="https://github.com/Coding-Dev-Tools/vscode-schemaforge" class="gh-link" target="_blank" style="margin-left:16px;">VS Code Extension →</a>
 
@@ -455,8 +457,9 @@ rh-envault rotate JWT_SECRET # 256-bit base64 secret</code></pre>
     </div>
 
     <ul class="features">
-      <li>SQL DDL ↔ Prisma ↔ Drizzle ↔ TypeORM ↔ Django ↔ SQLAlchemy ↔ GraphQL SDL ↔ JSON Schema ↔ OpenAPI 3.0 ↔ Protobuf ↔ Avro</li>
-      <li>110 bidirectional conversion paths with zero-loss roundtripping</li>
+      <li>SQL DDL ↔ Prisma ↔ Drizzle ↔ TypeORM ↔ Django ↔ SQLAlchemy ↔ GraphQL SDL ↔ JSON Schema ↔ EF Core ↔ Scala; Alembic export only</li>
+      <li>100 conversion directions; Alembic is export only</li>
+      <li>Foreign keys and ORM relationships are not preserved; review every converted schema</li>
       <li>VS Code extension: live preview, quick convert (Ctrl+Alt+S), format detection (Ctrl+Alt+D), two-file diff</li>
       <li>Schema diff between any two formats</li>
       <li>Custom type mappings for edge cases</li>
@@ -590,6 +593,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -601,7 +606,13 @@ jobs:
           git+https://github.com/Coding-Dev-Tools/configdrift.git
 
       # 1. API Contract Guardian — detect breaking schema changes
-      - run: api-contract-guardian check --base origin/main --head HEAD openapi.yaml
+      - env:
+          BASE_REF: ${{ github.base_ref }}
+        run: |
+          git fetch origin "$BASE_REF"
+          baseline="$(mktemp -d)/openapi-base.yaml"
+          git show "origin/$BASE_REF:openapi.yaml" > "$baseline"
+          api-contract-guardian check "$baseline" openapi.yaml
 
       # 2. json2sql — validate SQL output from seed data
       - run: json2sql convert --dialect postgres data/seed.json

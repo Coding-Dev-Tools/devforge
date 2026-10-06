@@ -7,13 +7,13 @@
   <meta name="description" content="SchemaForge v0.5.0 adds SQLAlchemy declarative model support, completing bidirectional conversion across all 6 major ORM formats: SQL DDL, Prisma, Drizzle, TypeORM, Django, and now SQLAlchemy.">
   <meta name="keywords" content="schemaforge, SQLAlchemy, ORM converter, Prisma, Drizzle, TypeORM, Django, schema migration, bidirectional ORM, database schema, v0.5.0">
   <meta property="og:title" content="SchemaForge v0.5.0: SQLAlchemy Support">
-  <meta property="og:description" content="SchemaForge now supports all 6 major ORM formats — SQL DDL, Prisma, Drizzle, TypeORM, Django, and SQLAlchemy — with zero-loss bidirectional conversion.">
+  <meta property="og:description" content="SchemaForge now supports all 6 major ORM formats — SQL DDL, Prisma, Drizzle, TypeORM, Django, and SQLAlchemy — with bidirectional conversion of supported schema elements.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://coding-dev-tools.github.io/devforge/blog/schemaforge-v0-5-0-sqlalchemy.html">
   <meta name="twitter:site" content="@DevForge">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="SchemaForge v0.5.0: SQLAlchemy Support">
-  <meta name="twitter:description" content="Bidirectional conversion between SQLAlchemy, Prisma, Drizzle, TypeORM, Django, and SQL DDL — one CLI, zero loss.">
+  <meta name="twitter:description" content="Bidirectional conversion between SQLAlchemy, Prisma, Drizzle, TypeORM, Django, and SQL DDL — one CLI, inspect every conversion.">
   <meta name="twitter:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
   <meta property="og:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
   <meta property="og:image:width" content="1200">
@@ -27,7 +27,7 @@
     "@context": "https://schema.org",
     "@type": "TechArticle",
     "headline": "SchemaForge v0.5.0: SQLAlchemy Support — Now Covers All 6 ORM Formats",
-    "description": "SchemaForge v0.5.0 adds SQLAlchemy declarative model support with zero-loss bidirectional conversion.",
+    "description": "SchemaForge v0.5.0 adds SQLAlchemy declarative model support with bidirectional conversion of supported schema elements.",
     "datePublished": "2026-05-15",
     "author": { "@type": "Organization", "name": "DevForge" },
     "publisher": { "@type": "Organization", "name": "DevForge" },
@@ -105,7 +105,7 @@
 
   <ul>
     <li><strong>SQLAlchemy declarative models</strong> — import and export <code>declarative_base()</code> models with full column types, relationships, indexes, and constraints</li>
-    <li><strong>Bidirectional SQLAlchemy conversion</strong> — convert TO SQLAlchemy FROM any format, and convert FROM SQLAlchemy TO any format</li>
+    <li><strong>Bidirectional SQLAlchemy conversion</strong> — convert to SQLAlchemy from supported import formats, and from SQLAlchemy to supported targets (Alembic is export only)</li>
     <li><strong>Demo fixtures</strong> — the <code>fixtures/</code> directory now includes a blog schema in all 6 formats so you can try SchemaForge immediately</li>
     <li><strong>All direction pairs</strong> — every format can convert to every other format (that's 30 possible conversion paths)</li>
   </ul>

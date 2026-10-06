@@ -31,7 +31,7 @@
  <id>https://coding-dev-tools.github.io/devforge/blog/schemaforge-vs-prisma-migrate-vs-alembic-vs-atlas.html</id>
  <published>2026-05-28T00:00:00Z</published>
  <updated>2026-05-28T00:00:00Z</updated>
- <summary>Four schema conversion and migration tools compared — SchemaForge (bidirectional 11-format converter with 110 direction pairs), Prisma Migrate (schema-first Prisma migrations), Alembic (SQLAlchemy auto-generated migrations), and Atlas (declarative schema management with CI linting). Compare format coverage, bidirectional conversion, migration generation, JSON Schema/GraphQL output, CI/CD integration, and cost.</summary>
+ <summary>Four schema conversion and migration tools compared — SchemaForge (bidirectional 11-format converter with 100 direction pairs (Alembic export only)), Prisma Migrate (schema-first Prisma migrations), Alembic (SQLAlchemy auto-generated migrations), and Atlas (declarative schema management with CI linting). Compare format coverage, bidirectional conversion, migration generation, JSON Schema/GraphQL output, CI/CD integration, and cost.</summary>
  <category term="comparison" />
  <category term="SchemaForge" />
  <category term="Prisma" />
@@ -746,7 +746,7 @@
     <id>https://coding-dev-tools.github.io/devforge/blog/schemaforge-v1-7-0-vscode-extension.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
-    <summary>SchemaForge expands to 11 schema formats with a full VS Code extension — live preview, quick convert, format detection, and two-file diff. 110 bidirectional paths, 270+ tests.</summary>
+    <summary>SchemaForge expands to 11 schema formats with a full VS Code extension — live preview, quick convert, format detection, and two-file diff. 100 conversion directions (Alembic export only), 270+ tests.</summary>
     <category term="release"/>
   </entry>
 

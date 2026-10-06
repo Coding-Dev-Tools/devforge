@@ -8,8 +8,31 @@ if broken links are found (when --exit-code is passed).
 
 import argparse
 import os
-import re
 import sys
+from html.parser import HTMLParser
+from pathlib import Path
+from urllib.parse import unquote, urljoin, urlsplit
+
+
+SITE_URL = "https://coding-dev-tools.github.io/devforge/"
+
+
+class PageLinks(HTMLParser):
+    """Parse actual HTML links and anchors, excluding escaped code examples."""
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.links = []
+        self.anchors = set()
+
+    def handle_starttag(self, tag, attrs):
+        for name, value in attrs:
+            if value is None:
+                continue
+            if name in {"href", "src"}:
+                self.links.append(value)
+            if name == "id" or (tag == "a" and name == "name"):
+                self.anchors.add(value)
 
 
 def collect_html_files(root_dir: str) -> set[str]:
@@ -64,38 +87,51 @@ def check_links(root_dir: str, verbose: bool = False) -> int:
     Returns the number of broken links found.
     """
     all_files = collect_html_files(root_dir)
-    actual_pages = build_actual_pages(all_files)
+    root = Path(root_dir).resolve()
+    pages = {}
+    for fp in all_files:
+        parser = PageLinks()
+        parser.feed(Path(fp).read_text(encoding="utf-8-sig", errors="replace"))
+        pages[Path(fp).resolve().relative_to(root).as_posix()] = parser
 
     if verbose:
-        print(f"Actual HTML pages: {len(actual_pages)}")
+        print(f"Actual HTML pages: {len(pages)}")
 
     broken = 0
     checked = 0
 
-    for fp in sorted(all_files):
-        with open(fp, encoding="utf-8", errors="replace") as f:
-            content = f.read()
-
-        links = re.findall(r'href="([^"]+\.html)"', content)
-
-        source_rel = os.path.relpath(fp, root_dir).replace(os.sep, "/")
-        source_dir = os.path.dirname(source_rel)
-        if source_dir == ".":
-            source_dir = ""
-
-        for link in links:
+    site = urlsplit(SITE_URL)
+    for source_rel, parser in sorted(pages.items()):
+        for link in parser.links:
+            target = urlsplit(urljoin(SITE_URL + source_rel, link))
+            # Other projects on the same host are external to this artifact.
+            if target.scheme not in {"http", "https"} or target.netloc != site.netloc:
+                continue
+            if not target.path.startswith(site.path):
+                continue
             checked += 1
-            if link.startswith("http://") or link.startswith("https://"):
-                continue
-            if link.startswith("#"):
+            relative = unquote(target.path[len(site.path):])
+            if not relative or relative.endswith("/"):
+                relative += "index.html"
+            full_target = (root / relative).resolve()
+            if root not in full_target.parents or not full_target.is_file():
+                print(f"  BROKEN: {source_rel} -> {link} (missing file)")
+                broken += 1
                 continue
 
-            resolved = resolve_link(link, source_dir)
-            target_path = resolved.replace("/", os.sep)
-
-            full_target = os.path.join(root_dir, target_path) if root_dir != "." else target_path
-            if not os.path.exists(full_target):
-                print(f"  BROKEN: {source_rel} -> {link}")
+            # Empty fragments and #top use the browser's built-in document top.
+            # Text fragments may have an ordinary anchor before :~:text=.
+            fragment = unquote(target.fragment.split(":~:", 1)[0])
+            if not fragment or fragment.lower() == "top":
+                continue
+            if full_target.suffix.lower() not in {".html", ".htm", ".svg"}:
+                continue
+            target_parser = pages.get(relative)
+            if target_parser is None:
+                target_parser = PageLinks()
+                target_parser.feed(full_target.read_text(encoding="utf-8-sig", errors="replace"))
+            if fragment not in target_parser.anchors:
+                print(f"  BROKEN: {source_rel} -> {link} (missing fragment)")
                 broken += 1
 
     if verbose or broken > 0:

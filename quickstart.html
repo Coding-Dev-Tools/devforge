@@ -126,7 +126,7 @@
     <div class="links">
       <a href="start-here.html">Start Here</a>
       <a href="quickstart.html" style="font-weight:700">Get Started</a>
-      <a href="#products">Products</a>
+      <a href="index.html#products">Products</a>
       <a href="docs.html">Docs</a>
       <a href="pricing.html">Pricing</a>
       <a href="alternatives.html">Alternatives</a>
@@ -153,16 +153,16 @@
     <p>Every tool installs standalone. Pick the one that solves your immediate problem — or install the full suite.</p>
     <div class="tool-picker">
       <a href="#install-acg"><span class="icon">⚡</span> API Contract Guardian</a>
-      <a href="#install-j2s"><span class="icon">🗃️</span> json2sql</a>
-      <a href="#install-dd"><span class="icon">☁️</span> DeployDiff</a>
-      <a href="#install-cd"><span class="icon">⌘</span> ConfigDrift</a>
-      <a href="#install-aa"><span class="icon">🔑</span> APIAuth</a>
-      <a href="#install-ag"><span class="icon">👻</span> APIGhost</a>
-      <a href="#install-ev"><span class="icon">🛡️</span> Envault</a>
-      <a href="#install-sf"><span class="icon">🔄</span> SchemaForge</a>
-      <a href="#install-ctm"><span class="icon">🔌</span> click-to-mcp</a>
-      <a href="#install-dm"><span class="icon">🔄</span> DataMorph</a>
-      <a href="#install-dc"><span class="icon">🧹</span> DeadCode</a>
+      <a href="docs.html#json2sql"><span class="icon">🗃️</span> json2sql</a>
+      <a href="docs.html#deploydiff"><span class="icon">☁️</span> DeployDiff</a>
+      <a href="docs.html#configdrift"><span class="icon">⌘</span> ConfigDrift</a>
+      <a href="docs.html#apiauth"><span class="icon">🔑</span> APIAuth</a>
+      <a href="docs.html#apighost"><span class="icon">👻</span> APIGhost</a>
+      <a href="docs.html#envault"><span class="icon">🛡️</span> Envault</a>
+      <a href="docs.html#schemaforge"><span class="icon">🔄</span> SchemaForge</a>
+      <a href="docs.html#click-to-mcp"><span class="icon">🔌</span> click-to-mcp</a>
+      <a href="docs.html#datamorph"><span class="icon">🔄</span> DataMorph</a>
+      <a href="docs.html#deadcode"><span class="icon">🧹</span> DeadCode</a>
     </div>
 <div class="callout">
 <p><strong>Want all 11?</strong> Use the full install command below or the <a href="docs.html#meta-package">suite installation guide</a>. Each tool installs from its own GitHub repository.</p>
@@ -212,10 +212,10 @@
     <div class="code-block">
       <div class="header"><span>API Contract Guardian</span></div>
       <pre><code><span class="comment"># Validate an OpenAPI spec against a baseline</span>
-<span class="cmd">acg validate</span> openapi.yaml <span class="flag">--baseline</span> openapi-base.yaml
+<span class="cmd">api-contract-guardian check</span> openapi-base.yaml openapi.yaml
 
 <span class="comment"># Extract breaking changes between branches</span>
-<span class="cmd">acg diff</span> main..feature/new-endpoint</code></pre>
+<span class="cmd">api-contract-guardian diff</span> openapi-base.yaml openapi.yaml</code></pre>
     </div>
     <div class="output-block">
       <div class="label">Output</div>
@@ -229,19 +229,19 @@
     <div class="code-block">
       <div class="header"><span>json2sql</span></div>
       <pre><code><span class="comment"># Convert a JSON file to SQL INSERT statements</span>
-<span class="cmd">json2sql</span> users.json <span class="flag">--dialect</span> postgresql <span class="flag">--output</span> users.sql</code></pre>
+<span class="cmd">json2sql convert</span> users.json <span class="flag">--dialect</span> postgres <span class="flag">--output</span> users.sql</code></pre>
     </div>
 
     <div class="code-block">
       <div class="header"><span>DeployDiff</span></div>
       <pre><code><span class="comment"># Preview infrastructure changes</span>
-<span class="cmd">deploydiff</span> docker-compose.yml <span class="flag">--compare</span> docker-compose.prod.yml</code></pre>
+<span class="cmd">deploydiff preview</span> <span class="flag">--tf</span> plan.json</code></pre>
     </div>
 
     <div class="code-block">
       <div class="header"><span>DeadCode</span></div>
       <pre><code><span class="comment"># Scan for unused exports in a TypeScript project</span>
-<span class="cmd">deadcode scan</span> <span class="flag">-p</span> /path/to/ts-project</code></pre>
+<span class="cmd">deadcode</span> <span class="flag">--project</span> /path/to/ts-project <span class="cmd">scan</span></code></pre>
     </div>
   </div>
 
@@ -263,7 +263,15 @@
       - <span class="cmd">uses:</span> actions/checkout@v4
         <span class="cmd">with:</span> { fetch-depth: 0 }
       - <span class="cmd">run:</span> pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git
-      - <span class="cmd">run:</span> acg validate openapi.yaml --baseline origin/main</code></pre>
+      - <span class="cmd">uses:</span> actions/setup-python@v5
+        <span class="cmd">with:</span> { python-version: '3.12' }
+      - <span class="cmd">env:</span>
+          BASE_REF: ${{ github.base_ref }}
+        <span class="cmd">run:</span> |
+          git fetch origin "$BASE_REF"
+          baseline="$(mktemp -d)/openapi-base.yaml"
+          git show "origin/$BASE_REF:openapi.yaml" > "$baseline"
+          api-contract-guardian check "$baseline" openapi.yaml</code></pre>
     </div>
 
     <div class="callout">

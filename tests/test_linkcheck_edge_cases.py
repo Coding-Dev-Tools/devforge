@@ -3,7 +3,7 @@
 Covers:
 - check_links verbose mode (linkcheck.py:62)
 - check_links skipping http/https links (linkcheck.py:81)
-- check_links skipping #hash anchors (linkcheck.py:83)
+- check_links validating #hash anchors
 - main() entry point
 """
 
@@ -50,12 +50,12 @@ class TestCheckLinksEdgeCases:
             broken = check_links(tmpdir)
             assert broken == 0
 
-    def test_check_links_skips_hash_anchors(self):
-        """check_links skips #hash links (linkcheck.py:83)."""
+    def test_check_links_validates_hash_anchors(self):
+        """Existing fragment IDs and the browser's #top are valid."""
         with tempfile.TemporaryDirectory() as tmpdir:
             root = Path(tmpdir)
             (root / "index.html").write_text(
-                '<html><body>'
+                '<html><body><h2 id="section">Section</h2>'
                 '<a href="#section">section</a>'
                 '<a href="#top">top</a>'
                 '</body></html>'

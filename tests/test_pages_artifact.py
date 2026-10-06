@@ -65,3 +65,14 @@ def test_pages_artifact_contains_public_site_assets_only(tmp_path):
     assert actual_files == expected_files
     assert (output / "blog/post.html").read_text(encoding="utf-8") == "post"
     assert not (output / "drafts").exists()
+
+
+def test_current_pages_artifact_has_no_broken_links_or_fragments(tmp_path):
+    output = tmp_path / "pages"
+    subprocess.run(
+        [sys.executable, str(BUILDER), "--source", str(REPOSITORY_ROOT), "--output", str(output)],
+        check=True,
+    )
+    checker = REPOSITORY_ROOT / ".hermes/linkcheck.py"
+    subprocess.run([sys.executable, str(checker), "--exit-code", str(output)], check=True)
+    assert not (output / "drafts/newsletter-outreach-email.md").exists()

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SchemaForge v0.2.0: Drizzle ORM Bidirectional Support — DevForge</title>
-  <meta name="description" content="SchemaForge v0.2.0 adds full Drizzle ORM bidirectional support — convert between SQL DDL, Drizzle TypeScript schemas, and Prisma with zero-loss roundtripping. Includes pgEnum, JSONB, UUID, default values, dialect-aware table factories.">
+  <meta name="description" content="SchemaForge v0.2.0 adds full Drizzle ORM bidirectional support — convert between SQL DDL, Drizzle TypeScript schemas, and Prisma with roundtrip verification of supported schema elements. Includes pgEnum, JSONB, UUID, default values, dialect-aware table factories.">
   <meta property="og:title" content="SchemaForge v0.2.0: Drizzle ORM Bidirectional Support — DevForge">
   <meta property="og:description" content="SchemaForge v0.2.0 adds bidirectional Drizzle ORM conversion — convert between 11 schema formats with roundtrip fidelity.">
   <meta property="og:type" content="article">
@@ -62,7 +62,7 @@
     <a href="https://www.linkedin.com/sharing/share-offsite/?url=$(location.href)" target="_blank" rel="noopener" class="share-link">in LinkedIn</a>
   </div>
 
-  <p>SchemaForge v0.2.0 is out — adding full <strong>Drizzle ORM</strong> bidirectional conversion support. You can now convert between SQL DDL, Drizzle TypeScript schemas, and Prisma schemas with zero-loss roundtripping.</p>
+  <p>SchemaForge v0.2.0 is out — adding full <strong>Drizzle ORM</strong> bidirectional conversion support. You can now convert between SQL DDL, Drizzle TypeScript schemas, and Prisma schemas with roundtrip verification of supported schema elements.</p>
 
   <div class="cta-box">
     <h3>Install Now</h3>
@@ -107,7 +107,7 @@
   <p>SchemaForge uses a three-phase architecture:</p>
   <ol>
     <li><strong>Parse</strong> — Each format has a dedicated parser (regex-based for Drizzle, full grammar for SQL) that extracts tables, columns, types, constraints, and enums into a unified IR</li>
-    <li><strong>IR</strong> — An intermediate representation of the schema, lossless with respect to all supported formats</li>
+    <li><strong>IR</strong> — An intermediate representation of the schema, captures supported schema elements; foreign keys and ORM relationships are not preserved</li>
     <li><strong>Generate</strong> — Each output format has a generator that renders the IR as idiomatic code</li>
   </ol>
 
