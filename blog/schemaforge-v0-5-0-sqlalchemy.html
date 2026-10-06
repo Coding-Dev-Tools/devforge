@@ -85,7 +85,7 @@
   <hr>
 
   <p>
-    We're excited to announce <strong>SchemaForge v0.5.0</strong>, adding full <strong>SQLAlchemy declarative model</strong> support. This completes the set: SchemaForge now converts bidirectionally between all <strong>six major ORM formats</strong> with zero information loss.
+    We're excited to announce <strong>SchemaForge v0.5.0</strong>, adding full <strong>SQLAlchemy declarative model</strong> support. This completes the set: SchemaForge now converts bidirectionally between all <strong>six major ORM formats</strong> with roundtrip verification of supported schema elements. Foreign keys and ORM relationships are not preserved by the current converter.
   </p>
 
   <div class="diagram">
@@ -104,7 +104,7 @@
   <h2>What's New in v0.5.0</h2>
 
   <ul>
-    <li><strong>SQLAlchemy declarative models</strong> — import and export <code>declarative_base()</code> models with full column types, relationships, indexes, and constraints</li>
+    <li><strong>SQLAlchemy declarative models</strong> — import and export <code>declarative_base()</code> models with supported columns, types, indexes and constraints; ORM relationships are not preserved</li>
     <li><strong>Bidirectional SQLAlchemy conversion</strong> — convert to SQLAlchemy from supported import formats, and from SQLAlchemy to supported targets (Alembic is export only)</li>
     <li><strong>Demo fixtures</strong> — the <code>fixtures/</code> directory now includes a blog schema in all 6 formats so you can try SchemaForge immediately</li>
     <li><strong>All direction pairs</strong> — every format can convert to every other format (that's 30 possible conversion paths)</li>
@@ -145,7 +145,7 @@ class Post(Base):
     author_id = Column(Integer, ForeignKey("users.id"))
     author = relationship("User", back_populates="posts")</code></pre>
 
-  <p>Convert to Prisma:</p>
+  <p>Convert to Prisma. The scalar columns remain; foreign-key constraints and ORM relationships in the input are dropped. Review the output before applying it:</p>
 
   <div class="cmd-block">$ schemaforge convert --from sqlalchemy --to prisma --input models.py</div>
 
@@ -155,7 +155,6 @@ class Post(Base):
   name       String
   is_active  Boolean  @default(true)
   created_at DateTime @default(now())
-  posts      Post[]
 }
 
 model Post {
@@ -164,7 +163,6 @@ model Post {
   body       String
   published  Boolean  @default(false)
   author_id  Int
-  author     User     @relation(fields: [author_id], references: [id])
 }</code></pre>
 
   <p>Or to Drizzle:</p>
@@ -186,7 +184,7 @@ export const posts = pgTable("posts", {
   title: varchar("title", { length: 200 }).notNull(),
   body: varchar("body").notNull(),
   published: boolean("published").default(false),
-  authorId: integer("author_id").references(() => users.id),
+  authorId: integer("author_id"),
 });</code></pre>
 
   <p>Or to Django models, TypeORM entities, or SQL DDL — all with the same command pattern.</p>

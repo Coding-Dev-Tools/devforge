@@ -544,7 +544,7 @@ rh-envault rotate JWT_SECRET # 256-bit base64 secret</code></pre>
   <div class="tool-section" id="deadcode">
     <h2><span class="icon" style="background:rgba(239,68,68,.15)">🧹</span> DeadCode</h2>
     <div class="subtitle">v0.1.0 — Unused export & dead route detector for TypeScript/React</div>
-    <p class="desc">Detect and remove unused exports, dead routes, orphaned CSS, and unreferenced components in TypeScript/React/Next.js projects. Uses the full TypeScript compiler API for accurate analysis — ESLint catches unused variables but misses the structural decay that bloats bundles.</p>
+    <p class="desc">Detect and remove unused exports, dead routes, orphaned CSS, and unreferenced components in TypeScript/React/Next.js projects. Uses regex-based scanning to identify potential unused exports, routes, CSS classes and components. Review findings before removal.</p>
     <a href="https://github.com/Coding-Dev-Tools/deadcode" class="gh-link" target="_blank">View on GitHub →</a>
 
     <div class="install-block">
@@ -567,7 +567,7 @@ rh-envault rotate JWT_SECRET # 256-bit base64 secret</code></pre>
     <pre><code class="language-bash">deadcode remove --dry-run</code></pre>
 
     <div class="insight">
-      <p><strong>Why you need it:</strong> ESLint catches unused variables but misses structural decay — orphaned exports bloat bundles, stale routes confuse teammates, orphaned CSS silently accumulates. DeadCode uses the TypeScript compiler API for whole-project analysis that linters can't match. Scan, preview, then clean with confidence.</p>
+      <p><strong>Why you need it:</strong> ESLint catches unused variables but misses structural decay — orphaned exports bloat bundles, stale routes confuse teammates, orphaned CSS silently accumulates. DeadCode scans source patterns across the project and reports possible cleanup candidates. Scan, preview, then clean with confidence.</p>
     </div>
   </div>
 

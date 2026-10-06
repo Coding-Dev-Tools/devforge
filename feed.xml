@@ -297,7 +297,7 @@
     <id>https://coding-dev-tools.github.io/devforge/blog/deadcode-technical-deep-dive.html</id>
     <published>2026-05-15T00:00:00Z</published>
     <updated>2026-05-16T00:00:00Z</updated>
-    <summary>Technical deep-dive: AST parsing, tree-shaking-aware export resolution, barrel file unwrapping, cross-file reference tracking, and how DeadCode catches dead routes, unused components, and orphaned CSS that linters miss.</summary>
+    <summary>Technical deep-dive: regex-based export/import matching, conservative re-export handling, route heuristics, and CSS/component scanning in DeadCode, with limitations and review guidance.</summary>
     <category term="guide" />
   </entry>
 

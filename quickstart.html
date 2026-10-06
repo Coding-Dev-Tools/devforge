@@ -263,9 +263,9 @@
     <span class="cmd">steps:</span>
       - <span class="cmd">uses:</span> actions/checkout@v4
         <span class="cmd">with:</span> { fetch-depth: 0 }
-      - <span class="cmd">run:</span> pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git
       - <span class="cmd">uses:</span> actions/setup-python@v5
         <span class="cmd">with:</span> { python-version: '3.12' }
+      - <span class="cmd">run:</span> pip install git+https://github.com/Coding-Dev-Tools/api-contract-guardian.git
       - <span class="cmd">env:</span>
           BASE_REF: ${{ github.base_ref }}
         <span class="cmd">run:</span> |

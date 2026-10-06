@@ -64,7 +64,7 @@
     <li><a href="#deadcode">DeadCode — Dead Code Detection</a></li>
     <li><a href="#json2sql">JSON2SQL — Query JSON with SQL</a></li>
     <li><a href="#envault">Envault — Environment Variable Manager</a></li>
-    <li><a href="#schemaforge">SchemaForge — Database Schema Migrations</a></li>
+    <li><a href="#schemaforge">SchemaForge — ORM Schema Conversion</a></li>
     <li><a href="#apighost">APIGhost — Mock API Server from OpenAPI</a></li>
     <li><a href="#configdrift">ConfigDrift — Configuration Monitoring</a></li>
     <li><a href="#deploydiff">DeployDiff — Deployment Preview</a></li>
@@ -117,9 +117,9 @@ envault init && envault set API_KEY=sk-xxx</code></pre>
 <div class="tool-card" id="schemaforge">
 <h2><span class="num">5.</span> SchemaForge</h2>
 <p><span class="tag tag-data">Data</span></p>
-<p><strong>Database schema migrations, simplified.</strong> Define your schema in Python, TypeScript, or YAML. SchemaForge generates migrations for PostgreSQL, MySQL, SQLite, and more. Supports SQLAlchemy, Drizzle ORM, and raw SQL output.</p>
-<pre><code>pip install git+https://github.com/Coding-Dev-Tools/schemaforge.git-cli
-schemaforge init && schemaforge migrate</code></pre>
+<p><strong>ORM schema conversion.</strong> SchemaForge supports 11 formats, including SQL DDL, Prisma, Drizzle, TypeORM, Django, SQLAlchemy, JSON Schema, GraphQL SDL, EF Core, Scala and Alembic. Alembic is export only. Review converted schemas: foreign keys and ORM relationships are not preserved.</p>
+<pre><code>pip install git+https://github.com/Coding-Dev-Tools/schemaforge.git
+schemaforge convert --from sql --to prisma --input schema.sql</code></pre>
 <p>↳ <a href="https://github.com/Coding-Dev-Tools/schemaforge">GitHub</a> &middot; <a href="schemaforge-v0-2-0-drizzle.html">Read more</a></p>
 </div>
 

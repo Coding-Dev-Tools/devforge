@@ -133,17 +133,8 @@ def test_schemaforge_public_copy_matches_supported_formats_and_limits():
     assert "Alembic is export only" in section
     assert "Foreign keys and ORM relationships are not preserved" in section
 
-    pages = [ROOT / name for name in ["index.html", "docs.html", "alternatives.html", "pricing.html", "blog.html", "feed.xml"]]
-    pages.extend((ROOT / "blog").glob("schemaforge*.html"))
-    for page in pages:
-        copy = page.read_text(encoding="utf-8-sig")
-        assert not re.search(r"110 (?:bidirectional|direction|conversion)", copy, re.I), page
-        assert not re.search(r"zero[- ]loss", copy, re.I), page
-        # This article explicitly enumerates current supported formats, unlike
-        # comparison articles that may mention OpenAPI as a separate use case.
-        if page.name == "schemaforge-v1-7-0-vscode-extension.html":
-            for unsupported in ["Protobuf", "Avro", "OpenAPI"]:
-                assert unsupported not in copy, page
+    # The cross-page audit in test_published_copy uses the production Pages
+    # builder, covering every published file rather than a filename whitelist.
 
 
 def test_deadcode_comparison_describes_the_regex_scanner():

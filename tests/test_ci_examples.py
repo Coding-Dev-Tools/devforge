@@ -31,6 +31,14 @@ def test_rendered_ci_uses_file_based_contract_check(page):
     assert "acg validate" not in runs
 
 
+@pytest.mark.parametrize("page", ["docs.html", "quickstart.html"])
+def test_python_is_selected_before_rendered_install_steps(page):
+    steps = next(iter(workflow(page)["jobs"].values()))["steps"]
+    setup = next(i for i, step in enumerate(steps) if step.get("uses", "").startswith("actions/setup-python@"))
+    install = [i for i, step in enumerate(steps) if "pip install" in step.get("run", "")]
+    assert install and all(setup < i for i in install), f"{page}: install before setup-python"
+
+
 @pytest.mark.skipif(os.environ.get("DEVFORGE_UPSTREAM_SMOKE") != "1", reason="run in the CLI Example Smoke job")
 @pytest.mark.parametrize("page", ["docs.html", "quickstart.html"])
 @pytest.mark.parametrize("breaking", [False, True])

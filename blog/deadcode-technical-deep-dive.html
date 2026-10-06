@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DeadCode Under the Hood: How Static Analysis Finds Dead React/Next.js Code | DevForge</title>
-  <meta name="description" content="A technical deep-dive into how DeadCode analyzes React/Next.js codebases — AST parsing, tree-shaking-aware export resolution, cross-file reference tracking, and how it finds dead routes, unused components, and orphaned CSS that linters miss.">
-  <meta name="keywords" content="dead code, static analysis, React, Next.js, TypeScript, AST, tree-shaking, dead code elimination, DeadCode CLI, code quality, refactoring, developer tools, autonomous AI">
+  <meta name="description" content="How the current DeadCode regex scanner collects source patterns and reports potential unused exports, routes, components, and CSS classes, with review guidance and limitations.">
+  <meta name="keywords" content="dead code, static analysis, React, Next.js, TypeScript, regex scanner, dead code elimination, DeadCode CLI, code quality, refactoring, developer tools, autonomous AI">
   <meta property="og:title" content="DeadCode Under the Hood: How It Finds Dead React/Next.js Code">
-  <meta property="og:description" content="How DeadCode does AST-parsing, tree-shaking-aware export resolution, and cross-file reference tracking to find dead routes, unused components, and orphaned CSS that linters miss.">
+  <meta property="og:description" content="How DeadCode uses regex-based source scanning, export/import maps and conservative re-export handling to report potential cleanup candidates.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://coding-dev-tools.github.io/devforge/blog/deadcode-technical-deep-dive.html">
   <meta name="twitter:site" content="@DevForge">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="DeadCode Under the Hood: How It Finds Dead React/Next.js Code">
-  <meta name="twitter:description" content="Technical deep-dive: AST parsing, tree-shaking export resolution, cross-file reference tracking in DeadCode.">
+  <meta name="twitter:description" content="Technical deep-dive: regex scanning, export/import maps, re-export safeguards and limitations in DeadCode.">
   <meta name="twitter:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
   <meta property="og:image" content="https://coding-dev-tools.github.io/devforge/og-image.svg">
   <meta property="og:image:width" content="1200">
@@ -54,243 +54,39 @@
 
 <div class="badge" style="margin-bottom:16px">Technical Deep-Dive</div>
 <h1>DeadCode Under the Hood: How Static Analysis Finds Dead React/Next.js Code</h1>
-<p class="subtitle">AST parsing, tree-shaking-aware export resolution, cross-file reference tracking, and why this catches things linters miss.</p>
+<p class="subtitle">Regex-based source scanning, conservative re-export handling, and practical review guidance for React/Next.js projects.</p>
 
-<p>In a <a href="clean-up-react-dead-code.html">previous tutorial</a>, we showed you how to use DeadCode to clean up a React/Next.js project. But <em>how</em> does it actually work under the hood?</p>
+<p>The current DeadCode implementation matches source patterns with Python regular expressions. It collects export/import names, route paths, CSS class usage and component names, then reports potential cleanup candidates. This overview follows the <a href="https://github.com/Coding-Dev-Tools/deadcode/blob/272bfa8dd83b91aebeca96304404e7b64871c753/src/deadcode/scanner.py">pinned scanner implementation</a> and <a href="https://github.com/Coding-Dev-Tools/deadcode/blob/272bfa8dd83b91aebeca96304404e7b64871c753/src/deadcode/cli.py">console entry point</a>.</p>
 
-<p>DeadCode isn't just grep with patterns. It builds a full abstract syntax tree (AST) of every file, resolves imports and exports across files, tracks references bidirectionally, and distinguishes between "exported but unused" and "exported and used by a barrel file." Here's how.</p>
+<h2>Discovery and Pattern Matching</h2>
+<p>The scanner walks the project directory and selects TypeScript, TSX, JavaScript, JSX, CSS and SCSS files. Built-in exclusions include node_modules, .git, .next, dist, build and generated/cache directories. Configured gitignore-style ignore and include patterns control which paths are scanned.</p>
+<p>Compiled regex patterns recognize common export declarations, named imports, namespace imports, side-effect imports, re-exports, JSX class names and CSS-module accessors. The scan builds maps of names and files from those matches. It does not perform TypeScript type checking or prove runtime reachability.</p>
 
-<hr>
+<h2>Re-Exports Are Handled Conservatively</h2>
+<p>Named re-exports count as uses of the forwarded symbol. For a relative wildcard re-export such as <code>export * from './utils'</code>, the scanner attempts to resolve the source file and protects its exports as part of the public API surface. This avoids offering those forwarded exports for removal, even when their downstream consumers are not visible in the scanned project.</p>
+<p>This is a safeguard, not exhaustive symbol resolution. Complex aliases, generated modules and runtime behavior still need human review.</p>
 
-<h2>Architecture Overview</h2>
-
-<p>DeadCode's analysis pipeline has four stages:</p>
-
-<ol>
-  <li><strong>Discovery</strong> — Find all source files by extension (.ts, .tsx, .js, .jsx, .css)</li>
-  <li><strong>Parsing</strong> — Build ASTs for every file, extracting exports, imports, and references</li>
-  <li><strong>Resolution</strong> — Resolve import/export relationships across files (including barrel files, re-exports, and path aliases)</li>
-  <li><strong>Analysis</strong> — Classify each export and reference as used, unused, or uncertain</li>
-</ol>
-
-<p>Let's walk through each stage.</p>
-
-<h2>Stage 1: Discovery</h2>
-
-<p>DeadCode scans the project directory tree, respecting <code>.gitignore</code> and a built-in exclusion list (<code>node_modules</code>, <code>.next</code>, <code>dist</code>, <code>build</code>, <code>.cache</code>). It collects files by extension, categorizing them as:</p>
-
-<ul>
-  <li><strong>TypeScript/React</strong> — .ts, .tsx, .js, .jsx (AST-parsed for exports/imports)</li>
-  <li><strong>CSS</strong> — .css, .scss, .less (parsed for class names and selectors)</li>
-  <li><strong>Routes</strong> — Next.js App Router <code>page.tsx</code>, <code>route.ts</code>, <code>layout.tsx</code> (special handling for file-system routing)</li>
-</ul>
-
-<p>This stage also detects the project framework (Next.js Pages Router vs App Router vs plain React) to adjust analysis rules.</p>
-
-<h2>Stage 2: AST Parsing</h2>
-
-<p>Every source file is parsed into an AST using Python's <code>tree-sitter</code> bindings with the TypeScript and JavaScript grammars. Here's what DeadCode extracts from each file:</p>
-
-<h3>Exports</h3>
-<p>DeadCode classifies every export in the file:</p>
-<ul>
-  <li><code>export function X()</code> — Named function export</li>
-  <li><code>export const X = ...</code> — Named variable export</li>
-  <li><code>export default class X</code> — Default class export</li>
-  <li><code>export { X, Y }</code> — Named re-export</li>
-  <li><code>export * from './module'</code> — Wildcard re-export (barrel)</li>
-  <li><code>export type X</code> — Type-only export</li>
-</ul>
-
-<h3>Imports</h3>
-<p>Each import is resolved to its source module and the specific symbols imported:</p>
-<ul>
-  <li><code>import { X } from './module'</code> — Named import from relative path</li>
-  <li><code>import X from './module'</code> — Default import</li>
-  <li><code>import * as X from './module'</code> — Namespace import (marks everything as used)</li>
-  <li><code>import './styles.css'</code> — Side-effect import (CSS, images)</li>
-  <li><code>import type { X }</code> — Type-only import</li>
-</ul>
-
-<h3>References</h3>
-<p>DeadCode tracks every identifier reference in the file:</p>
-<ul>
-  <li>Function calls: <code>MyComponent()</code></li>
-  <li>JSX tags: <code>&lt;MyComponent /&gt;</code></li>
-  <li>Variable references: <code>myFunction</code> in expressions</li>
-  <li>Property access: <code>obj.method</code></li>
-  <li>CSS class usage: <code>className="my-class"</code>, <code>styles.myClass</code></li>
-</ul>
-
-<div class="tip">
-<strong>Why two-stage parsing?</strong> DeadCode extracts exports first (building a "symbol table"), then resolves imports. This lets it handle circular dependencies and forward references elegantly.
-</div>
-
-<h2>Stage 3: Cross-File Resolution</h2>
-
-<p>This is where DeadCode separates itself from a simple linter. It builds a <strong>bidirectional reference graph</strong> across all files.</p>
-
-<h3>Direct Resolution</h3>
-<p>For each import statement, DeadCode resolves the relative path to an actual file, accounting for:</p>
-<ul>
-  <li><strong>Extension resolution</strong>: <code>./component</code> → <code>component.tsx</code>, <code>component.ts</code>, <code>component/index.tsx</code></li>
-  <li><strong>Path aliases</strong>: <code>@/components/Button</code> → resolved via <code>tsconfig.json</code> paths or <code>jsconfig.json</code></li>
-  <li><strong>Node_modules</strong>: Package imports are noted but not analyzed (they're assumed to be used)</li>
-</ul>
-
-<h3>Barrel File Unwrapping</h3>
-<p>This is the trickiest case. A barrel file like <code>components/index.ts</code> often does:</p>
-
-<pre><code>export { Button } from './Button';
-export { Card } from './Card';
-export { Modal } from './Modal';
-</code></pre>
-
-<p>A naive tool would flag <code>Button</code> as "exported but unused" in <code>Button.tsx</code> because it looks at the source file in isolation. DeadCode instead:</p>
-
-<ol>
-  <li>Sees that <code>export { Button }</code> is a re-export from <code>./Button</code></li>
-  <li>Checks if <code>Button</code> is imported from the barrel file anywhere</li>
-  <li>If it <em>is</em> imported from the barrel, marks it as "used via barrel re-export"</li>
-  <li>If it's <em>not</em> imported from anywhere, marks the re-export itself as dead</li>
-</ol>
-
-<h3>Wildcard Re-export Handling</h3>
-<p><code>export * from './utils'</code> re-exports everything from <code>utils.ts</code>. DeadCode resolves the wildcard to the actual exports, then checks if any consumer imports specific symbols. If <em>none</em> of the wildcard-re-exported symbols are used downstream, the entire wildcard is flagged.</p>
-
-<h2>Stage 4: Dead Code Classification</h2>
-
-<p>After building the reference graph, DeadCode classifies every export and reference into one of several categories:</p>
-
+<h2>The Four Finding Categories</h2>
 <table>
-  <tr>
-    <th>Category</th>
-    <th>Description</th>
-    <th>Confidence</th>
-  </tr>
-  <tr>
-    <td><strong>Unused export</strong></td>
-    <td>Exported symbol never imported or referenced anywhere</td>
-    <td>High</td>
-  </tr>
-  <tr>
-    <td><strong>Unused default export</strong></td>
-    <td>Default export never imported by any file</td>
-    <td>High</td>
-  </tr>
-  <tr>
-    <td><strong>Dead route</strong></td>
-    <td>Next.js page file (page.tsx) not reachable from any navigation or redirect</td>
-    <td>Medium</td>
-  </tr>
-  <tr>
-    <td><strong>Orphaned CSS</strong></td>
-    <td>CSS class selector not referenced in any JSX className or styles object</td>
-    <td>Medium</td>
-  </tr>
-  <tr>
-    <td><strong>Unused import</strong></td>
-    <td>Import statement where no symbol is referenced in the file</td>
-    <td>High</td>
-  </tr>
-  <tr>
-    <td><strong>Dead re-export</strong></td>
-    <td>Barrel file re-exports a symbol that no consumer ever imports</td>
-    <td>High</td>
-  </tr>
+  <tr><th>Category</th><th>What the scanner checks</th></tr>
+  <tr><td>Unused export</td><td>Export names against collected imports and re-export safeguards</td></tr>
+  <tr><td>Dead route</td><td>Recognized route files against literal route-reference patterns</td></tr>
+  <tr><td>Orphaned CSS</td><td>CSS class definitions against recognized class-name and CSS-module usage</td></tr>
+  <tr><td>Unreferenced component</td><td>Recognized component names against collected imported names</td></tr>
 </table>
+<p>These are the scanner's four reported categories. It does not expose separate unused-import or dead-re-export finding categories.</p>
 
-<h3>Why "Medium" Confidence?</h3>
-<p>Some categories are inherently uncertain:</p>
-<ul>
-  <li><strong>Dead routes</strong> — A page might be linked dynamically (<code>router.push('/users/' + id)</code>) or from an external source. DeadCode uses heuristics (existence of direct imports from the page, file-system convention) but can't catch every dynamic reference.</li>
-  <li><strong>Orphaned CSS</strong> — A CSS class might be used via <code>classList</code> API, string concatenation, or dynamic class generation. DeadCode catches <code>className</code>, <code>class</code>, and <code>styles.*</code> patterns but not runtime string construction.</li>
-</ul>
+<h2>Limits and Review</h2>
+<p>Regex-based detection can produce false positives and false negatives. Dynamic routes, generated class names and unusual source syntax may not match the scanner's patterns. A route may also be reached by an external client. A finding is a reason to investigate, not proof that deletion is safe.</p>
+<p>Review each proposed change, use the dry-run preview and run your application tests after cleanup. Keep changes in version control so that they can be inspected and reverted.</p>
 
-<p>For these, DeadCode outputs a <code>review</code> level alongside <code>remove</code>, letting you triage manually.</p>
+<h2>A Safe Local Workflow</h2>
+<pre><code># Scan a specific project. --project is a global option.
+deadcode --project ./my-app scan
 
-<h2>Next.js App Router Special Handling</h2>
-
-<p>Next.js App Router uses file-system routing. DeadCode's Next.js detector looks for the <code>app/</code> directory and applies special rules:</p>
-
-<ul>
-  <li><strong>page.tsx files</strong> — Checked against all <code>&lt;Link&gt;</code> components, <code>router.push()</code> calls, <code>redirect()</code> calls, and <code>next.config.js</code> redirects</li>
-  <li><strong>layout.tsx files</strong> — Always considered "used" if any child route exists (they wrap page content)</li>
-  <li><strong>loading.tsx, error.tsx, not-found.tsx</strong> — Special files that are automatically used if their parent segment has a page</li>
-  <li><strong>route.ts files</strong> — API routes checked against fetch() calls in client components</li>
-  <li><strong>middleware.ts</strong> — Always considered used if present at the root</li>
-</ul>
-
-<h2>Performance: How DeadCode Scales</h2>
-
-<p>DeadCode uses three optimization strategies to handle large codebases:</p>
-
-<ol>
-  <li><strong>Incremental parsing</strong> — Files are parsed once and cached. Only changed files are re-parsed on subsequent runs.</li>
-  <li><strong>Lazy reference resolution</strong> — The reference graph is built on-demand. If file A imports from file B, only B's exports are loaded, not B's entire reference chain.</li>
-  <li><strong>Parallel parsing</strong> — All files are parsed in parallel using a thread pool. For a 500-file project, parsing takes ~2 seconds.</li>
-</ol>
-
-<p>Benchmark: A 1,200-file Next.js project with 35,000 exports completes full analysis in <strong>6.8 seconds</strong> on a MacBook M3.</p>
-
-<h2>Comparison: DeadCode vs. ESLint (no-unused-vars)</h2>
-
-<table>
-  <tr>
-    <th>Capability</th>
-    <th>ESLint no-unused-vars</th>
-    <th>DeadCode</th>
-  </tr>
-  <tr>
-    <td>Unused exports</td>
-    <td>Single file only</td>
-    <td>Cross-file resolution</td>
-  </tr>
-  <tr>
-    <td>Barrel re-exports</td>
-    <td>Not detected</td>
-    <td>Full unwrapping</td>
-  </tr>
-  <tr>
-    <td>Dead API routes</td>
-    <td>Not detected</td>
-    <td>File-system routing analysis</td>
-  </tr>
-  <tr>
-    <td>Orphaned CSS</td>
-    <td>Not detected</td>
-    <td>CSS class reference tracking</td>
-  </tr>
-  <tr>
-    <td>Dead re-exports</td>
-    <td>Not detected</td>
-    <td>Re-export chain analysis</td>
-  </tr>
-  <tr>
-    <td>Unused imports</td>
-    <td>Single file</td>
-    <td>Single file + type-only awareness</td>
-  </tr>
-  <tr>
-    <td>TypeScript-aware</td>
-    <td>Via @typescript-eslint</td>
-    <td>Native tree-sitter TS grammar</td>
-  </tr>
-</table>
-
-<h2>Real-World Impact</h2>
-
-<p>We ran DeadCode on the DevForge landing page (a 15-page static site, ~2,800 lines of HTML + CSS) and on a production Next.js app (~1,200 files, ~150k lines). Results from the Next.js project:</p>
-
-<ul>
-  <li>23 unused components (never imported after a page redesign) — <strong>removed</strong></li>
-  <li>4 dead API routes from an abandoned feature — <strong>removed</strong></li>
-  <li>312 lines of orphaned CSS — <strong>removed</strong></li>
-  <li>15 unused imports — <strong>removed</strong></li>
-  <li>9 barrel-file re-exports for components that no consumer imported — <strong>removed</strong></li>
-</ul>
-
-<p>Total bundle size reduction: <strong>18%</strong>. Cleanup time: <strong>20 minutes</strong> (mostly reviewing DeadCode output and confirming removals).</p>
+# Inspect proposed removals without changing files
+deadcode --project ./my-app remove --dry-run</code></pre>
+<p>The removal command contains additional safeguards, including conservative handling of source lines it cannot safely remove. Inspect the preview before running removal. Measure scan time on your own representative project if performance matters.</p>
 
 <h2>Try It Yourself</h2>
 
@@ -299,7 +95,7 @@ export { Modal } from './Modal';
   <p>Install DeadCode and scan your React/Next.js project — no config file needed.</p>
   <pre style="text-align:left;margin:12px 0;background:#0a0a0b;border-color:#2a2a2d;"><code>pip install git+https://github.com/Coding-Dev-Tools/deadcode.git
 cd your-project
-deadcode scan ./src</code></pre>
+deadcode --project ./src scan</code></pre>
   <a href="https://github.com/Coding-Dev-Tools/deadcode">View on GitHub →</a>
 </div>
 

@@ -169,7 +169,7 @@ deadcode scan -i "generated/" -i "**/*.generated.ts"</code></pre>
 <ul>
  <li><strong>TypeScript/React/Next.js only.</strong> Doesn't scan Vue, Svelte, or plain JavaScript projects. Won't detect unused Python or Go code.</li>
  <li><strong>No dependency analysis.</strong> Doesn't find unused npm packages in <code>package.json</code>. knip does this.</li>
- <li><strong>No type-level analysis.</strong> Uses AST pattern matching rather than TypeScript's type checker. May miss re-export chains that the compiler would resolve differently.</li>
+ <li><strong>No type-level analysis.</strong> Uses regex pattern matching rather than TypeScript's type checker. May miss re-export chains that the compiler would resolve differently.</li>
 </ul>
 
 <h2>Tool 2: knip — Unused Exports, Files, and Dependencies</h2>
